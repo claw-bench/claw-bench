@@ -1,0 +1,10 @@
+id = "web-006"
+title = "Accessibility Audit"
+domain = "web-browsing"
+level = "L3"
+description = "Check multiple HTML files for accessibility issues including missing alt text, unlabeled form fields, and contrast problems"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["accessibility", "audit", "a11y", "html"]
+capability_types = ["reasoning", "tool-use"]

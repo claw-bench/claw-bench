@@ -1,0 +1,10 @@
+id = "eml-005"
+title = "Extract Action Items from Email Thread"
+domain = "email"
+level = "L2"
+description = "Parse a multi-message email thread and extract action items with assignees and deadlines"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["extraction", "email", "reasoning"]
+capability_types = ["reasoning", "tool-use"]

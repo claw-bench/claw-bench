@@ -1,0 +1,27 @@
+[
+  {
+    "id": "job_1",
+    "name": "Send notification email",
+    "fail_count": 0
+  },
+  {
+    "id": "job_2",
+    "name": "Upload report to server",
+    "fail_count": 2
+  },
+  {
+    "id": "job_3",
+    "name": "Process payment",
+    "fail_count": 1
+  },
+  {
+    "id": "job_4",
+    "name": "Sync database records",
+    "fail_count": 5
+  },
+  {
+    "id": "job_5",
+    "name": "Generate analytics snapshot",
+    "fail_count": 3
+  }
+]

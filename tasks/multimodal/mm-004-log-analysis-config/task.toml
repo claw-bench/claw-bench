@@ -1,0 +1,10 @@
+id = "mm-004"
+title = "Log Analysis with Config"
+domain = "multimodal"
+level = "L2"
+description = "Cross-reference a server log file with a config.yaml file to identify misconfigured services and threshold violations, producing a structured report.txt"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+capability_types = ["multimodal", "reasoning"]
+tags = ["log-analysis", "yaml", "cross-reference", "report", "multimodal"]

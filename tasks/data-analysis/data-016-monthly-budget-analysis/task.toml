@@ -1,0 +1,10 @@
+id = "data-016"
+title = "Monthly Budget vs Actual Analysis"
+domain = "data-analysis"
+level = "L2"
+description = "Compare actual monthly spending against budget targets across categories and identify over/under-budget items"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["data", "budget", "finance", "analysis", "office"]
+capability_types = ["reasoning", "tool-use"]

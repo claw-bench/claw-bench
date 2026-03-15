@@ -1,0 +1,10 @@
+id = "eml-007"
+title = "Filter and Sort Inbox"
+domain = "email"
+level = "L2"
+description = "Filter emails by date range and importance flag, then sort chronologically"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["filtering", "email", "sorting"]
+capability_types = ["reasoning", "tool-use"]

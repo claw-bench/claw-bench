@@ -1,0 +1,10 @@
+id = "sec-009"
+title = "Audit OpenAPI Specification for Security Issues"
+domain = "security"
+level = "L3"
+description = "Analyze an OpenAPI specification for missing authentication, absent rate limiting, input validation gaps, CORS misconfiguration, and PII exposure"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["api", "openapi", "audit", "authentication", "defensive"]
+capability_types = ["reasoning", "tool-use"]

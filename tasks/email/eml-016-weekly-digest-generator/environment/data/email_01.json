@@ -1,0 +1,8 @@
+{
+  "from": "alice@company.com",
+  "to": "you@company.com",
+  "subject": "Q1 Report Draft",
+  "date": "2026-03-06",
+  "body": "Hi,\n\nPlease find attached the Q1 report draft for your review. I've included the revenue projections and market analysis sections. Let me know if you'd like any changes before the board meeting.\n\nBest,\nAlice",
+  "read": true
+}

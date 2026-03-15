@@ -1,0 +1,10 @@
+id = "mem-009"
+title = "Sequential State Tracking"
+domain = "memory"
+level = "L2"
+description = "Execute a sequence of state transitions (SET, ADD, MULTIPLY, etc.) and produce the final state of all variables as JSON"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["state", "variables", "computation", "tracking"]
+capability_types = ["memory", "reasoning"]

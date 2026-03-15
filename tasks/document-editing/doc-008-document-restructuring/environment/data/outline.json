@@ -1,0 +1,40 @@
+{
+  "title": "API Reference Guide",
+  "sections": [
+    {
+      "title": "Getting Started",
+      "subsections": [
+        "Installation",
+        "Authentication",
+        "Quick Start Example",
+        "SDK Configuration"
+      ]
+    },
+    {
+      "title": "Endpoints",
+      "subsections": [
+        "Users",
+        "Orders"
+      ]
+    },
+    {
+      "title": "Advanced Topics",
+      "subsections": [
+        "Pagination",
+        "Rate Limits",
+        "Error Handling"
+      ]
+    },
+    {
+      "title": "Webhooks",
+      "subsections": [
+        "Webhook Security",
+        "Retry Policy"
+      ]
+    },
+    {
+      "title": "Support",
+      "subsections": []
+    }
+  ]
+}

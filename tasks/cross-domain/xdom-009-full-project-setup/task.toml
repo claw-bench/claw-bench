@@ -1,0 +1,10 @@
+id = "xdom-009"
+title = "Full Project Setup from Brief"
+domain = "cross-domain"
+level = "L4"
+description = "Generate complete Python project scaffolding from a project brief, including source code, tests, configuration, CI setup, and documentation."
+timeout = 600
+capabilities = ["file-read", "file-write", "code-generation", "project-setup"]
+skills_allowed = true
+tags = ["cross-domain", "scaffolding", "project-setup", "L4"]
+capability_types = ["reasoning", "tool-use"]

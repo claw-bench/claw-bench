@@ -1,0 +1,10 @@
+id = "eml-009"
+title = "Thread Reconstruction"
+domain = "email"
+level = "L3"
+description = "Reconstruct email threads from unordered individual emails using In-Reply-To and Message-ID headers"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["threading", "email", "reasoning"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "rule_1",
+    "name": "Critical Error Alert",
+    "condition": {"type": "error", "severity": "critical"},
+    "action": "send_alert"
+  },
+  {
+    "id": "rule_2",
+    "name": "High Severity Warning",
+    "condition": {"severity": "high"},
+    "action": "log_warning"
+  },
+  {
+    "id": "rule_3",
+    "name": "New Signup Notification",
+    "condition": {"type": "signup"},
+    "action": "notify_marketing"
+  },
+  {
+    "id": "rule_4",
+    "name": "Purchase Tracking",
+    "condition": {"type": "purchase"},
+    "action": "track_purchase"
+  },
+  {
+    "id": "rule_5",
+    "name": "API Error Logging",
+    "condition": {"type": "error", "source": "api"},
+    "action": "log_api_error"
+  },
+  {
+    "id": "rule_6",
+    "name": "Any Error Notify Admin",
+    "condition": {"type": "error"},
+    "action": "notify_admin"
+  }
+]

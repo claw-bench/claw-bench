@@ -1,0 +1,10 @@
+id = "sec-004"
+title = "Detect SQL Injection Vulnerabilities"
+domain = "security"
+level = "L2"
+description = "Analyze Python database query functions for SQL injection vulnerabilities, identifying unsafe string concatenation patterns and suggesting parameterized query fixes"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["sql-injection", "code-review", "vulnerability", "defensive"]
+capability_types = ["reasoning", "tool-use"]

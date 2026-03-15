@@ -1,0 +1,10 @@
+id = "mem-002"
+title = "Multi-Step Instruction Following"
+domain = "memory"
+level = "L2"
+description = "Agent is given 5 sequential numbered instructions and must execute all in order"
+timeout = 180
+capabilities = ["file-write", "file-read"]
+skills_allowed = true
+capability_types = ["memory", "reasoning"]
+tags = ["memory", "sequential", "instructions"]

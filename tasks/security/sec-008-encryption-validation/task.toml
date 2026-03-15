@@ -1,0 +1,10 @@
+id = "sec-008"
+title = "Validate Encryption Configuration"
+domain = "security"
+level = "L2"
+description = "Analyze cryptographic configuration for weak algorithms, insufficient key lengths, and deprecated ciphers, then recommend secure alternatives"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["encryption", "cryptography", "audit", "defensive"]
+capability_types = ["reasoning", "tool-use"]

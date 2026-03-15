@@ -1,0 +1,10 @@
+id = "data-013"
+title = "Outlier Detection Report"
+domain = "data-analysis"
+level = "L3"
+description = "Identify statistical outliers in sensor data using the IQR method and produce a structured report"
+timeout = 180
+capabilities = ["file-read", "file-write", "python"]
+skills_allowed = true
+tags = ["statistics", "outlier-detection", "data-analysis"]
+capability_types = ["reasoning", "tool-use"]

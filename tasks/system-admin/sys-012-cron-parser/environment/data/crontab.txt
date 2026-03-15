@@ -1,0 +1,26 @@
+# System crontab - managed by admin
+# Last updated: 2025-01-15
+
+# Backup database every day at 2:30 AM
+30 2 * * * /usr/local/bin/backup-db.sh
+
+# Rotate logs every hour
+0 * * * * /usr/sbin/logrotate /etc/logrotate.conf
+
+# Weekly security scan on Sundays at midnight
+0 0 * * 0 /opt/security/scan.sh --full
+
+# Check disk space every 15 minutes
+*/15 * * * * /usr/local/bin/check-disk.sh
+
+# Monthly report on the 1st at midnight
+0 0 1 * * /usr/local/bin/monthly-report.sh
+
+# Sync files on weekdays at 3 AM
+0 3 * * 1-5 /usr/local/bin/sync-files.sh
+
+# Annual license renewal check
+0 0 1 1 * /usr/local/bin/license-check.sh
+
+# Monitor services morning and evening
+0 6,18 * * * /usr/local/bin/service-monitor.sh

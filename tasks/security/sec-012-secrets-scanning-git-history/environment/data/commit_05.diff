@@ -1,0 +1,17 @@
+diff --git a/src/services/payment.py b/src/services/payment.py
+index 7777ggg..8888hhh 100644
+--- a/src/services/payment.py
++++ b/src/services/payment.py
+@@ -3,10 +3,12 @@
+ import stripe
+
+
+-STRIPE_KEY = os.getenv("STRIPE_SECRET_KEY")
++STRIPE_KEY = "REDACTED_STRIPE_sk_live_EXAMPLE_KEY"
+
+
+ class PaymentService:
++    GITHUB_TOKEN = "REDACTED_GHP_TOKEN_EXAMPLE_00000000"
++
+     def __init__(self):
+         stripe.api_key = STRIPE_KEY

@@ -1,0 +1,37 @@
+[
+  {
+    "rule_id": "R1",
+    "match_category": "billing",
+    "condition": "invoice",
+    "reply_template": "Thank you for reaching out about your invoice. Our accounts team has been notified and will review the status within 2 business days. You will receive a detailed update shortly.",
+    "tone": "professional"
+  },
+  {
+    "rule_id": "R2",
+    "match_category": "support",
+    "condition": "issue",
+    "reply_template": "We're sorry to hear you're experiencing difficulties. A support ticket has been created and assigned to our technical team. We aim to respond within 4 hours during business hours.",
+    "tone": "empathetic"
+  },
+  {
+    "rule_id": "R3",
+    "match_category": "meeting",
+    "condition": "schedule",
+    "reply_template": "Thank you for your meeting request. I am currently out of the office but will review available time slots upon my return. In the meantime, feel free to book a slot via our scheduling link.",
+    "tone": "friendly"
+  },
+  {
+    "rule_id": "R4",
+    "match_category": "sales",
+    "condition": "pricing",
+    "reply_template": "Thank you for your interest in our products. A member of our sales team will reach out within 24 hours with detailed pricing information and a customized proposal.",
+    "tone": "enthusiastic"
+  },
+  {
+    "rule_id": "R5",
+    "match_category": "support",
+    "condition": "bug",
+    "reply_template": "Thank you for reporting this issue. Our engineering team has been notified and will investigate the bug immediately. We will provide a fix or workaround as soon as possible.",
+    "tone": "professional"
+  }
+]

@@ -1,0 +1,10 @@
+id = "comm-001"
+title = "Format Message for Multiple Channels"
+domain = "communication"
+level = "L1"
+description = "Convert a message JSON file into three channel-specific output formats: Telegram plain text, Slack Block Kit JSON, and a formatted email"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "formatting", "multi-channel", "communication"]
+capability_types = ["collaboration", "reasoning"]

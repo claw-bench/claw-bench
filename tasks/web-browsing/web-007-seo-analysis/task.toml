@@ -1,0 +1,10 @@
+id = "web-007"
+title = "SEO Analysis"
+domain = "web-browsing"
+level = "L3"
+description = "Analyze HTML files for SEO issues including meta tags, heading structure, links, and image optimization"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["seo", "analysis", "html", "optimization"]
+capability_types = ["reasoning", "tool-use"]

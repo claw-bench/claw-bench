@@ -1,0 +1,66 @@
+[
+  {
+    "id": "app_001",
+    "applicant": "Alice Johnson",
+    "credit_score": 780,
+    "income": 95000,
+    "loan_amount": 30000,
+    "employment_years": 8
+  },
+  {
+    "id": "app_002",
+    "applicant": "Bob Smith",
+    "credit_score": 720,
+    "income": 60000,
+    "loan_amount": 35000,
+    "employment_years": 5
+  },
+  {
+    "id": "app_003",
+    "applicant": "Carol Davis",
+    "credit_score": 650,
+    "income": 55000,
+    "loan_amount": 20000,
+    "employment_years": 4
+  },
+  {
+    "id": "app_004",
+    "applicant": "David Wilson",
+    "credit_score": 450,
+    "income": 40000,
+    "loan_amount": 15000,
+    "employment_years": 2
+  },
+  {
+    "id": "app_005",
+    "applicant": "Eva Martinez",
+    "credit_score": 580,
+    "income": 48000,
+    "loan_amount": 25000,
+    "employment_years": 1
+  },
+  {
+    "id": "app_006",
+    "applicant": "Frank Lee",
+    "credit_score": 810,
+    "income": 120000,
+    "loan_amount": 50000,
+    "employment_years": 12
+  },
+  {
+    "id": "app_007",
+    "applicant": "Grace Kim",
+    "credit_score": 690,
+    "income": 70000,
+    "loan_amount": 30000,
+    "employment_years": 6
+  },
+  {
+    "id": "app_008",
+    "applicant": "Henry Brown",
+    "credit_score": 740,
+    "income": 55000,
+    "loan_amount": 45000,
+    "employment_years": 3
+  }
+]

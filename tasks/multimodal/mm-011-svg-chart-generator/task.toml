@@ -1,0 +1,10 @@
+id = "mm-011"
+title = "SVG Bar Chart Generator"
+domain = "multimodal"
+level = "L2"
+description = "Generate an SVG bar chart from JSON data with proper bars, labels, and a title"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["svg", "chart", "visualization"]
+capability_types = ["multimodal", "reasoning"]

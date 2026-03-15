@@ -1,0 +1,10 @@
+id = "file-008"
+title = "Deduplicate Lines"
+domain = "file-operations"
+level = "L1"
+description = "Remove duplicate lines from a text file while preserving the order of first occurrences"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "text", "deduplication"]
+capability_types = ["tool-use"]

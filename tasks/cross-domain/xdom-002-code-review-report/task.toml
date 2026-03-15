@@ -1,0 +1,10 @@
+id = "xdom-002"
+title = "Code Review Report: Analyze Pull Request"
+domain = "cross-domain"
+level = "L3"
+description = "Analyze a Python source file for code quality issues including style violations, bugs, and security concerns, then generate a structured review report and summary."
+timeout = 300
+capabilities = ["file-read", "file-write", "code-analysis"]
+skills_allowed = true
+tags = ["cross-domain", "code-review", "security", "reporting"]
+capability_types = ["reasoning", "tool-use"]

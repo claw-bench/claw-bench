@@ -1,0 +1,10 @@
+id = "doc-014"
+title = "Merge Multiple Documents with Section Headers"
+domain = "document-editing"
+level = "L3"
+description = "Merge four text files into a single document with auto-generated section headers derived from each file's first line"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["merge", "sections", "documents"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,10 @@
+id = "sys-004"
+title = "Log Analysis"
+domain = "system-admin"
+level = "L2"
+description = "Analyze a simulated syslog file to count entries by severity, identify top error sources, and find time patterns"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["intermediate", "log", "analysis", "syslog", "json"]
+capability_types = ["reasoning", "tool-use"]

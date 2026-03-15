@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>VIP Offer</title></head>
+<body>
+<div style="max-width:600px;margin:0 auto;font-family:Arial,sans-serif;">
+  <h1 style="color:#1a1a2e;">{{subject_line}}</h1>
+  <p>Dear {{first_name}} {{last_name}},</p>
+  <p>As one of our most valued customers, we are thrilled to offer you an exclusive
+  <strong>{{discount_percent}}% discount</strong> on your next purchase.</p>
+  <p>Your loyalty means everything to us. With {{purchase_count}} purchases and a lifetime
+  value that puts you in our top tier, you deserve the very best.</p>
+  <div style="background:#f0f0f0;padding:20px;border-radius:8px;text-align:center;">
+    <p style="font-size:24px;color:#e94560;">Use code: <strong>{{offer_code}}</strong></p>
+    <p>Minimum purchase: ${{min_purchase}}</p>
+    <p>Valid until: {{offer_expiry}}</p>
+  </div>
+  <p>We have curated picks in <strong>{{preferred_category}}</strong> just for you.</p>
+  <p>Happy shopping!<br>The {{from_name}} Team</p>
+  <hr>
+  <p style="font-size:11px;color:#888;">Sent to {{email}} | <a href="#">Unsubscribe</a></p>
+</div>
+</body>
+</html>

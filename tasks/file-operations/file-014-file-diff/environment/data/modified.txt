@@ -1,0 +1,32 @@
+# Application Configuration
+# Version: 2.4.0
+
+[server]
+host = 0.0.0.0
+port = 9090
+workers = 8
+timeout = 30
+debug = false
+
+[database]
+engine = postgresql
+host = db.production.internal
+port = 5432
+name = myapp_db
+user = admin
+password = secret123
+pool_size = 10
+max_overflow = 20
+
+[cache]
+backend = redis
+host = cache.production.internal
+port = 6379
+ttl = 600
+prefix = myapp
+
+[logging]
+level = WARNING
+file = /var/log/app.log
+format = %(asctime)s %(levelname)s %(message)s
+max_size = 500MB

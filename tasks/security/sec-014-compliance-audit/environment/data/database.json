@@ -1,0 +1,25 @@
+{
+  "engine": "PostgreSQL",
+  "version": "15.2",
+  "encryption": {
+    "at_rest": {
+      "enabled": true,
+      "algorithm": "AES-256",
+      "key_management": "AWS KMS"
+    },
+    "in_transit": {
+      "enabled": true,
+      "tls_version": "1.3"
+    }
+  },
+  "connection": {
+    "require_ssl": true,
+    "max_connections": 200
+  },
+  "backup": {
+    "enabled": true,
+    "frequency": "daily",
+    "encrypted": false,
+    "retention_days": 30
+  }
+}

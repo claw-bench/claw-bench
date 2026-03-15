@@ -1,0 +1,10 @@
+id = "file-010"
+title = "Directory Tree Listing"
+domain = "file-operations"
+level = "L1"
+description = "Generate a text-based directory tree listing of a project folder"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "directory", "tree", "listing"]
+capability_types = ["tool-use"]

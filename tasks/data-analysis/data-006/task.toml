@@ -1,0 +1,10 @@
+id = "data-006"
+title = "Time Series Aggregation"
+domain = "data-analysis"
+level = "L2"
+description = "Aggregate daily sales data into weekly and monthly summaries"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["timeseries", "aggregation", "dates", "csv"]
+capability_types = ["reasoning", "tool-use"]

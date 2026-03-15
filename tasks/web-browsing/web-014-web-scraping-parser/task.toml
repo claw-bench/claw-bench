@@ -1,0 +1,10 @@
+id = "web-014"
+title = "Parse Product Table and Compute Statistics"
+domain = "web-browsing"
+level = "L3"
+description = "Scrape a product listing HTML table, parse structured data, and compute summary statistics"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["scraping", "html", "structured-data"]
+capability_types = ["reasoning", "tool-use"]

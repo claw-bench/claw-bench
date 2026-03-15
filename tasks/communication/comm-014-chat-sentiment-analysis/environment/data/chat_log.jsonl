@@ -1,0 +1,20 @@
+{"user": "alice", "text": "Good morning everyone! This is going to be a great day.", "timestamp": "2026-03-10T09:00:00Z"}
+{"user": "bob", "text": "Morning. The build is broken again.", "timestamp": "2026-03-10T09:01:00Z"}
+{"user": "carol", "text": "I love the new design, it looks amazing!", "timestamp": "2026-03-10T09:02:00Z"}
+{"user": "dave", "text": "Has anyone seen the latest report?", "timestamp": "2026-03-10T09:03:00Z"}
+{"user": "alice", "text": "The meeting went well, excellent progress on the roadmap.", "timestamp": "2026-03-10T09:10:00Z"}
+{"user": "bob", "text": "This bug is really annoying and frustrating.", "timestamp": "2026-03-10T09:15:00Z"}
+{"user": "carol", "text": "Thank you for the quick fix, that was awesome!", "timestamp": "2026-03-10T09:20:00Z"}
+{"user": "dave", "text": "The deployment looks nice so far.", "timestamp": "2026-03-10T09:25:00Z"}
+{"user": "alice", "text": "I think we need to revisit the timeline.", "timestamp": "2026-03-10T09:30:00Z"}
+{"user": "bob", "text": "The new feature is actually pretty good.", "timestamp": "2026-03-10T09:35:00Z"}
+{"user": "carol", "text": "Something is wrong with the staging environment.", "timestamp": "2026-03-10T09:40:00Z"}
+{"user": "dave", "text": "I hate when the tests fail without clear errors.", "timestamp": "2026-03-10T09:45:00Z"}
+{"user": "alice", "text": "Happy to help with the code review.", "timestamp": "2026-03-10T10:00:00Z"}
+{"user": "bob", "text": "The documentation is terrible, we need to rewrite it.", "timestamp": "2026-03-10T10:05:00Z"}
+{"user": "carol", "text": "Wonderful job on the presentation yesterday!", "timestamp": "2026-03-10T10:10:00Z"}
+{"user": "dave", "text": "The API response time is disappointing.", "timestamp": "2026-03-10T10:15:00Z"}
+{"user": "alice", "text": "Let me check the logs and get back to you.", "timestamp": "2026-03-10T10:20:00Z"}
+{"user": "bob", "text": "Perfect, the fix works now. Thank you!", "timestamp": "2026-03-10T10:25:00Z"}
+{"user": "carol", "text": "Can we schedule a sync for tomorrow?", "timestamp": "2026-03-10T10:30:00Z"}
+{"user": "dave", "text": "The new dashboard looks fantastic and works great.", "timestamp": "2026-03-10T10:35:00Z"}

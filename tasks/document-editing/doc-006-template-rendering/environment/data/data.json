@@ -1,0 +1,39 @@
+{
+  "project": {
+    "name": "DataFlow Engine",
+    "version": "3.1.0",
+    "description": "A high-performance data processing engine designed for real-time stream processing and batch analytics."
+  },
+  "author": {
+    "name": "Sarah Chen",
+    "email": "sarah.chen@dataflow.io"
+  },
+  "date": "2025-07-15",
+  "features": [
+    {"name": "Stream Processing", "description": "Process data streams in real-time with sub-millisecond latency."},
+    {"name": "Batch Analytics", "description": "Run complex analytical queries on large datasets efficiently."},
+    {"name": "Auto Scaling", "description": "Automatically scale resources based on workload demand."},
+    {"name": "Data Connectors", "description": "Built-in connectors for Kafka, PostgreSQL, S3, and more."}
+  ],
+  "team": [
+    {"name": "Sarah Chen", "role": "Lead Engineer"},
+    {"name": "Mike Torres", "role": "Backend Developer"},
+    {"name": "Lisa Wang", "role": "Data Engineer"},
+    {"name": "James Park", "role": "DevOps Engineer"}
+  ],
+  "show_roadmap": true,
+  "roadmap": [
+    {
+      "title": "v3.2 Release",
+      "target_date": "September 2025",
+      "description": "Add support for Apache Iceberg tables and improved CDC connectors."
+    },
+    {
+      "title": "v4.0 Release",
+      "target_date": "January 2026",
+      "description": "Major architecture overhaul with native Kubernetes operator support."
+    }
+  ],
+  "show_license": true,
+  "license": "Apache 2.0"
+}

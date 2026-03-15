@@ -1,0 +1,10 @@
+id = "sec-003"
+title = "Check File Permissions for Security Issues"
+domain = "security"
+level = "L1"
+description = "Analyze simulated file permission listings to identify overly permissive file modes and generate a security audit report"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["permissions", "audit", "filesystem", "defensive"]
+capability_types = ["reasoning", "tool-use"]

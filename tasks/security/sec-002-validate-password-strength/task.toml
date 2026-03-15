@@ -1,0 +1,10 @@
+id = "sec-002"
+title = "Validate Password Strength Against Security Policy"
+domain = "security"
+level = "L1"
+description = "Check a list of passwords against a security policy requiring minimum length, character diversity, and complexity, then report pass/fail with reasons"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["passwords", "policy", "validation", "defensive"]
+capability_types = ["reasoning", "tool-use"]

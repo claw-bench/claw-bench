@@ -1,0 +1,10 @@
+id = "doc-010"
+title = "Document Template Engine"
+domain = "document-editing"
+level = "L3"
+description = "Process a template with {{variable}} placeholders, nested object access, array loops, and conditionals using data from a JSON file"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["template", "json", "substitution", "loops", "conditionals"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,7 @@
+[
+  {"find": "Application Framework", "replace": "Nova Platform"},
+  {"find": "app-framework", "replace": "nova-platform"},
+  {"find": "oldomain.com", "replace": "novacorp.io"},
+  {"find": "OldCorp Industries", "replace": "NovaCorp Inc."},
+  {"find": "2024", "replace": "2026"}
+]

@@ -1,0 +1,15 @@
+{"id": 1, "speaker": "Alice", "text": "The project deadline is March 15th. We need to finalize the design by then.", "timestamp": "2025-01-10T09:00:00Z"}
+{"id": 2, "speaker": "Bob", "text": "I think we should use React for the frontend. It has great component reusability.", "timestamp": "2025-01-10T09:02:00Z"}
+{"id": 3, "speaker": "Carol", "text": "What about the backend? Are we going with Python or Node?", "timestamp": "2025-01-10T09:05:00Z"}
+{"id": 4, "speaker": "Alice", "text": "Let's go with Python and FastAPI for the backend services.", "timestamp": "2025-01-10T09:07:00Z"}
+{"id": 5, "speaker": "Bob", "text": "Regarding the March 15th deadline Alice mentioned, that seems tight for a full implementation.", "timestamp": "2025-01-10T09:10:00Z"}
+{"id": 6, "speaker": "Carol", "text": "I agree with Bob about React. We used it successfully in the last project.", "timestamp": "2025-01-10T09:12:00Z"}
+{"id": 7, "speaker": "Alice", "text": "The database should be PostgreSQL. We need strong relational data support.", "timestamp": "2025-01-10T09:15:00Z"}
+{"id": 8, "speaker": "Bob", "text": "Actually, Alice said Python for backend, but I think Node would be faster for our use case.", "timestamp": "2025-01-10T09:18:00Z"}
+{"id": 9, "speaker": "Carol", "text": "To answer my own question about the backend, I'm fine with Python since Alice suggested FastAPI.", "timestamp": "2025-01-10T09:20:00Z"}
+{"id": 10, "speaker": "Alice", "text": "Bob, the deadline is actually flexible. I checked with management and we can extend to March 30th.", "timestamp": "2025-01-10T09:22:00Z"}
+{"id": 11, "speaker": "Bob", "text": "That's great news about the extended deadline. With the extra time, Python backend works for me too.", "timestamp": "2025-01-10T09:25:00Z"}
+{"id": 12, "speaker": "Carol", "text": "Since we're using PostgreSQL as Alice suggested, should we use SQLAlchemy as the ORM?", "timestamp": "2025-01-10T09:28:00Z"}
+{"id": 13, "speaker": "Alice", "text": "Yes, SQLAlchemy is perfect. Let me summarize: React frontend, Python/FastAPI backend, PostgreSQL with SQLAlchemy.", "timestamp": "2025-01-10T09:30:00Z"}
+{"id": 14, "speaker": "Bob", "text": "Wait, I need to correct something. The last project Carol mentioned actually used Vue, not React.", "timestamp": "2025-01-10T09:32:00Z"}
+{"id": 15, "speaker": "Carol", "text": "Bob is right, my mistake. But React is still a good choice for this project.", "timestamp": "2025-01-10T09:35:00Z"}

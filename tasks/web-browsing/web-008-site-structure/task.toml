@@ -1,0 +1,10 @@
+id = "web-008"
+title = "Website Structure Mapping"
+domain = "web-browsing"
+level = "L4"
+description = "Map the full site structure from 10 HTML files with internal links, generate a sitemap and detect broken links"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["sitemap", "structure", "links", "broken-links"]
+capability_types = ["reasoning", "tool-use"]

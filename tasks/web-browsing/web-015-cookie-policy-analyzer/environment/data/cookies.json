@@ -1,0 +1,122 @@
+[
+  {
+    "name": "session_id",
+    "domain": "example.com",
+    "path": "/",
+    "expires": "2026-12-31T23:59:59Z",
+    "secure": true,
+    "httpOnly": true,
+    "sameSite": "Strict",
+    "category": "essential"
+  },
+  {
+    "name": "csrf_token",
+    "domain": "example.com",
+    "path": "/",
+    "expires": "2026-12-31T23:59:59Z",
+    "secure": true,
+    "httpOnly": true,
+    "sameSite": "Strict",
+    "category": "essential"
+  },
+  {
+    "name": "user_prefs",
+    "domain": "example.com",
+    "path": "/",
+    "expires": "2027-06-15T00:00:00Z",
+    "secure": true,
+    "httpOnly": false,
+    "sameSite": "Lax",
+    "category": "functional"
+  },
+  {
+    "name": "theme",
+    "domain": "example.com",
+    "path": "/",
+    "expires": "2027-06-15T00:00:00Z",
+    "secure": false,
+    "httpOnly": false,
+    "sameSite": "Lax",
+    "category": "functional"
+  },
+  {
+    "name": "_ga",
+    "domain": ".google-analytics.com",
+    "path": "/",
+    "expires": "2028-01-01T00:00:00Z",
+    "secure": true,
+    "httpOnly": false,
+    "sameSite": "None",
+    "category": "analytics"
+  },
+  {
+    "name": "_gid",
+    "domain": ".google-analytics.com",
+    "path": "/",
+    "expires": "2026-04-01T00:00:00Z",
+    "secure": true,
+    "httpOnly": false,
+    "sameSite": "None",
+    "category": "analytics"
+  },
+  {
+    "name": "fb_pixel",
+    "domain": ".facebook.com",
+    "path": "/",
+    "expires": "2027-03-01T00:00:00Z",
+    "secure": true,
+    "httpOnly": false,
+    "sameSite": "None",
+    "category": "tracking"
+  },
+  {
+    "name": "ad_tracker",
+    "domain": ".doubleclick.net",
+    "path": "/",
+    "expires": "2027-06-01T00:00:00Z",
+    "secure": false,
+    "httpOnly": false,
+    "sameSite": "None",
+    "category": "tracking"
+  },
+  {
+    "name": "lang",
+    "domain": "example.com",
+    "path": "/",
+    "expires": "2027-12-31T00:00:00Z",
+    "secure": true,
+    "httpOnly": false,
+    "sameSite": "Lax",
+    "category": "functional"
+  },
+  {
+    "name": "ab_test",
+    "domain": "example.com",
+    "path": "/",
+    "expires": "2026-06-01T00:00:00Z",
+    "secure": false,
+    "httpOnly": false,
+    "sameSite": "",
+    "category": "analytics"
+  },
+  {
+    "name": "retarget",
+    "domain": ".adnetwork.com",
+    "path": "/",
+    "expires": "2027-09-01T00:00:00Z",
+    "secure": false,
+    "httpOnly": false,
+    "sameSite": "None",
+    "category": "tracking"
+  },
+  {
+    "name": "consent",
+    "domain": "example.com",
+    "path": "/",
+    "expires": "2027-12-31T00:00:00Z",
+    "secure": true,
+    "httpOnly": true,
+    "sameSite": "Strict",
+    "category": "essential"
+  }
+]

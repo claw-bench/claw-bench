@@ -1,0 +1,10 @@
+id = "mm-010"
+title = "Database Schema Documentation"
+domain = "multimodal"
+level = "L3"
+description = "Parse SQLite CREATE TABLE statements to produce structured JSON documentation of table schemas including columns, types, nullability, primary keys, and foreign key relationships"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["sql", "json", "schema", "parsing", "documentation"]
+capability_types = ["multimodal", "reasoning"]

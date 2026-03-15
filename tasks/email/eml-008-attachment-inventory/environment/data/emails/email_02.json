@@ -1,0 +1,11 @@
+{
+  "id": 2,
+  "from": "design@company.com",
+  "subject": "New Logo Concepts",
+  "date": "2026-03-02T14:30:00Z",
+  "attachments": [
+    {"filename": "logo_v1.png", "size_bytes": 520000, "content_type": "image/png"},
+    {"filename": "logo_v2.png", "size_bytes": 480000, "content_type": "image/png"},
+    {"filename": "brand_guidelines.pdf", "size_bytes": 1200000, "content_type": "application/pdf"}
+  ]
+}

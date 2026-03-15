@@ -1,0 +1,10 @@
+id = "sec-011"
+title = "Generate Incident Response Plan"
+domain = "security"
+level = "L3"
+description = "Given a security incident description and response playbooks, generate a step-by-step response plan and incident timeline"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["incident-response", "playbook", "forensics", "defensive"]
+capability_types = ["reasoning", "tool-use"]

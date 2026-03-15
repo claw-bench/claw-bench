@@ -1,0 +1,21 @@
+2024-01-15 08:00:01 INFO Service auth started on port 8080
+2024-01-15 08:00:02 ERROR Service auth failed to authenticate user jdoe
+2024-01-15 08:00:03 ERROR Service auth token expired for session 44a1
+2024-01-15 08:00:04 WARNING Service payments latency spike detected
+2024-01-15 08:00:05 ERROR Service payments failed to process transaction tx-9921
+2024-01-15 08:00:06 ERROR Service auth connection pool exhausted
+2024-01-15 08:00:07 INFO Service gateway routing request to upstream
+2024-01-15 08:00:08 ERROR Service payments timeout on provider callback
+2024-01-15 08:00:09 ERROR Service auth rate limit exceeded for IP 10.0.0.5
+2024-01-15 08:00:10 WARNING Service notifications queue depth high
+2024-01-15 08:00:11 ERROR Service analytics failed to write metrics batch
+2024-01-15 08:00:12 ERROR Service payments on port 9090 refused connection
+2024-01-15 08:00:13 ERROR Service auth database connection dropped
+2024-01-15 08:00:14 WARNING Service inventory slow query detected
+2024-01-15 08:00:15 ERROR Service analytics aggregation pipeline broken
+2024-01-15 08:00:16 ERROR Service payments reconciliation mismatch
+2024-01-15 08:00:17 INFO Service notifications email batch sent
+2024-01-15 08:00:18 ERROR Service analytics data ingestion backlog
+2024-01-15 08:00:19 WARNING Service inventory replication lag increased
+2024-01-15 08:00:20 ERROR Service notifications delivery failure for msg-3382
+2024-01-15 08:00:21 INFO Service analytics cluster node recovered

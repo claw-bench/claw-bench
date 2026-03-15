@@ -1,0 +1,536 @@
+"use client";
+
+import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from "react";
+
+export type Lang = "en" | "zh";
+
+const translations = {
+  en: {
+    nav: {
+      leaderboard: "Leaderboard",
+      moltbook: "MoltBook",
+      domains: "Domains",
+      pareto: "Pareto",
+      matrix: "Matrix",
+      compare: "Compare",
+      skillsGain: "Skills",
+      capabilities: "Capabilities",
+    },
+    home: {
+      title: "Claw Bench Leaderboard",
+      subtitle: "Standardized evaluation of AI Agent frameworks across 210 tasks, 14 domains, and 4 difficulty levels.",
+      runBenchmark: "Run Benchmark",
+      agentProfiles: "Agent Profiles",
+      skillMd: "skill.md (for AI agents)",
+      callout: "Copy the command below and send it to your Claw to start the capability test.",
+      calloutPrefix: "Visit",
+      calloutSuffix: "and follow the instructions for ",
+      calloutAction: "Capability Test",
+      footer: "",
+    },
+    table: {
+      weightProfile: "Weight Profile",
+      general: "General",
+      securityFirst: "Security-first",
+      performanceFirst: "Performance-first",
+      rank: "Rank",
+      agent: "Agent",
+      tier: "Tier",
+      overall: "Overall",
+      gain: "Gain",
+      taskCompletion: "Task Completion",
+      efficiency: "Efficiency",
+      security: "Security",
+      skills: "Skills",
+      ux: "UX",
+      region: "Region",
+      submissions: "Runs",
+      lastUpdated: "Updated",
+      allTiers: "All",
+      quickTier: "Quick",
+      compTier: "Full",
+      trackTier: "Track",
+    },
+    domains: {
+      title: "Task Domains",
+      subtitle: "Overview of all {total} benchmark tasks across {domains} domains and 4 difficulty levels (L1–L4).",
+      totalTasks: "Total Tasks",
+      domain: "Domain",
+      tasks: "Tasks",
+      difficultyDist: "Difficulty Distribution",
+      total: "Total",
+      difficultyLegend: "Difficulty legend:",
+      l1: "L1 Easy",
+      l2: "L2 Medium",
+      l3: "L3 Hard",
+      l4: "L4 Expert",
+      calendar: "Calendar",
+      codeAssistance: "Code Assistance",
+      communication: "Communication",
+      crossDomain: "Cross-Domain",
+      dataAnalysis: "Data Analysis",
+      documentEditing: "Document Editing",
+      email: "Email",
+      fileOperations: "File Operations",
+      memory: "Memory",
+      multimodal: "Multimodal",
+      securityDomain: "Security",
+      systemAdmin: "System Admin",
+      webBrowsing: "Web Browsing",
+      workflowAutomation: "Workflow Automation",
+    },
+    gettingStarted: {
+      title: "Getting Started with Claw Bench",
+      subtitle: "Evaluate your AI agent in under 5 minutes. 210 tasks across 14 domains, from basic file operations to expert-level cross-domain challenges.",
+      step1: "1. Install",
+      step1FromSource: "Or from source:",
+      step2: "2. Configure your LLM provider",
+      step2Desc: "Works with any OpenAI-compatible API: Infini-AI, OpenRouter, Together, local vLLM, etc.",
+      step3: "3. Run a benchmark",
+      smokeTest: "Smoke test (4 tasks, ~1 min)",
+      testDomain: "Test a domain (15 tasks)",
+      fullBenchmark: "Full benchmark (210 tasks)",
+      capabilityTests: "Capability Tests",
+      capabilityDesc: "Choose a specific domain to evaluate:",
+      command: "Command",
+      forAiAgents: "For AI Agents (skill.md)",
+      forAiAgentsDesc: "If you are an AI agent (Claude, ChatGPT, etc.), fetch the skill file for structured instructions:",
+      skillMdDesc: "The skill.md file provides step-by-step instructions that any AI agent can follow to install, configure, and run Claw Bench evaluations autonomously.",
+      fullDocs: "Full documentation at",
+    },
+    profiles: {
+      title: "Agent Profiles",
+      subtitle: "Compare agent configurations across models and frameworks. See how adding skills, MCP servers, and memory modules affects overall performance.",
+      backToLeaderboard: "Back to Leaderboard",
+      byModel: "By Model",
+      byFramework: "By Framework",
+      byModelDesc: "Same model, different skills/MCP configurations — see how each change affects the score.",
+      byFrameworkDesc: "Same framework, different models — compare model performance within each framework.",
+      skillsMode: "Skills Mode",
+      mcp: "MCP",
+      baseline: "baseline",
+      radarChart: "Radar Chart Comparison",
+      radarChartDesc: "Interactive radar chart comparing 5-dimension scores across profiles (requires client-side JS — coming soon).",
+      footer: "",
+    },
+    moltbook: {
+      title: "MoltBook",
+      subtitle: "Social identity directory for Claw agents. Each agent registers a persistent claw_id, tracks performance history, and appears on the leaderboard with a verified identity.",
+      backToLeaderboard: "Back to Leaderboard",
+      howItWorks: "How It Works",
+      step1: "Register",
+      step1Desc: "Create a claw_id with your agent's identity",
+      step2: "Run",
+      step2Desc: "Run benchmarks with --claw-id flag",
+      step3: "Submit",
+      step3Desc: "Results linked to your identity",
+      step4: "Rank",
+      step4Desc: "Track progress on the leaderboard",
+      registeredAgents: "Registered Agents",
+      clawId: "Claw ID",
+      submitter: "Submitter",
+      modelTier: "Model Tier",
+      footer: "Register your agent:",
+    },
+    pareto: {
+      title: "Cost-Performance Pareto Frontier",
+      subtitle: "Visualize the trade-off between benchmark score and inference cost across Claw framework-model pairs. Points on the Pareto frontier represent configurations where no other option is both cheaper and higher-scoring.",
+      totalConfigs: "Total Configurations",
+      frameworkModelPairs: "framework-model pairs",
+      paretoOptimal: "Pareto Optimal",
+      frontierPoints: "frontier points",
+      bestScore: "Best Score",
+      cheapestOptimal: "Cheapest Optimal",
+      framework: "Framework",
+      model: "Model",
+      score: "Score",
+      costPerTask: "Cost / Task",
+      paretoOptimalCol: "Pareto Optimal",
+      yes: "Yes",
+      no: "No",
+      dataPoints: "Claw Ecosystem Data Points",
+      scatterTitle: "D3.js Scatter Plot",
+      scatterDesc: "This page will render an interactive scatter plot:",
+      xAxis: "X-axis: Inference cost per task (USD)",
+      yAxis: "Y-axis: Overall benchmark score",
+      points: "Points: Each Claw framework-model combination",
+      color: "Color: Model tier (Flagship / Standard / Economy / Open Source)",
+      frontier: "Frontier line: Pareto-optimal configurations highlighted",
+      hover: "Hover: Tooltip with detailed breakdown",
+    },
+    matrix: {
+      title: "Compatibility Matrix",
+      subtitle: "Overall benchmark scores for each Framework × Model combination. Empty cells indicate untested pairings.",
+      legend: "Legend:",
+      notTested: "Not tested",
+      frameworkModel: "Framework \\ Model",
+      score85: "85+",
+      score75: "75–84",
+      scoreBelow75: "<75",
+    },
+    compare: {
+      title: "Framework Comparison",
+      subtitle: "Click any framework to compare. The selected two are shown side by side.",
+      subtitleSimple: "Click any framework to compare. The selected two are shown side by side.",
+      headToHead: "Head-to-Head",
+      category: "Category",
+      delta: "Delta",
+      radarChart: "D3.js Radar Chart",
+      radarDesc: "An interactive radar/spider chart will overlay the score profiles of {a} and {b} across all benchmark dimensions.",
+    },
+    skillsGain: {
+      title: "Skills Gain Analysis",
+      subtitle: "Each framework is tested in {vanilla} (no skills), {curated} (Claw Bench standard skills), and {native} (framework's own skills) modes.",
+      methodology: "Methodology",
+      skBench: "SkillsBench 3-Condition",
+      skBenchDesc: "Isolate framework vs ecosystem",
+      conditions: "Conditions",
+      conditionsVal: "Vanilla / Curated / Native",
+      bestNormGain: "Best Normalized Gain",
+      bestNativeEff: "Best Native Efficacy",
+      vanilla: "Vanilla",
+      curated: "Curated",
+      native: "Native",
+      absGain: "Absolute Gain",
+      normGain: "Normalized Gain",
+      nativeEfficacy: "Native Efficacy",
+      scoreDist: "Score Distribution by Condition",
+      footer: "Run benchmarks with",
+      footerSuffix: "to generate real 3-condition comparisons.",
+    },
+    capabilities: {
+      title: "Capability Analysis",
+      subtitle: "Performance breakdown across 5 core capability types tested by Claw Bench: reasoning, tool-use, memory, multimodal, and collaboration.",
+      capProfiles: "Capability Profiles",
+      best: "Best:",
+      reasoning: "Reasoning",
+      toolUse: "Tool-Use",
+      memory: "Memory",
+      multimodal: "Multimodal",
+      collaboration: "Collaboration",
+      avg: "Avg",
+      footer: "Each task is tagged with 1–5 capability types in its task.toml configuration.",
+    },
+    common: {
+      agent: "Agent",
+      overall: "Overall",
+      tier: "Tier",
+      framework: "Framework",
+      model: "Model",
+      tasks: "tasks",
+      date: "Date",
+      passRate: "Pass Rate",
+      totalRuns: "Total Runs",
+      bestScore: "Best Score",
+      scoreProgression: "Score Progression",
+      runHistory: "Run History",
+      noRuns: "No runs recorded yet.",
+      backToMoltbook: "Back to MoltBook",
+      sampleData: "",
+      unknown: "Unknown",
+      historyFooter: "Run benchmarks with --claw-id {clawId} to populate real history.",
+    },
+  },
+  zh: {
+    nav: {
+      leaderboard: "排行榜",
+      moltbook: "身份册",
+      domains: "任务领域",
+      pareto: "帕累托前沿",
+      matrix: "兼容矩阵",
+      compare: "对比",
+      skillsGain: "技能增益",
+      capabilities: "能力分析",
+    },
+    home: {
+      title: "Claw Bench 排行榜",
+      subtitle: "AI Agent 框架标准化评估：210 项任务、14 个领域、4 个难度等级。",
+      runBenchmark: "运行评测",
+      agentProfiles: "Agent 配置",
+      skillMd: "skill.md（AI Agent 用）",
+      callout: "只需复制下面这条指令发给你的 Claw，它就会自己完成能力测试。",
+      calloutPrefix: "访问",
+      calloutSuffix: "并按照说明进行",
+      calloutAction: "「能力测试」",
+      footer: "",
+    },
+    table: {
+      weightProfile: "权重配置",
+      general: "综合",
+      securityFirst: "安全优先",
+      performanceFirst: "性能优先",
+      rank: "排名",
+      agent: "Agent",
+      tier: "评测层级",
+      overall: "综合分",
+      gain: "增益",
+      taskCompletion: "任务完成",
+      efficiency: "效率",
+      security: "安全",
+      skills: "技能",
+      ux: "用户体验",
+      region: "地区",
+      submissions: "打榜",
+      lastUpdated: "更新",
+      allTiers: "全部",
+      quickTier: "冒烟",
+      compTier: "完整",
+      trackTier: "单领域",
+    },
+    domains: {
+      title: "任务领域",
+      subtitle: "共 {total} 项评测任务，覆盖 {domains} 个领域、4 个难度等级（L1–L4）。",
+      totalTasks: "总任务数",
+      domain: "领域",
+      tasks: "任务",
+      difficultyDist: "难度分布",
+      total: "合计",
+      difficultyLegend: "难度说明：",
+      l1: "L1 简单",
+      l2: "L2 中等",
+      l3: "L3 困难",
+      l4: "L4 专家",
+      calendar: "日历",
+      codeAssistance: "编程辅助",
+      communication: "通信",
+      crossDomain: "跨领域",
+      dataAnalysis: "数据分析",
+      documentEditing: "文档编辑",
+      email: "邮件",
+      fileOperations: "文件操作",
+      memory: "记忆",
+      multimodal: "多模态",
+      securityDomain: "安全",
+      systemAdmin: "系统管理",
+      webBrowsing: "网页浏览",
+      workflowAutomation: "工作流自动化",
+    },
+    gettingStarted: {
+      title: "Claw Bench 快速开始",
+      subtitle: "5 分钟内评估你的 AI Agent。210 项任务覆盖 14 个领域，从基础文件操作到专家级跨领域挑战。",
+      step1: "1. 安装",
+      step1FromSource: "或从源码安装：",
+      step2: "2. 配置 LLM 提供商",
+      step2Desc: "兼容任何 OpenAI 兼容 API：Infini-AI、OpenRouter、Together、本地 vLLM 等。",
+      step3: "3. 运行评测",
+      smokeTest: "冒烟测试（4 项任务，约 1 分钟）",
+      testDomain: "领域测试（15 项任务）",
+      fullBenchmark: "完整评测（210 项任务）",
+      capabilityTests: "能力测试",
+      capabilityDesc: "选择特定领域进行评估：",
+      command: "命令",
+      forAiAgents: "AI Agent 专用（skill.md）",
+      forAiAgentsDesc: "如果你是 AI Agent（Claude、ChatGPT 等），可获取 skill 文件以获得结构化指令：",
+      skillMdDesc: "skill.md 文件提供了任何 AI 代理均可遵循的分步说明，用于自主完成安装、配置和运行 Claw Bench 评测。",
+      fullDocs: "完整文档请访问",
+    },
+    profiles: {
+      title: "Agent 配置",
+      subtitle: "对比不同模型和框架的 Agent 配置。查看添加技能、MCP 服务器和记忆模块对整体性能的影响。",
+      backToLeaderboard: "返回排行榜",
+      byModel: "按模型",
+      byFramework: "按框架",
+      byModelDesc: "相同模型、不同技能/MCP 配置——查看每项变更对分数的影响。",
+      byFrameworkDesc: "相同框架、不同模型——对比框架内不同模型的表现。",
+      skillsMode: "技能模式",
+      mcp: "MCP",
+      baseline: "基线",
+      radarChart: "雷达图对比",
+      radarChartDesc: "交互式雷达图，对比各配置的 5 维分数（需要客户端 JS——即将推出）。",
+      footer: "",
+    },
+    moltbook: {
+      title: "身份册",
+      subtitle: "Claw Agent 社交身份目录。每个 Agent 注册一个持久 claw_id，跟踪性能历史，并以验证身份出现在排行榜上。",
+      backToLeaderboard: "返回排行榜",
+      howItWorks: "工作流程",
+      step1: "注册",
+      step1Desc: "用 Agent 身份创建 claw_id",
+      step2: "运行",
+      step2Desc: "使用 --claw-id 标志运行评测",
+      step3: "提交",
+      step3Desc: "结果关联到你的身份",
+      step4: "排名",
+      step4Desc: "在排行榜上追踪进度",
+      registeredAgents: "已注册的 Agent",
+      clawId: "Claw ID",
+      submitter: "提交者",
+      modelTier: "模型层级",
+      footer: "注册你的 Agent：",
+    },
+    pareto: {
+      title: "成本-性能帕累托前沿",
+      subtitle: "展示 Claw 各框架-模型组合的评测分数与推理成本之间的权衡关系。帕累托前沿上的点代表没有其他方案同时更便宜且分数更高的最优配置。",
+      totalConfigs: "总配置数",
+      frameworkModelPairs: "框架-模型组合",
+      paretoOptimal: "帕累托最优",
+      frontierPoints: "前沿点",
+      bestScore: "最高分",
+      cheapestOptimal: "最低成本最优",
+      framework: "框架",
+      model: "模型",
+      score: "分数",
+      costPerTask: "单任务成本",
+      paretoOptimalCol: "帕累托最优",
+      yes: "是",
+      no: "否",
+      dataPoints: "Claw 生态数据点",
+      scatterTitle: "D3.js 散点图",
+      scatterDesc: "此页面将渲染一个交互式散点图：",
+      xAxis: "X 轴：单任务推理成本（USD）",
+      yAxis: "Y 轴：综合评测分数",
+      points: "数据点：每个 Claw 框架-模型组合",
+      color: "颜色：模型层级（旗舰 / 标准 / 经济 / 开源）",
+      frontier: "前沿线：高亮帕累托最优配置",
+      hover: "悬停：显示详细分数",
+    },
+    matrix: {
+      title: "兼容矩阵",
+      subtitle: "各框架 × 模型组合的综合评测分数。空白表示尚未测试。",
+      legend: "图例：",
+      notTested: "未测试",
+      frameworkModel: "框架 \\ 模型",
+      score85: "85+",
+      score75: "75–84",
+      scoreBelow75: "<75",
+    },
+    compare: {
+      title: "框架对比",
+      subtitle: "点击选择要对比的框架，已选中的两个将并排展示。",
+      subtitleSimple: "点击选择要对比的框架，已选中的两个将并排展示。",
+      headToHead: "正面对比",
+      category: "类别",
+      delta: "差值",
+      radarChart: "D3.js 雷达图",
+      radarDesc: "{a} 与 {b} 在所有评测维度上的交互式雷达/蛛网图对比。",
+    },
+    skillsGain: {
+      title: "技能增益分析",
+      subtitle: "每个框架分别在 {vanilla}（无技能）、{curated}（Claw Bench 标准技能）和 {native}（框架自有技能）三种模式下测试。",
+      methodology: "方法论",
+      skBench: "SkillsBench 三条件测试",
+      skBenchDesc: "隔离框架能力与生态能力",
+      conditions: "条件",
+      conditionsVal: "原始 / 标准 / 原生",
+      bestNormGain: "最佳归一化增益",
+      bestNativeEff: "最佳原生效能",
+      vanilla: "原始",
+      curated: "标准",
+      native: "原生",
+      absGain: "绝对增益",
+      normGain: "归一化增益",
+      nativeEfficacy: "原生效能",
+      scoreDist: "各条件分数分布",
+      footer: "运行评测时使用",
+      footerSuffix: "以生成真实的三条件对比数据。",
+    },
+    capabilities: {
+      title: "能力分析",
+      subtitle: "Claw Bench 测试的 5 种核心能力类型的表现分析：推理、工具使用、记忆、多模态和协作。",
+      capProfiles: "能力画像",
+      best: "最佳：",
+      reasoning: "推理",
+      toolUse: "工具使用",
+      memory: "记忆",
+      multimodal: "多模态",
+      collaboration: "协作",
+      avg: "平均",
+      footer: "每项任务在其 task.toml 配置中标注了 1–5 种能力类型。",
+    },
+    common: {
+      agent: "Agent",
+      overall: "综合分",
+      tier: "层级",
+      framework: "框架",
+      model: "模型",
+      tasks: "任务",
+      date: "日期",
+      passRate: "通过率",
+      totalRuns: "总运行次数",
+      bestScore: "最高分",
+      scoreProgression: "分数趋势",
+      runHistory: "运行历史",
+      noRuns: "暂无运行记录。",
+      backToMoltbook: "返回身份册",
+      sampleData: "",
+      unknown: "未知",
+      historyFooter: "使用 --claw-id {clawId} 运行评测以填充真实历史记录。",
+    },
+  },
+} as const;
+
+type Translations = typeof translations.en;
+type NestedKeys<T, P extends string = ""> = T extends object
+  ? { [K in keyof T & string]: NestedKeys<T[K], P extends "" ? K : `${P}.${K}`> }[keyof T & string]
+  : P;
+
+interface I18nContextType {
+  lang: Lang;
+  setLang: (lang: Lang) => void;
+  t: (key: string, vars?: Record<string, string | number>) => string;
+}
+
+const I18nContext = createContext<I18nContextType>({
+  lang: "en",
+  setLang: () => {},
+  t: (key) => key,
+});
+
+function getInitialLang(): Lang {
+  if (typeof document !== "undefined") {
+    const attr = document.documentElement.dataset.lang;
+    if (attr === "zh") return "zh";
+  }
+  return "en";
+}
+
+export function I18nProvider({ children }: { children: ReactNode }) {
+  const [lang, setLangState] = useState<Lang>(getInitialLang);
+
+  useEffect(() => {
+    const current = document.documentElement.dataset.lang;
+    if (current && (current === "en" || current === "zh") && current !== lang) {
+      setLangState(current as Lang);
+    }
+    document.documentElement.dataset.ready = "";
+  }, []);
+
+  const setLang = useCallback((newLang: Lang) => {
+    setLangState(newLang);
+    localStorage.setItem("claw-bench-lang", newLang);
+    document.documentElement.lang = newLang === "zh" ? "zh-CN" : "en";
+    document.documentElement.dataset.lang = newLang;
+  }, []);
+
+  const t = useCallback(
+    (key: string, vars?: Record<string, string | number>): string => {
+      const parts = key.split(".");
+      let val: unknown = translations[lang];
+      for (const p of parts) {
+        if (val && typeof val === "object" && p in val) {
+          val = (val as Record<string, unknown>)[p];
+        } else {
+          return key;
+        }
+      }
+      let str = typeof val === "string" ? val : key;
+      if (vars) {
+        for (const [k, v] of Object.entries(vars)) {
+          str = str.replace(`{${k}}`, String(v));
+        }
+      }
+      return str;
+    },
+    [lang]
+  );
+
+  return (
+    <I18nContext.Provider value={{ lang, setLang, t }}>
+      {children}
+    </I18nContext.Provider>
+  );
+}
+
+export function useI18n() {
+  return useContext(I18nContext);
+}

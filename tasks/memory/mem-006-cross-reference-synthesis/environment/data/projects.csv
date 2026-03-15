@@ -1,0 +1,11 @@
+project_id,project_name,lead_id,budget,status
+P001,Platform Redesign,E001,450000,active
+P002,Mobile App v2,E002,320000,active
+P003,Q4 Campaign,E003,180000,completed
+P004,Data Pipeline,E009,275000,active
+P005,Sales Portal,E007,150000,on_hold
+P006,Brand Refresh,E006,95000,completed
+P007,Inventory System,E008,210000,active
+P008,Customer Onboarding,E005,120000,on_hold
+P009,API Gateway,E012,380000,active
+P010,Content Hub,E003,85000,active

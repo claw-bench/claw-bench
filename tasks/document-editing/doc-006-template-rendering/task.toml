@@ -1,0 +1,10 @@
+id = "doc-006"
+title = "Template Rendering"
+domain = "document-editing"
+level = "L2"
+description = "Render a Markdown template with Jinja2-like syntax using data from a JSON file, handling variables, conditionals, and loops"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["template", "rendering", "jinja2", "variables"]
+capability_types = ["reasoning", "tool-use"]

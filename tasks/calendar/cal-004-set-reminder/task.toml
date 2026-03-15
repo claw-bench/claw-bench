@@ -1,0 +1,10 @@
+id = "cal-004"
+title = "Set a Reminder"
+domain = "calendar"
+level = "L1"
+description = "Add a reminder to an existing meeting in a calendar JSON file"
+timeout = 120
+capabilities = ["calendar-write"]
+skills_allowed = true
+tags = ["basic", "calendar"]
+capability_types = ["reasoning", "tool-use"]

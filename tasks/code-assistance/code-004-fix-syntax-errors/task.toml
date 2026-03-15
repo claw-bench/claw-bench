@@ -1,0 +1,10 @@
+id = "code-004"
+title = "Fix Syntax Errors in Python Module"
+domain = "code-assistance"
+level = "L1"
+description = "Fix three syntax errors in a broken Python module so it parses and runs correctly"
+timeout = 120
+capabilities = ["code-write"]
+skills_allowed = true
+tags = ["python", "debugging", "syntax"]
+capability_types = ["reasoning", "tool-use"]

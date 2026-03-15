@@ -1,0 +1,73 @@
+{
+  "pipeline_name": "main-deploy",
+  "stages": [
+    {
+      "name": "build",
+      "jobs": [
+        {
+          "name": "compile",
+          "image": "gcc:12",
+          "dependencies": [],
+          "script": "make build"
+        },
+        {
+          "name": "lint",
+          "image": "golangci-lint:latest",
+          "dependencies": [],
+          "script": "make lint"
+        }
+      ]
+    },
+    {
+      "name": "test",
+      "jobs": [
+        {
+          "name": "unit-tests",
+          "image": "python:3.11",
+          "dependencies": ["compile"],
+          "script": "pytest tests/unit"
+        },
+        {
+          "name": "integration-tests",
+          "image": "python:3.11",
+          "dependencies": ["compile", "lint"],
+          "script": "pytest tests/integration"
+        }
+      ]
+    },
+    {
+      "name": "security",
+      "jobs": [
+        {
+          "name": "sast-scan",
+          "image": "semgrep:latest",
+          "dependencies": ["unit-tests"],
+          "script": "semgrep scan"
+        },
+        {
+          "name": "compile",
+          "image": "trivy:latest",
+          "dependencies": ["integration-tests"],
+          "script": "trivy fs ."
+        }
+      ]
+    },
+    {
+      "name": "deploy",
+      "jobs": [
+        {
+          "name": "deploy-staging",
+          "image": "kubectl:latest",
+          "dependencies": ["sast-scan", "vuln-scan"],
+          "script": "kubectl apply -f staging/"
+        },
+        {
+          "name": "deploy-prod",
+          "image": "kubectl:latest",
+          "dependencies": ["deploy-staging"],
+          "script": "kubectl apply -f prod/"
+        }
+      ]
+    }
+  ]
+}

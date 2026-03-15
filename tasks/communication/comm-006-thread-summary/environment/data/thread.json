@@ -1,0 +1,22 @@
+[
+  {"user": "alice", "timestamp": "2025-07-10T09:00:00Z", "text": "Hey team, we need to decide on the tech stack for the new microservice."},
+  {"user": "bob", "timestamp": "2025-07-10T09:02:00Z", "text": "I think we should consider Go or Rust for performance."},
+  {"user": "charlie", "timestamp": "2025-07-10T09:05:00Z", "text": "Python with FastAPI would be faster to develop. We have the deadline in 3 weeks."},
+  {"user": "diana", "timestamp": "2025-07-10T09:08:00Z", "text": "I agree with Charlie. We need to move fast. Let's go with Python and FastAPI."},
+  {"user": "alice", "timestamp": "2025-07-10T09:10:00Z", "text": "Good point about the deadline. What about the database?"},
+  {"user": "bob", "timestamp": "2025-07-10T09:12:00Z", "text": "PostgreSQL is the obvious choice. We already have infrastructure for it."},
+  {"user": "eve", "timestamp": "2025-07-10T09:15:00Z", "text": "Agreed on PostgreSQL. I will set up the database schema this week."},
+  {"user": "charlie", "timestamp": "2025-07-10T09:18:00Z", "text": "For the message queue, should we use RabbitMQ or Redis?"},
+  {"user": "diana", "timestamp": "2025-07-10T09:20:00Z", "text": "Redis Streams would be simpler. Less infrastructure to manage."},
+  {"user": "alice", "timestamp": "2025-07-10T09:22:00Z", "text": "Let's go with Redis Streams then. Simpler is better for our timeline."},
+  {"user": "bob", "timestamp": "2025-07-10T09:25:00Z", "text": "Sounds good. I'll handle the CI/CD pipeline setup."},
+  {"user": "charlie", "timestamp": "2025-07-10T09:28:00Z", "text": "I can do the API scaffolding with FastAPI. Should have a skeleton by Friday."},
+  {"user": "diana", "timestamp": "2025-07-10T09:30:00Z", "text": "I will take care of the Docker configuration and deployment scripts."},
+  {"user": "eve", "timestamp": "2025-07-10T09:32:00Z", "text": "What about testing? We need at least 80% coverage."},
+  {"user": "alice", "timestamp": "2025-07-10T09:35:00Z", "text": "Good call. We decided to use pytest with coverage enforcement in CI."},
+  {"user": "bob", "timestamp": "2025-07-10T09:38:00Z", "text": "I'll add the coverage check to the pipeline. 80% minimum."},
+  {"user": "charlie", "timestamp": "2025-07-10T09:40:00Z", "text": "Should we also set up integration tests?"},
+  {"user": "alice", "timestamp": "2025-07-10T09:42:00Z", "text": "Yes, let's include integration tests. Eve, can you handle those?"},
+  {"user": "eve", "timestamp": "2025-07-10T09:45:00Z", "text": "Sure, I'll write the integration tests after the schema is ready."},
+  {"user": "alice", "timestamp": "2025-07-10T09:48:00Z", "text": "Great. So to summarize: Python/FastAPI, PostgreSQL, Redis Streams. Let's reconvene Friday to check progress."}
+]

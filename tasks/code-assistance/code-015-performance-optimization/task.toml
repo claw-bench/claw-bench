@@ -1,0 +1,10 @@
+id = "code-015"
+title = "Performance Optimization"
+domain = "code-assistance"
+level = "L4"
+description = "Optimize three intentionally slow functions to run at least 10x faster while producing identical outputs without adding external libraries"
+timeout = 300
+capabilities = ["code-write", "code-execute"]
+skills_allowed = true
+tags = ["python", "optimization", "performance"]
+capability_types = ["reasoning", "tool-use"]

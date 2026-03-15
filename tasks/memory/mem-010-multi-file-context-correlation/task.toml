@@ -1,0 +1,10 @@
+id = "mem-010"
+title = "Multi-File Context Correlation"
+domain = "memory"
+level = "L3"
+description = "Extract clues from 5 text files and combine them to discover a hidden message by taking the first word from each file in alphabetical order"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["correlation", "multi-file", "context", "extraction", "puzzle"]
+capability_types = ["memory", "reasoning"]

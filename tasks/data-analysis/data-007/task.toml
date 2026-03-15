@@ -1,0 +1,10 @@
+id = "data-007"
+title = "Join Two Datasets"
+domain = "data-analysis"
+level = "L2"
+description = "Join orders with customer information on customer_id"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["join", "merge", "csv", "relational"]
+capability_types = ["reasoning", "tool-use"]

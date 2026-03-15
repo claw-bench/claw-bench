@@ -1,0 +1,10 @@
+id = "file-011"
+title = "Log File Filtering"
+domain = "file-operations"
+level = "L2"
+description = "Filter ERROR and WARN lines from a log file"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["log", "filtering", "text-processing"]
+capability_types = ["tool-use"]

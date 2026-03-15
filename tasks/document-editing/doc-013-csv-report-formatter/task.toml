@@ -1,0 +1,10 @@
+id = "doc-013"
+title = "Format CSV Data as Text Report"
+domain = "document-editing"
+level = "L2"
+description = "Convert CSV data into a formatted text report with aligned columns, separators, and summary totals"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["csv", "report", "formatting"]
+capability_types = ["reasoning", "tool-use"]

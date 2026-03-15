@@ -1,0 +1,10 @@
+id = "comm-008"
+title = "Communication Audit"
+domain = "communication"
+level = "L4"
+description = "Perform a full audit of communications across multiple channels, generating a report and metrics"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["audit", "metrics", "multi-channel", "report"]
+capability_types = ["collaboration", "reasoning"]

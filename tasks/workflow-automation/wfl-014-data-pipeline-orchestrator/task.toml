@@ -1,0 +1,10 @@
+id = "wfl-014"
+title = "Data Pipeline Orchestrator"
+domain = "workflow-automation"
+level = "L3"
+description = "Apply a sequence of ETL transforms (filter, rename_column, aggregate) to CSV data sources and produce a combined output"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["data", "pipeline", "etl"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "count_lines",
+    "description": "Count the number of non-empty lines in the input file"
+  },
+  {
+    "name": "count_words",
+    "description": "Count the total number of whitespace-separated words"
+  },
+  {
+    "name": "count_chars",
+    "description": "Count the total number of characters including spaces"
+  }
+]

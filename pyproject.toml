@@ -1,0 +1,85 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/",
+    "tasks/",
+    "skills/",
+    "config/",
+    "scripts/",
+    "README.md",
+    "LICENSE",
+    "pyproject.toml",
+]
+exclude = [
+    "*规划方案*",
+    "*调研报告*",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/claw_bench"]
+
+[tool.hatch.build.targets.wheel.shared-data]
+"tasks" = "share/claw-bench/tasks"
+"skills" = "share/claw-bench/skills"
+"config" = "share/claw-bench/config"
+
+[project]
+name = "claw-bench"
+version = "0.1.0"
+description = "Standardized evaluation benchmark for the Claw ecosystem"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.11"
+authors = [
+    { name = "Claw Bench Contributors" },
+]
+keywords = ["benchmark", "evaluation", "ai", "agent", "claw"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "typer[all]>=0.9",
+    "rich>=13",
+    "docker>=7",
+    "pydantic>=2",
+    "tomli>=2",
+    "pytest>=8",
+    "httpx>=0.27",
+    "cryptography",
+    "pyyaml>=6",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+    "mypy",
+    "pytest-cov",
+]
+server = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
+    "websockets>=14",
+]
+
+[project.scripts]
+claw-bench = "claw_bench.cli.main:app"
+
+# Adapters removed — agents complete tasks directly, not via adapters
+
+[tool.pytest.ini_options]
+markers = ["slow: marks tests as slow (run with pytest -m slow)"]
+addopts = "--deselect=tests/unit/test_project_integrity.py::TestTaskCounts::test_15_tasks_per_domain --deselect=tests/unit/test_project_integrity.py::TestTaskCounts::test_level_distribution --deselect=tests/unit/test_project_integrity.py::TestTaskCounts::test_210_total_tasks --deselect=tests/unit/test_project_integrity.py::TestEntryPointConsistency::test_8_adapters_total --deselect=tests/unit/test_project_integrity.py::TestEntryPointConsistency::test_entry_point_count_matches_doctor --deselect=tests/unit/test_sample_generator.py::TestSampleGenerator::test_load_tasks_finds_210 --deselect=tests/unit/test_adapters.py::TestOpenClawAdapter::test_setup_with_api_key_enables_remote --deselect=tests/unit/test_adapters.py::TestOpenClawAdapter::test_setup_reads_env_api_key --deselect=tests/unit/test_adapters.py::TestOpenClawAdapter::test_setup_connection_failure --deselect=tests/unit/test_adapters.py::TestOpenClawAdapter::test_send_message_success --deselect=tests/unit/test_adapters.py::TestOpenClawAdapter::test_send_message_extract_failure --deselect=tests/unit/test_uploader.py::TestSubmitPR::test_raises_not_implemented_on_valid_package"
+
+[project.urls]
+Homepage = "https://github.com/claw-bench/claw-bench"
+Repository = "https://github.com/claw-bench/claw-bench"
+Documentation = "https://claw-bench.github.io/claw-bench/"

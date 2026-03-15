@@ -1,0 +1,10 @@
+id = "data-017"
+title = "Employee Attendance Analysis"
+domain = "data-analysis"
+level = "L2"
+description = "Analyze employee attendance records to compute work hours, late arrivals, and generate an attendance summary report"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["data", "attendance", "hr", "analysis", "office"]
+capability_types = ["reasoning", "tool-use"]

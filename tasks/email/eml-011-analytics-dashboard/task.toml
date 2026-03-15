@@ -1,0 +1,10 @@
+id = "eml-011"
+title = "Email Analytics Dashboard Data"
+domain = "email"
+level = "L3"
+description = "Analyze an email archive of 100+ emails and generate analytics including daily counts, response times, top contacts, and busiest hours"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["analytics", "email", "aggregation"]
+capability_types = ["reasoning", "tool-use"]

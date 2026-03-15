@@ -1,0 +1,256 @@
+[
+  {
+    "from": "alice",
+    "to": "bob",
+    "timestamp": "2025-07-10T09:00:00Z",
+    "body": "Slack message 1 from alice about project status.",
+    "channel": "slack",
+    "subject": "Re: Project update"
+  },
+  {
+    "from": "bob",
+    "to": "charlie",
+    "timestamp": "2025-07-11T10:07:00Z",
+    "body": "Slack message 2 from bob about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "charlie",
+    "to": "diana",
+    "timestamp": "2025-07-12T11:14:00Z",
+    "body": "Slack message 3 from charlie about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "diana",
+    "to": "eve",
+    "timestamp": "2025-07-13T12:21:00Z",
+    "body": "Slack message 4 from diana about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "eve",
+    "to": "frank",
+    "timestamp": "2025-07-14T13:28:00Z",
+    "body": "Slack message 5 from eve about project status.",
+    "channel": "slack",
+    "subject": "Re: Project update"
+  },
+  {
+    "from": "frank",
+    "to": "alice",
+    "timestamp": "2025-07-10T14:35:00Z",
+    "body": "Slack message 6 from frank about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "alice",
+    "to": "bob",
+    "timestamp": "2025-07-11T15:42:00Z",
+    "body": "Slack message 7 from alice about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "bob",
+    "to": "charlie",
+    "timestamp": "2025-07-12T16:49:00Z",
+    "body": "Slack message 8 from bob about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "charlie",
+    "to": "diana",
+    "timestamp": "2025-07-13T09:56:00Z",
+    "body": "Slack message 9 from charlie about project status.",
+    "channel": "slack",
+    "subject": "Re: Project update"
+  },
+  {
+    "from": "diana",
+    "to": "eve",
+    "timestamp": "2025-07-14T10:03:00Z",
+    "body": "Slack message 10 from diana about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "eve",
+    "to": "frank",
+    "timestamp": "2025-07-10T11:10:00Z",
+    "body": "Slack message 11 from eve about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "frank",
+    "to": "alice",
+    "timestamp": "2025-07-11T12:17:00Z",
+    "body": "Slack message 12 from frank about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "alice",
+    "to": "bob",
+    "timestamp": "2025-07-12T13:24:00Z",
+    "body": "Slack message 13 from alice about project status.",
+    "channel": "slack",
+    "subject": "Re: Project update"
+  },
+  {
+    "from": "bob",
+    "to": "charlie",
+    "timestamp": "2025-07-13T14:31:00Z",
+    "body": "Slack message 14 from bob about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "charlie",
+    "to": "diana",
+    "timestamp": "2025-07-14T15:38:00Z",
+    "body": "Slack message 15 from charlie about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "diana",
+    "to": "eve",
+    "timestamp": "2025-07-10T16:45:00Z",
+    "body": "Slack message 16 from diana about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "eve",
+    "to": "frank",
+    "timestamp": "2025-07-11T09:52:00Z",
+    "body": "Slack message 17 from eve about project status.",
+    "channel": "slack",
+    "subject": "Re: Project update"
+  },
+  {
+    "from": "frank",
+    "to": "alice",
+    "timestamp": "2025-07-12T10:59:00Z",
+    "body": "Slack message 18 from frank about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "alice",
+    "to": "bob",
+    "timestamp": "2025-07-13T11:06:00Z",
+    "body": "Slack message 19 from alice about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "bob",
+    "to": "charlie",
+    "timestamp": "2025-07-14T12:13:00Z",
+    "body": "Slack message 20 from bob about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "charlie",
+    "to": "diana",
+    "timestamp": "2025-07-10T13:20:00Z",
+    "body": "Slack message 21 from charlie about project status.",
+    "channel": "slack",
+    "subject": "Re: Project update"
+  },
+  {
+    "from": "diana",
+    "to": "eve",
+    "timestamp": "2025-07-11T14:27:00Z",
+    "body": "Slack message 22 from diana about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "eve",
+    "to": "frank",
+    "timestamp": "2025-07-12T15:34:00Z",
+    "body": "Slack message 23 from eve about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "frank",
+    "to": "alice",
+    "timestamp": "2025-07-13T16:41:00Z",
+    "body": "Slack message 24 from frank about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "alice",
+    "to": "bob",
+    "timestamp": "2025-07-14T09:48:00Z",
+    "body": "Slack message 25 from alice about project status.",
+    "channel": "slack",
+    "subject": "Re: Project update"
+  },
+  {
+    "from": "bob",
+    "to": "charlie",
+    "timestamp": "2025-07-10T10:55:00Z",
+    "body": "Slack message 26 from bob about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "charlie",
+    "to": "diana",
+    "timestamp": "2025-07-11T11:02:00Z",
+    "body": "Slack message 27 from charlie about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "diana",
+    "to": "eve",
+    "timestamp": "2025-07-12T12:09:00Z",
+    "body": "Slack message 28 from diana about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "eve",
+    "to": "frank",
+    "timestamp": "2025-07-13T13:16:00Z",
+    "body": "Slack message 29 from eve about project status.",
+    "channel": "slack",
+    "subject": "Re: Project update"
+  },
+  {
+    "from": "frank",
+    "to": "alice",
+    "timestamp": "2025-07-14T14:23:00Z",
+    "body": "Slack message 30 from frank about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "alice",
+    "to": "bob",
+    "timestamp": "2025-07-10T15:30:00Z",
+    "body": "Slack message 31 from alice about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "bob",
+    "to": "charlie",
+    "timestamp": "2025-07-11T16:37:00Z",
+    "body": "Slack message 32 from bob about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "charlie",
+    "to": "diana",
+    "timestamp": "2025-07-12T09:44:00Z",
+    "body": "Slack message 33 from charlie about project status.",
+    "channel": "slack",
+    "subject": "Re: Project update"
+  },
+  {
+    "from": "diana",
+    "to": "eve",
+    "timestamp": "2025-07-13T10:51:00Z",
+    "body": "Slack message 34 from diana about project status.",
+    "channel": "slack"
+  },
+  {
+    "from": "eve",
+    "to": "frank",
+    "timestamp": "2025-07-14T11:58:00Z",
+    "body": "Slack message 35 from eve about project status.",
+    "channel": "slack"
+  }
+]

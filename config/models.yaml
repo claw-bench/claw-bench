@@ -1,0 +1,67 @@
+# Claw Bench Canonical Model Set
+# All frameworks must be tested against these models for fair comparison
+# Updated quarterly — last updated 2026-03-12
+
+model_tiers:
+  flagship:
+    description: "Test framework capability ceiling with best-in-class models"
+    models:
+      - id: "claude-opus-4.5"
+        provider: "anthropic"
+        cost_per_1m_input: 15.00
+        cost_per_1m_output: 75.00
+      - id: "gpt-5"
+        provider: "openai"
+        cost_per_1m_input: 10.00
+        cost_per_1m_output: 30.00
+
+  standard:
+    description: "Primary standardized testing tier — recommended for cross-framework comparison"
+    models:
+      - id: "claude-sonnet-4.5"
+        provider: "anthropic"
+        cost_per_1m_input: 3.00
+        cost_per_1m_output: 15.00
+      - id: "gpt-4.1"
+        provider: "openai"
+        cost_per_1m_input: 2.00
+        cost_per_1m_output: 8.00
+      - id: "gpt-4o"
+        provider: "openai"
+        cost_per_1m_input: 5.00
+        cost_per_1m_output: 15.00
+
+  economy:
+    description: "Cost efficiency testing — budget-constrained deployments"
+    models:
+      - id: "claude-haiku-4.5"
+        provider: "anthropic"
+        cost_per_1m_input: 0.80
+        cost_per_1m_output: 4.00
+      - id: "gpt-4.1-mini"
+        provider: "openai"
+        cost_per_1m_input: 0.40
+        cost_per_1m_output: 1.60
+      - id: "gemini-3-flash"
+        provider: "google"
+        cost_per_1m_input: 0.15
+        cost_per_1m_output: 0.60
+
+  opensource:
+    description: "Open-source model compatibility and self-hosting scenarios"
+    models:
+      - id: "qwen-3.5"
+        provider: "alibaba"
+        cost_per_1m_input: 0.30
+        cost_per_1m_output: 1.20
+      - id: "llama-4-maverick"
+        provider: "meta"
+        cost_per_1m_input: 0.20
+        cost_per_1m_output: 0.80
+      - id: "deepseek-v3"
+        provider: "deepseek"
+        cost_per_1m_input: 1.00
+        cost_per_1m_output: 4.00
+
+default_tier: "standard"
+default_model: "gpt-4.1"

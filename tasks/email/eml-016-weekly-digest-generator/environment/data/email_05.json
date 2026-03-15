@@ -1,0 +1,8 @@
+{
+  "from": "bob@company.com",
+  "to": "you@company.com",
+  "subject": "Code Review Request: PR #247",
+  "date": "2026-03-10",
+  "body": "Hi,\n\nCould you take a look at PR #247 when you get a chance? It refactors the authentication module to use OAuth 2.0. I've added unit tests covering the main flows.\n\nThanks,\nBob",
+  "read": false
+}

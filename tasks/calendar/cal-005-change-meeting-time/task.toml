@@ -1,0 +1,10 @@
+id = "cal-005"
+title = "Change Meeting Time"
+domain = "calendar"
+level = "L1"
+description = "Reschedule a meeting to a new date and time"
+timeout = 120
+capabilities = ["calendar-write"]
+skills_allowed = true
+tags = ["basic", "calendar"]
+capability_types = ["reasoning", "tool-use"]

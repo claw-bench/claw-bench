@@ -1,0 +1,10 @@
+id = "eml-001"
+title = "Parse Email Headers"
+domain = "email"
+level = "L1"
+description = "Parse a raw email file and extract key headers (From, To, Subject, Date, CC) into a structured JSON file"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "email", "parsing"]
+capability_types = ["reasoning", "tool-use"]

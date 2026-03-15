@@ -1,0 +1,61 @@
+[campaign]
+name = "Spring 2026 Multi-Segment Campaign"
+send_date = "2026-03-15"
+from_name = "Acme Store"
+from_email = "campaigns@acme-store.example.com"
+
+[segments.premium]
+template = "premium_offer.html"
+description = "High-value customers with lifetime value >= $5000"
+min_lifetime_value = 5000
+ab_test = true
+subject_a = "Exclusive VIP Offer Just For You, {{first_name}}"
+subject_b = "{{first_name}}, Your VIP Rewards Are Waiting"
+
+[segments.premium.variables]
+discount_percent = 25
+offer_code = "VIP25SPRING"
+offer_expiry = "2026-03-31"
+min_purchase = 100
+
+[segments.loyal]
+template = "loyalty_reward.html"
+description = "Regular customers with 10+ purchases"
+min_purchase_count = 10
+ab_test = false
+subject_a = "Thank You For Your Loyalty, {{first_name}}!"
+subject_b = ""
+
+[segments.loyal.variables]
+discount_percent = 15
+offer_code = "LOYAL15SPRING"
+offer_expiry = "2026-04-15"
+reward_points = 500
+
+[segments.lapsed]
+template = "winback.html"
+description = "Customers who last purchased before 2026-01-01"
+last_purchase_before = "2026-01-01"
+ab_test = true
+subject_a = "We Miss You, {{first_name}}! Come Back for a Special Deal"
+subject_b = "{{first_name}}, It's Been a While - Here's Something Special"
+
+[segments.lapsed.variables]
+discount_percent = 30
+offer_code = "COMEBACK30"
+offer_expiry = "2026-04-30"
+free_shipping = true
+
+[segments.new]
+template = "welcome_series.html"
+description = "Customers with fewer than 5 purchases"
+max_purchase_count = 5
+ab_test = false
+subject_a = "Welcome to Acme, {{first_name}}! Here's a Gift"
+subject_b = ""
+
+[segments.new.variables]
+discount_percent = 10
+offer_code = "WELCOME10"
+offer_expiry = "2026-04-15"
+bonus_item = "Acme Tote Bag"

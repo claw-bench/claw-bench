@@ -1,0 +1,13 @@
+{
+  "tier_discounts": {
+    "bronze": 0.00,
+    "silver": 0.05,
+    "gold": 0.10,
+    "platinum": 0.15
+  },
+  "volume_discounts": [
+    {"min_quantity": 50, "discount": 0.10},
+    {"min_quantity": 10, "discount": 0.05}
+  ],
+  "notes": "Volume discounts are checked in order; first matching rule applies. Tier and volume discounts are additive."
+}

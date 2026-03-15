@@ -1,0 +1,10 @@
+id = "sys-005"
+title = "Cron Expression Parser"
+domain = "system-admin"
+level = "L2"
+description = "Parse crontab entries and explain each cron job's schedule in human-readable form with next run times"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["intermediate", "cron", "scheduling", "parsing", "json"]
+capability_types = ["reasoning", "tool-use"]

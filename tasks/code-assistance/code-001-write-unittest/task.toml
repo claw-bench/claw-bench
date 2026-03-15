@@ -1,0 +1,10 @@
+id = "code-001"
+title = "Write Unit Tests for Calculator"
+domain = "code-assistance"
+level = "L2"
+description = "Write comprehensive pytest unit tests for a provided calculator module covering add, subtract, multiply, and divide operations including edge cases"
+timeout = 180
+capabilities = ["code-write", "code-execute"]
+skills_allowed = true
+tags = ["testing", "python", "pytest"]
+capability_types = ["reasoning", "tool-use"]

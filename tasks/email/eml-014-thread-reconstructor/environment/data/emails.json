@@ -1,0 +1,162 @@
+[
+  {
+    "id": "msg-007",
+    "from": "carol@example.com",
+    "to": "alice@example.com",
+    "subject": "Re: Budget Proposal",
+    "date": "2025-01-16T10:00:00Z",
+    "in_reply_to": "msg-004"
+  },
+  {
+    "id": "msg-001",
+    "from": "alice@example.com",
+    "to": "bob@example.com",
+    "subject": "Project Kickoff",
+    "date": "2025-01-15T09:00:00Z",
+    "in_reply_to": null
+  },
+  {
+    "id": "msg-012",
+    "from": "bob@example.com",
+    "to": "alice@example.com",
+    "subject": "Re: Re: Project Kickoff",
+    "date": "2025-01-17T11:00:00Z",
+    "in_reply_to": "msg-005"
+  },
+  {
+    "id": "msg-004",
+    "from": "alice@example.com",
+    "to": "carol@example.com,dave@example.com",
+    "subject": "Budget Proposal",
+    "date": "2025-01-15T14:00:00Z",
+    "in_reply_to": null
+  },
+  {
+    "id": "msg-015",
+    "from": "frank@example.com",
+    "to": "eve@example.com",
+    "subject": "Re: Design Review",
+    "date": "2025-01-18T10:00:00Z",
+    "in_reply_to": "msg-010"
+  },
+  {
+    "id": "msg-002",
+    "from": "bob@example.com",
+    "to": "alice@example.com",
+    "subject": "Re: Project Kickoff",
+    "date": "2025-01-15T10:30:00Z",
+    "in_reply_to": "msg-001"
+  },
+  {
+    "id": "msg-008",
+    "from": "dave@example.com",
+    "to": "alice@example.com",
+    "subject": "Re: Budget Proposal",
+    "date": "2025-01-16T11:30:00Z",
+    "in_reply_to": "msg-004"
+  },
+  {
+    "id": "msg-003",
+    "from": "alice@example.com",
+    "to": "bob@example.com,carol@example.com",
+    "subject": "Re: Re: Project Kickoff",
+    "date": "2025-01-15T11:00:00Z",
+    "in_reply_to": "msg-002"
+  },
+  {
+    "id": "msg-010",
+    "from": "eve@example.com",
+    "to": "frank@example.com,grace@example.com",
+    "subject": "Design Review",
+    "date": "2025-01-17T09:00:00Z",
+    "in_reply_to": null
+  },
+  {
+    "id": "msg-013",
+    "from": "alice@example.com",
+    "to": "carol@example.com",
+    "subject": "Re: Re: Budget Proposal",
+    "date": "2025-01-17T14:00:00Z",
+    "in_reply_to": "msg-007"
+  },
+  {
+    "id": "msg-005",
+    "from": "carol@example.com",
+    "to": "alice@example.com,bob@example.com",
+    "subject": "Re: Re: Project Kickoff",
+    "date": "2025-01-16T09:00:00Z",
+    "in_reply_to": "msg-003"
+  },
+  {
+    "id": "msg-006",
+    "from": "henry@example.com",
+    "to": "team@example.com",
+    "subject": "Office Hours Change",
+    "date": "2025-01-16T08:00:00Z",
+    "in_reply_to": null
+  },
+  {
+    "id": "msg-011",
+    "from": "grace@example.com",
+    "to": "eve@example.com",
+    "subject": "Re: Design Review",
+    "date": "2025-01-17T10:30:00Z",
+    "in_reply_to": "msg-010"
+  },
+  {
+    "id": "msg-009",
+    "from": "iris@example.com",
+    "to": "henry@example.com",
+    "subject": "Re: Office Hours Change",
+    "date": "2025-01-16T15:00:00Z",
+    "in_reply_to": "msg-006"
+  },
+  {
+    "id": "msg-014",
+    "from": "jack@example.com",
+    "to": "team@example.com",
+    "subject": "Server Maintenance",
+    "date": "2025-01-18T08:00:00Z",
+    "in_reply_to": null
+  },
+  {
+    "id": "msg-016",
+    "from": "eve@example.com",
+    "to": "frank@example.com,grace@example.com",
+    "subject": "Re: Re: Design Review",
+    "date": "2025-01-18T14:00:00Z",
+    "in_reply_to": "msg-015"
+  },
+  {
+    "id": "msg-017",
+    "from": "henry@example.com",
+    "to": "iris@example.com,team@example.com",
+    "subject": "Re: Office Hours Change",
+    "date": "2025-01-17T08:00:00Z",
+    "in_reply_to": "msg-009"
+  },
+  {
+    "id": "msg-018",
+    "from": "dave@example.com",
+    "to": "alice@example.com,carol@example.com",
+    "subject": "Re: Re: Budget Proposal",
+    "date": "2025-01-18T09:00:00Z",
+    "in_reply_to": "msg-013"
+  },
+  {
+    "id": "msg-019",
+    "from": "bob@example.com",
+    "to": "alice@example.com",
+    "subject": "Re: Re: Re: Project Kickoff",
+    "date": "2025-01-18T11:00:00Z",
+    "in_reply_to": "msg-012"
+  },
+  {
+    "id": "msg-020",
+    "from": "alice@example.com",
+    "to": "bob@example.com",
+    "subject": "Re: Re: Re: Re: Project Kickoff",
+    "date": "2025-01-18T15:00:00Z",
+    "in_reply_to": "msg-019"
+  }
+]

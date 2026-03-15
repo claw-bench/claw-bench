@@ -1,0 +1,10 @@
+id = "eml-002"
+title = "Compose Email from Template"
+domain = "email"
+level = "L1"
+description = "Fill in an email template with contact data from a JSON file and produce a completed email"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "email", "template"]
+capability_types = ["reasoning", "tool-use"]

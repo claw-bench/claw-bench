@@ -1,0 +1,10 @@
+id = "sys-008"
+title = "Log Rotation Script"
+domain = "system-admin"
+level = "L3"
+description = "Analyze log files and generate a rotation plan with an executable rotation script based on size and age thresholds"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["advanced", "log-rotation", "scripting", "bash", "json"]
+capability_types = ["reasoning", "tool-use"]

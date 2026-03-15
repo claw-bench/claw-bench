@@ -1,0 +1,10 @@
+id = "cal-007"
+title = "Handle Timezone Conversion"
+domain = "calendar"
+level = "L2"
+description = "Convert meeting times from UTC to US/Pacific timezone"
+timeout = 180
+capabilities = ["calendar-write"]
+skills_allowed = true
+tags = ["intermediate", "calendar", "timezone"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,10 @@
+id = "data-003"
+title = "Group and Aggregate Sales Data"
+domain = "data-analysis"
+level = "L1"
+description = "Group sales data by category and compute sum of amounts"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "groupby", "aggregate", "csv"]
+capability_types = ["reasoning", "tool-use"]

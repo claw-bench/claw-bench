@@ -1,0 +1,10 @@
+id = "xdom-017"
+title = "Build Business Travel Itinerary"
+domain = "cross-domain"
+level = "L3"
+description = "Compile flight, hotel, and meeting information from multiple sources into a comprehensive day-by-day travel itinerary"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["cross-domain", "travel", "itinerary", "business", "office"]
+capability_types = ["reasoning", "tool-use"]

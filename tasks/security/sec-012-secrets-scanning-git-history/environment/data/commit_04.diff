@@ -1,0 +1,19 @@
+diff --git a/tests/test_auth.py b/tests/test_auth.py
+index 5555eee..6666fff 100644
+--- a/tests/test_auth.py
++++ b/tests/test_auth.py
+@@ -15,6 +15,14 @@ class TestAuthentication:
+         result = auth.login("testuser", "testpass")
+         assert result.status_code == 200
+
++    def test_token_refresh(self):
++        """Test that expired tokens can be refreshed."""
++        auth = AuthClient(base_url="http://localhost:8000")
++        token = auth.login("testuser", "testpass")
++        refreshed = auth.refresh_token(token)
++        assert refreshed is not None
++        assert refreshed != token
++
+     def test_invalid_credentials(self):
+         auth = AuthClient(base_url="http://localhost:8000")
+         with pytest.raises(AuthError):

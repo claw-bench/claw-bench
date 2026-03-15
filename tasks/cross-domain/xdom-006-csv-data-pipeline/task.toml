@@ -1,0 +1,10 @@
+id = "xdom-006"
+title = "CSV Data Pipeline with Notifications"
+domain = "cross-domain"
+level = "L3"
+description = "Process CSV data through a configurable pipeline with filter, transform, and aggregate steps, then generate a notification summary of the processing results."
+timeout = 300
+capabilities = ["file-read", "file-write", "data-processing"]
+skills_allowed = true
+tags = ["cross-domain", "data-pipeline", "csv", "notifications"]
+capability_types = ["reasoning", "tool-use"]

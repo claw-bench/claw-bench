@@ -1,0 +1,14 @@
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1024/sshd
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      2048/master
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      3072/nginx
+tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN      3072/nginx
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      4096/mysqld
+tcp        0      0 127.0.0.1:5432          0.0.0.0:*               LISTEN      5120/postgres
+tcp        0      0 127.0.0.1:6379          0.0.0.0:*               LISTEN      6144/redis-server
+tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      7168/java
+tcp        0      0 0.0.0.0:9090            0.0.0.0:*               LISTEN      8192/prometheus
+tcp        0      0 0.0.0.0:3000            0.0.0.0:*               LISTEN      9216/node
+tcp        0      0 127.0.0.1:53            0.0.0.0:*               LISTEN      1536/dnsmasq
+tcp        0      0 0.0.0.0:9100            0.0.0.0:*               LISTEN      8320/node_exporter

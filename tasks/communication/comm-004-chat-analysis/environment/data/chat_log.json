@@ -1,0 +1,252 @@
+[
+  {
+    "user": "alice",
+    "timestamp": "2025-07-10T09:11:32Z",
+    "text": "Checking the server metrics."
+  },
+  {
+    "user": "eve",
+    "timestamp": "2025-07-10T09:17:49Z",
+    "text": "Good morning everyone."
+  },
+  {
+    "user": "charlie",
+    "timestamp": "2025-07-10T09:38:04Z",
+    "text": "Meeting notes are in the shared drive."
+  },
+  {
+    "user": "bob",
+    "timestamp": "2025-07-10T09:55:07Z",
+    "text": "I need help with the database migration."
+  },
+  {
+    "user": "bob",
+    "timestamp": "2025-07-10T09:55:40Z",
+    "text": "Restarting the service."
+  },
+  {
+    "user": "charlie",
+    "timestamp": "2025-07-10T10:09:23Z",
+    "text": "Do not forget the retrospective tomorrow."
+  },
+  {
+    "user": "eve",
+    "timestamp": "2025-07-10T10:27:10Z",
+    "text": "There is a bug in the login flow."
+  },
+  {
+    "user": "diana",
+    "timestamp": "2025-07-10T10:27:57Z",
+    "text": "I will be a few minutes late."
+  },
+  {
+    "user": "bob",
+    "timestamp": "2025-07-10T10:38:12Z",
+    "text": "Great teamwork everyone."
+  },
+  {
+    "user": "bob",
+    "timestamp": "2025-07-10T10:43:27Z",
+    "text": "I will handle that today."
+  },
+  {
+    "user": "alice",
+    "timestamp": "2025-07-10T10:45:20Z",
+    "text": "Can someone review my PR?"
+  },
+  {
+    "user": "alice",
+    "timestamp": "2025-07-10T10:47:35Z",
+    "text": "Thanks, it took a while."
+  },
+  {
+    "user": "alice",
+    "timestamp": "2025-07-10T10:48:10Z",
+    "text": "I added it to my calendar."
+  },
+  {
+    "user": "bob",
+    "timestamp": "2025-07-10T11:00:43Z",
+    "text": "Running the test suite now."
+  },
+  {
+    "user": "diana",
+    "timestamp": "2025-07-10T11:13:58Z",
+    "text": "Hey everyone, how is the project going?"
+  },
+  {
+    "user": "diana",
+    "timestamp": "2025-07-10T11:36:56Z",
+    "text": "I just pushed the latest changes to the repo."
+  },
+  {
+    "user": "alice",
+    "timestamp": "2025-07-10T11:41:29Z",
+    "text": "Let me check the logs."
+  },
+  {
+    "user": "bob",
+    "timestamp": "2025-07-10T11:46:07Z",
+    "text": "All tests passed!"
+  },
+  {
+    "user": "alice",
+    "timestamp": "2025-07-10T11:47:37Z",
+    "text": "Yes, conference room B."
+  },
+  {
+    "user": "bob",
+    "timestamp": "2025-07-10T11:48:03Z",
+    "text": "Awesome, let us move to implementation."
+  },
+  {
+    "user": "diana",
+    "timestamp": "2025-07-10T13:07:18Z",
+    "text": "I am on support duty."
+  },
+  {
+    "user": "charlie",
+    "timestamp": "2025-07-10T13:10:50Z",
+    "text": "The API documentation needs updating."
+  },
+  {
+    "user": "charlie",
+    "timestamp": "2025-07-10T13:24:24Z",
+    "text": "Thanks for sharing."
+  },
+  {
+    "user": "diana",
+    "timestamp": "2025-07-10T13:29:00Z",
+    "text": "Can you share the steps to reproduce?"
+  },
+  {
+    "user": "alice",
+    "timestamp": "2025-07-10T13:34:48Z",
+    "text": "Let me notify the team."
+  },
+  {
+    "user": "alice",
+    "timestamp": "2025-07-10T13:46:56Z",
+    "text": "Sure, I will create a ticket."
+  },
+  {
+    "user": "charlie",
+    "timestamp": "2025-07-10T13:56:58Z",
+    "text": "I think it is a flaky test."
+  },
+  {
+    "user": "alice",
+    "timestamp": "2025-07-10T14:09:16Z",
+    "text": "Found the issue, fixing now."
+  },
+  {
+    "user": "diana",
+    "timestamp": "2025-07-10T14:09:40Z",
+    "text": "I can help after lunch."
+  },
+  {
+    "user": "alice",
+    "timestamp": "2025-07-10T14:13:41Z",
+    "text": "Sure, I will take a look."
+  },
+  {
+    "user": "diana",
+    "timestamp": "2025-07-10T14:19:53Z",
+    "text": "Service is back up."
+  },
+  {
+    "user": "eve",
+    "timestamp": "2025-07-10T14:31:05Z",
+    "text": "The client approved the design."
+  },
+  {
+    "user": "bob",
+    "timestamp": "2025-07-10T14:31:25Z",
+    "text": "The build is failing on CI."
+  },
+  {
+    "user": "bob",
+    "timestamp": "2025-07-10T14:34:49Z",
+    "text": "See you all tomorrow."
+  },
+  {
+    "user": "bob",
+    "timestamp": "2025-07-10T14:37:25Z",
+    "text": "No problem, we can start without you."
+  },
+  {
+    "user": "diana",
+    "timestamp": "2025-07-10T14:40:32Z",
+    "text": "Performance looks normal now."
+  },
+  {
+    "user": "alice",
+    "timestamp": "2025-07-10T14:46:16Z",
+    "text": "The feature flag is enabled."
+  },
+  {
+    "user": "charlie",
+    "timestamp": "2025-07-10T14:58:06Z",
+    "text": "It looks like a memory spike."
+  },
+  {
+    "user": "alice",
+    "timestamp": "2025-07-10T14:59:33Z",
+    "text": "Have a good evening."
+  },
+  {
+    "user": "bob",
+    "timestamp": "2025-07-10T15:08:15Z",
+    "text": "Great work on the presentation!"
+  },
+  {
+    "user": "alice",
+    "timestamp": "2025-07-10T15:32:48Z",
+    "text": "Users are reporting slow load times."
+  },
+  {
+    "user": "eve",
+    "timestamp": "2025-07-10T15:33:16Z",
+    "text": "I think that should be fine."
+  },
+  {
+    "user": "charlie",
+    "timestamp": "2025-07-10T15:34:16Z",
+    "text": "Are we still meeting at 3?"
+  },
+  {
+    "user": "alice",
+    "timestamp": "2025-07-10T15:35:55Z",
+    "text": "The staging environment is ready."
+  },
+  {
+    "user": "alice",
+    "timestamp": "2025-07-10T15:41:21Z",
+    "text": "Who is handling the support tickets today?"
+  },
+  {
+    "user": "eve",
+    "timestamp": "2025-07-10T16:08:32Z",
+    "text": "They look good, up 15% from last month."
+  },
+  {
+    "user": "bob",
+    "timestamp": "2025-07-10T16:23:14Z",
+    "text": "Has anyone seen the latest metrics?"
+  },
+  {
+    "user": "charlie",
+    "timestamp": "2025-07-10T16:38:29Z",
+    "text": "Can we push the deadline by a day?"
+  },
+  {
+    "user": "charlie",
+    "timestamp": "2025-07-10T16:43:56Z",
+    "text": "Ready for deployment."
+  },
+  {
+    "user": "charlie",
+    "timestamp": "2025-07-10T16:58:00Z",
+    "text": "Bye!"
+  }
+]

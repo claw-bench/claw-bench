@@ -1,0 +1,10 @@
+id = "wfl-003"
+title = "Multi-Step Data Pipeline Execution"
+domain = "workflow-automation"
+level = "L2"
+description = "Execute a multi-step data pipeline that reads CSV data, filters rows, computes statistics, and generates a report with intermediate outputs at each stage"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["pipeline", "csv", "statistics", "multi-step"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,10 @@
+id = "file-006"
+title = "Extract Emails from Text"
+domain = "file-operations"
+level = "L2"
+description = "Extract all email addresses from a document and write them sorted to a new file"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["intermediate", "text", "extraction", "regex"]
+capability_types = ["tool-use"]

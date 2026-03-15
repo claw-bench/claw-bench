@@ -1,0 +1,10 @@
+id = "sec-013"
+title = "Generate STRIDE Threat Model"
+domain = "security"
+level = "L4"
+description = "Analyze a system architecture using the STRIDE methodology to identify threats across all components and propose mitigations"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["threat-modeling", "stride", "architecture", "defensive"]
+capability_types = ["reasoning", "tool-use"]

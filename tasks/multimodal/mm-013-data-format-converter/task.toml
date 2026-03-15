@@ -1,0 +1,10 @@
+id = "mm-013"
+title = "Data Format Converter"
+domain = "multimodal"
+level = "L2"
+description = "Convert CSV data to JSON according to a schema that specifies field mappings and type conversions"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["conversion", "formats", "data"]
+capability_types = ["multimodal", "reasoning"]

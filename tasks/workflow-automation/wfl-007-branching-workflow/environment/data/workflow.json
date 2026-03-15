@@ -1,0 +1,61 @@
+{
+  "name": "Loan Application Workflow",
+  "steps": {
+    "initial_review": {
+      "description": "Check credit score to determine track",
+      "field": "credit_score",
+      "branches": [
+        {"condition": ">=700", "next": "pre_approved"},
+        {"condition": ">=500", "next": "manual_review"},
+        {"condition": "<500", "next": "rejected_credit"}
+      ]
+    },
+    "pre_approved": {
+      "description": "Check debt-to-income ratio for pre-approved applicants",
+      "check": "loan_amount / income <= 0.4",
+      "branches": [
+        {"condition": "ratio<=0.4", "next": "approved", "rate": 4.5},
+        {"condition": "ratio>0.4", "next": "conditional_high_credit"}
+      ]
+    },
+    "manual_review": {
+      "description": "Check employment history for borderline applicants",
+      "field": "employment_years",
+      "branches": [
+        {"condition": ">=3", "next": "conditional_manual"},
+        {"condition": "<3", "next": "rejected_employment"}
+      ]
+    },
+    "rejected_credit": {
+      "description": "Reject due to low credit score",
+      "terminal": true,
+      "status": "rejected",
+      "reason": "credit score too low"
+    },
+    "rejected_employment": {
+      "description": "Reject due to insufficient employment history",
+      "terminal": true,
+      "status": "rejected",
+      "reason": "insufficient employment history"
+    },
+    "approved": {
+      "description": "Fully approved with standard rate",
+      "terminal": true,
+      "status": "approved"
+    },
+    "conditional_high_credit": {
+      "description": "Conditionally approved - high credit but high debt ratio",
+      "terminal": true,
+      "status": "conditionally_approved",
+      "rate": 6.0,
+      "conditions": ["requires collateral"]
+    },
+    "conditional_manual": {
+      "description": "Conditionally approved after manual review",
+      "terminal": true,
+      "status": "conditionally_approved",
+      "rate": 7.5,
+      "conditions": ["requires co-signer"]
+    }
+  }
+}

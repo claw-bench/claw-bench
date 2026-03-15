@@ -1,0 +1,10 @@
+id = "comm-011"
+title = "Meeting Notes Formatter"
+domain = "communication"
+level = "L2"
+description = "Extract attendees, action items, and decisions from a raw meeting transcript into structured JSON"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["meeting", "formatting", "notes"]
+capability_types = ["collaboration", "reasoning"]

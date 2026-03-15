@@ -1,0 +1,10 @@
+id = "data-004"
+title = "Create Pivot Table from Transactions"
+domain = "data-analysis"
+level = "L2"
+description = "Create a pivot table with months as rows, categories as columns, and sum of amounts as values"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["pivot", "aggregation", "csv", "transform"]
+capability_types = ["reasoning", "tool-use"]

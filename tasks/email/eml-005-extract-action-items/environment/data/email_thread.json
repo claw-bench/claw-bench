@@ -1,0 +1,37 @@
+[
+  {
+    "from": "diana.ross@techcorp.com",
+    "to": ["team@techcorp.com"],
+    "date": "2026-03-05T09:00:00Z",
+    "subject": "Product Launch Planning - Action Required",
+    "body": "Hi team,\n\nWe need to finalize the product launch plan for the Atlas release. Here are the key items we need to address:\n\n1. Marcus, please prepare the marketing materials and have them ready for review by March 12.\n2. We need someone to coordinate with the press team for the announcement.\n\nLet's make sure everything is on track.\n\nDiana"
+  },
+  {
+    "from": "marcus.lee@techcorp.com",
+    "to": ["diana.ross@techcorp.com", "team@techcorp.com"],
+    "date": "2026-03-05T10:30:00Z",
+    "subject": "Re: Product Launch Planning - Action Required",
+    "body": "Hi Diana,\n\nI'll get the marketing materials ready by March 12 as requested. I'll also need Sarah to provide the final product screenshots by March 10 so I can include them.\n\nAlso, can Elena handle the press coordination? She has the best contacts there.\n\nMarcus"
+  },
+  {
+    "from": "elena.varga@techcorp.com",
+    "to": ["marcus.lee@techcorp.com", "diana.ross@techcorp.com", "team@techcorp.com"],
+    "date": "2026-03-05T11:15:00Z",
+    "subject": "Re: Product Launch Planning - Action Required",
+    "body": "Hi all,\n\nHappy to take on the press coordination. I'll reach out to our media contacts this week.\n\nDiana - I'll also need you to approve the press release draft. Can you review it by March 11?\n\nAlso, someone needs to update the product landing page before the launch. Kevin, can you handle that by March 14?\n\nElena"
+  },
+  {
+    "from": "diana.ross@techcorp.com",
+    "to": ["team@techcorp.com"],
+    "date": "2026-03-05T14:00:00Z",
+    "subject": "Re: Product Launch Planning - Action Required",
+    "body": "Great progress everyone!\n\nTo summarize:\n- Marcus: marketing materials by March 12\n- Sarah: product screenshots to Marcus by March 10\n- Elena: press coordination and outreach\n- Kevin: update landing page by March 14\n- I'll review the press release by March 11\n\nOne more thing: Marcus, please also prepare a brief demo video script by March 13.\n\nDiana"
+  },
+  {
+    "from": "kevin.wu@techcorp.com",
+    "to": ["diana.ross@techcorp.com", "team@techcorp.com"],
+    "date": "2026-03-05T15:30:00Z",
+    "subject": "Re: Product Launch Planning - Action Required",
+    "body": "Hi Diana,\n\nI'll update the landing page by March 14. I'll also make sure the staging environment is ready for testing by March 13 so the team can review before we go live.\n\nKevin"
+  }
+]

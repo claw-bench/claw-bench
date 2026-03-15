@@ -1,0 +1,7 @@
+{
+  "from": "noreply@amazon.com",
+  "to": "you@company.com",
+  "subject": "Your Amazon order has shipped",
+  "date": "2026-03-08",
+  "body": "Hello,\n\nYour order from Amazon for $45.99 has shipped! Your package containing office supplies (printer paper and ink cartridges) is on its way and should arrive by March 10.\n\nOrder #112-4567890-1234567\nTotal: $45.99\n\nThank you for shopping with Amazon."
+}

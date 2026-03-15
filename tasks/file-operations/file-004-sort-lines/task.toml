@@ -1,0 +1,10 @@
+id = "file-004"
+title = "Sort Lines Alphabetically"
+domain = "file-operations"
+level = "L1"
+description = "Sort lines of a text file alphabetically and write the result to a new file"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "text", "sorting"]
+capability_types = ["tool-use"]

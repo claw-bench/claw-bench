@@ -1,0 +1,5 @@
+{"message_id": "IN-001", "from": "alice@example.com", "subject": "Urgent: Server Down", "body": "The production server is not responding."}
+{"message_id": "IN-002", "from": "vip-client@bigcorp.com", "subject": "Partnership Proposal", "body": "We'd like to discuss a partnership opportunity."}
+{"message_id": "IN-003", "from": "bob@example.com", "subject": "Monthly Report", "body": "Attached is the monthly report with invoice details."}
+{"message_id": "IN-004", "from": "vip-sales@partner.com", "subject": "Urgent: Invoice Overdue", "body": "Please review the attached invoice immediately."}
+{"message_id": "IN-005", "from": "carol@example.com", "subject": "Team Lunch", "body": "Let's plan a team lunch for Friday."}

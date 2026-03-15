@@ -1,0 +1,10 @@
+id = "doc-007"
+title = "Multi-Document Merge"
+domain = "document-editing"
+level = "L3"
+description = "Merge 5 markdown chapter files into a single book with table of contents, consistent heading levels, and page breaks"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["merge", "markdown", "chapters", "toc"]
+capability_types = ["reasoning", "tool-use"]

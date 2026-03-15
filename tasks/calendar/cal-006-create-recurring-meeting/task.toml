@@ -1,0 +1,10 @@
+id = "cal-006"
+title = "Create Recurring Meeting"
+domain = "calendar"
+level = "L2"
+description = "Generate a series of weekly recurring meeting instances"
+timeout = 180
+capabilities = ["calendar-write"]
+skills_allowed = true
+tags = ["intermediate", "calendar", "recurring"]
+capability_types = ["reasoning", "tool-use"]

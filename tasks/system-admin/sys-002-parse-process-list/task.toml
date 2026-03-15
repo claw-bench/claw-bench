@@ -1,0 +1,10 @@
+id = "sys-002"
+title = "Parse Process List"
+domain = "system-admin"
+level = "L1"
+description = "Parse simulated ps output to find top 5 CPU-consuming processes and generate a structured JSON report"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "process", "parsing", "json"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,44 @@
+services:
+  postgres:
+    description: "PostgreSQL database server"
+    depends_on: []
+
+  redis:
+    description: "Redis in-memory cache"
+    depends_on: []
+
+  rabbitmq:
+    description: "RabbitMQ message broker"
+    depends_on: []
+
+  auth_service:
+    description: "Authentication and authorization service"
+    depends_on:
+      - postgres
+      - redis
+
+  api_gateway:
+    description: "API gateway and request router"
+    depends_on:
+      - auth_service
+      - redis
+
+  worker:
+    description: "Background job processor"
+    depends_on:
+      - postgres
+      - rabbitmq
+      - redis
+
+  web_app:
+    description: "Main web application frontend"
+    depends_on:
+      - api_gateway
+      - auth_service
+
+  monitoring:
+    description: "System monitoring and alerting"
+    depends_on:
+      - postgres
+      - redis
+      - api_gateway

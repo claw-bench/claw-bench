@@ -1,0 +1,8 @@
+[
+  {"label": "North", "value": 120},
+  {"label": "South", "value": 85},
+  {"label": "East", "value": 150},
+  {"label": "West", "value": 95},
+  {"label": "Central", "value": 110},
+  {"label": "Overseas", "value": 60}
+]

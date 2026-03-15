@@ -1,0 +1,8 @@
+{
+  "from": "mike.chen@vendor.io",
+  "sender_name": "Mike Chen",
+  "to": "zhang.ming@company.com",
+  "subject": "Invoice #2026-0342",
+  "date": "2026-03-16",
+  "body": "Dear Zhang Ming,\n\nPlease find attached invoice #2026-0342 for the consulting services provided in February. Payment terms are net-30.\n\nRegards,\nMike Chen"
+}

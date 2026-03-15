@@ -1,0 +1,10 @@
+id = "code-011"
+title = "Create a Data Validation Module"
+domain = "code-assistance"
+level = "L3"
+description = "Create validators for email, phone, URL, date, and IP address that return (bool, str) tuples indicating validity and error messages"
+timeout = 180
+capabilities = ["code-write"]
+skills_allowed = true
+tags = ["python", "validation", "regex"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,24 @@
+{
+  "rules": [
+    {"id": 1, "action": "allow", "source": "10.0.1.0/24", "destination": "10.0.2.0/24", "port": 443, "protocol": "tcp", "description": "Allow web traffic from office to servers"},
+    {"id": 2, "action": "allow", "source": "10.0.1.0/24", "destination": "10.0.2.0/24", "port": 80, "protocol": "tcp", "description": "Allow HTTP from office to servers"},
+    {"id": 3, "action": "deny", "source": "0.0.0.0/0", "destination": "10.0.2.0/24", "port": 22, "protocol": "tcp", "description": "Block SSH from everywhere"},
+    {"id": 4, "action": "allow", "source": "10.0.1.50/32", "destination": "10.0.2.0/24", "port": 22, "protocol": "tcp", "description": "Allow SSH from admin workstation"},
+    {"id": 5, "action": "allow", "source": "0.0.0.0/0", "destination": "10.0.3.0/24", "port": 443, "protocol": "tcp", "description": "Allow HTTPS to DMZ from anywhere"},
+    {"id": 6, "action": "allow", "source": "10.0.1.0/24", "destination": "10.0.2.10/32", "port": 443, "protocol": "tcp", "description": "Allow HTTPS to specific server from office"},
+    {"id": 7, "action": "allow", "source": "0.0.0.0/0", "destination": "0.0.0.0/0", "port": "any", "protocol": "any", "description": "Allow all traffic everywhere"},
+    {"id": 8, "action": "deny", "source": "192.168.0.0/16", "destination": "10.0.2.0/24", "port": "any", "protocol": "any", "description": "Block guest network from servers"},
+    {"id": 9, "action": "allow", "source": "10.0.1.0/24", "destination": "10.0.4.0/24", "port": 3306, "protocol": "tcp", "description": "Allow MySQL from office to DB servers"},
+    {"id": 10, "action": "allow", "source": "10.0.1.0/24", "destination": "10.0.4.0/24", "port": 5432, "protocol": "tcp", "description": "Allow PostgreSQL from office to DB servers"},
+    {"id": 11, "action": "deny", "source": "0.0.0.0/0", "destination": "10.0.4.0/24", "port": "any", "protocol": "any", "description": "Block all access to DB servers"},
+    {"id": 12, "action": "allow", "source": "10.0.2.0/24", "destination": "10.0.4.0/24", "port": 3306, "protocol": "tcp", "description": "Allow MySQL from app servers to DB servers"},
+    {"id": 13, "action": "allow", "source": "10.0.2.0/24", "destination": "10.0.4.0/24", "port": 5432, "protocol": "tcp", "description": "Allow PostgreSQL from app servers to DB servers"},
+    {"id": 14, "action": "allow", "source": "10.0.1.0/24", "destination": "10.0.2.0/24", "port": 443, "protocol": "tcp", "description": "Allow HTTPS from office to servers (duplicate)"},
+    {"id": 15, "action": "deny", "source": "10.0.5.0/24", "destination": "10.0.2.0/24", "port": 443, "protocol": "tcp", "description": "Block contractor network from servers on HTTPS"},
+    {"id": 16, "action": "allow", "source": "0.0.0.0/0", "destination": "10.0.3.0/24", "port": 80, "protocol": "tcp", "description": "Allow HTTP to DMZ from anywhere"},
+    {"id": 17, "action": "allow", "source": "0.0.0.0/0", "destination": "10.0.2.0/24", "port": 3389, "protocol": "tcp", "description": "Allow RDP from anywhere to servers"},
+    {"id": 18, "action": "deny", "source": "0.0.0.0/0", "destination": "10.0.2.0/24", "port": 3389, "protocol": "tcp", "description": "Block RDP from everywhere to servers"},
+    {"id": 19, "action": "allow", "source": "10.0.1.0/24", "destination": "10.0.2.0/24", "port": 8080, "protocol": "tcp", "description": "Allow port 8080 from office to servers"},
+    {"id": 20, "action": "deny", "source": "0.0.0.0/0", "destination": "0.0.0.0/0", "port": "any", "protocol": "any", "description": "Default deny all"}
+  ]
+}

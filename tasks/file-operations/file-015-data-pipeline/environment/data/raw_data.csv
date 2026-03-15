@@ -1,0 +1,26 @@
+name,city,date,product,quantity,price
+JOHN DOE,new york,01/15/2025,Widget A,3,12.99
+jane smith,CHICAGO,15-01-2025,Gadget B,2,45.50
+Bob Johnson,seattle,2025/01/16,Widget C,5,8.75
+ALICE WONG,boston,"January 17, 2025",Gizmo D,1,67.00
+charlie brown,,01/18/2025,Widget A,4,12.99
+David Lee,NEW YORK,18-01-2025,Gadget B,3,45.50
+EMMA DAVIS,chicago,2025/01/19,Widget C,2,8.75
+frank miller,Seattle,"January 20, 2025",Gizmo D,2,67.00
+Grace Kim,BOSTON,01/21/2025,Widget A,6,12.99
+HENRY CHEN,new york,21-01-2025,Gadget B,1,45.50
+isabel lopez,Chicago,2025/01/22,Widget C,3,8.75
+,seattle,"January 23, 2025",Gizmo D,4,67.00
+KATE WILSON,boston,01/24/2025,Widget A,2,12.99
+leo martinez,NEW YORK,24-01-2025,Gadget B,5,45.50
+MARY TAYLOR,chicago,2025/01/25,Widget C,1,8.75
+nick anderson,Seattle,"January 26, 2025",Gizmo D,3,67.00
+olivia thomas,BOSTON,01/27/2025,Widget A,4,12.99
+PETER WHITE,new york,27-01-2025,Gadget B,2,45.50
+quinn harris,,2025/01/28,Widget C,6,8.75
+Rachel Green,chicago,"January 29, 2025",Gizmo D,1,67.00
+SAM CLARK,seattle,01/30/2025,Widget A,3,12.99
+tina baker,NEW YORK,30-01-2025,Gadget B,4,45.50
+uma jackson,Boston,2025/01/31,Widget C,2,8.75
+victor reed,CHICAGO,"February 01, 2025",Gizmo D,5,67.00
+wendy scott,seattle,02/02/2025,Widget A,1,12.99

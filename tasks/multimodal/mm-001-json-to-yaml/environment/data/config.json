@@ -1,0 +1,77 @@
+{
+  "app": {
+    "name": "WebPortal",
+    "version": "3.2.1",
+    "debug": false,
+    "max_connections": 250,
+    "description": null
+  },
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8443,
+    "ssl": {
+      "enabled": true,
+      "cert_path": "/etc/ssl/certs/portal.crt",
+      "key_path": "/etc/ssl/private/portal.key",
+      "protocols": ["TLSv1.2", "TLSv1.3"]
+    },
+    "timeouts": {
+      "read": 30,
+      "write": 30,
+      "idle": 120
+    }
+  },
+  "database": {
+    "primary": {
+      "driver": "postgresql",
+      "host": "db-primary.internal",
+      "port": 5432,
+      "name": "portal_prod",
+      "pool": {
+        "min_size": 5,
+        "max_size": 20,
+        "overflow": 10,
+        "recycle": 3600
+      }
+    },
+    "replica": {
+      "driver": "postgresql",
+      "host": "db-replica.internal",
+      "port": 5432,
+      "name": "portal_prod",
+      "read_only": true
+    }
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    "handlers": [
+      {
+        "type": "console",
+        "colorize": true
+      },
+      {
+        "type": "file",
+        "path": "/var/log/portal/app.log",
+        "max_bytes": 10485760,
+        "backup_count": 5
+      },
+      {
+        "type": "syslog",
+        "address": "logs.internal:514",
+        "facility": "local0"
+      }
+    ]
+  },
+  "features": {
+    "enable_signup": true,
+    "enable_oauth": true,
+    "oauth_providers": ["google", "github", "microsoft"],
+    "rate_limiting": {
+      "enabled": true,
+      "requests_per_minute": 60,
+      "burst": 10
+    },
+    "maintenance_mode": false
+  }
+}

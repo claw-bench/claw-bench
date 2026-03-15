@@ -1,0 +1,10 @@
+id = "web-005"
+title = "Multi-Page Data Aggregation"
+domain = "web-browsing"
+level = "L2"
+description = "Aggregate product data from multiple HTML pages into a single JSON dataset"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["html", "aggregation", "multi-page", "products"]
+capability_types = ["reasoning", "tool-use"]

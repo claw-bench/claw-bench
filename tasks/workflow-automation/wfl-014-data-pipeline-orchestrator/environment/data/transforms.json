@@ -1,0 +1,19 @@
+[
+  {
+    "type": "filter",
+    "column": "product",
+    "operator": "eq",
+    "value": "Widget"
+  },
+  {
+    "type": "rename_column",
+    "old_name": "revenue",
+    "new_name": "total_sales"
+  },
+  {
+    "type": "aggregate",
+    "group_by": "region",
+    "column": "total_sales",
+    "function": "sum"
+  }
+]

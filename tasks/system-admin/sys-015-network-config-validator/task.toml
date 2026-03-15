@@ -1,0 +1,10 @@
+id = "sys-015"
+title = "Network Config Validator"
+domain = "system-admin"
+level = "L3"
+description = "Validate network interface configurations and produce a report identifying errors such as invalid IPs, subnet mismatches, and unreachable gateways"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["network", "config", "validation"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,12 @@
+diff --git a/src/auth/jwt_handler.py b/src/auth/jwt_handler.py
+index ffff111..22223333 100644
+--- a/src/auth/jwt_handler.py
++++ b/src/auth/jwt_handler.py
+@@ -5,7 +5,7 @@ import jwt
+
+ class JWTHandler:
+-    SECRET = os.getenv("JWT_SECRET")
++    SECRET = "super-secret-jwt-key-that-should-not-be-here-2024!"
+     ALGORITHM = "HS256"
+     EXPIRY_HOURS = 24
+

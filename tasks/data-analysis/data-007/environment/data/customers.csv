@@ -1,0 +1,11 @@
+customer_id,name,email,city
+1,Alice Smith,alice@example.com,New York
+2,Bob Jones,bob@example.com,Chicago
+3,Carol White,carol@example.com,Seattle
+4,Dave Brown,dave@example.com,Boston
+5,Eve Davis,eve@example.com,Denver
+6,Frank Miller,frank@example.com,Miami
+7,Grace Lee,grace@example.com,Austin
+8,Hank Wilson,hank@example.com,Portland
+9,Iris Taylor,iris@example.com,Dallas
+10,Jack Moore,jack@example.com,Atlanta

@@ -1,0 +1,10 @@
+id = "cal-012"
+title = "Calendar Merge"
+domain = "calendar"
+level = "L3"
+description = "Merge work and personal calendars with conflict resolution"
+timeout = 240
+capabilities = ["calendar-write"]
+skills_allowed = true
+tags = ["advanced", "calendar", "merge"]
+capability_types = ["reasoning", "tool-use"]

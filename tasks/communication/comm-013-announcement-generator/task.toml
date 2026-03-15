@@ -1,0 +1,10 @@
+id = "comm-013"
+title = "Announcement Generator"
+domain = "communication"
+level = "L3"
+description = "Generate personalized announcements from a template and recipient data, producing one file per recipient"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["announcement", "template", "generation"]
+capability_types = ["collaboration", "reasoning"]

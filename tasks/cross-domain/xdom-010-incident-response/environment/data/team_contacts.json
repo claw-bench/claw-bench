@@ -1,0 +1,26 @@
+{
+  "on_call": {
+    "name": "Sarah Kim",
+    "role": "Senior SRE",
+    "email": "sarah.kim@company.com",
+    "phone": "+1-555-0101"
+  },
+  "engineering_lead": {
+    "name": "Mike Chen",
+    "role": "Engineering Manager",
+    "email": "mike.chen@company.com",
+    "phone": "+1-555-0102"
+  },
+  "product_owner": {
+    "name": "Lisa Park",
+    "role": "Product Owner",
+    "email": "lisa.park@company.com",
+    "phone": "+1-555-0103"
+  },
+  "vp_engineering": {
+    "name": "James Wright",
+    "role": "VP Engineering",
+    "email": "james.wright@company.com",
+    "phone": "+1-555-0104"
+  }
+}

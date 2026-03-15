@@ -1,0 +1,10 @@
+id = "comm-007"
+title = "Cross-Channel Sync Plan"
+domain = "communication"
+level = "L3"
+description = "Generate a sync plan mapping what content syncs between channels while preventing circular sync paths"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["sync", "channels", "planning", "rules"]
+capability_types = ["collaboration", "reasoning"]

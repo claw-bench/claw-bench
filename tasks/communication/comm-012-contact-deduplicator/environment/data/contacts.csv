@@ -1,0 +1,13 @@
+name,email,phone
+John Doe,john.doe@example.com,555-123-4567
+jane smith,Jane.Smith@example.com,(555) 234-5678
+JOHN DOE,John.Doe@Example.com,5551234567
+Bob Johnson,bob.j@example.com,555.345.6789
+Jane Smith,jane.smith@example.com,555-234-5678
+alice wong,alice.w@example.com,(555) 456-7890
+Bob Johnson,BOB.J@EXAMPLE.COM,(555) 345-6789
+Charlie Brown,charlie.b@example.com,555-567-8901
+ALICE WONG,Alice.W@Example.com,5554567890
+charlie brown,Charlie.B@example.com,(555) 567-8901
+Diana Prince,diana.p@example.com,555-678-9012
+john doe,john.doe@example.com,(555) 123-4567

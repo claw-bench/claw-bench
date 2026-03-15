@@ -1,0 +1,10 @@
+id = "sys-013"
+title = "Log Rotation Planner"
+domain = "system-admin"
+level = "L3"
+description = "Analyze a log file inventory and produce a rotation plan identifying files that need rotation, compression, or deletion based on size and age thresholds"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["logs", "rotation", "planning"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,10 @@
+id = "web-011"
+title = "Extract Links from HTML Page"
+domain = "web-browsing"
+level = "L2"
+description = "Extract all links from a static HTML page and classify them as internal, external, or anchor links"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["html", "links", "extraction"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,10 @@
+id = "doc-018"
+title = "Generate Invoice from Order Data"
+domain = "document-editing"
+level = "L2"
+description = "Create a formatted Markdown invoice document from order line items with tax calculation and proper business formatting"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["document", "invoice", "business", "finance", "office"]
+capability_types = ["reasoning", "tool-use"]

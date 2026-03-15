@@ -1,0 +1,22 @@
+2026-03-11T08:12:33.421Z [INFO] web-frontend-01: Application started, listening on port 8080
+2026-03-11T08:45:10.102Z [INFO] web-frontend-01: Health check passed from 10.0.0.5
+2026-03-11T09:00:10.098Z [INFO] web-frontend-01: Health check passed from 10.0.0.5
+2026-03-11T10:32:07.334Z [WARN] web-frontend-01: Rate limit threshold approaching for IP 198.51.100.77 - 5 requests in 2s
+2026-03-11T10:32:10.887Z [WARN] web-frontend-01: Rate limit threshold exceeded for IP 198.51.100.77 - 12 failed login attempts
+2026-03-11T10:32:13.221Z [ERROR] web-frontend-01: Brute force detection triggered for IP 198.51.100.77 - 15 failed attempts in 6s
+2026-03-11T10:32:16.005Z [WARN] auth-service-01: Successful login after 15 failed attempts from 198.51.100.77 - account: admin
+2026-03-11T10:33:01.112Z [INFO] web-frontend-01: Admin dashboard accessed by admin from 198.51.100.77
+2026-03-11T10:34:12.667Z [WARN] web-frontend-01: Large data export requested: /admin/users?export=csv (284310 bytes) by admin from 198.51.100.77
+2026-03-11T10:35:30.445Z [ERROR] web-frontend-01: Admin settings modified by admin from 198.51.100.77 - changes: {"mfa_required": false, "session_timeout": 86400, "api_rate_limit": 10000}
+2026-03-11T10:36:15.887Z [CRITICAL] db-primary-01: Full database export initiated by admin from 198.51.100.77 via API - export size: 1548210 bytes
+2026-03-11T10:37:44.231Z [WARN] auth-service-01: New service account created: backdoor-svc with admin role by user admin from 198.51.100.77
+2026-03-11T10:38:20.554Z [WARN] auth-service-01: Role elevation for user backdoor-svc to super-admin by admin from 198.51.100.77
+2026-03-11T10:40:05.112Z [CRITICAL] web-frontend-01: Secrets endpoint accessed by admin from 198.51.100.77 - API keys, DB credentials, and encryption keys retrieved
+2026-03-11T10:42:33.776Z [CRITICAL] web-frontend-01: Audit log deletion attempted by admin from 198.51.100.77
+2026-03-11T10:45:10.101Z [INFO] web-frontend-01: Health check passed from 10.0.0.5
+2026-03-11T11:15:22.334Z [INFO] web-frontend-01: Internal metrics accessed by backdoor-svc from 198.51.100.77
+2026-03-11T11:20:10.556Z [WARN] web-frontend-01: Outbound webhook registered by backdoor-svc from 198.51.100.77 - target: https://exfil.attacker-c2.example.net/collect
+2026-03-11T11:25:45.889Z [CRITICAL] db-primary-01: Customer database table exported by backdoor-svc from 198.51.100.77 - 3421890 bytes
+2026-03-11T11:30:00.223Z [INFO] db-replica-01: Replication sync from db-primary-01
+2026-03-11T11:45:12.445Z [CRITICAL] db-primary-01: Orders database table exported by backdoor-svc from 198.51.100.77 - 5678432 bytes
+2026-03-11T12:00:10.097Z [INFO] web-frontend-01: Health check passed from 10.0.0.5

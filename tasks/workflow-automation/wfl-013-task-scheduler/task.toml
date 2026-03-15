@@ -1,0 +1,10 @@
+id = "wfl-013"
+title = "Task Scheduler"
+domain = "workflow-automation"
+level = "L3"
+description = "Schedule tasks based on priority, deadline, and dependencies, producing a timeline with start and end times"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["scheduling", "tasks", "optimization"]
+capability_types = ["reasoning", "tool-use"]

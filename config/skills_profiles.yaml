@@ -1,0 +1,23 @@
+# Skills evaluation profiles for 3-condition comparison
+
+profiles:
+  vanilla:
+    description: "No skills - bare framework capability"
+    skills_enabled: false
+    curated_skills: false
+    native_skills: false
+
+  curated:
+    description: "Claw Bench curated skills only - fair cross-framework comparison"
+    skills_enabled: true
+    curated_skills: true
+    native_skills: false
+    skills_dir: "skills/curated"
+
+  native:
+    description: "Framework's own skills ecosystem"
+    skills_enabled: true
+    curated_skills: false
+    native_skills: true
+
+default_profile: "vanilla"

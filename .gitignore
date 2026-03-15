@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+.venv/
+venv/
+
+# Testing
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (leaderboard)
+leaderboard/node_modules/
+leaderboard/.next/
+leaderboard/out/
+
+# Results (local runs)
+results/
+data/results/
+
+# Environment
+.env
+.env.local
+
+# Workspace outputs (generated during benchmark runs)
+workspace/
+tasks/**/workspace/
+
+# Checkpoint files
+.checkpoint.json
+
+# Runtime data (admin token, results, etc.)
+data/
+
+# Docker SSL certs (sensitive)
+docker/ssl-certs/
+
+# Build artifacts
+*.tar.gz
+
+# Claude / Cursor
+.claude/
+.cursor/
+CLAUDE.md
+
+# Internal planning docs (not for public release)
+file_*.txt
+extract_docstrings.py
+models_info.txt
+overview.txt
+*规划方案*.md
+*调研报告*.md
+
+# Logs (runtime)
+logs/
+
+# TypeScript build cache
+leaderboard/tsconfig.tsbuildinfo

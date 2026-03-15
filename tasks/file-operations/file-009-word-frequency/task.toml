@@ -1,0 +1,10 @@
+id = "file-009"
+title = "Word Frequency Count"
+domain = "file-operations"
+level = "L2"
+description = "Count word frequencies in a text file and output a sorted CSV"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["text-processing", "csv", "frequency", "sorting"]
+capability_types = ["tool-use"]

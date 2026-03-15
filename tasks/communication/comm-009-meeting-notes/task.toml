@@ -1,0 +1,10 @@
+id = "comm-009"
+title = "Meeting Notes Extraction"
+domain = "communication"
+level = "L2"
+description = "Extract structured meeting notes from a raw meeting transcript including attendees, action items with owners and deadlines, decisions, and next meeting details"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["meeting", "extraction", "json", "nlp"]
+capability_types = ["collaboration", "reasoning"]

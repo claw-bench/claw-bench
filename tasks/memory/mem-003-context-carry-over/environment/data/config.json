@@ -1,0 +1,35 @@
+{
+  "app_name": "InventoryTracker",
+  "version": "2.4.1",
+  "database": {
+    "host": "db.internal.example.com",
+    "port": 5432,
+    "database": "inventory_prod",
+    "username": "app_service",
+    "password": "xK9#mP2$vL5n"
+  },
+  "features": {
+    "dark_mode": true,
+    "beta_dashboard": false,
+    "export_csv": true,
+    "multi_language": false,
+    "audit_logging": true
+  },
+  "notifications": {
+    "email": {
+      "enabled": true,
+      "recipient": "ops-team@example.com"
+    },
+    "sms": {
+      "enabled": false,
+      "phone": "+1-555-0142"
+    },
+    "slack": {
+      "enabled": true
+    }
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "/var/log/inventory.log"
+  }
+}

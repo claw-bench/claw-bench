@@ -1,0 +1,10 @@
+id = "eml-003"
+title = "Count Emails by Sender"
+domain = "email"
+level = "L1"
+description = "Count the number of emails per sender from an inbox JSON file and produce a sorted summary"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "email", "aggregation"]
+capability_types = ["reasoning", "tool-use"]

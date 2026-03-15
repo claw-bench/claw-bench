@@ -1,0 +1,87 @@
+name: Full Evaluation
+
+# Runs all 210 tasks across 14 domains:
+#   calendar, code-assistance, communication, cross-domain, data-analysis,
+#   document-editing, email, file-operations, memory, multimodal,
+#   security, system-admin, web-browsing, workflow-automation
+
+on:
+  workflow_dispatch:
+    inputs:
+      framework:
+        description: "Framework to evaluate"
+        required: true
+        type: choice
+        options:
+          - openclaw
+          - ironclaw
+          - zeroclaw
+          - nullclaw
+          - picoclaw
+          - nanobot
+          - qclaw
+      model:
+        description: "Model to use"
+        required: true
+        type: choice
+        options:
+          - gpt-4.1
+          - gpt-4.1-mini
+          - claude-sonnet-4.5
+          - claude-sonnet-4-20250514
+          - claude-haiku-4.5
+          - deepseek-v3
+          - llama-4-maverick
+      model_tier:
+        description: "Model tier (for reporting)"
+        required: false
+        type: choice
+        options:
+          - flagship
+          - standard
+          - economy
+          - opensource
+      skills:
+        description: "Enable curated skills"
+        required: false
+        type: boolean
+        default: true
+      runs:
+        description: "Runs per task"
+        required: false
+        default: "5"
+
+jobs:
+  eval-full:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install claw-bench
+        run: pip install -e .
+
+      - name: Run full evaluation (210 tasks, 14 domains)
+        run: |
+          claw-bench run \
+            --framework ${{ inputs.framework }} \
+            --model ${{ inputs.model }} \
+            --model-tier ${{ inputs.model_tier }} \
+            --tasks all \
+            --runs ${{ inputs.runs }} \
+            --skills ${{ inputs.skills }} \
+            --parallel 4 \
+            --output ./results/full/
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-eval-${{ inputs.framework }}-${{ inputs.model }}
+          path: ./results/full/

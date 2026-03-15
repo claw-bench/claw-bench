@@ -1,0 +1,10 @@
+id = "mem-004"
+title = "Contradiction Resolution"
+domain = "memory"
+level = "L2"
+description = "Agent is given instructions with a deliberate contradiction and must identify and resolve it"
+timeout = 180
+capabilities = ["file-write", "file-read"]
+skills_allowed = true
+capability_types = ["memory", "reasoning"]
+tags = ["memory", "contradiction", "reasoning"]

@@ -1,0 +1,10 @@
+id = "xdom-013"
+title = "Incident Response Pipeline"
+domain = "cross-domain"
+level = "L4"
+description = "Correlate events across server access logs, error logs, and authentication logs alongside a network configuration to identify an attack timeline, determine affected systems, and generate a complete incident response report with timeline, affected systems, severity, root cause, and remediation steps."
+timeout = 600
+capabilities = ["file-read", "file-write", "analysis", "log-analysis", "security"]
+skills_allowed = true
+tags = ["cross-domain", "incident-response", "log-analysis", "security", "L4"]
+capability_types = ["reasoning", "tool-use"]

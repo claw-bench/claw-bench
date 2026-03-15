@@ -1,0 +1,10 @@
+id = "eml-018"
+title = "Extract Expenses from Receipt Emails"
+domain = "email"
+level = "L3"
+description = "Parse receipt confirmation emails to extract amounts, vendors, and categories, then compile a structured expense report"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["email", "expense", "parsing", "finance", "office"]
+capability_types = ["reasoning", "tool-use"]

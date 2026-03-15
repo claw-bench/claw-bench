@@ -1,0 +1,10 @@
+id = "sys-012"
+title = "Cron Parser"
+domain = "system-admin"
+level = "L2"
+description = "Parse crontab entries and produce a structured JSON report with human-readable schedule descriptions and normalized cron expressions"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["cron", "scheduling", "parser"]
+capability_types = ["reasoning", "tool-use"]

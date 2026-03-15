@@ -1,0 +1,10 @@
+id = "sec-007"
+title = "Analyze Access Logs for Security Incidents"
+domain = "security"
+level = "L2"
+description = "Perform forensic analysis on web server access logs to detect brute force attacks, suspicious IP patterns, and off-hours access anomalies"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["log-analysis", "forensics", "incident-detection", "defensive"]
+capability_types = ["reasoning", "tool-use"]

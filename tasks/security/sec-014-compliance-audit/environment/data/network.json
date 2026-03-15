@@ -1,0 +1,22 @@
+{
+  "firewall": {
+    "enabled": true,
+    "default_policy": "allow",
+    "rules": [
+      {"port": 22, "source": "10.0.1.0/24", "action": "allow"},
+      {"port": 443, "source": "0.0.0.0/0", "action": "allow"},
+      {"port": 80, "source": "0.0.0.0/0", "action": "allow"}
+    ]
+  },
+  "ssh": {
+    "port": 22,
+    "password_auth": true,
+    "key_auth": true,
+    "root_login": false,
+    "protocol_version": 2
+  },
+  "dns": {
+    "servers": ["10.0.0.53", "10.0.0.54"],
+    "dnssec": true
+  }
+}

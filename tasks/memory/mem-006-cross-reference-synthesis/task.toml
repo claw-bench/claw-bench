@@ -1,0 +1,10 @@
+id = "mem-006"
+title = "Cross-Reference Synthesis"
+domain = "memory"
+level = "L3"
+description = "Agent reads 3 separate data files and produces a merged analysis combining information from all sources"
+timeout = 300
+capabilities = ["file-write", "file-read"]
+skills_allowed = true
+capability_types = ["memory", "reasoning"]
+tags = ["memory", "cross-reference", "synthesis"]

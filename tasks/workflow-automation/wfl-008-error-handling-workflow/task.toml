@@ -1,0 +1,10 @@
+id = "wfl-008"
+title = "Error Handling Workflow with Compensation"
+domain = "workflow-automation"
+level = "L3"
+description = "Execute a multi-step workflow where some steps fail, triggering fallback actions and compensation logic to undo completed steps when needed"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["error-handling", "compensation", "fallback", "resilience"]
+capability_types = ["reasoning", "tool-use"]

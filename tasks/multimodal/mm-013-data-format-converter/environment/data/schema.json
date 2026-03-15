@@ -1,0 +1,10 @@
+{
+  "mappings": [
+    {"csv_column": "emp_id", "json_field": "employeeId", "type": "integer"},
+    {"csv_column": "emp_name", "json_field": "fullName", "type": "string"},
+    {"csv_column": "dept", "json_field": "department", "type": "string"},
+    {"csv_column": "salary", "json_field": "annualSalary", "type": "float"},
+    {"csv_column": "years_exp", "json_field": "yearsExperience", "type": "integer"},
+    {"csv_column": "is_manager", "json_field": "isManager", "type": "boolean"}
+  ]
+}

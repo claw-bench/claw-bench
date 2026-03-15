@@ -1,0 +1,1082 @@
+[
+  {
+    "id": 1,
+    "from": "edward.s@company.com",
+    "to": "diana.r@company.com",
+    "subject": "Q1 planning",
+    "date": "2026-03-27T08:47:00Z",
+    "message_id": "msg-0001",
+    "in_reply_to": null
+  },
+  {
+    "id": 2,
+    "from": "leo.v@vendor.io",
+    "to": "iris.n@client.co",
+    "subject": "Meeting notes",
+    "date": "2026-01-22T15:43:00Z",
+    "message_id": "msg-0002",
+    "in_reply_to": null
+  },
+  {
+    "id": 3,
+    "from": "bob.k@company.com",
+    "to": "edward.s@company.com",
+    "subject": "Q1 planning",
+    "date": "2026-03-21T11:01:00Z",
+    "message_id": "msg-0003",
+    "in_reply_to": null
+  },
+  {
+    "id": 4,
+    "from": "diana.r@company.com",
+    "to": "leo.v@vendor.io",
+    "subject": "Document review",
+    "date": "2026-03-10T14:35:00Z",
+    "message_id": "msg-0004",
+    "in_reply_to": null
+  },
+  {
+    "id": 5,
+    "from": "james.p@client.co",
+    "to": "edward.s@company.com",
+    "subject": "Schedule change",
+    "date": "2026-03-15T11:28:00Z",
+    "message_id": "msg-0005",
+    "in_reply_to": null
+  },
+  {
+    "id": 6,
+    "from": "leo.v@vendor.io",
+    "to": "grace.l@partner.com",
+    "subject": "Team sync",
+    "date": "2026-01-05T15:10:00Z",
+    "message_id": "msg-0006",
+    "in_reply_to": null
+  },
+  {
+    "id": 7,
+    "from": "frank.t@company.com",
+    "to": "bob.k@company.com",
+    "subject": "Meeting notes",
+    "date": "2026-02-09T09:48:00Z",
+    "message_id": "msg-0007",
+    "in_reply_to": null
+  },
+  {
+    "id": 8,
+    "from": "frank.t@company.com",
+    "to": "kate.q@vendor.io",
+    "subject": "Status report",
+    "date": "2026-02-22T08:54:00Z",
+    "message_id": "msg-0008",
+    "in_reply_to": null
+  },
+  {
+    "id": 9,
+    "from": "bob.k@company.com",
+    "to": "henry.m@partner.com",
+    "subject": "Meeting notes",
+    "date": "2026-01-10T15:34:00Z",
+    "message_id": "msg-0009",
+    "in_reply_to": null
+  },
+  {
+    "id": 10,
+    "from": "james.p@client.co",
+    "to": "frank.t@company.com",
+    "subject": "Release planning",
+    "date": "2026-03-16T10:40:00Z",
+    "message_id": "msg-0010",
+    "in_reply_to": null
+  },
+  {
+    "id": 11,
+    "from": "kate.q@vendor.io",
+    "to": "diana.r@company.com",
+    "subject": "Meeting notes",
+    "date": "2026-01-29T15:02:00Z",
+    "message_id": "msg-0011",
+    "in_reply_to": null
+  },
+  {
+    "id": 12,
+    "from": "edward.s@company.com",
+    "to": "iris.n@client.co",
+    "subject": "Team sync",
+    "date": "2026-02-03T17:24:00Z",
+    "message_id": "msg-0012",
+    "in_reply_to": null
+  },
+  {
+    "id": 13,
+    "from": "kate.q@vendor.io",
+    "to": "edward.s@company.com",
+    "subject": "Code review request",
+    "date": "2026-01-25T11:13:00Z",
+    "message_id": "msg-0013",
+    "in_reply_to": null
+  },
+  {
+    "id": 14,
+    "from": "carol.j@company.com",
+    "to": "james.p@client.co",
+    "subject": "Budget review",
+    "date": "2026-03-28T08:40:00Z",
+    "message_id": "msg-0014",
+    "in_reply_to": null
+  },
+  {
+    "id": 15,
+    "from": "kate.q@vendor.io",
+    "to": "iris.n@client.co",
+    "subject": "Schedule change",
+    "date": "2026-01-05T22:51:00Z",
+    "message_id": "msg-0015",
+    "in_reply_to": "msg-0006"
+  },
+  {
+    "id": 16,
+    "from": "frank.t@company.com",
+    "to": "henry.m@partner.com",
+    "subject": "Follow-up",
+    "date": "2026-03-10T19:55:00Z",
+    "message_id": "msg-0016",
+    "in_reply_to": "msg-0004"
+  },
+  {
+    "id": 17,
+    "from": "grace.l@partner.com",
+    "to": "leo.v@vendor.io",
+    "subject": "Status report",
+    "date": "2026-02-14T09:31:00Z",
+    "message_id": "msg-0017",
+    "in_reply_to": null
+  },
+  {
+    "id": 18,
+    "from": "iris.n@client.co",
+    "to": "edward.s@company.com",
+    "subject": "Client feedback",
+    "date": "2026-01-22T10:35:00Z",
+    "message_id": "msg-0018",
+    "in_reply_to": null
+  },
+  {
+    "id": 19,
+    "from": "carol.j@company.com",
+    "to": "james.p@client.co",
+    "subject": "Schedule change",
+    "date": "2026-03-20T11:14:00Z",
+    "message_id": "msg-0019",
+    "in_reply_to": null
+  },
+  {
+    "id": 20,
+    "from": "kate.q@vendor.io",
+    "to": "carol.j@company.com",
+    "subject": "Client feedback",
+    "date": "2026-01-11T17:09:00Z",
+    "message_id": "msg-0020",
+    "in_reply_to": null
+  },
+  {
+    "id": 21,
+    "from": "james.p@client.co",
+    "to": "henry.m@partner.com",
+    "subject": "Sprint retrospective",
+    "date": "2026-03-22T08:24:00Z",
+    "message_id": "msg-0021",
+    "in_reply_to": null
+  },
+  {
+    "id": 22,
+    "from": "kate.q@vendor.io",
+    "to": "iris.n@client.co",
+    "subject": "Schedule change",
+    "date": "2026-01-06T15:07:00Z",
+    "message_id": "msg-0022",
+    "in_reply_to": null
+  },
+  {
+    "id": 23,
+    "from": "grace.l@partner.com",
+    "to": "carol.j@company.com",
+    "subject": "Document review",
+    "date": "2026-03-28T10:18:00Z",
+    "message_id": "msg-0023",
+    "in_reply_to": null
+  },
+  {
+    "id": 24,
+    "from": "carol.j@company.com",
+    "to": "james.p@client.co",
+    "subject": "Action items",
+    "date": "2026-02-07T20:48:00Z",
+    "message_id": "msg-0024",
+    "in_reply_to": null
+  },
+  {
+    "id": 25,
+    "from": "iris.n@client.co",
+    "to": "kate.q@vendor.io",
+    "subject": "Budget review",
+    "date": "2026-03-11T02:55:00Z",
+    "message_id": "msg-0025",
+    "in_reply_to": "msg-0016"
+  },
+  {
+    "id": 26,
+    "from": "iris.n@client.co",
+    "to": "alice.w@company.com",
+    "subject": "Design review",
+    "date": "2026-03-15T19:59:00Z",
+    "message_id": "msg-0026",
+    "in_reply_to": null
+  },
+  {
+    "id": 27,
+    "from": "edward.s@company.com",
+    "to": "diana.r@company.com",
+    "subject": "Meeting notes",
+    "date": "2026-03-11T04:05:00Z",
+    "message_id": "msg-0027",
+    "in_reply_to": "msg-0025"
+  },
+  {
+    "id": 28,
+    "from": "iris.n@client.co",
+    "to": "carol.j@company.com",
+    "subject": "Budget review",
+    "date": "2026-03-28T15:29:00Z",
+    "message_id": "msg-0028",
+    "in_reply_to": "msg-0023"
+  },
+  {
+    "id": 29,
+    "from": "grace.l@partner.com",
+    "to": "diana.r@company.com",
+    "subject": "Schedule change",
+    "date": "2026-02-07T13:38:00Z",
+    "message_id": "msg-0029",
+    "in_reply_to": null
+  },
+  {
+    "id": 30,
+    "from": "grace.l@partner.com",
+    "to": "leo.v@vendor.io",
+    "subject": "Design review",
+    "date": "2026-04-03T09:19:00Z",
+    "message_id": "msg-0030",
+    "in_reply_to": null
+  },
+  {
+    "id": 31,
+    "from": "diana.r@company.com",
+    "to": "bob.k@company.com",
+    "subject": "Release planning",
+    "date": "2026-03-12T12:15:00Z",
+    "message_id": "msg-0031",
+    "in_reply_to": null
+  },
+  {
+    "id": 32,
+    "from": "alice.w@company.com",
+    "to": "carol.j@company.com",
+    "subject": "Project update",
+    "date": "2026-03-16T09:14:00Z",
+    "message_id": "msg-0032",
+    "in_reply_to": null
+  },
+  {
+    "id": 33,
+    "from": "frank.t@company.com",
+    "to": "bob.k@company.com",
+    "subject": "Status report",
+    "date": "2026-02-03T08:02:00Z",
+    "message_id": "msg-0033",
+    "in_reply_to": null
+  },
+  {
+    "id": 34,
+    "from": "carol.j@company.com",
+    "to": "kate.q@vendor.io",
+    "subject": "Q1 planning",
+    "date": "2026-03-31T12:34:00Z",
+    "message_id": "msg-0034",
+    "in_reply_to": null
+  },
+  {
+    "id": 35,
+    "from": "bob.k@company.com",
+    "to": "carol.j@company.com",
+    "subject": "Team sync",
+    "date": "2026-03-06T16:12:00Z",
+    "message_id": "msg-0035",
+    "in_reply_to": null
+  },
+  {
+    "id": 36,
+    "from": "leo.v@vendor.io",
+    "to": "alice.w@company.com",
+    "subject": "Code review request",
+    "date": "2026-02-28T11:55:00Z",
+    "message_id": "msg-0036",
+    "in_reply_to": null
+  },
+  {
+    "id": 37,
+    "from": "frank.t@company.com",
+    "to": "bob.k@company.com",
+    "subject": "Design review",
+    "date": "2026-03-28T15:22:00Z",
+    "message_id": "msg-0037",
+    "in_reply_to": "msg-0023"
+  },
+  {
+    "id": 38,
+    "from": "henry.m@partner.com",
+    "to": "diana.r@company.com",
+    "subject": "Meeting notes",
+    "date": "2026-01-22T11:17:00Z",
+    "message_id": "msg-0038",
+    "in_reply_to": null
+  },
+  {
+    "id": 39,
+    "from": "iris.n@client.co",
+    "to": "bob.k@company.com",
+    "subject": "Project update",
+    "date": "2026-02-28T19:33:00Z",
+    "message_id": "msg-0039",
+    "in_reply_to": "msg-0036"
+  },
+  {
+    "id": 40,
+    "from": "diana.r@company.com",
+    "to": "carol.j@company.com",
+    "subject": "Design review",
+    "date": "2026-01-16T18:54:00Z",
+    "message_id": "msg-0040",
+    "in_reply_to": null
+  },
+  {
+    "id": 41,
+    "from": "alice.w@company.com",
+    "to": "diana.r@company.com",
+    "subject": "Client feedback",
+    "date": "2026-02-01T17:57:00Z",
+    "message_id": "msg-0041",
+    "in_reply_to": null
+  },
+  {
+    "id": 42,
+    "from": "henry.m@partner.com",
+    "to": "edward.s@company.com",
+    "subject": "Document review",
+    "date": "2026-02-07T18:50:00Z",
+    "message_id": "msg-0042",
+    "in_reply_to": null
+  },
+  {
+    "id": 43,
+    "from": "carol.j@company.com",
+    "to": "edward.s@company.com",
+    "subject": "Document review",
+    "date": "2026-02-08T02:14:00Z",
+    "message_id": "msg-0043",
+    "in_reply_to": "msg-0024"
+  },
+  {
+    "id": 44,
+    "from": "alice.w@company.com",
+    "to": "bob.k@company.com",
+    "subject": "Sprint retrospective",
+    "date": "2026-03-15T08:20:00Z",
+    "message_id": "msg-0044",
+    "in_reply_to": null
+  },
+  {
+    "id": 45,
+    "from": "bob.k@company.com",
+    "to": "diana.r@company.com",
+    "subject": "Action items",
+    "date": "2026-03-11T10:20:00Z",
+    "message_id": "msg-0045",
+    "in_reply_to": "msg-0027"
+  },
+  {
+    "id": 46,
+    "from": "james.p@client.co",
+    "to": "diana.r@company.com",
+    "subject": "Project update",
+    "date": "2026-02-04T11:56:00Z",
+    "message_id": "msg-0046",
+    "in_reply_to": null
+  },
+  {
+    "id": 47,
+    "from": "james.p@client.co",
+    "to": "kate.q@vendor.io",
+    "subject": "Follow-up",
+    "date": "2026-03-25T08:42:00Z",
+    "message_id": "msg-0047",
+    "in_reply_to": null
+  },
+  {
+    "id": 48,
+    "from": "frank.t@company.com",
+    "to": "diana.r@company.com",
+    "subject": "Code review request",
+    "date": "2026-03-16T15:27:00Z",
+    "message_id": "msg-0048",
+    "in_reply_to": "msg-0032"
+  },
+  {
+    "id": 49,
+    "from": "bob.k@company.com",
+    "to": "alice.w@company.com",
+    "subject": "Release planning",
+    "date": "2026-02-12T12:59:00Z",
+    "message_id": "msg-0049",
+    "in_reply_to": null
+  },
+  {
+    "id": 50,
+    "from": "iris.n@client.co",
+    "to": "edward.s@company.com",
+    "subject": "Follow-up",
+    "date": "2026-02-01T19:02:00Z",
+    "message_id": "msg-0050",
+    "in_reply_to": "msg-0041"
+  },
+  {
+    "id": 51,
+    "from": "henry.m@partner.com",
+    "to": "james.p@client.co",
+    "subject": "Release planning",
+    "date": "2026-02-05T11:10:00Z",
+    "message_id": "msg-0051",
+    "in_reply_to": null
+  },
+  {
+    "id": 52,
+    "from": "iris.n@client.co",
+    "to": "edward.s@company.com",
+    "subject": "Meeting notes",
+    "date": "2026-03-29T13:42:00Z",
+    "message_id": "msg-0052",
+    "in_reply_to": null
+  },
+  {
+    "id": 53,
+    "from": "bob.k@company.com",
+    "to": "james.p@client.co",
+    "subject": "Q1 planning",
+    "date": "2026-02-08T00:29:00Z",
+    "message_id": "msg-0053",
+    "in_reply_to": "msg-0042"
+  },
+  {
+    "id": 54,
+    "from": "edward.s@company.com",
+    "to": "james.p@client.co",
+    "subject": "Follow-up",
+    "date": "2026-02-17T09:40:00Z",
+    "message_id": "msg-0054",
+    "in_reply_to": null
+  },
+  {
+    "id": 55,
+    "from": "edward.s@company.com",
+    "to": "alice.w@company.com",
+    "subject": "Status report",
+    "date": "2026-03-01T01:29:00Z",
+    "message_id": "msg-0055",
+    "in_reply_to": "msg-0039"
+  },
+  {
+    "id": 56,
+    "from": "leo.v@vendor.io",
+    "to": "grace.l@partner.com",
+    "subject": "Meeting notes",
+    "date": "2026-01-25T15:35:00Z",
+    "message_id": "msg-0056",
+    "in_reply_to": null
+  },
+  {
+    "id": 57,
+    "from": "carol.j@company.com",
+    "to": "james.p@client.co",
+    "subject": "Sprint retrospective",
+    "date": "2026-03-16T20:55:00Z",
+    "message_id": "msg-0057",
+    "in_reply_to": "msg-0048"
+  },
+  {
+    "id": 58,
+    "from": "edward.s@company.com",
+    "to": "grace.l@partner.com",
+    "subject": "Schedule change",
+    "date": "2026-01-23T11:02:00Z",
+    "message_id": "msg-0058",
+    "in_reply_to": null
+  },
+  {
+    "id": 59,
+    "from": "kate.q@vendor.io",
+    "to": "diana.r@company.com",
+    "subject": "Team sync",
+    "date": "2026-01-10T18:13:00Z",
+    "message_id": "msg-0059",
+    "in_reply_to": null
+  },
+  {
+    "id": 60,
+    "from": "james.p@client.co",
+    "to": "carol.j@company.com",
+    "subject": "Q1 planning",
+    "date": "2026-03-17T17:26:00Z",
+    "message_id": "msg-0060",
+    "in_reply_to": null
+  },
+  {
+    "id": 61,
+    "from": "carol.j@company.com",
+    "to": "henry.m@partner.com",
+    "subject": "Follow-up",
+    "date": "2026-02-05T18:20:00Z",
+    "message_id": "msg-0061",
+    "in_reply_to": "msg-0051"
+  },
+  {
+    "id": 62,
+    "from": "leo.v@vendor.io",
+    "to": "diana.r@company.com",
+    "subject": "Action items",
+    "date": "2026-03-11T14:05:00Z",
+    "message_id": "msg-0062",
+    "in_reply_to": "msg-0045"
+  },
+  {
+    "id": 63,
+    "from": "diana.r@company.com",
+    "to": "iris.n@client.co",
+    "subject": "Action items",
+    "date": "2026-01-09T17:14:00Z",
+    "message_id": "msg-0063",
+    "in_reply_to": null
+  },
+  {
+    "id": 64,
+    "from": "diana.r@company.com",
+    "to": "henry.m@partner.com",
+    "subject": "Action items",
+    "date": "2026-02-03T09:42:00Z",
+    "message_id": "msg-0064",
+    "in_reply_to": null
+  },
+  {
+    "id": 65,
+    "from": "frank.t@company.com",
+    "to": "leo.v@vendor.io",
+    "subject": "Code review request",
+    "date": "2026-01-13T20:17:00Z",
+    "message_id": "msg-0065",
+    "in_reply_to": null
+  },
+  {
+    "id": 66,
+    "from": "bob.k@company.com",
+    "to": "frank.t@company.com",
+    "subject": "Meeting notes",
+    "date": "2026-02-17T10:29:00Z",
+    "message_id": "msg-0066",
+    "in_reply_to": "msg-0054"
+  },
+  {
+    "id": 67,
+    "from": "frank.t@company.com",
+    "to": "henry.m@partner.com",
+    "subject": "Sprint retrospective",
+    "date": "2026-03-22T11:46:00Z",
+    "message_id": "msg-0067",
+    "in_reply_to": null
+  },
+  {
+    "id": 68,
+    "from": "diana.r@company.com",
+    "to": "frank.t@company.com",
+    "subject": "Sprint retrospective",
+    "date": "2026-02-05T18:50:00Z",
+    "message_id": "msg-0068",
+    "in_reply_to": "msg-0061"
+  },
+  {
+    "id": 69,
+    "from": "leo.v@vendor.io",
+    "to": "kate.q@vendor.io",
+    "subject": "Code review request",
+    "date": "2026-03-11T15:10:00Z",
+    "message_id": "msg-0069",
+    "in_reply_to": "msg-0062"
+  },
+  {
+    "id": 70,
+    "from": "bob.k@company.com",
+    "to": "frank.t@company.com",
+    "subject": "Code review request",
+    "date": "2026-02-16T14:42:00Z",
+    "message_id": "msg-0070",
+    "in_reply_to": null
+  },
+  {
+    "id": 71,
+    "from": "edward.s@company.com",
+    "to": "james.p@client.co",
+    "subject": "Client feedback",
+    "date": "2026-02-03T15:52:00Z",
+    "message_id": "msg-0071",
+    "in_reply_to": "msg-0064"
+  },
+  {
+    "id": 72,
+    "from": "james.p@client.co",
+    "to": "kate.q@vendor.io",
+    "subject": "Sprint retrospective",
+    "date": "2026-04-01T15:11:00Z",
+    "message_id": "msg-0072",
+    "in_reply_to": null
+  },
+  {
+    "id": 73,
+    "from": "grace.l@partner.com",
+    "to": "kate.q@vendor.io",
+    "subject": "Team sync",
+    "date": "2026-01-05T10:13:00Z",
+    "message_id": "msg-0073",
+    "in_reply_to": null
+  },
+  {
+    "id": 74,
+    "from": "diana.r@company.com",
+    "to": "james.p@client.co",
+    "subject": "Follow-up",
+    "date": "2026-03-05T11:43:00Z",
+    "message_id": "msg-0074",
+    "in_reply_to": null
+  },
+  {
+    "id": 75,
+    "from": "iris.n@client.co",
+    "to": "leo.v@vendor.io",
+    "subject": "Team sync",
+    "date": "2026-01-26T14:18:00Z",
+    "message_id": "msg-0075",
+    "in_reply_to": null
+  },
+  {
+    "id": 76,
+    "from": "diana.r@company.com",
+    "to": "leo.v@vendor.io",
+    "subject": "Schedule change",
+    "date": "2026-01-16T16:48:00Z",
+    "message_id": "msg-0076",
+    "in_reply_to": null
+  },
+  {
+    "id": 77,
+    "from": "diana.r@company.com",
+    "to": "iris.n@client.co",
+    "subject": "Schedule change",
+    "date": "2026-01-30T09:02:00Z",
+    "message_id": "msg-0077",
+    "in_reply_to": null
+  },
+  {
+    "id": 78,
+    "from": "kate.q@vendor.io",
+    "to": "james.p@client.co",
+    "subject": "Client feedback",
+    "date": "2026-02-16T19:25:00Z",
+    "message_id": "msg-0078",
+    "in_reply_to": "msg-0070"
+  },
+  {
+    "id": 79,
+    "from": "alice.w@company.com",
+    "to": "carol.j@company.com",
+    "subject": "Q1 planning",
+    "date": "2026-02-05T09:44:00Z",
+    "message_id": "msg-0079",
+    "in_reply_to": null
+  },
+  {
+    "id": 80,
+    "from": "iris.n@client.co",
+    "to": "henry.m@partner.com",
+    "subject": "Meeting notes",
+    "date": "2026-03-22T19:30:00Z",
+    "message_id": "msg-0080",
+    "in_reply_to": "msg-0067"
+  },
+  {
+    "id": 81,
+    "from": "kate.q@vendor.io",
+    "to": "iris.n@client.co",
+    "subject": "Release planning",
+    "date": "2026-03-04T09:29:00Z",
+    "message_id": "msg-0081",
+    "in_reply_to": null
+  },
+  {
+    "id": 82,
+    "from": "henry.m@partner.com",
+    "to": "kate.q@vendor.io",
+    "subject": "Follow-up",
+    "date": "2026-02-14T19:57:00Z",
+    "message_id": "msg-0082",
+    "in_reply_to": null
+  },
+  {
+    "id": 83,
+    "from": "iris.n@client.co",
+    "to": "henry.m@partner.com",
+    "subject": "Document review",
+    "date": "2026-03-10T11:58:00Z",
+    "message_id": "msg-0083",
+    "in_reply_to": null
+  },
+  {
+    "id": 84,
+    "from": "diana.r@company.com",
+    "to": "leo.v@vendor.io",
+    "subject": "Code review request",
+    "date": "2026-03-23T00:08:00Z",
+    "message_id": "msg-0084",
+    "in_reply_to": "msg-0080"
+  },
+  {
+    "id": 85,
+    "from": "leo.v@vendor.io",
+    "to": "edward.s@company.com",
+    "subject": "Follow-up",
+    "date": "2026-01-26T17:31:00Z",
+    "message_id": "msg-0085",
+    "in_reply_to": "msg-0075"
+  },
+  {
+    "id": 86,
+    "from": "diana.r@company.com",
+    "to": "henry.m@partner.com",
+    "subject": "Document review",
+    "date": "2026-03-15T08:09:00Z",
+    "message_id": "msg-0086",
+    "in_reply_to": null
+  },
+  {
+    "id": 87,
+    "from": "frank.t@company.com",
+    "to": "james.p@client.co",
+    "subject": "Project update",
+    "date": "2026-02-01T08:26:00Z",
+    "message_id": "msg-0087",
+    "in_reply_to": null
+  },
+  {
+    "id": 88,
+    "from": "james.p@client.co",
+    "to": "alice.w@company.com",
+    "subject": "Schedule change",
+    "date": "2026-01-31T16:24:00Z",
+    "message_id": "msg-0088",
+    "in_reply_to": null
+  },
+  {
+    "id": 89,
+    "from": "frank.t@company.com",
+    "to": "edward.s@company.com",
+    "subject": "Action items",
+    "date": "2026-03-19T11:00:00Z",
+    "message_id": "msg-0089",
+    "in_reply_to": null
+  },
+  {
+    "id": 90,
+    "from": "iris.n@client.co",
+    "to": "kate.q@vendor.io",
+    "subject": "Design review",
+    "date": "2026-02-27T13:47:00Z",
+    "message_id": "msg-0090",
+    "in_reply_to": null
+  },
+  {
+    "id": 91,
+    "from": "alice.w@company.com",
+    "to": "henry.m@partner.com",
+    "subject": "Code review request",
+    "date": "2026-02-02T10:31:00Z",
+    "message_id": "msg-0091",
+    "in_reply_to": null
+  },
+  {
+    "id": 92,
+    "from": "henry.m@partner.com",
+    "to": "carol.j@company.com",
+    "subject": "Sprint retrospective",
+    "date": "2026-02-25T15:53:00Z",
+    "message_id": "msg-0092",
+    "in_reply_to": null
+  },
+  {
+    "id": 93,
+    "from": "james.p@client.co",
+    "to": "leo.v@vendor.io",
+    "subject": "Action items",
+    "date": "2026-03-15T09:48:00Z",
+    "message_id": "msg-0093",
+    "in_reply_to": "msg-0086"
+  },
+  {
+    "id": 94,
+    "from": "grace.l@partner.com",
+    "to": "frank.t@company.com",
+    "subject": "Schedule change",
+    "date": "2026-03-23T03:30:00Z",
+    "message_id": "msg-0094",
+    "in_reply_to": "msg-0084"
+  },
+  {
+    "id": 95,
+    "from": "grace.l@partner.com",
+    "to": "edward.s@company.com",
+    "subject": "Design review",
+    "date": "2026-02-22T10:53:00Z",
+    "message_id": "msg-0095",
+    "in_reply_to": null
+  },
+  {
+    "id": 96,
+    "from": "frank.t@company.com",
+    "to": "diana.r@company.com",
+    "subject": "Schedule change",
+    "date": "2026-01-07T15:03:00Z",
+    "message_id": "msg-0096",
+    "in_reply_to": null
+  },
+  {
+    "id": 97,
+    "from": "diana.r@company.com",
+    "to": "edward.s@company.com",
+    "subject": "Release planning",
+    "date": "2026-03-29T07:01:00Z",
+    "message_id": "msg-0097",
+    "in_reply_to": null
+  },
+  {
+    "id": 98,
+    "from": "kate.q@vendor.io",
+    "to": "bob.k@company.com",
+    "subject": "Q1 planning",
+    "date": "2026-01-24T09:30:00Z",
+    "message_id": "msg-0098",
+    "in_reply_to": null
+  },
+  {
+    "id": 99,
+    "from": "frank.t@company.com",
+    "to": "carol.j@company.com",
+    "subject": "Document review",
+    "date": "2026-03-05T15:49:00Z",
+    "message_id": "msg-0099",
+    "in_reply_to": null
+  },
+  {
+    "id": 100,
+    "from": "edward.s@company.com",
+    "to": "bob.k@company.com",
+    "subject": "Follow-up",
+    "date": "2026-01-19T16:10:00Z",
+    "message_id": "msg-0100",
+    "in_reply_to": null
+  },
+  {
+    "id": 101,
+    "from": "grace.l@partner.com",
+    "to": "henry.m@partner.com",
+    "subject": "Q1 planning",
+    "date": "2026-02-13T14:58:00Z",
+    "message_id": "msg-0101",
+    "in_reply_to": null
+  },
+  {
+    "id": 102,
+    "from": "kate.q@vendor.io",
+    "to": "diana.r@company.com",
+    "subject": "Code review request",
+    "date": "2026-02-02T18:16:00Z",
+    "message_id": "msg-0102",
+    "in_reply_to": "msg-0091"
+  },
+  {
+    "id": 103,
+    "from": "james.p@client.co",
+    "to": "alice.w@company.com",
+    "subject": "Client feedback",
+    "date": "2026-03-22T16:50:00Z",
+    "message_id": "msg-0103",
+    "in_reply_to": null
+  },
+  {
+    "id": 104,
+    "from": "kate.q@vendor.io",
+    "to": "frank.t@company.com",
+    "subject": "Design review",
+    "date": "2026-03-29T14:32:00Z",
+    "message_id": "msg-0104",
+    "in_reply_to": "msg-0097"
+  },
+  {
+    "id": 105,
+    "from": "kate.q@vendor.io",
+    "to": "henry.m@partner.com",
+    "subject": "Client feedback",
+    "date": "2026-01-18T11:23:00Z",
+    "message_id": "msg-0105",
+    "in_reply_to": null
+  },
+  {
+    "id": 106,
+    "from": "edward.s@company.com",
+    "to": "kate.q@vendor.io",
+    "subject": "Sprint retrospective",
+    "date": "2026-01-27T15:41:00Z",
+    "message_id": "msg-0106",
+    "in_reply_to": null
+  },
+  {
+    "id": 107,
+    "from": "leo.v@vendor.io",
+    "to": "james.p@client.co",
+    "subject": "Follow-up",
+    "date": "2026-03-23T11:05:00Z",
+    "message_id": "msg-0107",
+    "in_reply_to": "msg-0094"
+  },
+  {
+    "id": 108,
+    "from": "diana.r@company.com",
+    "to": "iris.n@client.co",
+    "subject": "Code review request",
+    "date": "2026-01-16T10:28:00Z",
+    "message_id": "msg-0108",
+    "in_reply_to": null
+  },
+  {
+    "id": 109,
+    "from": "frank.t@company.com",
+    "to": "carol.j@company.com",
+    "subject": "Team sync",
+    "date": "2026-02-22T10:31:00Z",
+    "message_id": "msg-0109",
+    "in_reply_to": null
+  },
+  {
+    "id": 110,
+    "from": "james.p@client.co",
+    "to": "edward.s@company.com",
+    "subject": "Sprint retrospective",
+    "date": "2026-02-07T10:56:00Z",
+    "message_id": "msg-0110",
+    "in_reply_to": null
+  },
+  {
+    "id": 111,
+    "from": "grace.l@partner.com",
+    "to": "iris.n@client.co",
+    "subject": "Q1 planning",
+    "date": "2026-01-29T08:46:00Z",
+    "message_id": "msg-0111",
+    "in_reply_to": null
+  },
+  {
+    "id": 112,
+    "from": "henry.m@partner.com",
+    "to": "iris.n@client.co",
+    "subject": "Meeting notes",
+    "date": "2026-04-03T12:45:00Z",
+    "message_id": "msg-0112",
+    "in_reply_to": null
+  },
+  {
+    "id": 113,
+    "from": "diana.r@company.com",
+    "to": "frank.t@company.com",
+    "subject": "Team sync",
+    "date": "2026-02-11T09:44:00Z",
+    "message_id": "msg-0113",
+    "in_reply_to": null
+  },
+  {
+    "id": 114,
+    "from": "grace.l@partner.com",
+    "to": "james.p@client.co",
+    "subject": "Document review",
+    "date": "2026-03-06T13:22:00Z",
+    "message_id": "msg-0114",
+    "in_reply_to": null
+  },
+  {
+    "id": 115,
+    "from": "diana.r@company.com",
+    "to": "bob.k@company.com",
+    "subject": "Team sync",
+    "date": "2026-03-04T10:16:00Z",
+    "message_id": "msg-0115",
+    "in_reply_to": null
+  },
+  {
+    "id": 116,
+    "from": "leo.v@vendor.io",
+    "to": "carol.j@company.com",
+    "subject": "Document review",
+    "date": "2026-01-29T11:37:00Z",
+    "message_id": "msg-0116",
+    "in_reply_to": "msg-0111"
+  },
+  {
+    "id": 117,
+    "from": "james.p@client.co",
+    "to": "edward.s@company.com",
+    "subject": "Action items",
+    "date": "2026-03-21T21:33:00Z",
+    "message_id": "msg-0117",
+    "in_reply_to": null
+  },
+  {
+    "id": 118,
+    "from": "carol.j@company.com",
+    "to": "frank.t@company.com",
+    "subject": "Status report",
+    "date": "2026-03-04T11:50:00Z",
+    "message_id": "msg-0118",
+    "in_reply_to": "msg-0115"
+  },
+  {
+    "id": 119,
+    "from": "edward.s@company.com",
+    "to": "carol.j@company.com",
+    "subject": "Schedule change",
+    "date": "2026-01-10T20:35:00Z",
+    "message_id": "msg-0119",
+    "in_reply_to": null
+  },
+  {
+    "id": 120,
+    "from": "james.p@client.co",
+    "to": "edward.s@company.com",
+    "subject": "Design review",
+    "date": "2026-03-08T08:00:00Z",
+    "message_id": "msg-0120",
+    "in_reply_to": null
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "pattern": "(\\d{2})/(\\d{2})/(\\d{4})",
+    "replacement": "\\3-\\1-\\2",
+    "description": "Convert dates from MM/DD/YYYY to YYYY-MM-DD format"
+  },
+  {
+    "pattern": "oldcompany\\.com",
+    "replacement": "newcompany.io",
+    "description": "Update email domain from oldcompany.com to newcompany.io"
+  },
+  {
+    "pattern": "/api/v1/",
+    "replacement": "/api/v2/",
+    "description": "Upgrade API version from v1 to v2"
+  },
+  {
+    "pattern": "TODO:",
+    "replacement": "[ ]",
+    "description": "Convert TODO markers to checkbox format"
+  },
+  {
+    "pattern": "FIXME:",
+    "replacement": "[!]",
+    "description": "Convert FIXME markers to alert format"
+  },
+  {
+    "pattern": "(\\d+)ms",
+    "replacement": "\\1 ms",
+    "description": "Add space between number and ms unit"
+  }
+]

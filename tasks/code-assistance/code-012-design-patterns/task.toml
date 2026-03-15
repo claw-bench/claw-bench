@@ -1,0 +1,10 @@
+id = "code-012"
+title = "Implement Design Patterns"
+domain = "code-assistance"
+level = "L3"
+description = "Implement Singleton and Observer design patterns with proper instance management, subscriber notification, and thread safety"
+timeout = 180
+capabilities = ["code-write"]
+skills_allowed = true
+tags = ["python", "design-patterns", "classes"]
+capability_types = ["reasoning", "tool-use"]

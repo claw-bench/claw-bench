@@ -1,0 +1,10 @@
+id = "wfl-006"
+title = "Event-Driven Workflow with Rule Matching"
+domain = "workflow-automation"
+level = "L2"
+description = "Process a sequence of events through a rule engine, matching each event to applicable rules and logging the triggered actions"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["event-driven", "rules", "matching", "automation"]
+capability_types = ["reasoning", "tool-use"]

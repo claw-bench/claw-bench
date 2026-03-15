@@ -1,0 +1,10 @@
+id = "wfl-004"
+title = "Retry Logic with Backoff for Job Processing"
+domain = "workflow-automation"
+level = "L2"
+description = "Process a set of jobs where some are configured to fail a certain number of times, implementing retry logic with a maximum of 3 retries and logging all attempts"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["retry", "error-handling", "jobs", "backoff"]
+capability_types = ["reasoning", "tool-use"]

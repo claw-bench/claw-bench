@@ -1,0 +1,58 @@
+[
+  {
+    "id": "C001",
+    "name": "Acme Corporation",
+    "email": "orders@acme.com",
+    "tier": "platinum",
+    "address": "123 Business Ave, New York, NY 10001"
+  },
+  {
+    "id": "C002",
+    "name": "TechStart Inc",
+    "email": "purchasing@techstart.io",
+    "tier": "gold",
+    "address": "456 Innovation Blvd, San Francisco, CA 94102"
+  },
+  {
+    "id": "C003",
+    "name": "Green Valley Co",
+    "email": "admin@greenvalley.com",
+    "tier": "silver",
+    "address": "789 Oak Street, Portland, OR 97201"
+  },
+  {
+    "id": "C004",
+    "name": "DataFlow Systems",
+    "email": "ops@dataflow.net",
+    "tier": "gold",
+    "address": "321 Data Drive, Austin, TX 73301"
+  },
+  {
+    "id": "C005",
+    "name": "Creative Labs",
+    "email": "hello@creativelabs.co",
+    "tier": "bronze",
+    "address": "654 Design Way, Seattle, WA 98101"
+  },
+  {
+    "id": "C006",
+    "name": "Summit Enterprises",
+    "email": "procurement@summit.biz",
+    "tier": "silver",
+    "address": "987 Peak Road, Denver, CO 80201"
+  },
+  {
+    "id": "C007",
+    "name": "Pacific Trading",
+    "email": "orders@pacifictrading.com",
+    "tier": "platinum",
+    "address": "147 Harbor View, Los Angeles, CA 90001"
+  },
+  {
+    "id": "C008",
+    "name": "NorthStar Solutions",
+    "email": "buy@northstar.org",
+    "tier": "bronze",
+    "address": "258 Polar Street, Chicago, IL 60601"
+  }
+]

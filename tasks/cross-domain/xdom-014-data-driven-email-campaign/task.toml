@@ -1,0 +1,10 @@
+id = "xdom-014"
+title = "Data-Driven Email Campaign"
+domain = "cross-domain"
+level = "L4"
+description = "Generate a personalized email campaign from customer data, email templates, and campaign rules. Requires segment filtering, template variable substitution, A/B test variant generation, and production of summary statistics."
+timeout = 600
+capabilities = ["file-read", "file-write", "data-analysis", "text-generation", "template-processing"]
+skills_allowed = true
+tags = ["cross-domain", "email", "data-analysis", "template-processing", "L4"]
+capability_types = ["reasoning", "tool-use"]

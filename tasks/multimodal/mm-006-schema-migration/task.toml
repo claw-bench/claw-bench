@@ -1,0 +1,10 @@
+id = "mm-006"
+title = "Schema Migration"
+domain = "multimodal"
+level = "L3"
+description = "Given an old and new SQL schema, generate a migration script with ALTER TABLE statements that transforms the old schema into the new one"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+capability_types = ["multimodal", "reasoning"]
+tags = ["sql", "migration", "schema", "multimodal"]

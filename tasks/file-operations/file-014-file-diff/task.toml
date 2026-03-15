@@ -1,0 +1,10 @@
+id = "file-014"
+title = "File Comparison and Diff"
+domain = "file-operations"
+level = "L3"
+description = "Compare two text files and generate a diff report showing changes"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["diff", "comparison", "text-processing", "report"]
+capability_types = ["tool-use"]

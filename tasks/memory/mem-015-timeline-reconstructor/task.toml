@@ -1,0 +1,10 @@
+id = "mem-015"
+title = "Timeline Reconstructor"
+domain = "memory"
+level = "L3"
+description = "Reconstruct a chronological timeline from text fragments with relative time references and a few absolute date anchors"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["timeline", "events", "ordering"]
+capability_types = ["memory", "reasoning"]

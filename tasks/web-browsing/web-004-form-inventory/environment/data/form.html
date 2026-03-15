@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+</head>
+<body>
+    <h1>Create Your Account</h1>
+    <form id="registration" action="/register" method="POST">
+        <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" name="first_name" required minlength="2" maxlength="50">
+        </div>
+
+        <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" id="last_name" name="last_name" required minlength="2" maxlength="50">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required minlength="8" maxlength="128" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" pattern="^\+?[\d\s-]{10,15}$">
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" min="18" max="120">
+        </div>
+
+        <div class="form-group">
+            <label for="country">Country</label>
+            <select id="country" name="country" required>
+                <option value="">Select a country</option>
+                <option value="us">United States</option>
+                <option value="uk">United Kingdom</option>
+                <option value="ca">Canada</option>
+                <option value="de">Germany</option>
+                <option value="jp">Japan</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="bio">Bio</label>
+            <textarea id="bio" name="bio" maxlength="500"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="newsletter">Subscribe to newsletter</label>
+            <input type="checkbox" id="newsletter" name="newsletter">
+        </div>
+
+        <div class="form-group">
+            <label for="terms">I agree to Terms of Service</label>
+            <input type="checkbox" id="terms" name="terms" required>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

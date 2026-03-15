@@ -1,0 +1,10 @@
+id = "xdom-005"
+title = "Requirements to Tests: Auth System Test Generation"
+domain = "cross-domain"
+level = "L3"
+description = "Read software requirements for a user authentication system and generate a test plan with test stub implementations covering all requirements."
+timeout = 300
+capabilities = ["file-read", "file-write", "code-generation"]
+skills_allowed = true
+tags = ["cross-domain", "testing", "requirements", "code-generation"]
+capability_types = ["reasoning", "tool-use"]

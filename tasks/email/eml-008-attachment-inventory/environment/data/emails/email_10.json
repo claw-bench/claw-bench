@@ -1,0 +1,10 @@
+{
+  "id": 10,
+  "from": "photos@company.com",
+  "subject": "Team Event Photos",
+  "date": "2026-03-10T17:00:00Z",
+  "attachments": [
+    {"filename": "team_photo.jpg", "size_bytes": 2300000, "content_type": "image/jpeg"},
+    {"filename": "event_video.mp4", "size_bytes": 15000000, "content_type": "video/mp4"}
+  ]
+}

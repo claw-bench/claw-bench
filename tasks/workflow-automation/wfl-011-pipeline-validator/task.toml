@@ -1,0 +1,10 @@
+id = "wfl-011"
+title = "CI/CD Pipeline Validator"
+domain = "workflow-automation"
+level = "L2"
+description = "Validate a CI/CD pipeline definition by checking for circular dependencies, missing dependencies, and duplicate job names"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["pipeline", "validation", "yaml"]
+capability_types = ["reasoning", "tool-use"]

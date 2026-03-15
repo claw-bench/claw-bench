@@ -1,0 +1,10 @@
+id = "sys-007"
+title = "Service Dependency Mapping"
+domain = "system-admin"
+level = "L2"
+description = "Parse service definitions with dependencies and produce a valid topological startup order"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["intermediate", "dependency", "topological-sort", "services", "json"]
+capability_types = ["reasoning", "tool-use"]

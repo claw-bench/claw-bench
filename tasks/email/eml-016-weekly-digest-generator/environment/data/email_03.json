@@ -1,0 +1,8 @@
+{
+  "from": "alice@company.com",
+  "to": "you@company.com",
+  "subject": "Team Lunch Friday",
+  "date": "2026-03-11",
+  "body": "Hey team,\n\nJust a reminder that we have a team lunch this Friday at 12:30 PM at the Italian place on 5th Street. Please RSVP by Thursday so I can make the reservation.\n\nCheers,\nAlice",
+  "read": true
+}

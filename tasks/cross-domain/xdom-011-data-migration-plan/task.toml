@@ -1,0 +1,10 @@
+id = "xdom-011"
+title = "Data Migration Plan"
+domain = "cross-domain"
+level = "L4"
+description = "Analyze source and target database schemas with sample data to produce a migration script, field mapping, validation report, and rollback plan."
+timeout = 600
+capabilities = ["file-read", "file-write", "code-generation", "analysis"]
+skills_allowed = true
+tags = ["cross-domain", "migration", "database", "L4"]
+capability_types = ["reasoning", "tool-use"]

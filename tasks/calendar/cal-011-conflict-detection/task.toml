@@ -1,0 +1,10 @@
+id = "cal-011"
+title = "Conflict Detection"
+domain = "calendar"
+level = "L3"
+description = "Detect scheduling conflicts and compute overlap durations"
+timeout = 240
+capabilities = ["calendar-read"]
+skills_allowed = true
+tags = ["advanced", "calendar", "conflict"]
+capability_types = ["reasoning", "tool-use"]

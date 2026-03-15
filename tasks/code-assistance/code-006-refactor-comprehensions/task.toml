@@ -1,0 +1,10 @@
+id = "code-006"
+title = "Refactor For-Loops to List Comprehensions"
+domain = "code-assistance"
+level = "L2"
+description = "Refactor four for-loop patterns in a data processing module to use list comprehensions while preserving identical output"
+timeout = 150
+capabilities = ["code-write"]
+skills_allowed = true
+tags = ["python", "refactoring", "comprehensions"]
+capability_types = ["reasoning", "tool-use"]

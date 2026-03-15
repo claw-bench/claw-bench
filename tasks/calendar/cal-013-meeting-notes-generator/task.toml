@@ -1,0 +1,10 @@
+id = "cal-013"
+title = "Meeting Notes Generator"
+domain = "calendar"
+level = "L3"
+description = "Generate structured meeting preparation notes from calendar and attendee data"
+timeout = 240
+capabilities = ["calendar-read"]
+skills_allowed = true
+tags = ["advanced", "calendar", "notes"]
+capability_types = ["reasoning", "tool-use"]

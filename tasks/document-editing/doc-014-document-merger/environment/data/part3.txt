@@ -1,0 +1,11 @@
+Key Findings
+The survey revealed several noteworthy trends in enterprise AI adoption:
+
+1. 78% of organizations have at least one AI project in production.
+2. Natural language processing is the most commonly deployed capability (62%).
+3. Average ROI for mature AI projects exceeds 150% over three years.
+4. Data quality remains the top challenge cited by 83% of respondents.
+5. 45% of organizations plan to double their AI investment by 2027.
+
+These findings suggest a maturing market with growing confidence in AI returns,
+tempered by persistent data infrastructure challenges.

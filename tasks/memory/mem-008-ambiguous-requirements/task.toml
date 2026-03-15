@@ -1,0 +1,10 @@
+id = "mem-008"
+title = "Ambiguous Requirements Clarification"
+domain = "memory"
+level = "L4"
+description = "Agent receives deliberately vague requirements and must produce a structured analysis identifying ambiguities"
+timeout = 300
+capabilities = ["file-write", "file-read"]
+skills_allowed = true
+capability_types = ["memory", "reasoning"]
+tags = ["memory", "ambiguity", "requirements", "analysis"]

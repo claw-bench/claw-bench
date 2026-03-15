@@ -1,0 +1,10 @@
+id = "comm-005"
+title = "Notification Routing"
+domain = "communication"
+level = "L2"
+description = "Route notifications to appropriate channels based on per-user preference rules"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["routing", "notifications", "preferences", "rules"]
+capability_types = ["collaboration", "reasoning"]

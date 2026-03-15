@@ -1,0 +1,10 @@
+id = "wfl-015"
+title = "Notification Dispatcher"
+domain = "workflow-automation"
+level = "L3"
+description = "Process events and route them to notification channels based on configurable routing rules"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["notifications", "dispatch", "routing"]
+capability_types = ["reasoning", "tool-use"]

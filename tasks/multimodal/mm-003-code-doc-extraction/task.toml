@@ -1,0 +1,10 @@
+id = "mm-003"
+title = "Code Documentation Extraction"
+domain = "multimodal"
+level = "L2"
+description = "Parse a Python source file and extract all docstrings into a structured Markdown documentation file with proper hierarchy for modules, classes, and functions"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+capability_types = ["multimodal", "reasoning"]
+tags = ["python", "documentation", "parsing", "markdown", "multimodal"]

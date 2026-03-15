@@ -1,0 +1,8 @@
+Dear {name},
+
+We are pleased to inform you that as a valued {role}, you are cordially invited to attend {event} on {date}.
+
+Your participation is important to us, and we look forward to seeing you there. Please confirm your attendance by replying to this message.
+
+Best regards,
+The Events Committee

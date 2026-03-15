@@ -1,0 +1,10 @@
+id = "doc-012"
+title = "Batch Find and Replace in Text"
+domain = "document-editing"
+level = "L1"
+description = "Apply multiple find-and-replace pairs from a JSON file to a text document"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["find-replace", "text", "batch"]
+capability_types = ["reasoning", "tool-use"]

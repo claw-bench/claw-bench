@@ -1,0 +1,10 @@
+id = "sys-011"
+title = "Disk Usage Analyzer"
+domain = "system-admin"
+level = "L2"
+description = "Parse disk usage output and produce a structured JSON report with top directories, total usage, and threshold violations"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["disk", "usage", "analysis"]
+capability_types = ["reasoning", "tool-use"]

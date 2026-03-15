@@ -1,0 +1,24 @@
+Changelog
+=========
+
+Version 2.4.0 (2025-01-10)
+- Added bulk user import via CSV upload
+- Fixed pagination bug in order history view
+- Improved error messages for failed API calls
+
+Version 2.3.1 (2024-12-20)
+- Hotfix for session timeout issue
+- Updated SSL certificates for production
+
+Version 2.3.0 (2024-12-15)
+- New reporting dashboard with charts
+- Added webhook support for order events
+- Performance improvements for search indexing
+
+Version 2.2.0 (2024-12-01)
+- User role management system
+- API key authentication support
+- Fixed memory leak in background workers
+
+Upcoming:
+- TODO: Write release notes for version 2.5.0

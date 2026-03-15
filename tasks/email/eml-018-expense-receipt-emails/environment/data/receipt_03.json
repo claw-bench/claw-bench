@@ -1,0 +1,7 @@
+{
+  "from": "noreply@uber.com",
+  "to": "you@company.com",
+  "subject": "Your Uber ride receipt",
+  "date": "2026-03-10",
+  "body": "Thanks for riding with Uber!\n\nUber receipt: $23.75 for trip on March 10\n\nTrip details:\n  Pickup: 123 Main St, Downtown\n  Dropoff: 456 Tech Park Blvd\n  Distance: 8.2 miles\n  Duration: 22 min\n\nFare breakdown:\n  Base fare: $3.50\n  Distance: $12.30\n  Time: $5.95\n  Service fee: $2.00\n  Total: $23.75\n\nCharged to corporate card ending in 4832."
+}

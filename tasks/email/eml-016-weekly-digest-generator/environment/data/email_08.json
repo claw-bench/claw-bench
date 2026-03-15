@@ -1,0 +1,8 @@
+{
+  "from": "dave@company.com",
+  "to": "you@company.com",
+  "subject": "Onboarding Documentation Updates",
+  "date": "2026-03-10",
+  "body": "Hi,\n\nI've updated the onboarding documentation with the new security policies and tool access procedures. Could you review sections 3 and 4 for accuracy? The docs are in the shared wiki under Engineering > Onboarding.\n\nThanks,\nDave",
+  "read": true
+}

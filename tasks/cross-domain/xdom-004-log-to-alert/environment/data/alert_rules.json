@@ -1,0 +1,26 @@
+[
+  {
+    "id": "rule-001",
+    "name": "High Error Rate",
+    "description": "Alert when 5 or more ERROR level entries occur within the log",
+    "condition": "count(ERROR) >= 5",
+    "severity": "critical",
+    "pattern": "ERROR"
+  },
+  {
+    "id": "rule-002",
+    "name": "Database Connection Failure",
+    "description": "Alert when database connection failures are detected",
+    "condition": "contains(database connection failed) OR contains(DB connection timeout)",
+    "severity": "critical",
+    "pattern": "database connection|DB connection"
+  },
+  {
+    "id": "rule-003",
+    "name": "Memory Threshold Exceeded",
+    "description": "Alert when memory usage exceeds 90%",
+    "condition": "contains(memory usage) AND value > 90%",
+    "severity": "high",
+    "pattern": "memory usage.*9[0-9]%|memory usage.*100%"
+  }
+]

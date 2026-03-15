@@ -1,0 +1,10 @@
+id = "sec-001"
+title = "Detect Hardcoded Credentials in Source Code"
+domain = "security"
+level = "L1"
+description = "Scan Python source files for hardcoded passwords, API keys, and tokens, then report each finding with file, line number, type, and severity"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["credentials", "static-analysis", "secrets", "defensive"]
+capability_types = ["reasoning", "tool-use"]

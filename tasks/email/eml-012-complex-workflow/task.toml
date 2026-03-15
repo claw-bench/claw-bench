@@ -1,0 +1,10 @@
+id = "eml-012"
+title = "Complex Email Workflow"
+domain = "email"
+level = "L4"
+description = "Process a batch of 25 emails through a multi-step workflow: classify, route to departments, summarize, and prioritize"
+timeout = 600
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["workflow", "email", "complex", "reasoning"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,19 @@
+product review meeting march 10 2026
+present: sarah chen, mike johnson, lisa wang, tom brown
+absent: james lee (sick)
+
+sarah: q1 numbers look good, revenue up 15%
+mike: need to finalize the pricing for new tier by friday
+lisa: design mockups ready for review, will send link after meeting
+tom: backend migration 80% complete, estimated done by march 20
+
+decisions:
+- approved new pricing tier at $49/month
+- postponed mobile app launch to Q2
+- hire 2 more frontend devs
+
+action items:
+mike - send pricing proposal to finance by march 13
+lisa - share figma link with team today
+tom - update migration timeline doc
+sarah - schedule follow-up meeting for march 17

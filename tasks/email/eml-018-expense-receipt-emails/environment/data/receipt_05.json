@@ -1,0 +1,7 @@
+{
+  "from": "noreply@officedepot.com",
+  "to": "you@company.com",
+  "subject": "Office Depot - Order Confirmation",
+  "date": "2026-03-11",
+  "body": "Thank you for your purchase at Office Depot!\n\nOrder Confirmation #OD-2026-98765\n\nItems ordered:\n  Whiteboard markers (12-pack)    $15.30\n  Sticky notes (bulk)             $22.00\n  Desk organizer                  $35.00\n  USB-C cables (3-pack)           $17.00\n\nTotal: $89.30\n\nYour order will be delivered to your office address on file.\n\nThank you for choosing Office Depot!"
+}

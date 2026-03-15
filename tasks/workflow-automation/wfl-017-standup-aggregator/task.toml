@@ -1,0 +1,10 @@
+id = "wfl-017"
+title = "Aggregate Team Standup Updates"
+domain = "workflow-automation"
+level = "L2"
+description = "Collect individual standup reports from team members and produce an aggregated team summary with cross-team dependency tracking"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["workflow", "standup", "team", "agile", "office"]
+capability_types = ["reasoning", "tool-use"]

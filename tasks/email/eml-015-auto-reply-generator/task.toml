@@ -1,0 +1,10 @@
+id = "eml-015"
+title = "Auto-Reply Generator"
+domain = "email"
+level = "L3"
+description = "Generate auto-replies for inbox emails based on configurable rules"
+timeout = 180
+capabilities = ["file-read", "file-write", "python"]
+skills_allowed = true
+tags = ["email", "automation", "rules"]
+capability_types = ["reasoning", "tool-use"]

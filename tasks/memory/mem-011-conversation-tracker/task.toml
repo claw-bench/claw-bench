@@ -1,0 +1,10 @@
+id = "mem-011"
+title = "Conversation Tracker"
+domain = "memory"
+level = "L2"
+description = "Process a conversation stream and identify which messages reference earlier context, mapping contextual callbacks to their sources"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["conversation", "tracking", "context"]
+capability_types = ["memory", "reasoning"]

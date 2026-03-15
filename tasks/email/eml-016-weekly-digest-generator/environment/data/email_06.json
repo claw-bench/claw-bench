@@ -1,0 +1,8 @@
+{
+  "from": "carol@company.com",
+  "to": "you@company.com",
+  "subject": "Updated Design Mockups",
+  "date": "2026-03-08",
+  "body": "Hi,\n\nThe design team has finalized the mockups for the new dashboard. I've uploaded them to the shared Figma project. Please review and provide feedback by Wednesday.\n\nBest regards,\nCarol",
+  "read": true
+}

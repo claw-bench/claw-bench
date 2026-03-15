@@ -1,0 +1,10 @@
+id = "xdom-015"
+title = "Automated Code Review Report"
+domain = "cross-domain"
+level = "L4"
+description = "Analyze a git diff against coding standards and project configuration to produce a detailed code review report with per-file issues, severity ratings, categorized findings, fix suggestions, and an overall quality score."
+timeout = 600
+capabilities = ["file-read", "file-write", "code-analysis", "reasoning", "report-generation"]
+skills_allowed = true
+tags = ["cross-domain", "code-review", "code-analysis", "report-generation", "L4"]
+capability_types = ["reasoning", "tool-use"]

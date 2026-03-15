@@ -1,0 +1,10 @@
+id = "wfl-007"
+title = "Branching Workflow with Decision Tree"
+domain = "workflow-automation"
+level = "L3"
+description = "Process applications through a multi-branch decision tree workflow, tracking the path taken and actions applied at each stage"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["branching", "decision-tree", "workflow", "state-machine"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,67 @@
+{
+  "invoice_number": "INV-2024-00847",
+  "date": "2024-09-15",
+  "due_date": "2024-10-15",
+  "customer": {
+    "name": "Acme Corporation",
+    "email": "billing@acmecorp.com",
+    "vip": true,
+    "address": {
+      "street": "742 Evergreen Terrace",
+      "city": "Springfield",
+      "state": "IL",
+      "zip": "62704"
+    }
+  },
+  "company": {
+    "name": "TechSupply Inc.",
+    "address": "100 Innovation Drive, San Jose, CA 95134",
+    "phone": "(408) 555-0199"
+  },
+  "items": [
+    {
+      "name": "Wireless Keyboard",
+      "sku": "KB-2040",
+      "quantity": 25,
+      "unit_price": "49.99",
+      "total": "1249.75"
+    },
+    {
+      "name": "Ergonomic Mouse",
+      "sku": "MS-1080",
+      "quantity": 25,
+      "unit_price": "34.99",
+      "total": "874.75"
+    },
+    {
+      "name": "USB-C Hub 7-Port",
+      "sku": "HB-7700",
+      "quantity": 10,
+      "unit_price": "79.99",
+      "total": "799.90"
+    },
+    {
+      "name": "Monitor Stand Adjustable",
+      "sku": "ST-3300",
+      "quantity": 15,
+      "unit_price": "124.99",
+      "total": "1874.85"
+    }
+  ],
+  "has_discount": true,
+  "totals": {
+    "subtotal": "4799.25",
+    "discount": "479.93",
+    "tax": "345.95",
+    "grand_total": "4665.27"
+  },
+  "tax_rate": "8.0",
+  "payment_methods": [
+    "Credit Card",
+    "Wire Transfer",
+    "Purchase Order",
+    "ACH Payment"
+  ],
+  "notes": "Please reference PO#ACM-2024-331 on all correspondence.",
+  "shipping_included": false
+}

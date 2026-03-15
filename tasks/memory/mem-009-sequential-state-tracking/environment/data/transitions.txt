@@ -1,0 +1,59 @@
+# Initialize base variables
+SET alpha=100
+SET beta=50
+SET gamma=25
+SET delta=0
+
+# Perform arithmetic on alpha
+ADD alpha 30
+MULTIPLY alpha 2
+
+# beta operations
+SET delta=beta
+ADD beta gamma
+SUBTRACT beta 10
+
+# gamma transformations
+MULTIPLY gamma 4
+MOD gamma 30
+
+# Working with delta
+ADD delta 75
+DIVIDE delta 5
+
+# Introduce new variables
+SET epsilon=delta
+MULTIPLY epsilon 3
+SET zeta=200
+
+# Swap operations
+SWAP alpha zeta
+
+# More complex chains
+ADD zeta epsilon
+SUBTRACT alpha 50
+
+# Modular arithmetic
+SET theta=127
+MOD theta 10
+MULTIPLY theta 6
+
+# Variable referencing
+SET iota=theta
+ADD iota gamma
+SUBTRACT iota 2
+
+# Cleanup and final adjustments
+DELETE delta
+SET kappa=999
+DIVIDE kappa 3
+MOD kappa 100
+
+# Final operations
+ADD epsilon iota
+SWAP beta gamma
+MULTIPLY kappa 2
+SET lambda=0
+ADD lambda alpha
+ADD lambda beta
+ADD lambda gamma

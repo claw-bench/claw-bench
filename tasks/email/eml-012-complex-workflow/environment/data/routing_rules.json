@@ -1,0 +1,28 @@
+{
+  "departments": {
+    "engineering": {
+      "keywords": ["bug", "code", "deploy", "server", "API", "database", "error", "crash", "performance", "technical"],
+      "priority_weight": 3
+    },
+    "sales": {
+      "keywords": ["pricing", "quote", "proposal", "contract", "deal", "customer", "prospect", "demo", "trial"],
+      "priority_weight": 2
+    },
+    "hr": {
+      "keywords": ["hiring", "interview", "benefits", "PTO", "leave", "onboarding", "employee", "salary", "review"],
+      "priority_weight": 1
+    },
+    "finance": {
+      "keywords": ["invoice", "payment", "budget", "expense", "reimbursement", "tax", "audit", "financial"],
+      "priority_weight": 2
+    },
+    "legal": {
+      "keywords": ["compliance", "regulation", "NDA", "lawsuit", "patent", "trademark", "liability", "legal"],
+      "priority_weight": 3
+    },
+    "marketing": {
+      "keywords": ["campaign", "brand", "social media", "content", "SEO", "analytics", "newsletter", "launch event"],
+      "priority_weight": 1
+    }
+  }
+}

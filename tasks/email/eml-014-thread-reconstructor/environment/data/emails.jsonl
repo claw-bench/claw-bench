@@ -1,0 +1,9 @@
+{"message_id": "msg-001", "in_reply_to": null, "from": "alice@corp.com", "subject": "Project Alpha Kickoff", "date": "2025-03-01T09:00:00Z", "body": "Let's start Project Alpha this week."}
+{"message_id": "msg-002", "in_reply_to": "msg-001", "from": "bob@corp.com", "subject": "Re: Project Alpha Kickoff", "date": "2025-03-01T10:30:00Z", "body": "Sounds good, I'll prepare the requirements doc."}
+{"message_id": "msg-003", "in_reply_to": "msg-001", "from": "carol@corp.com", "subject": "Re: Project Alpha Kickoff", "date": "2025-03-01T11:00:00Z", "body": "I can handle the design phase."}
+{"message_id": "msg-004", "in_reply_to": "msg-002", "from": "alice@corp.com", "subject": "Re: Project Alpha Kickoff", "date": "2025-03-01T14:00:00Z", "body": "Great, let's sync on Thursday."}
+{"message_id": "msg-005", "in_reply_to": null, "from": "dan@corp.com", "subject": "Server Migration Plan", "date": "2025-03-02T08:00:00Z", "body": "Here is the migration timeline."}
+{"message_id": "msg-006", "in_reply_to": "msg-005", "from": "eve@corp.com", "subject": "Re: Server Migration Plan", "date": "2025-03-02T09:15:00Z", "body": "Can we add a rollback step?"}
+{"message_id": "msg-007", "in_reply_to": "msg-006", "from": "dan@corp.com", "subject": "Re: Server Migration Plan", "date": "2025-03-02T10:00:00Z", "body": "Yes, adding rollback to phase 2."}
+{"message_id": "msg-008", "in_reply_to": null, "from": "frank@corp.com", "subject": "Lunch Order", "date": "2025-03-03T11:30:00Z", "body": "Anyone want to order lunch together?"}
+{"message_id": "msg-009", "in_reply_to": "msg-003", "from": "bob@corp.com", "subject": "Re: Project Alpha Kickoff", "date": "2025-03-02T08:30:00Z", "body": "Carol, can you share the mockups by Wednesday?"}

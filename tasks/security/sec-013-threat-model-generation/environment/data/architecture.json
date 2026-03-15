@@ -1,0 +1,96 @@
+{
+  "system_name": "E-Commerce Platform",
+  "version": "3.2",
+  "components": [
+    {
+      "name": "api-gateway",
+      "type": "service",
+      "technology": "nginx + Lua",
+      "description": "Entry point for all API requests, handles routing and rate limiting",
+      "exposed": true,
+      "authentication": "JWT validation",
+      "ports": [443, 80]
+    },
+    {
+      "name": "user-service",
+      "type": "microservice",
+      "technology": "Python/FastAPI",
+      "description": "Handles user registration, authentication, and profile management",
+      "exposed": false,
+      "authentication": "internal mTLS",
+      "ports": [8001]
+    },
+    {
+      "name": "order-service",
+      "type": "microservice",
+      "technology": "Java/Spring Boot",
+      "description": "Processes orders, manages shopping cart, handles checkout",
+      "exposed": false,
+      "authentication": "internal mTLS",
+      "ports": [8002]
+    },
+    {
+      "name": "payment-service",
+      "type": "microservice",
+      "technology": "Go",
+      "description": "Integrates with payment providers, processes transactions",
+      "exposed": false,
+      "authentication": "internal mTLS",
+      "ports": [8003]
+    },
+    {
+      "name": "notification-service",
+      "type": "microservice",
+      "technology": "Node.js",
+      "description": "Sends emails, SMS, and push notifications to users",
+      "exposed": false,
+      "authentication": "internal API key",
+      "ports": [8004]
+    },
+    {
+      "name": "admin-dashboard",
+      "type": "web_application",
+      "technology": "React + Express",
+      "description": "Internal admin interface for managing products, users, and orders",
+      "exposed": true,
+      "authentication": "session-based with RBAC",
+      "ports": [3000]
+    }
+  ],
+  "data_stores": [
+    {
+      "name": "user-db",
+      "type": "PostgreSQL",
+      "data_classification": "confidential",
+      "contains": ["credentials", "PII", "addresses", "payment_tokens"],
+      "encryption_at_rest": true,
+      "backup_frequency": "daily"
+    },
+    {
+      "name": "order-db",
+      "type": "PostgreSQL",
+      "data_classification": "confidential",
+      "contains": ["orders", "transaction_history", "shipping_addresses"],
+      "encryption_at_rest": true,
+      "backup_frequency": "hourly"
+    },
+    {
+      "name": "cache",
+      "type": "Redis",
+      "data_classification": "internal",
+      "contains": ["session_tokens", "rate_limit_counters", "cached_queries"],
+      "encryption_at_rest": false,
+      "backup_frequency": "none"
+    }
+  ],
+  "external_apis": [
+    {"name": "Stripe", "purpose": "Payment processing", "protocol": "HTTPS"},
+    {"name": "SendGrid", "purpose": "Email delivery", "protocol": "HTTPS"},
+    {"name": "Twilio", "purpose": "SMS notifications", "protocol": "HTTPS"}
+  ],
+  "network": {
+    "internet_facing": ["api-gateway", "admin-dashboard"],
+    "internal_only": ["user-service", "order-service", "payment-service", "notification-service"],
+    "segmentation": "VPC with private subnets for internal services"
+  }
+}

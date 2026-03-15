@@ -1,0 +1,10 @@
+id = "data-001"
+title = "Basic Statistics Computation"
+domain = "data-analysis"
+level = "L1"
+description = "Compute mean, median, mode, and standard deviation for a numeric column in a CSV file"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "statistics", "csv", "math"]
+capability_types = ["reasoning", "tool-use"]

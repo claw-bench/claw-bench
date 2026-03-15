@@ -1,0 +1,10 @@
+id = "comm-003"
+title = "Message Translation Preparation"
+domain = "communication"
+level = "L1"
+description = "Extract all user-facing strings from a messages JSON file and produce a translation-ready strings file with keys"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "i18n", "extraction", "strings"]
+capability_types = ["collaboration", "reasoning"]

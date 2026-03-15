@@ -1,0 +1,10 @@
+id = "data-005"
+title = "Outlier Detection Using IQR"
+domain = "data-analysis"
+level = "L2"
+description = "Detect outliers in measurement data using the IQR method"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["outlier", "iqr", "statistics", "csv"]
+capability_types = ["reasoning", "tool-use"]

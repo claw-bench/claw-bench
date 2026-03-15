@@ -1,0 +1,10 @@
+id = "sec-010"
+title = "Analyze Firewall Rules for Security Issues"
+domain = "security"
+level = "L3"
+description = "Analyze a set of firewall rules for redundancies, conflicts, and overly permissive entries, then produce an optimized ruleset"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["firewall", "network", "policy", "optimization", "defensive"]
+capability_types = ["reasoning", "tool-use"]

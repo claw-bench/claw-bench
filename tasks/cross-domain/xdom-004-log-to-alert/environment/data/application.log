@@ -1,0 +1,70 @@
+2026-03-10T14:00:01 INFO  Application started successfully
+2026-03-10T14:00:02 INFO  Configuration loaded from /etc/app/config.yaml
+2026-03-10T14:00:03 INFO  Listening on port 8080
+2026-03-10T14:00:15 INFO  Health check passed
+2026-03-10T14:01:00 INFO  Processing request from user_42
+2026-03-10T14:01:01 INFO  Request completed in 120ms
+2026-03-10T14:02:00 WARN  Response time exceeded 500ms for /api/reports
+2026-03-10T14:02:30 INFO  Processing request from user_17
+2026-03-10T14:02:31 INFO  Request completed in 85ms
+2026-03-10T14:03:00 WARN  Disk usage at 78%, consider cleanup
+2026-03-10T14:05:00 INFO  Scheduled job cron_cleanup started
+2026-03-10T14:05:30 INFO  Cleaned 150 temporary files
+2026-03-10T14:10:00 ERROR Failed to process request: timeout after 30s
+2026-03-10T14:10:05 ERROR Database connection failed: connection refused on port 5432
+2026-03-10T14:10:06 ERROR Retry 1/3: database connection failed
+2026-03-10T14:10:07 ERROR Retry 2/3: database connection failed
+2026-03-10T14:10:08 ERROR Retry 3/3: database connection failed - giving up
+2026-03-10T14:10:09 ERROR Service degraded: database unavailable
+2026-03-10T14:10:10 WARN  Falling back to cached data
+2026-03-10T14:10:15 INFO  Serving cached response for /api/users
+2026-03-10T14:11:00 WARN  Memory usage at 72%
+2026-03-10T14:12:00 INFO  Processing request from user_88
+2026-03-10T14:12:01 ERROR Connection pool exhausted
+2026-03-10T14:12:30 WARN  Memory usage at 81%
+2026-03-10T14:13:00 ERROR Request failed: no available connections
+2026-03-10T14:13:30 WARN  Memory usage at 88%
+2026-03-10T14:14:00 ERROR Internal server error on /api/orders
+2026-03-10T14:14:30 WARN  Memory usage at 92%
+2026-03-10T14:15:00 ERROR GC pause exceeded 2 seconds
+2026-03-10T14:15:01 WARN  Memory usage at 95%
+2026-03-10T14:15:30 INFO  Emergency GC triggered
+2026-03-10T14:16:00 WARN  Memory usage at 87% after GC
+2026-03-10T14:17:00 INFO  Database connection restored
+2026-03-10T14:17:01 INFO  Connection pool replenished
+2026-03-10T14:18:00 INFO  Processing request from user_42
+2026-03-10T14:18:01 INFO  Request completed in 95ms
+2026-03-10T14:19:00 INFO  Health check passed
+2026-03-10T14:20:00 INFO  Processing request from user_55
+2026-03-10T14:20:01 INFO  Request completed in 110ms
+2026-03-10T14:25:00 INFO  Scheduled job cron_metrics started
+2026-03-10T14:25:30 INFO  Metrics exported successfully
+2026-03-10T14:30:00 INFO  Health check passed
+2026-03-10T14:35:00 INFO  Processing batch job: report_generation
+2026-03-10T14:35:30 INFO  Batch job completed in 28s
+2026-03-10T14:40:00 INFO  Health check passed
+2026-03-10T14:45:00 INFO  System stable, all services operational
+2026-03-10T14:50:00 INFO  Health check passed
+2026-03-10T14:55:00 INFO  Processing request from user_33
+2026-03-10T14:55:01 INFO  Request completed in 78ms
+2026-03-10T15:00:00 INFO  Hourly stats: 48 requests, 42 success, 6 failed
+2026-03-10T15:00:01 INFO  Average response time: 145ms
+2026-03-10T15:05:00 INFO  Health check passed
+2026-03-10T15:10:00 INFO  Processing request from user_71
+2026-03-10T15:10:01 INFO  Request completed in 92ms
+2026-03-10T15:15:00 INFO  Health check passed
+2026-03-10T15:20:00 INFO  Scheduled job cron_backup started
+2026-03-10T15:20:45 INFO  Backup completed successfully
+2026-03-10T15:25:00 INFO  Health check passed
+2026-03-10T15:30:00 INFO  System operating normally
+2026-03-10T15:35:00 INFO  Processing request from user_12
+2026-03-10T15:35:01 INFO  Request completed in 88ms
+2026-03-10T15:40:00 INFO  Health check passed
+2026-03-10T15:45:00 INFO  Session cleanup: removed 23 expired sessions
+2026-03-10T15:50:00 INFO  Health check passed
+2026-03-10T15:55:00 INFO  Processing request from user_99
+2026-03-10T15:55:01 INFO  Request completed in 105ms
+2026-03-10T16:00:00 INFO  Hourly stats: 52 requests, 52 success, 0 failed
+2026-03-10T16:00:01 INFO  Average response time: 98ms
+2026-03-10T16:05:00 INFO  Health check passed
+2026-03-10T16:10:00 INFO  Application running stable for 2 hours

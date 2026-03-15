@@ -1,0 +1,22 @@
+[
+  {"id": 1, "from": "linda.park@globalcorp.com", "subject": "Project update", "date": "2026-03-01"},
+  {"id": 2, "from": "mike.chen@startupx.io", "subject": "Pitch deck review", "date": "2026-03-01"},
+  {"id": 3, "from": "linda.park@globalcorp.com", "subject": "Re: Project update", "date": "2026-03-02"},
+  {"id": 4, "from": "sarah.jones@techwave.com", "subject": "Invoice attached", "date": "2026-03-02"},
+  {"id": 5, "from": "mike.chen@startupx.io", "subject": "Follow-up on pitch", "date": "2026-03-02"},
+  {"id": 6, "from": "noreply@newsletter.dev", "subject": "Weekly digest", "date": "2026-03-03"},
+  {"id": 7, "from": "linda.park@globalcorp.com", "subject": "Budget approval", "date": "2026-03-03"},
+  {"id": 8, "from": "raj.patel@designhub.co", "subject": "Logo concepts", "date": "2026-03-03"},
+  {"id": 9, "from": "sarah.jones@techwave.com", "subject": "Payment confirmation", "date": "2026-03-04"},
+  {"id": 10, "from": "mike.chen@startupx.io", "subject": "Investor meeting", "date": "2026-03-04"},
+  {"id": 11, "from": "linda.park@globalcorp.com", "subject": "Team standup notes", "date": "2026-03-05"},
+  {"id": 12, "from": "emma.liu@finserve.com", "subject": "Quarterly report", "date": "2026-03-05"},
+  {"id": 13, "from": "noreply@newsletter.dev", "subject": "New articles this week", "date": "2026-03-05"},
+  {"id": 14, "from": "raj.patel@designhub.co", "subject": "Revised mockups", "date": "2026-03-06"},
+  {"id": 15, "from": "linda.park@globalcorp.com", "subject": "Deadline reminder", "date": "2026-03-06"},
+  {"id": 16, "from": "tom.baker@cloudops.net", "subject": "Server maintenance notice", "date": "2026-03-07"},
+  {"id": 17, "from": "mike.chen@startupx.io", "subject": "Contract draft", "date": "2026-03-07"},
+  {"id": 18, "from": "sarah.jones@techwave.com", "subject": "Support ticket update", "date": "2026-03-08"},
+  {"id": 19, "from": "emma.liu@finserve.com", "subject": "Tax documents", "date": "2026-03-08"},
+  {"id": 20, "from": "linda.park@globalcorp.com", "subject": "All-hands meeting invite", "date": "2026-03-09"}
+]

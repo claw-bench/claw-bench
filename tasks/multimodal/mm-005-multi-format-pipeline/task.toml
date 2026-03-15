@@ -1,0 +1,10 @@
+id = "mm-005"
+title = "Multi-Format Data Pipeline"
+domain = "multimodal"
+level = "L3"
+description = "Read data from CSV, JSON, and text files, apply transformation rules defined in rules.toml, and produce a consolidated result.json"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+capability_types = ["multimodal", "reasoning"]
+tags = ["csv", "json", "toml", "pipeline", "data-processing", "multimodal"]

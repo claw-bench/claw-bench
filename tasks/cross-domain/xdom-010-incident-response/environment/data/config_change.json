@@ -1,0 +1,20 @@
+{
+  "change_id": "CHG-2026-0310-001",
+  "timestamp": "2026-03-10T08:15:00",
+  "author": "deploy-bot",
+  "service": "payment-service",
+  "change_type": "configuration",
+  "description": "Updated rate limiting configuration",
+  "previous_values": {
+    "max_tps": 200,
+    "burst_limit": 250,
+    "queue_size": 500
+  },
+  "new_values": {
+    "max_tps": 50,
+    "burst_limit": 60,
+    "queue_size": 50
+  },
+  "approval": "auto-approved",
+  "rollback_available": true
+}

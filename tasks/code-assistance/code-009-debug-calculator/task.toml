@@ -1,0 +1,10 @@
+id = "code-009"
+title = "Debug a Calculator Module"
+domain = "code-assistance"
+level = "L2"
+description = "Fix three logical bugs in a calculator module: an off-by-one error, a wrong operator, and a missing edge case"
+timeout = 150
+capabilities = ["code-write"]
+skills_allowed = true
+tags = ["python", "debugging", "logic"]
+capability_types = ["reasoning", "tool-use"]

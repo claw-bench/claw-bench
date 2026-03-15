@@ -1,0 +1,10 @@
+id = "doc-015"
+title = "Generate Changelog from Commit Data"
+domain = "document-editing"
+level = "L3"
+description = "Parse commit data from JSONL and produce a formatted CHANGELOG.md grouped by commit type"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["changelog", "git", "versioning"]
+capability_types = ["reasoning", "tool-use"]

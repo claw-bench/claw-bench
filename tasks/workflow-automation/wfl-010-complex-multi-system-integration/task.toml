@@ -1,0 +1,10 @@
+id = "wfl-010"
+title = "Complex Multi-System Order Processing Integration"
+domain = "workflow-automation"
+level = "L4"
+description = "Orchestrate a complete end-to-end order processing workflow: validate orders, enrich with customer data, apply tiered pricing rules, generate individual invoices, and produce a batch summary"
+timeout = 360
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["integration", "orders", "invoices", "pricing", "multi-system", "complex"]
+capability_types = ["reasoning", "tool-use"]

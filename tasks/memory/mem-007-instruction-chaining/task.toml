@@ -1,0 +1,10 @@
+id = "mem-007"
+title = "Instruction Chaining"
+domain = "memory"
+level = "L3"
+description = "Agent completes 4 sequential steps where each output feeds into the next step"
+timeout = 300
+capabilities = ["file-write", "file-read"]
+skills_allowed = true
+capability_types = ["memory", "reasoning"]
+tags = ["memory", "chaining", "sequential"]

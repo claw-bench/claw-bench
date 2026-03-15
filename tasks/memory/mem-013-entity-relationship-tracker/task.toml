@@ -1,0 +1,10 @@
+id = "mem-013"
+title = "Entity Relationship Tracker"
+domain = "memory"
+level = "L3"
+description = "Process a stream of events describing entity relationships (joins, leaves, merges) and produce the current state of all entities and their relationships"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["entities", "relationships", "tracking"]
+capability_types = ["memory", "reasoning"]

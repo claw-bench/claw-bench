@@ -1,0 +1,25 @@
+{
+  "app_name": "MyService",
+  "version": "2.2.0",
+  "debug": false,
+  "database": {
+    "host": "db-new.example.com",
+    "port": 5432,
+    "name": "mydb",
+    "pool_size": 20,
+    "ssl": true
+  },
+  "cache": {
+    "enabled": true,
+    "ttl": 600
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "/var/log/myservice.log",
+    "format": "json"
+  },
+  "feature_flags": {
+    "new_ui": true,
+    "beta_api": true
+  }
+}

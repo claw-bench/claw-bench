@@ -1,0 +1,10 @@
+id = "doc-002"
+title = "Markdown to HTML Conversion"
+domain = "document-editing"
+level = "L1"
+description = "Convert a Markdown document to valid HTML, handling headings, links, code blocks, and lists"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "markdown", "html", "conversion"]
+capability_types = ["reasoning", "tool-use"]

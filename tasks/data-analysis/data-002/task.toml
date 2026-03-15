@@ -1,0 +1,10 @@
+id = "data-002"
+title = "Sort and Filter CSV Data"
+domain = "data-analysis"
+level = "L1"
+description = "Filter rows by age threshold and sort by name"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "filter", "sort", "csv"]
+capability_types = ["reasoning", "tool-use"]

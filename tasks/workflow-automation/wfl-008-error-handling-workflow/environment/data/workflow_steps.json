@@ -1,0 +1,90 @@
+[
+  {
+    "id": "step_1",
+    "name": "Initialize Database Connection",
+    "action": "connect_db",
+    "will_fail": false,
+    "fail_reason": null,
+    "fallback": null,
+    "compensatable": true,
+    "compensation_action": "disconnect_db",
+    "critical": false
+  },
+  {
+    "id": "step_2",
+    "name": "Create Backup",
+    "action": "create_backup",
+    "will_fail": false,
+    "fail_reason": null,
+    "fallback": null,
+    "compensatable": true,
+    "compensation_action": "delete_backup",
+    "critical": false
+  },
+  {
+    "id": "step_3",
+    "name": "Validate Input Data",
+    "action": "validate_data",
+    "will_fail": true,
+    "fail_reason": "schema mismatch",
+    "fallback": "validate_data_lenient",
+    "compensatable": false,
+    "compensation_action": null,
+    "critical": false
+  },
+  {
+    "id": "step_4",
+    "name": "Transform Records",
+    "action": "transform_records",
+    "will_fail": false,
+    "fail_reason": null,
+    "fallback": null,
+    "compensatable": true,
+    "compensation_action": "revert_transform",
+    "critical": false
+  },
+  {
+    "id": "step_5",
+    "name": "Update Primary Table",
+    "action": "update_table",
+    "will_fail": false,
+    "fail_reason": null,
+    "fallback": null,
+    "compensatable": true,
+    "compensation_action": "restore_table_from_backup",
+    "critical": true
+  },
+  {
+    "id": "step_6",
+    "name": "Sync External Service",
+    "action": "sync_external",
+    "will_fail": true,
+    "fail_reason": "service unavailable",
+    "fallback": null,
+    "compensatable": false,
+    "compensation_action": null,
+    "critical": true
+  },
+  {
+    "id": "step_7",
+    "name": "Generate Report",
+    "action": "generate_report",
+    "will_fail": false,
+    "fail_reason": null,
+    "fallback": null,
+    "compensatable": false,
+    "compensation_action": null,
+    "critical": false
+  },
+  {
+    "id": "step_8",
+    "name": "Send Notifications",
+    "action": "send_notifications",
+    "will_fail": false,
+    "fail_reason": null,
+    "fallback": null,
+    "compensatable": false,
+    "compensation_action": null,
+    "critical": false
+  }
+]

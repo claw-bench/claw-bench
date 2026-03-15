@@ -1,0 +1,10 @@
+id = "sec-012"
+title = "Scan Git Diffs for Leaked Secrets"
+domain = "security"
+level = "L3"
+description = "Analyze simulated git diff files to detect leaked secrets including API keys, passwords, and tokens, then report findings with commit attribution and remediation steps"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["secrets", "git", "scanning", "remediation", "defensive"]
+capability_types = ["reasoning", "tool-use"]

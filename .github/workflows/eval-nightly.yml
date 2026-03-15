@@ -1,0 +1,49 @@
+name: Nightly L1 Evaluation
+
+# Nightly smoke test across all 14 domains:
+#   calendar, code-assistance, communication, cross-domain, data-analysis,
+#   document-editing, email, file-operations, memory, multimodal,
+#   security, system-admin, web-browsing, workflow-automation
+# Runs L1 tasks only (~45 of the 155 total tasks)
+
+on:
+  schedule:
+    - cron: "0 4 * * *"  # 04:00 UTC daily
+  workflow_dispatch:
+
+jobs:
+  eval-l1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install claw-bench
+        run: pip install -e .
+
+      - name: Run doctor
+        run: claw-bench doctor
+
+      - name: Run L1 smoke tests (all 14 domains)
+        run: |
+          claw-bench run \
+            --framework openclaw \
+            --model gpt-4.1-mini \
+            --model-tier economy \
+            --tasks L1 \
+            --skills true \
+            --runs 1 \
+            --parallel 2 \
+            --output ./results/nightly/
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-l1-results
+          path: ./results/nightly/

@@ -1,0 +1,10 @@
+id = "web-012"
+title = "Generate Sitemap from Linked HTML Pages"
+domain = "web-browsing"
+level = "L2"
+description = "Analyze a set of interlinked HTML pages and generate a sitemap mapping each page to its outgoing links"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["sitemap", "html", "crawler"]
+capability_types = ["reasoning", "tool-use"]

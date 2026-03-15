@@ -1,0 +1,10 @@
+id = "comm-010"
+title = "Notification Router"
+domain = "communication"
+level = "L3"
+description = "Route events from an event log to the correct notification channels based on a YAML rules configuration, producing structured routing output with matched rules, channels, and priority"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["routing", "yaml", "json", "rules-engine", "events"]
+capability_types = ["collaboration", "reasoning"]

@@ -1,0 +1,7 @@
+{
+  "from": "billing@zoom.us",
+  "to": "you@company.com",
+  "subject": "Zoom - Payment receipt",
+  "date": "2026-03-06",
+  "body": "Payment Receipt\n\nThank you for your Zoom subscription!\n\nYour Zoom subscription: $14.99/month\n\nPlan: Zoom Pro\nBilling period: March 2026\nAmount charged: $14.99\nPayment method: Corporate card ending in 4832\n\nYour subscription will automatically renew on April 6, 2026.\n\nZoom Video Communications, Inc."
+}

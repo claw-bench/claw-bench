@@ -1,0 +1,162 @@
+[
+  {
+    "id": "inbox-001",
+    "from": "client-a@bigcorp.com",
+    "to": "support@example.com",
+    "subject": "Urgent: System Down",
+    "date": "2025-02-01T08:00:00Z",
+    "body": "Hi, our production system is down. Please investigate immediately."
+  },
+  {
+    "id": "inbox-002",
+    "from": "vendor@supplies.com",
+    "to": "procurement@example.com",
+    "subject": "Invoice #4521",
+    "date": "2025-02-01T09:00:00Z",
+    "body": "Please find attached invoice #4521 for your recent order."
+  },
+  {
+    "id": "inbox-003",
+    "from": "hr@example.com",
+    "to": "all-staff@example.com",
+    "subject": "Holiday Schedule 2025",
+    "date": "2025-02-01T10:00:00Z",
+    "body": "Please review the attached holiday schedule for 2025."
+  },
+  {
+    "id": "inbox-004",
+    "from": "client-b@startup.io",
+    "to": "support@example.com",
+    "subject": "Question about pricing",
+    "date": "2025-02-01T10:30:00Z",
+    "body": "Hello, we are interested in your enterprise plan. Can you share pricing details?"
+  },
+  {
+    "id": "inbox-005",
+    "from": "newsletter@techblog.com",
+    "to": "info@example.com",
+    "subject": "Weekly Tech Digest",
+    "date": "2025-02-01T11:00:00Z",
+    "body": "This week in tech: AI advances, cloud updates, and more."
+  },
+  {
+    "id": "inbox-006",
+    "from": "client-c@megacorp.net",
+    "to": "support@example.com",
+    "subject": "URGENT: Login Issues",
+    "date": "2025-02-01T11:30:00Z",
+    "body": "Multiple users are unable to log in to the platform. This is urgent."
+  },
+  {
+    "id": "inbox-007",
+    "from": "partner@agency.com",
+    "to": "marketing@example.com",
+    "subject": "Partnership Proposal",
+    "date": "2025-02-01T12:00:00Z",
+    "body": "We would like to propose a co-marketing partnership for Q2."
+  },
+  {
+    "id": "inbox-008",
+    "from": "finance@example.com",
+    "to": "all-managers@example.com",
+    "subject": "Q4 Budget Review Meeting",
+    "date": "2025-02-01T13:00:00Z",
+    "body": "Please join the Q4 budget review meeting on Friday at 3pm."
+  },
+  {
+    "id": "inbox-009",
+    "from": "client-d@retailco.com",
+    "to": "support@example.com",
+    "subject": "Invoice Request",
+    "date": "2025-02-01T13:30:00Z",
+    "body": "Could you send us the invoice for our last subscription renewal?"
+  },
+  {
+    "id": "inbox-010",
+    "from": "security@example.com",
+    "to": "it-team@example.com",
+    "subject": "Urgent Security Patch Required",
+    "date": "2025-02-01T14:00:00Z",
+    "body": "A critical vulnerability has been identified. Please apply the patch immediately."
+  },
+  {
+    "id": "inbox-011",
+    "from": "applicant@gmail.com",
+    "to": "careers@example.com",
+    "subject": "Job Application: Software Engineer",
+    "date": "2025-02-01T14:30:00Z",
+    "body": "I am writing to apply for the Software Engineer position posted on your website."
+  },
+  {
+    "id": "inbox-012",
+    "from": "client-e@globalinc.com",
+    "to": "support@example.com",
+    "subject": "Feature Request: Dark Mode",
+    "date": "2025-02-01T15:00:00Z",
+    "body": "We would love to see a dark mode option in the next release."
+  },
+  {
+    "id": "inbox-013",
+    "from": "spam@sketchy.biz",
+    "to": "info@example.com",
+    "subject": "You Won a Prize!!!",
+    "date": "2025-02-01T15:30:00Z",
+    "body": "Click here to claim your million dollar prize!"
+  },
+  {
+    "id": "inbox-014",
+    "from": "client-f@enterprise.org",
+    "to": "support@example.com",
+    "subject": "Question About API Rate Limits",
+    "date": "2025-02-01T16:00:00Z",
+    "body": "We are hitting rate limits on the API. What are the current thresholds?"
+  },
+  {
+    "id": "inbox-015",
+    "from": "operations@example.com",
+    "to": "devops@example.com",
+    "subject": "Scheduled Maintenance Window",
+    "date": "2025-02-01T16:30:00Z",
+    "body": "Maintenance is scheduled for Saturday 2am-6am. Please ensure readiness."
+  },
+  {
+    "id": "inbox-016",
+    "from": "client-g@localshop.com",
+    "to": "support@example.com",
+    "subject": "Urgent: Payment Failed",
+    "date": "2025-02-01T17:00:00Z",
+    "body": "Our latest payment attempt failed. Can you check the billing system?"
+  },
+  {
+    "id": "inbox-017",
+    "from": "research@university.edu",
+    "to": "data@example.com",
+    "subject": "Data Sharing Agreement",
+    "date": "2025-02-01T17:30:00Z",
+    "body": "We are interested in a data sharing agreement for our research project."
+  },
+  {
+    "id": "inbox-018",
+    "from": "client-h@techfirm.io",
+    "to": "support@example.com",
+    "subject": "Question on Integration Options",
+    "date": "2025-02-01T18:00:00Z",
+    "body": "What integration options do you support? We use Salesforce and Slack."
+  },
+  {
+    "id": "inbox-019",
+    "from": "legal@example.com",
+    "to": "all-staff@example.com",
+    "subject": "Updated Privacy Policy",
+    "date": "2025-02-01T18:30:00Z",
+    "body": "Please review the updated privacy policy effective March 1st."
+  },
+  {
+    "id": "inbox-020",
+    "from": "client-i@fintech.co",
+    "to": "support@example.com",
+    "subject": "Feature Request: Export to PDF",
+    "date": "2025-02-01T19:00:00Z",
+    "body": "It would be very helpful to have an export to PDF feature for reports."
+  }
+]

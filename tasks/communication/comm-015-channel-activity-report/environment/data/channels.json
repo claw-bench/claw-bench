@@ -1,0 +1,52 @@
+[
+  {
+    "name": "general",
+    "messages": [
+      {"timestamp": "2026-03-10T09:15:00Z", "author": "alice"},
+      {"timestamp": "2026-03-10T09:30:00Z", "author": "bob"},
+      {"timestamp": "2026-03-10T09:45:00Z", "author": "alice"},
+      {"timestamp": "2026-03-10T10:00:00Z", "author": "carol"},
+      {"timestamp": "2026-03-10T10:15:00Z", "author": "alice"},
+      {"timestamp": "2026-03-10T10:30:00Z", "author": "bob"},
+      {"timestamp": "2026-03-10T14:00:00Z", "author": "dave"},
+      {"timestamp": "2026-03-10T14:15:00Z", "author": "alice"},
+      {"timestamp": "2026-03-10T14:30:00Z", "author": "bob"},
+      {"timestamp": "2026-03-10T14:45:00Z", "author": "carol"}
+    ]
+  },
+  {
+    "name": "engineering",
+    "messages": [
+      {"timestamp": "2026-03-10T08:00:00Z", "author": "dave"},
+      {"timestamp": "2026-03-10T08:30:00Z", "author": "dave"},
+      {"timestamp": "2026-03-10T09:00:00Z", "author": "eve"},
+      {"timestamp": "2026-03-10T09:15:00Z", "author": "dave"},
+      {"timestamp": "2026-03-10T09:30:00Z", "author": "frank"},
+      {"timestamp": "2026-03-10T09:45:00Z", "author": "eve"},
+      {"timestamp": "2026-03-10T11:00:00Z", "author": "dave"},
+      {"timestamp": "2026-03-10T11:30:00Z", "author": "eve"}
+    ]
+  },
+  {
+    "name": "design",
+    "messages": [
+      {"timestamp": "2026-03-10T10:00:00Z", "author": "carol"},
+      {"timestamp": "2026-03-10T10:20:00Z", "author": "carol"},
+      {"timestamp": "2026-03-10T10:40:00Z", "author": "alice"},
+      {"timestamp": "2026-03-10T13:00:00Z", "author": "carol"},
+      {"timestamp": "2026-03-10T13:30:00Z", "author": "bob"}
+    ]
+  },
+  {
+    "name": "random",
+    "messages": [
+      {"timestamp": "2026-03-10T12:00:00Z", "author": "bob"},
+      {"timestamp": "2026-03-10T12:10:00Z", "author": "alice"},
+      {"timestamp": "2026-03-10T12:20:00Z", "author": "bob"},
+      {"timestamp": "2026-03-10T15:00:00Z", "author": "eve"},
+      {"timestamp": "2026-03-10T15:15:00Z", "author": "bob"},
+      {"timestamp": "2026-03-10T15:30:00Z", "author": "frank"},
+      {"timestamp": "2026-03-10T15:45:00Z", "author": "bob"}
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+id = "mem-014"
+title = "Preference Learning"
+domain = "memory"
+level = "L3"
+description = "Analyze a stream of user interactions with feedback to build a preference profile, infer category preferences, and recommend top categories"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["preferences", "learning", "profile"]
+capability_types = ["memory", "reasoning"]

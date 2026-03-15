@@ -1,0 +1,8 @@
+{
+  "from": "bob@company.com",
+  "to": "you@company.com",
+  "subject": "New CI/CD Pipeline Proposal",
+  "date": "2026-03-07",
+  "body": "Hi,\n\nI've been working on a proposal for migrating our CI/CD pipeline from Jenkins to GitHub Actions. The estimated migration time is 3 weeks with minimal downtime. I've documented the pros and cons in the attached PDF.\n\nLet me know your thoughts.\n\nBob",
+  "read": true
+}

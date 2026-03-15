@@ -1,0 +1,29 @@
+{
+  "incident_id": "INC-2024-0042",
+  "reported_at": "2024-03-15T14:30:00Z",
+  "reported_by": "security-monitoring-system",
+  "type": "data_breach",
+  "severity": "critical",
+  "title": "Unauthorized access to customer database",
+  "description": "Anomalous database queries detected from application server app-srv-03. Large volume of SELECT queries against the customers table including PII fields (email, phone, address, SSN). Queries originated from a compromised service account 'svc-analytics'.",
+  "affected_systems": [
+    {"name": "app-srv-03", "type": "application_server", "ip": "10.0.2.30"},
+    {"name": "db-primary-01", "type": "database", "ip": "10.0.4.10"},
+    {"name": "db-replica-02", "type": "database", "ip": "10.0.4.11"}
+  ],
+  "indicators_of_compromise": [
+    {"type": "ip_address", "value": "203.0.113.42", "context": "External IP seen in auth logs for svc-analytics"},
+    {"type": "query_pattern", "value": "SELECT * FROM customers WHERE 1=1", "context": "Bulk data exfiltration query"},
+    {"type": "file_hash", "value": "a1b2c3d4e5f6789012345678abcdef01", "context": "Suspicious binary found in /tmp on app-srv-03"}
+  ],
+  "timeline_events": [
+    {"timestamp": "2024-03-15T08:15:00Z", "event": "svc-analytics account authenticated from unusual IP 203.0.113.42"},
+    {"timestamp": "2024-03-15T08:22:00Z", "event": "First anomalous query against customers table detected"},
+    {"timestamp": "2024-03-15T10:45:00Z", "event": "Spike in outbound data transfer from app-srv-03 (2.3 GB)"},
+    {"timestamp": "2024-03-15T14:30:00Z", "event": "SIEM alert triggered, incident reported to security team"},
+    {"timestamp": "2024-03-15T14:45:00Z", "event": "Security team acknowledged and began initial assessment"}
+  ],
+  "estimated_records_affected": 45000,
+  "data_types_exposed": ["email", "phone", "address", "ssn", "name"],
+  "containment_status": "not_contained"
+}

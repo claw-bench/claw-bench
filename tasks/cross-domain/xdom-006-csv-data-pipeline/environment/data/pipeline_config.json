@@ -1,0 +1,25 @@
+{
+  "pipeline_name": "Order Processing Pipeline",
+  "steps": [
+    {
+      "type": "filter",
+      "field": "status",
+      "operator": "equals",
+      "value": "completed"
+    },
+    {
+      "type": "transform",
+      "operation": "add_column",
+      "new_column": "total",
+      "expression": "quantity * price"
+    },
+    {
+      "type": "aggregate",
+      "group_by": "category",
+      "aggregations": [
+        {"column": "total", "function": "sum", "output_name": "total_revenue"},
+        {"column": "order_id", "function": "count", "output_name": "order_count"}
+      ]
+    }
+  ]
+}

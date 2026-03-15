@@ -1,0 +1,10 @@
+id = "cal-015"
+title = "Multi-Person Availability Coordination"
+domain = "calendar"
+level = "L4"
+description = "Find common free time slots across multiple people's calendars and recommend the best meeting time"
+timeout = 300
+capabilities = ["calendar-read"]
+skills_allowed = true
+tags = ["expert", "calendar", "scheduling", "coordination"]
+capability_types = ["reasoning", "tool-use"]

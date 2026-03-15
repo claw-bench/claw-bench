@@ -1,0 +1,13 @@
+diff --git a/deploy/docker-compose.yml b/deploy/docker-compose.yml
+index 3333ccc..4444ddd 100644
+--- a/deploy/docker-compose.yml
++++ b/deploy/docker-compose.yml
+@@ -8,7 +8,7 @@ services:
+     environment:
+       - NODE_ENV=production
+       - PORT=3000
+-      - DATABASE_URL=${DATABASE_URL}
++      - DATABASE_URL=postgresql://admin:P@ssw0rd_Pr0d!@db-prod.internal:5432/maindb
+
+   redis:
+     image: redis:7-alpine

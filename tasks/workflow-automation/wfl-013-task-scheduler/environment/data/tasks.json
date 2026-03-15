@@ -1,0 +1,12 @@
+[
+  {"id": "T1", "duration_minutes": 20, "priority": 1, "deadline": 60, "dependencies": []},
+  {"id": "T2", "duration_minutes": 15, "priority": 2, "deadline": 80, "dependencies": ["T1"]},
+  {"id": "T3", "duration_minutes": 30, "priority": 1, "deadline": 100, "dependencies": []},
+  {"id": "T4", "duration_minutes": 10, "priority": 3, "deadline": 120, "dependencies": ["T2"]},
+  {"id": "T5", "duration_minutes": 25, "priority": 2, "deadline": 90, "dependencies": ["T1"]},
+  {"id": "T6", "duration_minutes": 15, "priority": 4, "deadline": 200, "dependencies": []},
+  {"id": "T7", "duration_minutes": 20, "priority": 1, "deadline": 50, "dependencies": []},
+  {"id": "T8", "duration_minutes": 10, "priority": 3, "deadline": 150, "dependencies": ["T3"]},
+  {"id": "T9", "duration_minutes": 35, "priority": 2, "deadline": 180, "dependencies": ["T4", "T5"]},
+  {"id": "T10", "duration_minutes": 15, "priority": 5, "deadline": 250, "dependencies": ["T9"]}
+]

@@ -1,0 +1,4 @@
+price_adjustment = 1.08
+min_price = 5.00
+exclude_categories = ["alcohol"]
+tag_required = ["bestseller", "featured", "premium"]

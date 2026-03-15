@@ -1,0 +1,10 @@
+id = "mm-001"
+title = "JSON to YAML Conversion"
+domain = "multimodal"
+level = "L1"
+description = "Convert a complex nested JSON configuration file to YAML format, preserving all structure including nested objects, arrays, and special values"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+capability_types = ["multimodal", "reasoning"]
+tags = ["json", "yaml", "conversion", "multimodal"]

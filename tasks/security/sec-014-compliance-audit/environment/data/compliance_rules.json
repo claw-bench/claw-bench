@@ -1,0 +1,24 @@
+{
+  "rules": [
+    {"id": "SEC-001", "name": "TLS Version Minimum", "description": "All services must use TLS 1.2 or higher", "config_file": "web_server.json", "check": "tls_version >= 1.2"},
+    {"id": "SEC-002", "name": "HSTS Enabled", "description": "HTTP Strict Transport Security must be enabled", "config_file": "web_server.json", "check": "hsts.enabled == true"},
+    {"id": "SEC-003", "name": "HSTS Max Age", "description": "HSTS max-age must be at least 31536000 seconds (1 year)", "config_file": "web_server.json", "check": "hsts.max_age >= 31536000"},
+    {"id": "SEC-004", "name": "X-Frame-Options", "description": "X-Frame-Options header must be set to DENY or SAMEORIGIN", "config_file": "web_server.json", "check": "headers.x_frame_options in [DENY, SAMEORIGIN]"},
+    {"id": "AUTH-001", "name": "Password Minimum Length", "description": "Minimum password length must be at least 12 characters", "config_file": "auth_config.json", "check": "password_policy.min_length >= 12"},
+    {"id": "AUTH-002", "name": "MFA Enforcement", "description": "Multi-factor authentication must be enabled for all admin users", "config_file": "auth_config.json", "check": "mfa.admin_required == true"},
+    {"id": "AUTH-003", "name": "Session Timeout", "description": "Session timeout must be 30 minutes or less", "config_file": "auth_config.json", "check": "session.timeout_minutes <= 30"},
+    {"id": "AUTH-004", "name": "Account Lockout", "description": "Account must lock after 5 or fewer failed attempts", "config_file": "auth_config.json", "check": "lockout.max_attempts <= 5"},
+    {"id": "AUTH-005", "name": "Password Complexity", "description": "Password policy must require uppercase, lowercase, digit, and special character", "config_file": "auth_config.json", "check": "password_policy.require_uppercase && require_lowercase && require_digit && require_special"},
+    {"id": "DATA-001", "name": "Encryption at Rest", "description": "Database encryption at rest must be enabled", "config_file": "database.json", "check": "encryption.at_rest.enabled == true"},
+    {"id": "DATA-002", "name": "Encryption Algorithm", "description": "Encryption must use AES-256", "config_file": "database.json", "check": "encryption.at_rest.algorithm == AES-256"},
+    {"id": "DATA-003", "name": "Backup Encryption", "description": "Database backups must be encrypted", "config_file": "database.json", "check": "backup.encrypted == true"},
+    {"id": "DATA-004", "name": "Connection Encryption", "description": "Database connections must require SSL", "config_file": "database.json", "check": "connection.require_ssl == true"},
+    {"id": "LOG-001", "name": "Audit Logging Enabled", "description": "Audit logging must be enabled", "config_file": "logging.json", "check": "audit.enabled == true"},
+    {"id": "LOG-002", "name": "Log Retention", "description": "Logs must be retained for at least 90 days", "config_file": "logging.json", "check": "retention.days >= 90"},
+    {"id": "LOG-003", "name": "Log Integrity", "description": "Log integrity checking must be enabled", "config_file": "logging.json", "check": "integrity.enabled == true"},
+    {"id": "LOG-004", "name": "Sensitive Data Masking", "description": "PII must be masked in logs", "config_file": "logging.json", "check": "masking.pii == true"},
+    {"id": "NET-001", "name": "Firewall Enabled", "description": "Host firewall must be enabled", "config_file": "network.json", "check": "firewall.enabled == true"},
+    {"id": "NET-002", "name": "Default Deny Policy", "description": "Firewall default policy must be deny", "config_file": "network.json", "check": "firewall.default_policy == deny"},
+    {"id": "NET-003", "name": "SSH Key-Only Auth", "description": "SSH must use key-based authentication only (no passwords)", "config_file": "network.json", "check": "ssh.password_auth == false"}
+  ]
+}

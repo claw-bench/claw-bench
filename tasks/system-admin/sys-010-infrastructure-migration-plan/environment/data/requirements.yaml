@@ -1,0 +1,117 @@
+migration:
+  target_provider: "aws"
+  target_region: "us-west-2"
+  reason: "Disaster recovery and latency optimization for West Coast users"
+  deadline: "2024-04-30"
+
+  constraints:
+    max_downtime_minutes: 30
+    data_consistency: "strong"
+    rollback_window_hours: 24
+    maintenance_window: "Saturday 02:00-06:00 UTC"
+
+  target_state:
+    primary_db:
+      engine: "postgresql"
+      version: "15.2"
+      instance_type: "db.r6g.2xlarge"
+      storage_gb: 1000
+      replicas: 2
+      multi_az: true
+      notes: "Upgrade from v13 to v15; increase storage and add replica"
+
+    replica_db:
+      engine: "postgresql"
+      version: "15.2"
+      instance_type: "db.r6g.xlarge"
+      storage_gb: 1000
+      replicas: 0
+      notes: "Upgrade version to match primary"
+
+    cache_cluster:
+      engine: "redis"
+      version: "7.0"
+      node_type: "cache.r7g.large"
+      nodes: 5
+      notes: "Upgrade Redis version, increase cluster size"
+
+    message_queue:
+      engine: "rabbitmq"
+      version: "3.12"
+      instance_type: "mq.m5.xlarge"
+      notes: "Upgrade version, increase instance size"
+
+    auth_service:
+      runtime: "java"
+      version: "17"
+      instances: 4
+      cpu: 4
+      memory_gb: 8
+      notes: "Upgrade to Java 17, scale up resources"
+
+    api_gateway:
+      runtime: "nodejs"
+      version: "20"
+      instances: 6
+      cpu: 4
+      memory_gb: 8
+      notes: "Upgrade Node.js, scale up"
+
+    web_frontend:
+      runtime: "nodejs"
+      version: "20"
+      instances: 4
+      cpu: 2
+      memory_gb: 4
+      notes: "Upgrade Node.js, scale up"
+
+    worker_service:
+      runtime: "python"
+      version: "3.12"
+      instances: 8
+      cpu: 4
+      memory_gb: 16
+      notes: "Upgrade Python, significant scale-up"
+
+    notification_service:
+      runtime: "go"
+      version: "1.21"
+      instances: 3
+      cpu: 2
+      memory_gb: 4
+      notes: "Upgrade Go, minor scale-up"
+
+    file_storage:
+      engine: "s3"
+      storage_tb: 5
+      replication: "cross-region"
+      notes: "Enable cross-region replication"
+
+    monitoring:
+      runtime: "go"
+      version: "1.21"
+      instances: 3
+      cpu: 4
+      memory_gb: 8
+      notes: "Scale up for new region"
+
+    load_balancer:
+      engine: "ALB"
+      instances: 2
+      ssl_termination: true
+      waf_enabled: true
+      notes: "Switch to AWS ALB with WAF"
+
+  priority_order:
+    - "file_storage"
+    - "primary_db"
+    - "replica_db"
+    - "cache_cluster"
+    - "message_queue"
+    - "auth_service"
+    - "worker_service"
+    - "notification_service"
+    - "api_gateway"
+    - "monitoring"
+    - "web_frontend"
+    - "load_balancer"

@@ -1,0 +1,15 @@
+2097152	/var/log
+5242880	/srv/backups
+1048576	/home/alice
+524288	/tmp/cache
+3145728	/var/lib/docker
+262144	/etc/config
+4194304	/opt/data
+157286	/usr/share/docs
+8388608	/mnt/storage
+734003	/home/bob/projects
+1572864	/var/lib/mysql
+2621440	/home/shared/media
+419430	/boot/grub
+104858	/root/.local
+6291456	/srv/media

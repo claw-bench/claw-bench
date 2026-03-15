@@ -1,0 +1,10 @@
+id = "xdom-012"
+title = "Automated Documentation Generator"
+domain = "cross-domain"
+level = "L4"
+description = "Analyze Python source modules with docstrings and type hints to generate comprehensive API documentation, architecture overview, getting started guide, and documentation index."
+timeout = 600
+capabilities = ["file-read", "file-write", "code-analysis", "documentation"]
+skills_allowed = true
+tags = ["cross-domain", "documentation", "code-analysis", "L4"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,11 @@
+# System crontab entries
+# m h dom mon dow command
+
+*/15 * * * * /usr/local/bin/health_check.sh
+0 2 * * * /usr/local/bin/backup.sh --full
+30 */6 * * * /opt/scripts/report_gen.py
+0 0 1 * * /usr/local/bin/monthly_cleanup.sh
+0 8,12,18 * * 1-5 /opt/notify/send_digest.sh
+*/5 * * * * /usr/local/bin/monitor_disk.sh
+0 3 * * 0 /opt/maintenance/weekly_optimize.sh
+0 0 15 6,12 * /opt/scripts/semiannual_audit.sh

@@ -1,0 +1,10 @@
+id = "xdom-001"
+title = "Email to Calendar: Extract Meeting Requests"
+domain = "cross-domain"
+level = "L3"
+description = "Parse a set of emails to identify meeting invitations, extract structured calendar entries with dates, times, and participants, and produce a calendar JSON file."
+timeout = 300
+capabilities = ["file-read", "file-write", "data-extraction"]
+skills_allowed = true
+tags = ["cross-domain", "email", "calendar", "parsing"]
+capability_types = ["reasoning", "tool-use"]

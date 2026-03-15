@@ -1,0 +1,10 @@
+id = "mm-012"
+title = "HTML Report from Mixed Sources"
+domain = "multimodal"
+level = "L3"
+description = "Combine a text summary, CSV data table, and JSON metadata into a structured HTML report"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["html", "report", "mixed-format"]
+capability_types = ["multimodal", "reasoning"]

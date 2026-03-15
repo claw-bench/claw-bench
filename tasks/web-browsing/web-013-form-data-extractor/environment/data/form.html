@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forms Page</title>
+</head>
+<body>
+    <h1>Registration & Settings</h1>
+
+    <form action="/api/register" method="POST">
+        <h2>User Registration</h2>
+        <label>Username: <input type="text" name="username" required></label>
+        <label>Email: <input type="email" name="email" required></label>
+        <label>Password: <input type="password" name="password" required></label>
+        <label>Age: <input type="number" name="age"></label>
+        <label>Bio: <textarea name="bio"></textarea></label>
+        <button type="submit">Register</button>
+    </form>
+
+    <form action="/api/search" method="GET">
+        <h2>Search</h2>
+        <label>Query: <input type="text" name="q" required></label>
+        <label>Category:
+            <select name="category">
+                <option value="all">All</option>
+                <option value="articles">Articles</option>
+                <option value="products">Products</option>
+            </select>
+        </label>
+        <label>Sort by:
+            <select name="sort">
+                <option value="relevance">Relevance</option>
+                <option value="date">Date</option>
+            </select>
+        </label>
+        <button type="submit">Search</button>
+    </form>
+
+    <form action="/api/settings" method="POST">
+        <h2>Notification Settings</h2>
+        <label>Notify by email: <input type="checkbox" name="notify_email"></label>
+        <label>Notify by SMS: <input type="checkbox" name="notify_sms"></label>
+        <label>Theme:
+            <select name="theme" required>
+                <option value="">Select theme</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+        </label>
+        <label>Language: <input type="hidden" name="lang" value="en"></label>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

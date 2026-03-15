@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Alice Johnson",
+    "role": "Senior Engineer",
+    "date": "April 15, 2026",
+    "event": "Annual Tech Summit"
+  },
+  {
+    "name": "Bob Martinez",
+    "role": "Product Manager",
+    "date": "April 15, 2026",
+    "event": "Annual Tech Summit"
+  },
+  {
+    "name": "Carol Chen",
+    "role": "Design Lead",
+    "date": "April 15, 2026",
+    "event": "Annual Tech Summit"
+  },
+  {
+    "name": "Dave Wilson",
+    "role": "QA Specialist",
+    "date": "April 15, 2026",
+    "event": "Annual Tech Summit"
+  },
+  {
+    "name": "Eve Thompson",
+    "role": "Data Analyst",
+    "date": "April 15, 2026",
+    "event": "Annual Tech Summit"
+  }
+]

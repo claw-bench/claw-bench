@@ -1,0 +1,11 @@
+emp_id,emp_name,dept,salary,years_exp,is_manager
+101,Alice Chen,Engineering,95000,8,true
+102,Bob Smith,Marketing,72000,5,false
+103,Carol White,Engineering,105000,12,true
+104,David Lee,Sales,68000,3,false
+105,Eva Garcia,Engineering,88000,6,false
+106,Frank Jones,Marketing,78000,7,true
+107,Grace Kim,Sales,71000,4,false
+108,Henry Brown,Engineering,112000,15,true
+109,Iris Patel,Marketing,65000,2,false
+110,Jack Wilson,Sales,82000,9,true

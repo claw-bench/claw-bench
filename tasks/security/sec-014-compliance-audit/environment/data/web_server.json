@@ -1,0 +1,17 @@
+{
+  "server": "nginx",
+  "version": "1.24.0",
+  "tls_version": 1.2,
+  "tls_ciphers": ["TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"],
+  "hsts": {
+    "enabled": true,
+    "max_age": 15768000,
+    "include_subdomains": true
+  },
+  "headers": {
+    "x_frame_options": "SAMEORIGIN",
+    "x_content_type_options": "nosniff",
+    "x_xss_protection": "1; mode=block",
+    "content_security_policy": "default-src 'self'"
+  }
+}

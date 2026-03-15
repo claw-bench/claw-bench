@@ -1,0 +1,10 @@
+id = "xdom-007"
+title = "Multi-format Document Conversion to HTML"
+domain = "cross-domain"
+level = "L3"
+description = "Convert multiple source files in different formats (CSV, Markdown, JSON) into a unified HTML report with proper structure and styling."
+timeout = 300
+capabilities = ["file-read", "file-write", "format-conversion"]
+skills_allowed = true
+tags = ["cross-domain", "conversion", "html", "multi-format"]
+capability_types = ["reasoning", "tool-use"]

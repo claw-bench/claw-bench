@@ -1,0 +1,10 @@
+id = "file-015"
+title = "Complex Data Transformation Pipeline"
+domain = "file-operations"
+level = "L4"
+description = "Clean, normalize, and transform messy CSV data with summary statistics"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["csv", "data-cleaning", "transformation", "json", "pipeline"]
+capability_types = ["tool-use"]

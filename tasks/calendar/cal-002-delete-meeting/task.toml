@@ -1,0 +1,10 @@
+id = "cal-002"
+title = "Delete a Meeting"
+domain = "calendar"
+level = "L1"
+description = "Remove a specific meeting from a calendar JSON file"
+timeout = 120
+capabilities = ["calendar-write"]
+skills_allowed = true
+tags = ["basic", "calendar"]
+capability_types = ["reasoning", "tool-use"]

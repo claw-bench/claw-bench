@@ -1,0 +1,10 @@
+id = "xdom-010"
+title = "Incident Response Workflow"
+domain = "cross-domain"
+level = "L4"
+description = "Process multiple incident data sources through a full incident response workflow, generating timeline, root cause analysis, remediation plan, and stakeholder communication."
+timeout = 600
+capabilities = ["file-read", "file-write", "analysis", "communication"]
+skills_allowed = true
+tags = ["cross-domain", "incident-response", "analysis", "L4"]
+capability_types = ["reasoning", "tool-use"]

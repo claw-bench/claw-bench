@@ -1,0 +1,62 @@
+[
+  {
+    "id": "E1",
+    "event": "Project kickoff meeting",
+    "reference": "anchor",
+    "relative_to": null
+  },
+  {
+    "id": "E2",
+    "event": "Requirements gathering completed",
+    "reference": "5 days after E1",
+    "relative_to": "E1"
+  },
+  {
+    "id": "E3",
+    "event": "Design phase started",
+    "reference": "2 days after E2",
+    "relative_to": "E2"
+  },
+  {
+    "id": "E4",
+    "event": "Design review meeting",
+    "reference": "1 weeks after E3",
+    "relative_to": "E3"
+  },
+  {
+    "id": "E5",
+    "event": "Development sprint 1 started",
+    "reference": "3 days after E4",
+    "relative_to": "E4"
+  },
+  {
+    "id": "E6",
+    "event": "Mid-project status report",
+    "reference": "anchor",
+    "relative_to": null
+  },
+  {
+    "id": "E7",
+    "event": "Client demo",
+    "reference": "4 days after E6",
+    "relative_to": "E6"
+  },
+  {
+    "id": "E8",
+    "event": "Bug fix sprint",
+    "reference": "1 weeks after E7",
+    "relative_to": "E7"
+  },
+  {
+    "id": "E9",
+    "event": "Final testing phase",
+    "reference": "anchor",
+    "relative_to": null
+  },
+  {
+    "id": "E10",
+    "event": "Project launch",
+    "reference": "5 days after E9",
+    "relative_to": "E9"
+  }
+]

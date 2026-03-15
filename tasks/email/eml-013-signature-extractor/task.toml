@@ -1,0 +1,10 @@
+id = "eml-013"
+title = "Email Signature Extractor"
+domain = "email"
+level = "L2"
+description = "Extract sender signature blocks from a batch of emails"
+timeout = 120
+capabilities = ["file-read", "file-write", "python"]
+skills_allowed = true
+tags = ["email", "parsing", "extraction"]
+capability_types = ["reasoning", "tool-use"]

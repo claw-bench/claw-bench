@@ -1,0 +1,10 @@
+id = "data-009"
+title = "Data Cleaning Pipeline"
+domain = "data-analysis"
+level = "L3"
+description = "Clean a messy dataset by handling missing values, duplicates, and format inconsistencies"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["cleaning", "etl", "missing-values", "dedup"]
+capability_types = ["reasoning", "tool-use"]

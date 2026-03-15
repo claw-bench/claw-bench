@@ -1,0 +1,10 @@
+id = "comm-002"
+title = "Contact List Management"
+domain = "communication"
+level = "L1"
+description = "Merge two contact list JSON files, deduplicate by email address, and produce a single unified contact list"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "contacts", "deduplication", "merge"]
+capability_types = ["collaboration", "reasoning"]

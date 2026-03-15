@@ -1,0 +1,10 @@
+{
+  "id": 5,
+  "from": "dev@company.com",
+  "subject": "Code Review Notes",
+  "date": "2026-03-05T16:45:00Z",
+  "attachments": [
+    {"filename": "review_notes.md", "size_bytes": 8500, "content_type": "text/markdown"},
+    {"filename": "diff_output.txt", "size_bytes": 12300, "content_type": "text/plain"}
+  ]
+}

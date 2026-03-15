@@ -1,0 +1,98 @@
+[
+  {
+    "event_id": "evt-001",
+    "type": "system_error",
+    "severity": 4,
+    "source": "web-server-03",
+    "tags": ["memory", "oom"],
+    "message": "Out of memory on web-server-03"
+  },
+  {
+    "event_id": "evt-002",
+    "type": "deployment",
+    "severity": 2,
+    "source": "prod-pipeline",
+    "tags": ["release", "v2.5.0"],
+    "message": "Deployment of v2.5.0 to production started"
+  },
+  {
+    "event_id": "evt-003",
+    "type": "security_alert",
+    "severity": 4,
+    "source": "ids-sensor",
+    "tags": ["intrusion", "ssh"],
+    "message": "Multiple failed SSH attempts detected from suspicious IP"
+  },
+  {
+    "event_id": "evt-004",
+    "type": "heartbeat",
+    "severity": 1,
+    "source": "monitoring-agent",
+    "tags": ["health"],
+    "message": "All systems nominal"
+  },
+  {
+    "event_id": "evt-005",
+    "type": "db_event",
+    "severity": 3,
+    "source": "postgres-primary",
+    "tags": ["replication", "lag"],
+    "message": "Replication lag exceeded 30 seconds"
+  },
+  {
+    "event_id": "evt-006",
+    "type": "api_event",
+    "severity": 2,
+    "source": "api-gateway",
+    "tags": ["rate_limit", "customer_xyz"],
+    "message": "Rate limit exceeded for customer XYZ"
+  },
+  {
+    "event_id": "evt-007",
+    "type": "system_error",
+    "severity": 2,
+    "source": "batch-processor",
+    "tags": ["timeout"],
+    "message": "Batch job timed out after 300s"
+  },
+  {
+    "event_id": "evt-008",
+    "type": "deployment",
+    "severity": 2,
+    "source": "staging-pipeline",
+    "tags": ["release", "v2.6.0-rc1"],
+    "message": "Deployment of v2.6.0-rc1 to staging"
+  },
+  {
+    "event_id": "evt-009",
+    "type": "security_alert",
+    "severity": 2,
+    "source": "waf",
+    "tags": ["sql_injection", "blocked"],
+    "message": "SQL injection attempt blocked by WAF"
+  },
+  {
+    "event_id": "evt-010",
+    "type": "db_event",
+    "severity": 2,
+    "source": "postgres-replica-02",
+    "tags": ["slow_query"],
+    "message": "Slow query detected: 15s execution time"
+  },
+  {
+    "event_id": "evt-011",
+    "type": "user_event",
+    "severity": 1,
+    "source": "auth-service",
+    "tags": ["login", "success"],
+    "message": "User admin logged in successfully"
+  },
+  {
+    "event_id": "evt-012",
+    "type": "system_error",
+    "severity": 3,
+    "source": "load-balancer",
+    "tags": ["connection_pool", "exhausted"],
+    "message": "Connection pool exhausted on load balancer"
+  }
+]

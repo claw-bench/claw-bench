@@ -1,0 +1,21 @@
+The Application Framework v2.0
+
+Welcome to the Application Framework. This framework provides tools for building
+modern web applications. The Application Framework was designed with simplicity
+in mind.
+
+Key features of the Application Framework include:
+- Fast rendering engine
+- Built-in authentication module
+- RESTful API support
+- SQLite database integration
+
+To get started with the Application Framework, install it using pip:
+
+  pip install app-framework
+
+For questions, contact the Support Team at support@oldomain.com or visit
+our website at http://www.oldomain.com/docs for documentation.
+
+The Application Framework is released under the MIT License.
+Copyright 2024 OldCorp Industries.

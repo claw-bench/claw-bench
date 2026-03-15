@@ -1,0 +1,10 @@
+id = "cal-003"
+title = "List Today's Schedule"
+domain = "calendar"
+level = "L1"
+description = "Extract and sort all events for a specific date from a calendar"
+timeout = 120
+capabilities = ["calendar-read"]
+skills_allowed = true
+tags = ["basic", "calendar", "filter"]
+capability_types = ["reasoning", "tool-use"]

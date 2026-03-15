@@ -1,0 +1,10 @@
+id = "doc-001"
+title = "Text Formatting"
+domain = "document-editing"
+level = "L1"
+description = "Apply formatting rules to a text document: wrap lines at 80 characters, normalize whitespace, and fix punctuation spacing"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "formatting", "text", "whitespace"]
+capability_types = ["reasoning", "tool-use"]

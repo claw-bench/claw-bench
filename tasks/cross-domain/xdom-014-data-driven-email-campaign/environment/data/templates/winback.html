@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>We Miss You</title></head>
+<body>
+<div style="max-width:600px;margin:0 auto;font-family:Arial,sans-serif;">
+  <h1 style="color:#1a1a2e;">{{subject_line}}</h1>
+  <p>Hi {{first_name}},</p>
+  <p>It has been a while since your last visit, and we wanted to let you know we have
+  been busy making things even better for you.</p>
+  <p>Your last purchase was on <strong>{{last_purchase_date}}</strong>, and we would love
+  to welcome you back with a special offer.</p>
+  <div style="background:#fff3cd;padding:20px;border-radius:8px;text-align:center;">
+    <p style="font-size:24px;color:#e94560;">{{discount_percent}}% OFF Everything</p>
+    <p>Use code: <strong>{{offer_code}}</strong></p>
+    <p>Plus: <strong>Free Shipping</strong> on your order!</p>
+    <p>Expires: {{offer_expiry}}</p>
+  </div>
+  <p>We have new arrivals in <strong>{{preferred_category}}</strong> we think you will love.</p>
+  <p>See you soon!<br>The {{from_name}} Team</p>
+  <hr>
+  <p style="font-size:11px;color:#888;">Sent to {{email}} | <a href="#">Unsubscribe</a></p>
+</div>
+</body>
+</html>

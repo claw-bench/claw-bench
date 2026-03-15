@@ -1,0 +1,10 @@
+id = "file-013"
+title = "Multi-File Search and Report"
+domain = "file-operations"
+level = "L3"
+description = "Search for a pattern across multiple text files and generate a markdown report"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["search", "pattern-matching", "markdown", "report"]
+capability_types = ["tool-use"]

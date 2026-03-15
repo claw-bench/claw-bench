@@ -1,0 +1,6 @@
+Name,Score,Grade
+Henry,82,B
+Iris,97,A
+Jack,69,D
+Kate,84,B
+Leo,90,A

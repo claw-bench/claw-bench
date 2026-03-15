@@ -1,0 +1,10 @@
+id = "code-002"
+title = "Implement a Palindrome Checker"
+domain = "code-assistance"
+level = "L1"
+description = "Write a function is_palindrome(s) that checks whether a given string is a palindrome, handling edge cases like empty strings and single characters"
+timeout = 120
+capabilities = ["code-write"]
+skills_allowed = true
+tags = ["python", "functions", "strings"]
+capability_types = ["reasoning", "tool-use"]

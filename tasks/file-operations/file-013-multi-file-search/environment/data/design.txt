@@ -1,0 +1,25 @@
+System Architecture Design Document
+====================================
+
+1. Overview
+The system uses a microservices architecture with a central API gateway.
+Each service communicates via REST APIs and message queues.
+
+2. Authentication Module
+The auth module handles user login, registration, and token management.
+TODO: Implement refresh token rotation strategy
+JWT tokens are used with a 15-minute expiry window.
+
+3. Database Layer
+We use PostgreSQL for relational data and Redis for caching.
+TODO: Add database connection pooling configuration
+TODO: Set up read replicas for reporting queries
+The ORM layer abstracts direct SQL access for most operations.
+
+4. API Gateway
+All external requests route through the gateway for rate limiting.
+The gateway handles SSL termination and request logging.
+
+5. Monitoring
+Prometheus metrics are collected from each service endpoint.
+Grafana dashboards visualize the key performance indicators.

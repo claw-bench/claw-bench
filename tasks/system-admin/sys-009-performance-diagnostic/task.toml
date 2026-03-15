@@ -1,0 +1,10 @@
+id = "sys-009"
+title = "Performance Diagnostic"
+domain = "system-admin"
+level = "L3"
+description = "Analyze 24-hour time-series performance metrics to identify bottlenecks, anomalies, and provide recommendations"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["advanced", "performance", "metrics", "anomaly-detection", "json"]
+capability_types = ["reasoning", "tool-use"]

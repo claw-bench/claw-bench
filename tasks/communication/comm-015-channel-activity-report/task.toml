@@ -1,0 +1,10 @@
+id = "comm-015"
+title = "Channel Activity Report"
+domain = "communication"
+level = "L3"
+description = "Analyze channel message data and produce a CSV activity report with statistics per channel"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["channels", "activity", "report"]
+capability_types = ["collaboration", "reasoning"]

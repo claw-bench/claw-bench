@@ -1,0 +1,34 @@
+2026-03-10T08:00:00 INFO  Payment service started, version 3.2.1
+2026-03-10T08:00:01 INFO  Connected to database cluster db-primary.internal
+2026-03-10T08:00:02 INFO  Cache warmed: 15,000 product entries loaded
+2026-03-10T08:01:00 INFO  Processing payment for order ORD-88401 ($125.00)
+2026-03-10T08:01:01 INFO  Payment ORD-88401 completed successfully
+2026-03-10T08:05:00 INFO  Processing payment for order ORD-88402 ($89.50)
+2026-03-10T08:05:01 INFO  Payment ORD-88402 completed successfully
+2026-03-10T08:15:00 INFO  Config reload triggered via API
+2026-03-10T08:15:01 INFO  New rate limit config applied: max_tps=50 (was 200)
+2026-03-10T08:15:02 WARN  Rate limit threshold significantly reduced
+2026-03-10T08:16:00 INFO  Processing payment for order ORD-88403 ($210.00)
+2026-03-10T08:16:01 INFO  Payment ORD-88403 completed successfully
+2026-03-10T08:20:00 WARN  Transaction queue depth: 45/50 (90%)
+2026-03-10T08:21:00 ERROR Rate limit exceeded: 52 TPS (limit: 50)
+2026-03-10T08:21:01 ERROR Payment ORD-88410 rejected: rate limit
+2026-03-10T08:21:02 ERROR Payment ORD-88411 rejected: rate limit
+2026-03-10T08:21:03 ERROR Payment ORD-88412 rejected: rate limit
+2026-03-10T08:22:00 ERROR 15 payments rejected in last 60 seconds
+2026-03-10T08:22:30 WARN  Customer complaint queue growing: 8 new tickets
+2026-03-10T08:23:00 ERROR Payment gateway timeout for ORD-88420
+2026-03-10T08:23:30 ERROR Circuit breaker OPEN for payment-gateway
+2026-03-10T08:24:00 ERROR All payment processing halted - circuit breaker active
+2026-03-10T08:25:00 WARN  Revenue impact: estimated $12,500/hour in lost transactions
+2026-03-10T08:30:00 INFO  On-call engineer acknowledged alert
+2026-03-10T08:35:00 INFO  Investigation started - checking recent changes
+2026-03-10T08:40:00 INFO  Root cause identified: rate limit config change
+2026-03-10T08:41:00 INFO  Rolling back rate limit to max_tps=200
+2026-03-10T08:41:30 INFO  Config rollback applied successfully
+2026-03-10T08:42:00 INFO  Circuit breaker reset to CLOSED
+2026-03-10T08:42:30 INFO  Payment processing resumed
+2026-03-10T08:43:00 INFO  Processing backlog: 45 queued payments
+2026-03-10T08:45:00 INFO  Backlog cleared, normal operations restored
+2026-03-10T08:50:00 INFO  System health: all checks passing
+2026-03-10T09:00:00 INFO  Post-incident review scheduled

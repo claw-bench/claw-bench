@@ -1,0 +1,24 @@
+2026-03-11T08:12:33.500Z auth-service-01 sshd[1024]: Accepted publickey for deploy from 10.0.0.20 port 54221 ssh2
+2026-03-11T08:13:01.200Z auth-service-01 webapp[2048]: Successful login for user jsmith from 192.168.1.50 via web
+2026-03-11T10:32:08.100Z auth-service-01 webapp[2048]: Failed login for user admin from 198.51.100.77 via web - invalid password
+2026-03-11T10:32:09.050Z auth-service-01 webapp[2048]: Failed login for user admin from 198.51.100.77 via web - invalid password
+2026-03-11T10:32:09.520Z auth-service-01 webapp[2048]: Failed login for user admin from 198.51.100.77 via web - invalid password
+2026-03-11T10:32:10.110Z auth-service-01 webapp[2048]: Failed login for user admin from 198.51.100.77 via web - invalid password
+2026-03-11T10:32:10.580Z auth-service-01 webapp[2048]: Failed login for user admin from 198.51.100.77 via web - invalid password
+2026-03-11T10:32:11.020Z auth-service-01 webapp[2048]: Failed login for user admin from 198.51.100.77 via web - invalid password
+2026-03-11T10:32:11.490Z auth-service-01 webapp[2048]: Failed login for user admin from 198.51.100.77 via web - invalid password
+2026-03-11T10:32:12.010Z auth-service-01 webapp[2048]: Failed login for user admin from 198.51.100.77 via web - invalid password
+2026-03-11T10:32:12.530Z auth-service-01 webapp[2048]: Failed login for user admin from 198.51.100.77 via web - invalid password
+2026-03-11T10:32:13.080Z auth-service-01 webapp[2048]: Failed login for user admin from 198.51.100.77 via web - invalid password
+2026-03-11T10:32:13.550Z auth-service-01 webapp[2048]: Failed login for user admin from 198.51.100.77 via web - invalid password
+2026-03-11T10:32:14.020Z auth-service-01 webapp[2048]: Failed login for user admin from 198.51.100.77 via web - invalid password
+2026-03-11T10:32:14.490Z auth-service-01 webapp[2048]: Failed login for user admin from 198.51.100.77 via web - invalid password
+2026-03-11T10:32:15.010Z auth-service-01 webapp[2048]: Failed login for user admin from 198.51.100.77 via web - invalid password
+2026-03-11T10:32:15.530Z auth-service-01 webapp[2048]: Failed login for user admin from 198.51.100.77 via web - invalid password
+2026-03-11T10:32:16.005Z auth-service-01 webapp[2048]: Successful login for user admin from 198.51.100.77 via web - NOTE: 15 previous failures
+2026-03-11T10:37:44.231Z auth-service-01 webapp[2048]: New account created: backdoor-svc (role: admin) by user admin from 198.51.100.77
+2026-03-11T10:38:20.554Z auth-service-01 webapp[2048]: Role change: backdoor-svc elevated to super-admin by user admin from 198.51.100.77
+2026-03-11T11:15:22.100Z auth-service-01 webapp[2048]: Successful login for user backdoor-svc from 198.51.100.77 via API key
+2026-03-11T11:20:10.300Z auth-service-01 webapp[2048]: API action: webhook registration by backdoor-svc from 198.51.100.77
+2026-03-11T11:25:45.500Z auth-service-01 webapp[2048]: API action: database read (customers) by backdoor-svc from 198.51.100.77
+2026-03-11T11:45:12.200Z auth-service-01 webapp[2048]: API action: database read (orders) by backdoor-svc from 198.51.100.77

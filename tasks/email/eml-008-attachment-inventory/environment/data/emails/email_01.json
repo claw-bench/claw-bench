@@ -1,0 +1,10 @@
+{
+  "id": 1,
+  "from": "finance@company.com",
+  "subject": "Q1 Financial Report",
+  "date": "2026-03-01T10:00:00Z",
+  "attachments": [
+    {"filename": "q1_report.pdf", "size_bytes": 245000, "content_type": "application/pdf"},
+    {"filename": "q1_spreadsheet.xlsx", "size_bytes": 189000, "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"}
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "invoice_number": "INV-2026-0042",
+  "date": "2026-03-12",
+  "due_date": "2026-04-11",
+  "from": {
+    "company": "TechSoft Solutions",
+    "address": "123 Innovation Drive, San Francisco, CA 94102"
+  },
+  "to": {
+    "company": "Global Corp",
+    "address": "456 Business Ave, New York, NY 10001",
+    "contact": "Jane Smith"
+  },
+  "items": [
+    {"description": "Software License (Annual)", "quantity": 5, "unit_price": 299.99},
+    {"description": "Implementation Service", "quantity": 40, "unit_price": 150.00},
+    {"description": "Training Session", "quantity": 2, "unit_price": 500.00}
+  ],
+  "tax_rate": 0.08,
+  "notes": "Payment terms: Net 30"
+}

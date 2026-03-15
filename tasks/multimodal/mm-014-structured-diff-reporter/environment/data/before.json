@@ -1,0 +1,24 @@
+{
+  "app_name": "MyService",
+  "version": "2.1.0",
+  "debug": true,
+  "database": {
+    "host": "db-old.example.com",
+    "port": 5432,
+    "name": "mydb",
+    "pool_size": 10
+  },
+  "cache": {
+    "enabled": true,
+    "ttl": 300,
+    "backend": "redis"
+  },
+  "logging": {
+    "level": "DEBUG",
+    "file": "/var/log/myservice.log"
+  },
+  "feature_flags": {
+    "new_ui": false,
+    "beta_api": true
+  }
+}

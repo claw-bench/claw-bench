@@ -1,0 +1,10 @@
+id = "data-012"
+title = "Simple Linear Regression Prediction"
+domain = "data-analysis"
+level = "L4"
+description = "Build a simple linear regression model and predict future values"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["regression", "prediction", "model", "statistics"]
+capability_types = ["reasoning", "tool-use"]

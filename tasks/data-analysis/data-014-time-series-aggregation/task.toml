@@ -1,0 +1,10 @@
+id = "data-014"
+title = "Time Series Aggregation"
+domain = "data-analysis"
+level = "L3"
+description = "Aggregate hourly metrics into daily summaries and determine trends"
+timeout = 180
+capabilities = ["file-read", "file-write", "python"]
+skills_allowed = true
+tags = ["time-series", "aggregation", "data-analysis"]
+capability_types = ["reasoning", "tool-use"]

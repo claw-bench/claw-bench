@@ -1,0 +1,10 @@
+id = "cal-008"
+title = "Batch Invite Participants"
+domain = "calendar"
+level = "L2"
+description = "Add contacts to meetings matching a specific tag"
+timeout = 180
+capabilities = ["calendar-write"]
+skills_allowed = true
+tags = ["intermediate", "calendar", "batch"]
+capability_types = ["reasoning", "tool-use"]

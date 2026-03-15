@@ -1,0 +1,18 @@
+{
+  "project_name": "Project Phoenix",
+  "version": "2.1.0",
+  "environment": "production",
+  "features": {
+    "dark_mode": true,
+    "beta_dashboard": false,
+    "api_v2": true
+  },
+  "deployment": {
+    "target": "aws-east-1",
+    "auto_scaling": true,
+    "min_instances": 3,
+    "max_instances": 10
+  },
+  "team_lead": "Alice Chen",
+  "last_updated": "2026-03-01"
+}

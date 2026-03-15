@@ -1,0 +1,10 @@
+id = "mem-012"
+title = "Fact Extraction and Update"
+domain = "memory"
+level = "L2"
+description = "Process a stream of fact statements where later statements may contradict or update earlier ones, producing the latest version of each fact"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["facts", "extraction", "update"]
+capability_types = ["memory", "reasoning"]

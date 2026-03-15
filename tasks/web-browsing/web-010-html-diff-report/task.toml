@@ -1,0 +1,10 @@
+id = "web-010"
+title = "HTML Diff Report"
+domain = "web-browsing"
+level = "L3"
+description = "Compare two HTML files and produce a structured JSON report of added, removed, and modified elements"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["html", "diff", "comparison", "json", "dom"]
+capability_types = ["reasoning", "tool-use"]

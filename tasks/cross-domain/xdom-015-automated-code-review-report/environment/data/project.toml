@@ -1,0 +1,32 @@
+[project]
+name = "acme-web-app"
+language = "python"
+framework = "flask"
+python_version = "3.11"
+
+[rules]
+max_function_lines = 20
+max_complexity = 8
+require_docstrings = true
+require_type_hints = true
+min_test_coverage = 80
+
+[rules.banned_imports]
+modules = ["eval", "pickle"]
+description = "These modules are banned for security reasons"
+
+[rules.banned_functions]
+functions = ["eval", "exec", "pickle.loads", "os.system", "subprocess.call"]
+description = "These functions are banned for security reasons"
+
+[rules.required_patterns]
+sql_parameterized = true
+context_managers_for_files = true
+no_hardcoded_secrets = true
+
+[scoring]
+error_penalty = 10
+warning_penalty = 5
+info_penalty = 2
+starting_score = 100
+minimum_score = 0

@@ -1,0 +1,26 @@
+{
+  "app_name": "MyService",
+  "version": "2.1.0",
+  "debug": false,
+  "port": 8080,
+  "database": {
+    "host": "db.example.com",
+    "port": 5432,
+    "name": "production",
+    "credentials": {
+      "username": "admin",
+      "password": "s3cret"
+    }
+  },
+  "features": ["auth", "logging", "cache", "metrics"],
+  "logging": {
+    "level": "info",
+    "outputs": ["stdout", "file"],
+    "file_path": "/var/log/myservice.log"
+  },
+  "rate_limit": {
+    "enabled": true,
+    "requests_per_minute": 100,
+    "burst_size": 20
+  }
+}

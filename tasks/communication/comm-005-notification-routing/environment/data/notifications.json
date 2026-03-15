@@ -1,0 +1,14 @@
+[
+  {"id": 1, "user": "alice", "type": "alert", "title": "Server Down", "message": "Production server is not responding."},
+  {"id": 2, "user": "bob", "type": "update", "title": "Deploy Complete", "message": "Version 2.3.1 has been deployed."},
+  {"id": 3, "user": "alice", "type": "reminder", "title": "Meeting in 15 min", "message": "Standup meeting starts at 10:00 AM."},
+  {"id": 4, "user": "charlie", "type": "alert", "title": "High CPU Usage", "message": "CPU usage exceeded 90% threshold."},
+  {"id": 5, "user": "diana", "type": "promotion", "title": "New Feature", "message": "Try our new analytics dashboard."},
+  {"id": 6, "user": "bob", "type": "alert", "title": "Disk Space Low", "message": "Disk usage at 95% on db-server."},
+  {"id": 7, "user": "alice", "type": "update", "title": "PR Merged", "message": "Your pull request #42 has been merged."},
+  {"id": 8, "user": "eve", "type": "reminder", "title": "Review Due", "message": "Code review for PR #55 is due today."},
+  {"id": 9, "user": "charlie", "type": "update", "title": "Build Success", "message": "CI build #789 passed all tests."},
+  {"id": 10, "user": "bob", "type": "promotion", "title": "Upgrade Plan", "message": "Upgrade to Pro for advanced features."},
+  {"id": 11, "user": "frank", "type": "alert", "title": "Security Alert", "message": "Unusual login detected from new location."},
+  {"id": 12, "user": "diana", "type": "reminder", "title": "Deadline Tomorrow", "message": "Project milestone due tomorrow."}
+]

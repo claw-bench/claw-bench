@@ -1,0 +1,14 @@
+[
+  {
+    "pattern": "report_(\\d{4})_(\\d{2})_(\\d{2})",
+    "replacement": "rpt_\\1-\\2-\\3"
+  },
+  {
+    "pattern": "IMG_(\\d{8})_(\\d+)",
+    "replacement": "photo_\\1_\\2"
+  },
+  {
+    "pattern": "_prod_",
+    "replacement": "_production_"
+  }
+]

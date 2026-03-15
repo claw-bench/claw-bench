@@ -1,0 +1,48 @@
+name: Validate Tasks
+
+on:
+  pull_request:
+    paths:
+      - "tasks/**"
+
+jobs:
+  validate:
+    name: Validate Task Definitions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install claw-bench
+        run: pip install -e .
+
+      - name: Validate all tasks via script
+        run: python scripts/validate_all_tasks.py
+
+      - name: Validate all tasks via CLI
+        run: claw-bench validate
+
+      - name: Check task schema
+        run: |
+          pip install check-jsonschema
+          for toml_file in tasks/*/task.toml tasks/*/*/task.toml; do
+            if [ -f "$toml_file" ]; then
+              echo "Validating $toml_file"
+            fi
+          done
+
+      - name: Verify task structure
+        run: |
+          for task_dir in tasks/*/*/; do
+            if [ -f "$task_dir/task.toml" ]; then
+              echo "Checking structure: $task_dir"
+              # Every task must have instruction.md
+              test -f "$task_dir/instruction.md" || (echo "Missing instruction.md in $task_dir" && exit 1)
+              # Every task must have a verifier
+              test -f "$task_dir/verifier/test_output.py" || (echo "Missing verifier in $task_dir" && exit 1)
+              echo "  OK"
+            fi
+          done

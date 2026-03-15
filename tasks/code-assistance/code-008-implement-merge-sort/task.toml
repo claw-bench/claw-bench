@@ -1,0 +1,10 @@
+id = "code-008"
+title = "Implement Merge Sort Algorithm"
+domain = "code-assistance"
+level = "L2"
+description = "Implement the merge sort algorithm that correctly sorts integers, strings, handles edge cases, and scales efficiently"
+timeout = 150
+capabilities = ["code-write"]
+skills_allowed = true
+tags = ["python", "algorithms", "sorting"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,13 @@
+[
+  {"employee_id": "E001", "review_year": 2023, "rating": 4.5, "goals_met": true, "reviewer": "M. Torres"},
+  {"employee_id": "E001", "review_year": 2024, "rating": 4.7, "goals_met": true, "reviewer": "M. Torres"},
+  {"employee_id": "E002", "review_year": 2023, "rating": 3.8, "goals_met": true, "reviewer": "S. Patel"},
+  {"employee_id": "E003", "review_year": 2023, "rating": 4.2, "goals_met": true, "reviewer": "M. Torres"},
+  {"employee_id": "E003", "review_year": 2024, "rating": 3.9, "goals_met": false, "reviewer": "M. Torres"},
+  {"employee_id": "E004", "review_year": 2024, "rating": 4.0, "goals_met": true, "reviewer": "J. Kim"},
+  {"employee_id": "E005", "review_year": 2023, "rating": 4.8, "goals_met": true, "reviewer": "M. Torres"},
+  {"employee_id": "E005", "review_year": 2024, "rating": 4.9, "goals_met": true, "reviewer": "M. Torres"},
+  {"employee_id": "E007", "review_year": 2023, "rating": 3.5, "goals_met": false, "reviewer": "J. Kim"},
+  {"employee_id": "E007", "review_year": 2024, "rating": 4.1, "goals_met": true, "reviewer": "J. Kim"},
+  {"employee_id": "E008", "review_year": 2024, "rating": 3.6, "goals_met": false, "reviewer": "L. Wang"}
+]

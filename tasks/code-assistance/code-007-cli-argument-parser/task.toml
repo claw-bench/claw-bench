@@ -1,0 +1,10 @@
+id = "code-007"
+title = "Write a CLI Argument Parser"
+domain = "code-assistance"
+level = "L2"
+description = "Create a command-line argument parser using argparse with input, output, format, and verbose options"
+timeout = 150
+capabilities = ["code-write"]
+skills_allowed = true
+tags = ["python", "cli", "argparse"]
+capability_types = ["reasoning", "tool-use"]

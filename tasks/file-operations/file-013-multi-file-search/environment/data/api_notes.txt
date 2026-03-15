@@ -1,0 +1,23 @@
+API Development Notes
+=====================
+
+Endpoint: GET /api/v2/users
+- Returns paginated user list
+- Supports filtering by role and status
+- TODO: Add rate limiting per API key
+- Response includes total count in headers
+
+Endpoint: POST /api/v2/orders
+- Creates a new order from cart contents
+- Validates inventory before confirmation
+- Returns order ID and estimated delivery date
+
+Endpoint: PUT /api/v2/users/:id
+- Updates user profile information
+- TODO: Validate email uniqueness on update
+- Requires authentication token
+
+Endpoint: DELETE /api/v2/sessions
+- Clears all active sessions for a user
+- Used during password reset flow
+- TODO: Add audit logging for session termination

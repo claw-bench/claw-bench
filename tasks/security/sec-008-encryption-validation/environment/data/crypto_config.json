@@ -1,0 +1,52 @@
+{
+  "components": {
+    "web_server": {
+      "tls_version": "TLS 1.0",
+      "cipher_suites": ["TLS_RSA_WITH_RC4_128_SHA", "TLS_RSA_WITH_AES_256_CBC_SHA256"],
+      "certificate_key_size": 2048,
+      "hsts_enabled": true
+    },
+    "database": {
+      "encryption_at_rest": "AES-256-GCM",
+      "key_length": 256,
+      "connection_encryption": "TLS 1.2",
+      "hash_algorithm": "SHA-256"
+    },
+    "password_storage": {
+      "algorithm": "MD5",
+      "salt_length": 8,
+      "iterations": 1
+    },
+    "api_gateway": {
+      "tls_version": "TLS 1.2",
+      "cipher_suites": ["TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"],
+      "jwt_algorithm": "HS256",
+      "jwt_key_length": 128
+    },
+    "file_encryption": {
+      "algorithm": "DES",
+      "key_length": 56,
+      "mode": "ECB",
+      "iv_generation": "static"
+    },
+    "email_service": {
+      "smtp_encryption": "STARTTLS",
+      "tls_version": "TLS 1.1",
+      "certificate_validation": false,
+      "content_encryption": "AES-128-CBC"
+    },
+    "backup_system": {
+      "encryption_algorithm": "AES-256-CBC",
+      "key_derivation": "PBKDF2",
+      "kdf_iterations": 100000,
+      "key_length": 256,
+      "integrity_check": "SHA-256"
+    },
+    "internal_api": {
+      "transport_encryption": "none",
+      "authentication": "basic_auth",
+      "rsa_key_size": 1024,
+      "signing_algorithm": "SHA1withRSA"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+diff --git a/src/models/user.py b/src/models/user.py
+index 9999iii..aaaajjj 100644
+--- a/src/models/user.py
++++ b/src/models/user.py
+@@ -20,6 +20,15 @@ class User(db.Model):
+     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+     updated_at = db.Column(db.DateTime, onupdate=datetime.utcnow)
+
++    def get_full_name(self):
++        """Return the user's full name."""
++        return f"{self.first_name} {self.last_name}"
++
++    def to_dict(self):
++        """Serialize user to dictionary."""
++        return {
++            "id": self.id,
++            "email": self.email,
++            "name": self.get_full_name(),
++        }

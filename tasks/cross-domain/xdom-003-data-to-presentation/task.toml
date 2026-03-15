@@ -1,0 +1,10 @@
+id = "xdom-003"
+title = "Data to Presentation: Quarterly Business Report"
+domain = "cross-domain"
+level = "L3"
+description = "Read quarterly business data from CSV, compute key metrics and trends, and generate a markdown slide presentation with supporting chart data."
+timeout = 300
+capabilities = ["file-read", "file-write", "data-analysis"]
+skills_allowed = true
+tags = ["cross-domain", "data-analysis", "presentation", "reporting"]
+capability_types = ["reasoning", "tool-use"]

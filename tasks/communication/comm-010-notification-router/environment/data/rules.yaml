@@ -1,0 +1,71 @@
+rules:
+  - name: "critical_system_alert"
+    conditions:
+      event_type: "system_error"
+      severity_gte: 4
+    channels: ["pagerduty", "slack_oncall", "email_ops"]
+    priority: "critical"
+
+  - name: "high_severity_system"
+    conditions:
+      event_type: "system_error"
+      severity_gte: 3
+    channels: ["slack_oncall", "email_ops"]
+    priority: "high"
+
+  - name: "security_breach"
+    conditions:
+      event_type: "security_alert"
+      tag_contains: ["breach", "intrusion"]
+    channels: ["pagerduty", "slack_security", "email_ciso", "sms_security"]
+    priority: "critical"
+
+  - name: "security_general"
+    conditions:
+      event_type: "security_alert"
+    channels: ["slack_security", "email_security"]
+    priority: "high"
+
+  - name: "deploy_production"
+    conditions:
+      event_type: "deployment"
+      source_in: ["prod-pipeline", "release-manager"]
+    channels: ["slack_engineering", "email_team"]
+    priority: "high"
+
+  - name: "deploy_staging"
+    conditions:
+      event_type: "deployment"
+      source_in: ["staging-pipeline"]
+    channels: ["slack_engineering"]
+    priority: "medium"
+
+  - name: "database_alert"
+    conditions:
+      event_type: "db_event"
+      severity_gte: 3
+      tag_contains: ["replication", "failover", "corruption"]
+    channels: ["pagerduty", "slack_dba", "email_dba"]
+    priority: "critical"
+
+  - name: "database_warning"
+    conditions:
+      event_type: "db_event"
+      severity_gte: 2
+    channels: ["slack_dba"]
+    priority: "medium"
+
+  - name: "api_rate_limit"
+    conditions:
+      event_type: "api_event"
+      tag_contains: ["rate_limit"]
+      severity_gte: 2
+    channels: ["slack_engineering", "email_api_team"]
+    priority: "medium"
+
+  - name: "monitoring_heartbeat"
+    conditions:
+      event_type: "heartbeat"
+      source_in: ["monitoring-agent", "health-checker"]
+    channels: ["log"]
+    priority: "low"

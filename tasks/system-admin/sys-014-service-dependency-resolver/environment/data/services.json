@@ -1,0 +1,10 @@
+[
+  {"name": "database", "depends_on": []},
+  {"name": "cache", "depends_on": []},
+  {"name": "auth-service", "depends_on": ["database", "cache"]},
+  {"name": "api-gateway", "depends_on": ["auth-service"]},
+  {"name": "user-service", "depends_on": ["database", "auth-service"]},
+  {"name": "notification-service", "depends_on": ["cache", "user-service"]},
+  {"name": "web-frontend", "depends_on": ["api-gateway", "user-service"]},
+  {"name": "monitoring", "depends_on": ["database"]}
+]

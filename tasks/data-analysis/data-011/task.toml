@@ -1,0 +1,10 @@
+id = "data-011"
+title = "Comprehensive Analysis Report"
+domain = "data-analysis"
+level = "L4"
+description = "Perform comprehensive data analysis and generate a report with stats, insights, and chart data"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["report", "analysis", "comprehensive", "charts"]
+capability_types = ["reasoning", "tool-use"]

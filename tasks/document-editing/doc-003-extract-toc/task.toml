@@ -1,0 +1,10 @@
+id = "doc-003"
+title = "Extract Table of Contents"
+domain = "document-editing"
+level = "L1"
+description = "Generate a structured table of contents JSON from headings in a Markdown document"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "toc", "markdown", "headings"]
+capability_types = ["reasoning", "tool-use"]

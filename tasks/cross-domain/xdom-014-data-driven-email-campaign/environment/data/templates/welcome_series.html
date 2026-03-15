@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Welcome</title></head>
+<body>
+<div style="max-width:600px;margin:0 auto;font-family:Arial,sans-serif;">
+  <h1 style="color:#1a1a2e;">{{subject_line}}</h1>
+  <p>Hi {{first_name}},</p>
+  <p>Welcome to the {{from_name}} family! We are so glad you are here.</p>
+  <p>To help you get started, here is a special welcome gift:</p>
+  <div style="background:#cce5ff;padding:20px;border-radius:8px;text-align:center;">
+    <p style="font-size:24px;color:#004085;">{{discount_percent}}% OFF Your Next Order</p>
+    <p>Use code: <strong>{{offer_code}}</strong></p>
+    <p>Valid until: {{offer_expiry}}</p>
+    <p>Plus a <strong>FREE {{bonus_item}}</strong> with any purchase!</p>
+  </div>
+  <p>We noticed you like <strong>{{preferred_category}}</strong> — explore our latest collection!</p>
+  <p>Happy shopping!<br>The {{from_name}} Team</p>
+  <hr>
+  <p style="font-size:11px;color:#888;">Sent to {{email}} | <a href="#">Unsubscribe</a></p>
+</div>
+</body>
+</html>

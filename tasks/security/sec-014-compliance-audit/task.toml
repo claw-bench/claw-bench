@@ -1,0 +1,10 @@
+id = "sec-014"
+title = "Audit System Configuration for Compliance"
+domain = "security"
+level = "L4"
+description = "Audit system configuration files against a set of compliance rules derived from OWASP and SOC2 standards, reporting pass/fail per rule with evidence"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["compliance", "owasp", "soc2", "audit", "defensive"]
+capability_types = ["reasoning", "tool-use"]

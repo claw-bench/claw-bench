@@ -1,0 +1,8 @@
+[
+  {"name": "Alice Johnson", "email": "alice@example.com", "phone": "+1-555-0201", "department": "Engineering Lead"},
+  {"name": "Bob Smith", "email": "Bob@example.com", "phone": "+1-555-0202", "department": "Marketing Lead"},
+  {"name": "Ivy Chen", "email": "ivy@example.com", "phone": "+1-555-0109", "department": "Design"},
+  {"name": "Jack Ryan", "email": "jack@example.com", "phone": "+1-555-0110", "department": "Security"},
+  {"name": "Karen Wu", "email": "karen@example.com", "phone": "+1-555-0111", "department": "Finance"},
+  {"name": "Diana Prince", "email": "Diana@example.com", "phone": "+1-555-0204", "department": "CTO"}
+]

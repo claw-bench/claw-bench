@@ -1,0 +1,7 @@
+{
+  "from": "billing@aws.amazon.com",
+  "to": "you@company.com",
+  "subject": "AWS billing statement for February 2026",
+  "date": "2026-03-07",
+  "body": "Dear Customer,\n\nYour AWS billing statement for the period of February 1-28, 2026 is now available.\n\nAWS billing: $156.00 for February\n\nService breakdown:\n  EC2 instances: $89.00\n  S3 storage: $32.00\n  RDS databases: $25.00\n  CloudFront: $10.00\n\nTotal charges: $156.00\nPayment method: Corporate card ending in 4832\n\nView your full invoice at https://console.aws.amazon.com/billing\n\nAmazon Web Services"
+}

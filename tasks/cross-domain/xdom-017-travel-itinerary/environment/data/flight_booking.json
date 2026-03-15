@@ -1,0 +1,4 @@
+{
+  "outbound": {"flight": "UA-1234", "from": "SFO", "to": "JFK", "date": "2026-03-25", "departure": "08:00", "arrival": "16:30"},
+  "return": {"flight": "UA-5678", "from": "JFK", "to": "SFO", "date": "2026-03-27", "departure": "18:00", "arrival": "21:30"}
+}

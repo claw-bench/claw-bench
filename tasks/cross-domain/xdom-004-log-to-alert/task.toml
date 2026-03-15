@@ -1,0 +1,10 @@
+id = "xdom-004"
+title = "Log to Alert: Application Log Analysis"
+domain = "cross-domain"
+level = "L3"
+description = "Analyze application logs against alert rules to identify triggerable patterns, generate structured alerts and an incident report with timeline."
+timeout = 300
+capabilities = ["file-read", "file-write", "log-analysis"]
+skills_allowed = true
+tags = ["cross-domain", "logging", "alerting", "incident-response"]
+capability_types = ["reasoning", "tool-use"]

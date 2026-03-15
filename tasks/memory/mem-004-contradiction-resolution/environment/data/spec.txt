@@ -1,0 +1,36 @@
+PROJECT SPECIFICATION: Data Processing Pipeline
+================================================
+
+== General Notes ==
+
+The pipeline processes CSV input files and produces cleaned output.
+- Use comma (,) as the delimiter for all file operations.
+- Maximum dataset size: 10,000 rows.
+- Always include column headers in the output.
+- Dates should be formatted as MM/DD/YYYY.
+- Null values should be skipped (rows with nulls are dropped entirely).
+
+
+== Processing Rules ==
+
+Data transformation rules (these are authoritative):
+- The output delimiter must be a tab character (\t) for compatibility with legacy systems.
+- Process up to 50,000 rows maximum to accommodate large datasets.
+- Null values must be replaced with the string "N/A" rather than dropping rows.
+- Date format must follow ISO 8601: YYYY-MM-DD.
+
+
+== Output Format ==
+
+The output file structure:
+- Use semicolon (;) as the field separator.
+- Headers must NOT be included in the output to reduce file size.
+- Limit output to 10,000 rows.
+- Dates should appear as DD-MM-YYYY (European format).
+- When encountering null values, replace them with "MISSING".
+
+
+== Validation ==
+
+All output must pass schema validation before delivery.
+Pipeline must log all transformations applied.

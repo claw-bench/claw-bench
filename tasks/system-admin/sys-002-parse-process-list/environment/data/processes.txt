@@ -1,0 +1,16 @@
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.1 169436 13120 ?        Ss   Mar01   0:15 /sbin/init
+root         2  0.0  0.0      0     0 ?        S    Mar01   0:00 [kthreadd]
+www-data  1234 12.5  3.2 524288 32768 ?        Sl   09:15   2:30 /usr/sbin/apache2 -k start
+postgres  2345  8.3  5.1 1048576 52428 ?       Ss   08:00  15:42 /usr/lib/postgresql/14/bin/postgres -D /var/lib/postgresql/14/main
+mysql     3456 15.7  8.4 2097152 86016 ?       Ssl  Mar01  48:23 /usr/sbin/mysqld --basedir=/usr
+alice     4567 45.2  2.1 262144 21504 ?        Rl   10:30   5:12 python3 /home/alice/ml_training.py --epochs 100
+bob       5678  3.1  1.5 131072 15360 pts/0    S+   11:00   0:45 vim /home/bob/project/main.py
+root      6789 22.8  4.7 786432 48128 ?        Sl   Mar01  32:10 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+nobody    7890  0.5  0.3  65536  3072 ?        S    Mar01   1:20 /usr/sbin/dnsmasq --no-resolv
+root      8901  1.2  0.8 131072  8192 ?        Ssl  Mar01   5:47 /usr/lib/snapd/snapd
+jenkins   9012 18.4  6.3 1572864 64512 ?       Sl   09:00  12:35 java -jar /opt/jenkins/jenkins.war --httpPort=8080
+root      9123  0.1  0.2  98304  2048 ?        Ss   Mar01   0:30 /usr/sbin/sshd -D
+deploy    9234  7.6  3.8 524288 38912 ?        Sl   10:00   3:22 node /opt/app/server.js --port 3000
+root      9345  0.3  0.1  45056  1024 ?        S    Mar01   0:10 /usr/sbin/cron -f
+monitor   9456  2.4  1.2 196608 12288 ?        Sl   Mar01   8:15 /opt/prometheus/prometheus --config.file=/etc/prometheus/prometheus.yml

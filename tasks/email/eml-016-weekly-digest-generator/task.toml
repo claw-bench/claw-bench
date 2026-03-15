@@ -1,0 +1,10 @@
+id = "eml-016"
+title = "Generate Weekly Email Digest"
+domain = "email"
+level = "L2"
+description = "Analyze a week's worth of emails and produce a structured weekly digest grouped by sender with urgency highlights"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["email", "digest", "summary", "office"]
+capability_types = ["reasoning", "tool-use"]

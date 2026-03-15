@@ -1,0 +1,4 @@
+{
+  "positive": ["great", "good", "excellent", "happy", "love", "amazing", "wonderful", "fantastic", "nice", "awesome", "perfect", "thank"],
+  "negative": ["bad", "terrible", "awful", "hate", "annoying", "frustrated", "wrong", "broken", "disappointing", "ugly", "fail", "angry"]
+}

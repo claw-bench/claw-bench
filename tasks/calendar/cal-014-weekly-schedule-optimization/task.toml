@@ -1,0 +1,10 @@
+id = "cal-014"
+title = "Weekly Schedule Optimization"
+domain = "calendar"
+level = "L4"
+description = "Optimize a draft weekly schedule by grouping meetings, minimizing context switches, and respecting preferences"
+timeout = 300
+capabilities = ["calendar-write"]
+skills_allowed = true
+tags = ["expert", "calendar", "optimization"]
+capability_types = ["reasoning", "tool-use"]

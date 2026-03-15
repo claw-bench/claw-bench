@@ -1,0 +1,10 @@
+id = "wfl-009"
+title = "Scheduled Workflow Plan with Critical Path"
+domain = "workflow-automation"
+level = "L3"
+description = "Generate an execution schedule and critical path analysis from a set of tasks with dependencies and time estimates, producing Gantt-chart-like scheduling data"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["scheduling", "dependencies", "critical-path", "topological-sort"]
+capability_types = ["reasoning", "tool-use"]

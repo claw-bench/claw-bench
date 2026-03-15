@@ -1,0 +1,10 @@
+id = "comm-012"
+title = "Contact Deduplicator"
+domain = "communication"
+level = "L2"
+description = "Deduplicate a contacts CSV file by merging entries with matching emails despite name and phone format variations"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["contacts", "dedup", "csv"]
+capability_types = ["collaboration", "reasoning"]

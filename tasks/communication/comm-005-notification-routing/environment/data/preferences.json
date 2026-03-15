@@ -1,0 +1,32 @@
+{
+  "alice": {
+    "alert": ["email", "sms", "slack"],
+    "update": ["slack"],
+    "reminder": ["email", "slack"],
+    "promotion": ["email"]
+  },
+  "bob": {
+    "alert": ["email", "sms"],
+    "update": ["email"],
+    "reminder": ["sms"],
+    "promotion": []
+  },
+  "charlie": {
+    "alert": ["slack", "sms"],
+    "update": ["slack"],
+    "reminder": ["email"],
+    "promotion": ["email"]
+  },
+  "diana": {
+    "alert": ["email", "sms", "slack"],
+    "update": ["email", "slack"],
+    "reminder": ["slack"],
+    "promotion": ["email", "slack"]
+  },
+  "default": {
+    "alert": ["email"],
+    "update": ["email"],
+    "reminder": ["email"],
+    "promotion": []
+  }
+}

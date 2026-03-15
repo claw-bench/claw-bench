@@ -1,0 +1,9 @@
+id = "data-015"
+domain = "data-analysis"
+level = "L3"
+title = "Multi-Table Join and Aggregation"
+description = "Join three related CSV tables (customers, orders, products) and produce a summary report showing total revenue per customer with product categories."
+timeout = 300
+capabilities = ["filesystem"]
+tags = ["csv", "join", "aggregation", "multi-table"]
+capability_types = ["reasoning", "tool-use"]

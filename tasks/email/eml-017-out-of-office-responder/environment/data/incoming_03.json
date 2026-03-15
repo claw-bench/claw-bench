@@ -1,0 +1,8 @@
+{
+  "from": "emma.wilson@client.org",
+  "sender_name": "Emma Wilson",
+  "to": "zhang.ming@company.com",
+  "subject": "Project Timeline Update",
+  "date": "2026-03-17",
+  "body": "Hi Ming,\n\nI wanted to check in on the project timeline. Our stakeholders are asking for a status update. Can we schedule a call this week?\n\nBest,\nEmma"
+}

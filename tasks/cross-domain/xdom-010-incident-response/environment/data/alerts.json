@@ -1,0 +1,34 @@
+[
+  {
+    "alert_id": "ALT-5501",
+    "timestamp": "2026-03-10T08:20:00",
+    "severity": "warning",
+    "title": "Transaction Queue High",
+    "message": "Transaction queue at 90% capacity (45/50)",
+    "service": "payment-service"
+  },
+  {
+    "alert_id": "ALT-5502",
+    "timestamp": "2026-03-10T08:21:00",
+    "severity": "critical",
+    "title": "Rate Limit Exceeded",
+    "message": "Payment service exceeding rate limit: 52 TPS vs 50 TPS limit",
+    "service": "payment-service"
+  },
+  {
+    "alert_id": "ALT-5503",
+    "timestamp": "2026-03-10T08:23:30",
+    "severity": "critical",
+    "title": "Circuit Breaker Opened",
+    "message": "Circuit breaker for payment-gateway is now OPEN. All payments halted.",
+    "service": "payment-service"
+  },
+  {
+    "alert_id": "ALT-5504",
+    "timestamp": "2026-03-10T08:25:00",
+    "severity": "high",
+    "title": "Revenue Impact Alert",
+    "message": "Estimated revenue loss: $12,500/hour due to payment outage",
+    "service": "business-metrics"
+  }
+]

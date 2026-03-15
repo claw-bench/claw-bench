@@ -1,0 +1,16 @@
+diff --git a/docs/api-reference.md b/docs/api-reference.md
+index 44445555..66667777 100644
+--- a/docs/api-reference.md
++++ b/docs/api-reference.md
+@@ -10,6 +10,12 @@
+
+ All endpoints require authentication via Bearer token.
+
++## Pagination
++
++All list endpoints support pagination via `page` and `per_page` query parameters.
++Default page size is 20, maximum is 100.
++
+ ## Endpoints
+
+ ### GET /api/users

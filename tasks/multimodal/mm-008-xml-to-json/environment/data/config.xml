@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application name="InventoryManager" version="3.2.1">
+  <metadata>
+    <author>Jane Smith</author>
+    <created>2025-08-15</created>
+    <description><![CDATA[Inventory management system for <warehouse> operations & logistics]]></description>
+  </metadata>
+  <database host="db.example.com" port="5432">
+    <credentials>
+      <username>inv_admin</username>
+      <password><![CDATA[p@ss&w0rd!<2025>]]></password>
+    </credentials>
+    <pool>
+      <min_connections>5</min_connections>
+      <max_connections>50</max_connections>
+      <timeout_ms>3000</timeout_ms>
+    </pool>
+  </database>
+  <logging level="INFO">
+    <output>
+      <target type="file">
+        <path>/var/log/inventory.log</path>
+        <max_size_mb>100</max_size_mb>
+        <rotation>daily</rotation>
+      </target>
+      <target type="console">
+        <colorize>true</colorize>
+      </target>
+    </output>
+    <format><![CDATA[{timestamp} [{level}] {module}: {message}]]></format>
+  </logging>
+  <features>
+    <feature enabled="true">barcode_scanning</feature>
+    <feature enabled="true">real_time_tracking</feature>
+    <feature enabled="false">predictive_ordering</feature>
+  </features>
+  <notifications>
+    <email>
+      <smtp_server>smtp.example.com</smtp_server>
+      <smtp_port>587</smtp_port>
+      <from_address>inventory@example.com</from_address>
+      <recipients>
+        <recipient>warehouse-mgr@example.com</recipient>
+        <recipient>ops-team@example.com</recipient>
+        <recipient>cfo@example.com</recipient>
+      </recipients>
+    </email>
+  </notifications>
+</application>

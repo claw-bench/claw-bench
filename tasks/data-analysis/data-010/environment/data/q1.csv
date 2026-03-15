@@ -1,0 +1,17 @@
+product,region,revenue,units
+Widget,North,999.51,44
+Widget,South,972.82,41
+Widget,East,1038.51,52
+Widget,West,917.04,50
+Gadget,North,1944.88,81
+Gadget,South,1917.05,29
+Gadget,East,1969.44,22
+Gadget,West,2095.94,50
+Doohickey,North,2944.48,18
+Doohickey,South,3094.48,52
+Doohickey,East,3097.63,87
+Doohickey,West,2985.77,21
+Thingamajig,North,4083.08,18
+Thingamajig,South,4038.63,52
+Thingamajig,East,4058.77,92
+Thingamajig,West,4066.56,10

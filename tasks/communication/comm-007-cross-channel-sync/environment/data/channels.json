@@ -1,0 +1,7 @@
+[
+  {"id": "slack-general", "name": "Slack General", "type": "slack", "content_types": ["messages", "files", "announcements"]},
+  {"id": "slack-dev", "name": "Slack Dev", "type": "slack", "content_types": ["messages", "files", "code-snippets"]},
+  {"id": "teams-main", "name": "Teams Main", "type": "teams", "content_types": ["messages", "files", "announcements"]},
+  {"id": "discord-community", "name": "Discord Community", "type": "discord", "content_types": ["messages", "announcements"]},
+  {"id": "email-list", "name": "Email List", "type": "email", "content_types": ["messages", "announcements", "files"]}
+]

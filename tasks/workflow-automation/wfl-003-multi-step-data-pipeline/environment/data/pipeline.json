@@ -1,0 +1,35 @@
+{
+  "name": "Sales Data Pipeline",
+  "steps": [
+    {
+      "id": "step1",
+      "name": "read_csv",
+      "description": "Read the CSV file and convert to JSON",
+      "input": "data.csv",
+      "output": "pipeline_output/step1_raw.json"
+    },
+    {
+      "id": "step2",
+      "name": "filter_rows",
+      "description": "Filter rows where amount > 100",
+      "input": "pipeline_output/step1_raw.json",
+      "output": "pipeline_output/step2_filtered.json",
+      "condition": "amount > 100"
+    },
+    {
+      "id": "step3",
+      "name": "compute_stats",
+      "description": "Compute summary statistics on filtered data",
+      "input": "pipeline_output/step2_filtered.json",
+      "output": "pipeline_output/step3_stats.json",
+      "metrics": ["total_amount", "average_amount", "count", "max_amount", "min_amount"]
+    },
+    {
+      "id": "step4",
+      "name": "write_report",
+      "description": "Generate a text summary report",
+      "input": "pipeline_output/step3_stats.json",
+      "output": "pipeline_output/step4_report.txt"
+    }
+  ]
+}

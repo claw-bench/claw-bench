@@ -1,0 +1,10 @@
+id = "doc-008"
+title = "Document Restructuring"
+domain = "document-editing"
+level = "L4"
+description = "Restructure a poorly organized 200-line markdown document according to a target outline, preserving all content"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["restructuring", "organization", "outline", "complex"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,10 @@
+id = "file-007"
+title = "Convert JSON to YAML"
+domain = "file-operations"
+level = "L2"
+description = "Convert a nested JSON configuration file into YAML format preserving all data and structure"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["intermediate", "json", "yaml", "conversion"]
+capability_types = ["tool-use"]

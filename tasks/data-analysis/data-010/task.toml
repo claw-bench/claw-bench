@@ -1,0 +1,10 @@
+id = "data-010"
+title = "Multi-Source Merge and Trend Analysis"
+domain = "data-analysis"
+level = "L3"
+description = "Merge quarterly CSV files and compute growth trends"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["merge", "trends", "growth", "quarterly"]
+capability_types = ["reasoning", "tool-use"]

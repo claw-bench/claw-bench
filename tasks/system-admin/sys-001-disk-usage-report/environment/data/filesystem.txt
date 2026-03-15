@@ -1,0 +1,15 @@
+4.2G	/var/log
+2.1G	/home/alice
+850M	/usr/local/lib
+1.5G	/opt/data
+320M	/etc
+15G	/srv/backups
+750M	/tmp
+3.8G	/home/bob
+128K	/root
+6.2G	/var/lib/docker
+450M	/usr/share
+1.1G	/opt/apps
+92M	/boot
+2.4G	/home/shared
+560M	/var/cache

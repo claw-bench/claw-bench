@@ -1,0 +1,10 @@
+id = "cal-010"
+title = "Meeting Duration Statistics"
+domain = "calendar"
+level = "L2"
+description = "Compute meeting duration statistics from a calendar"
+timeout = 180
+capabilities = ["calendar-read"]
+skills_allowed = true
+tags = ["intermediate", "calendar", "analytics"]
+capability_types = ["reasoning", "tool-use"]

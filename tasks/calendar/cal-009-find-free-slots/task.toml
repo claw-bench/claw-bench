@@ -1,0 +1,10 @@
+id = "cal-009"
+title = "Find Free Slots"
+domain = "calendar"
+level = "L2"
+description = "Find available 30-minute time slots in a busy calendar day"
+timeout = 180
+capabilities = ["calendar-read"]
+skills_allowed = true
+tags = ["intermediate", "calendar", "scheduling"]
+capability_types = ["reasoning", "tool-use"]

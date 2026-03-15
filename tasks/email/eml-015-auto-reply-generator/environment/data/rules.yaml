@@ -1,0 +1,18 @@
+rules:
+  - subject_pattern: "urgent"
+    reply_template: "Thank you for contacting us, {sender}. We have received your urgent message regarding \"{subject}\" sent on {date}. Our on-call team has been notified and will respond within 1 hour."
+
+  - subject_pattern: "invoice"
+    reply_template: "Dear {sender}, we have received your message about \"{subject}\" dated {date}. Our finance team will review and respond within 2 business days."
+
+  - subject_pattern: "question"
+    reply_template: "Hi {sender}, thank you for reaching out about \"{subject}\" on {date}. A member of our team will get back to you with an answer within 24 hours."
+
+  - subject_pattern: "feature request"
+    reply_template: "Hello {sender}, thank you for your feature request regarding \"{subject}\" submitted on {date}. We have logged this in our product backlog and will consider it for future releases."
+
+  - subject_pattern: "job application"
+    reply_template: "Dear {sender}, thank you for your application regarding \"{subject}\" received on {date}. Our HR team will review your application and get back to you within 5 business days."
+
+  - subject_pattern: "partnership"
+    reply_template: "Hi {sender}, thank you for your interest in a partnership (\"{subject}\", received {date}). Our business development team will review your proposal and follow up shortly."

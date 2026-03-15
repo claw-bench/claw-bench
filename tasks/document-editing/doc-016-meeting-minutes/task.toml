@@ -1,0 +1,10 @@
+id = "doc-016"
+title = "Format Meeting Minutes from Raw Notes"
+domain = "document-editing"
+level = "L2"
+description = "Transform unstructured meeting notes into properly formatted meeting minutes with attendees, decisions, and action items"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["document", "meeting", "minutes", "office", "formatting"]
+capability_types = ["reasoning", "tool-use"]

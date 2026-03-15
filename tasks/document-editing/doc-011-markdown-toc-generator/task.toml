@@ -1,0 +1,10 @@
+id = "doc-011"
+title = "Generate Markdown Table of Contents"
+domain = "document-editing"
+level = "L2"
+description = "Generate a table of contents from markdown headings and insert it at the top of the document"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["markdown", "toc", "headings"]
+capability_types = ["reasoning", "tool-use"]

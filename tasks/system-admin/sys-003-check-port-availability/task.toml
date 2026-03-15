@@ -1,0 +1,10 @@
+id = "sys-003"
+title = "Check Port Availability"
+domain = "system-admin"
+level = "L1"
+description = "Parse simulated netstat output to identify occupied ports and associated services"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "ports", "network", "parsing", "json"]
+capability_types = ["reasoning", "tool-use"]

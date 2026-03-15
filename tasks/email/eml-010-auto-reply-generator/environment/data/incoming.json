@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "from": "Sarah Thompson <sarah.t@clientcorp.com>",
+    "subject": "Invoice #8834 Payment Status",
+    "body": "Hi, I wanted to check on the payment status for invoice #8834 submitted last month. Could you confirm when we can expect the payment to be processed?",
+    "category": "billing"
+  },
+  {
+    "id": 2,
+    "from": "Mike Rivera <mike.r@partnerfirm.com>",
+    "subject": "Meeting Request for Next Week",
+    "body": "Hello, I'd like to schedule a meeting to discuss our partnership agreement. Are you available next Tuesday or Wednesday?",
+    "category": "meeting"
+  },
+  {
+    "id": 3,
+    "from": "Jenny Liu <jenny.l@techstart.io>",
+    "subject": "Technical Support - Login Issues",
+    "body": "I'm unable to log into my account. I've tried resetting my password but the reset email never arrives. Can you help with this technical issue?",
+    "category": "support"
+  },
+  {
+    "id": 4,
+    "from": "Alex Morgan <alex.m@bigretail.com>",
+    "subject": "Product Inquiry - Enterprise Plan",
+    "body": "We're interested in learning more about your enterprise plan pricing and features. Could you send over the details?",
+    "category": "sales"
+  },
+  {
+    "id": 5,
+    "from": "Newsletter Bot <noreply@marketingblast.com>",
+    "subject": "Top 10 Marketing Trends for 2026",
+    "body": "Check out this week's top marketing trends and strategies for growing your business in 2026.",
+    "category": "newsletter"
+  },
+  {
+    "id": 6,
+    "from": "David Park <david.p@supplierx.com>",
+    "subject": "Overdue Invoice Reminder",
+    "body": "This is a reminder that invoice #7721 is now 30 days overdue. Please arrange payment at your earliest convenience to avoid late fees.",
+    "category": "billing"
+  },
+  {
+    "id": 7,
+    "from": "Rachel Green <rachel.g@designco.com>",
+    "subject": "Support Request - Export Feature Bug",
+    "body": "I found a bug in the export feature. When I try to export data as CSV, the file is empty. This is a critical issue for our workflow.",
+    "category": "support"
+  },
+  {
+    "id": 8,
+    "from": "Tom Bradley <tom.b@ventures.co>",
+    "subject": "Partnership Opportunity Discussion",
+    "body": "I'd love to schedule a meeting to explore potential collaboration between our companies. Let me know your availability.",
+    "category": "meeting"
+  }
+]

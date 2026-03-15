@@ -1,0 +1,10 @@
+id = "eml-004"
+title = "Classify Emails"
+domain = "email"
+level = "L2"
+description = "Classify a set of emails into categories (work, personal, newsletter, spam) based on their content and metadata"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["classification", "email", "reasoning"]
+capability_types = ["reasoning", "tool-use"]

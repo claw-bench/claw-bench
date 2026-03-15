@@ -1,0 +1,7 @@
+{
+  "from": "noreply@starbucks.com",
+  "to": "you@company.com",
+  "subject": "Your Starbucks receipt",
+  "date": "2026-03-09",
+  "body": "Thank you for visiting Starbucks!\n\nPayment of $12.50 to Starbucks\nStore #4521 - Downtown\n\nItems:\n  Grande Latte          $5.75\n  Breakfast Sandwich     $6.75\n\nTotal: $12.50\nPayment method: Corporate card ending in 4832\n\nThank you for choosing Starbucks!"
+}

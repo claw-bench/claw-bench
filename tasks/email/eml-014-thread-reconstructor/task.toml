@@ -1,0 +1,10 @@
+id = "eml-014"
+title = "Email Thread Reconstructor"
+domain = "email"
+level = "L3"
+description = "Reconstruct conversation threads from unordered emails"
+timeout = 180
+capabilities = ["file-read", "file-write", "python"]
+skills_allowed = true
+tags = ["email", "threading", "reconstruction"]
+capability_types = ["reasoning", "tool-use"]

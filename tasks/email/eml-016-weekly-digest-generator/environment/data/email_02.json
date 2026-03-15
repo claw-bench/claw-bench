@@ -1,0 +1,8 @@
+{
+  "from": "alice@company.com",
+  "to": "you@company.com",
+  "subject": "URGENT: Budget Approval Needed",
+  "date": "2026-03-09",
+  "body": "Hi,\n\nThe finance team needs budget approval for the Q2 marketing campaign by end of day tomorrow. The total amount is $45,000. Please review and approve at your earliest convenience.\n\nThanks,\nAlice",
+  "read": false
+}

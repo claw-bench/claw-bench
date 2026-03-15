@@ -1,0 +1,12 @@
+This is a document that has some   formatting issues that need to be fixed.   The lines are sometimes too long and extend way beyond what would be considered a reasonable line length for reading comfort.
+
+Here is another paragraph with  multiple   spaces scattered    throughout the text ,  making it hard to read properly .
+
+  This line has intentional indentation and should keep it.  But it also has   extra spaces.
+
+Some points to consider :
+  First ,  we need to normalize whitespace throughout the document.
+  Second,we need proper spacing after punctuation marks.
+  Third ;  semicolons also need attention.
+
+The final paragraph contains a mix of issues.It has missing spaces after periods.Also ,it has spaces before commas   and   extra whitespace    everywhere.This needs to be cleaned up properly so that the document reads naturally and every line fits within the eighty character limit.

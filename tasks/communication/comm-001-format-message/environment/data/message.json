@@ -1,0 +1,13 @@
+{
+  "subject": "Q3 Product Launch Update",
+  "body": "The product launch for Q3 has been moved to September 15. All teams should update their timelines accordingly. Please review the attached resources and confirm your readiness by end of week.",
+  "sender": "alice@example.com",
+  "recipients": ["bob@example.com", "charlie@example.com", "diana@example.com"],
+  "links": [
+    {"label": "Launch Timeline", "url": "https://docs.example.com/launch-timeline"},
+    {"label": "Resource Pack", "url": "https://drive.example.com/resource-pack"},
+    {"label": "Readiness Form", "url": "https://forms.example.com/readiness"}
+  ],
+  "priority": "high",
+  "timestamp": "2025-07-10T14:30:00Z"
+}

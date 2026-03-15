@@ -1,0 +1,10 @@
+id = "mm-007"
+title = "Architecture Document Generation"
+domain = "multimodal"
+level = "L4"
+description = "Given a Python project with multiple modules, generate an architecture document describing modules, their public APIs, dependencies between modules, and data flow"
+timeout = 600
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+capability_types = ["multimodal", "reasoning"]
+tags = ["python", "architecture", "documentation", "analysis", "multimodal"]

@@ -1,0 +1,8 @@
+{
+  "from": "raj.kumar@techfirm.com",
+  "sender_name": "Raj Kumar",
+  "to": "zhang.ming@company.com",
+  "subject": "Conference Speaker Invitation",
+  "date": "2026-03-18",
+  "body": "Dear Zhang Ming,\n\nWe would like to invite you to speak at the TechSummit 2026 conference in April. The topic would be on AI-driven automation in enterprise workflows. Please let us know if you're interested.\n\nWarm regards,\nRaj Kumar"
+}

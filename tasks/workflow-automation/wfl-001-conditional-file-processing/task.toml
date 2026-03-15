@@ -1,0 +1,10 @@
+id = "wfl-001"
+title = "Conditional File Processing Based on Config"
+domain = "workflow-automation"
+level = "L1"
+description = "Read a configuration file to determine the transformation mode, then apply the correct text transformation to an input file and write the result"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["conditional", "text-processing", "config-driven"]
+capability_types = ["reasoning", "tool-use"]

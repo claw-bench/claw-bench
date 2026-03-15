@@ -1,0 +1,38 @@
+[
+  {
+    "source_channel": "slack-general",
+    "target_channel": "teams-main",
+    "content_types": ["messages", "announcements"],
+    "direction": "two-way"
+  },
+  {
+    "source_channel": "slack-general",
+    "target_channel": "discord-community",
+    "content_types": ["announcements"],
+    "direction": "one-way"
+  },
+  {
+    "source_channel": "slack-dev",
+    "target_channel": "slack-general",
+    "content_types": ["announcements", "code-snippets"],
+    "direction": "one-way"
+  },
+  {
+    "source_channel": "teams-main",
+    "target_channel": "email-list",
+    "content_types": ["announcements", "files"],
+    "direction": "one-way"
+  },
+  {
+    "source_channel": "discord-community",
+    "target_channel": "slack-general",
+    "content_types": ["messages", "announcements"],
+    "direction": "one-way"
+  },
+  {
+    "source_channel": "email-list",
+    "target_channel": "discord-community",
+    "content_types": ["announcements", "files"],
+    "direction": "one-way"
+  }
+]

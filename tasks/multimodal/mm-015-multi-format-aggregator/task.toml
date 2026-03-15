@@ -1,0 +1,10 @@
+id = "mm-015"
+title = "Multi-Format Aggregator"
+domain = "multimodal"
+level = "L3"
+description = "Aggregate data from CSV, JSON, and text sources into a unified dashboard JSON combining sales totals, stock levels, and alerts"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["aggregation", "multi-format", "synthesis"]
+capability_types = ["multimodal", "reasoning"]

@@ -1,0 +1,10 @@
+id = "web-015"
+title = "Analyze Cookie Policy for Privacy Compliance"
+domain = "web-browsing"
+level = "L3"
+description = "Analyze a set of cookies for privacy compliance issues and produce a detailed report with scores"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["cookies", "privacy", "analysis"]
+capability_types = ["reasoning", "tool-use"]

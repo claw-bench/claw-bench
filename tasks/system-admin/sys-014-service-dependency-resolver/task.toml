@@ -1,0 +1,10 @@
+id = "sys-014"
+title = "Service Dependency Resolver"
+domain = "system-admin"
+level = "L3"
+description = "Resolve service dependencies using topological sort to determine valid startup order and detect circular dependencies"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["services", "dependencies", "topology"]
+capability_types = ["reasoning", "tool-use"]

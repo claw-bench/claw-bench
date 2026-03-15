@@ -1,0 +1,23 @@
+Product Backlog
+===============
+
+Priority: High
+- User dashboard redesign (in progress)
+- Payment gateway migration to Stripe v3
+- TODO: Create migration script for payment data
+
+Priority: Medium
+- Email notification templates refresh
+- TODO: Design new onboarding email sequence
+- Mobile app push notification support
+- Research push notification providers
+
+Priority: Low
+- Dark mode support for web application
+- Export data to Excel format
+- Archive old user accounts automatically
+- TODO: Define account archival retention policy
+
+Deferred:
+- Multi-language support (Q3)
+- AI-powered search suggestions (Q4)

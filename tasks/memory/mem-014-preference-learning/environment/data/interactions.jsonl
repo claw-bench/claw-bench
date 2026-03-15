@@ -1,0 +1,25 @@
+{"id": 1, "action": "liked", "item": "Inception", "category": "Movies"}
+{"id": 2, "action": "rated", "item": "The Great Gatsby", "category": "Books", "rating": 4}
+{"id": 3, "action": "disliked", "item": "Reality Show X", "category": "TV Shows"}
+{"id": 4, "action": "liked", "item": "Bohemian Rhapsody", "category": "Music"}
+{"id": 5, "action": "rated", "item": "Zelda BOTW", "category": "Games", "rating": 5}
+{"id": 6, "action": "liked", "item": "Interstellar", "category": "Movies"}
+{"id": 7, "action": "rated", "item": "1984", "category": "Books", "rating": 5}
+{"id": 8, "action": "disliked", "item": "Country Song Y", "category": "Music"}
+{"id": 9, "action": "liked", "item": "Breaking Bad", "category": "TV Shows"}
+{"id": 10, "action": "rated", "item": "Minecraft", "category": "Games", "rating": 4}
+{"id": 11, "action": "liked", "item": "The Matrix", "category": "Movies"}
+{"id": 12, "action": "disliked", "item": "Bad Book Z", "category": "Books"}
+{"id": 13, "action": "liked", "item": "Stairway to Heaven", "category": "Music"}
+{"id": 14, "action": "rated", "item": "The Witcher", "category": "TV Shows", "rating": 4}
+{"id": 15, "action": "rated", "item": "Elden Ring", "category": "Games", "rating": 5}
+{"id": 16, "action": "rated", "item": "Dunkirk", "category": "Movies", "rating": 3}
+{"id": 17, "action": "liked", "item": "Dune Book", "category": "Books"}
+{"id": 18, "action": "rated", "item": "Jazz Album Q", "category": "Music", "rating": 3}
+{"id": 19, "action": "liked", "item": "Stranger Things", "category": "TV Shows"}
+{"id": 20, "action": "disliked", "item": "Mobile Game W", "category": "Games"}
+{"id": 21, "action": "rated", "item": "Dark Knight", "category": "Movies", "rating": 5}
+{"id": 22, "action": "rated", "item": "To Kill a Mockingbird", "category": "Books", "rating": 4}
+{"id": 23, "action": "liked", "item": "Hotel California", "category": "Music"}
+{"id": 24, "action": "rated", "item": "Sitcom V", "category": "TV Shows", "rating": 2}
+{"id": 25, "action": "rated", "item": "Portal 2", "category": "Games", "rating": 5}

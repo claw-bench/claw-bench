@@ -1,0 +1,14 @@
+[
+  {"path": "/var/log/syslog", "size_mb": 250, "last_modified": "2025-02-28", "retention_days": 30},
+  {"path": "/var/log/auth.log", "size_mb": 45, "last_modified": "2025-02-20", "retention_days": 90},
+  {"path": "/var/log/kern.log", "size_mb": 120, "last_modified": "2025-01-15", "retention_days": 60},
+  {"path": "/var/log/apache2/access.log", "size_mb": 500, "last_modified": "2024-12-01", "retention_days": 30},
+  {"path": "/var/log/apache2/error.log", "size_mb": 30, "last_modified": "2025-02-25", "retention_days": 30},
+  {"path": "/var/log/mysql/slow.log", "size_mb": 80, "last_modified": "2024-11-15", "retention_days": 45},
+  {"path": "/var/log/cron.log", "size_mb": 15, "last_modified": "2025-02-27", "retention_days": 30},
+  {"path": "/var/log/mail.log", "size_mb": 200, "last_modified": "2024-10-01", "retention_days": 60},
+  {"path": "/var/log/daemon.log", "size_mb": 60, "last_modified": "2025-01-01", "retention_days": 90},
+  {"path": "/var/log/dpkg.log", "size_mb": 10, "last_modified": "2025-02-15", "retention_days": 365},
+  {"path": "/var/log/boot.log", "size_mb": 5, "last_modified": "2025-03-01", "retention_days": 30},
+  {"path": "/var/log/nginx/access.log", "size_mb": 150, "last_modified": "2024-08-01", "retention_days": 30}
+]

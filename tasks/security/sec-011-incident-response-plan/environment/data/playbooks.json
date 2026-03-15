@@ -1,0 +1,66 @@
+{
+  "playbooks": [
+    {
+      "id": "PB-001",
+      "name": "Malware Infection Response",
+      "trigger": "malware_detected",
+      "steps": [
+        "Isolate infected system from network",
+        "Capture memory dump for analysis",
+        "Run antivirus/EDR full scan",
+        "Identify malware family and IOCs",
+        "Check for lateral movement",
+        "Clean or reimage affected systems",
+        "Update endpoint protection signatures",
+        "Monitor for reinfection"
+      ]
+    },
+    {
+      "id": "PB-002",
+      "name": "Data Breach Response",
+      "trigger": "data_breach",
+      "steps": [
+        "Immediately revoke compromised credentials",
+        "Isolate affected systems from network",
+        "Preserve all logs and forensic evidence",
+        "Assess scope: identify all affected data and records",
+        "Engage legal counsel for breach notification requirements",
+        "Notify CISO and executive leadership",
+        "Determine root cause of unauthorized access",
+        "Patch vulnerability or close attack vector",
+        "Implement additional monitoring on affected systems",
+        "Prepare breach notification for affected individuals",
+        "File regulatory notifications as required",
+        "Conduct post-incident review within 72 hours"
+      ]
+    },
+    {
+      "id": "PB-003",
+      "name": "DDoS Attack Response",
+      "trigger": "ddos_attack",
+      "steps": [
+        "Activate DDoS mitigation service",
+        "Enable rate limiting on edge devices",
+        "Identify attack vectors and source IPs",
+        "Coordinate with ISP for upstream filtering",
+        "Monitor service availability",
+        "Document attack timeline and impact",
+        "Update DDoS mitigation rules post-attack"
+      ]
+    },
+    {
+      "id": "PB-004",
+      "name": "Phishing Incident Response",
+      "trigger": "phishing",
+      "steps": [
+        "Quarantine the phishing email",
+        "Identify all recipients who received the email",
+        "Check for users who clicked or submitted credentials",
+        "Force password reset for compromised accounts",
+        "Block sender domain and malicious URLs",
+        "Send awareness notification to all staff",
+        "Review email gateway rules"
+      ]
+    }
+  ]
+}

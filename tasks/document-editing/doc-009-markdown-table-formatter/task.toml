@@ -1,0 +1,10 @@
+id = "doc-009"
+title = "Markdown Table Formatter"
+domain = "document-editing"
+level = "L2"
+description = "Format messy markdown tables with inconsistent column widths and missing alignment into properly aligned tables with right-aligned numeric columns"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["markdown", "formatting", "tables", "alignment"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,10 @@
+id = "sys-006"
+title = "Config File Audit"
+domain = "system-admin"
+level = "L2"
+description = "Audit server configuration files for security issues and generate a report with findings and recommendations"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["intermediate", "security", "audit", "config", "json"]
+capability_types = ["reasoning", "tool-use"]

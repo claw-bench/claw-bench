@@ -1,0 +1,21 @@
+services:
+  auth:
+    port: 8080
+    max_errors: 3
+    description: "Authentication and authorization service"
+  payments:
+    port: 9091
+    max_errors: 2
+    description: "Payment processing service"
+  gateway:
+    port: 8443
+    max_errors: 5
+    description: "API gateway and routing"
+  notifications:
+    port: 5555
+    max_errors: 3
+    description: "Email and push notification service"
+  inventory:
+    port: 6060
+    max_errors: 4
+    description: "Inventory management service"

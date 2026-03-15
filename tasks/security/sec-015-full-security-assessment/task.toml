@@ -1,0 +1,10 @@
+id = "sec-015"
+title = "Comprehensive Application Security Assessment"
+domain = "security"
+level = "L4"
+description = "Perform a full security review of an application including source code, configuration, dependencies, and infrastructure to produce an executive assessment with prioritized remediation"
+timeout = 360
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["assessment", "comprehensive", "code-review", "infrastructure", "defensive"]
+capability_types = ["reasoning", "tool-use"]

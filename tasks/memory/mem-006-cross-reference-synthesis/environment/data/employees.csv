@@ -1,0 +1,13 @@
+id,name,department,role,hire_date
+E001,Alice Chen,Engineering,Senior Engineer,2020-03-15
+E002,Bob Martinez,Engineering,Staff Engineer,2019-07-01
+E003,Carol White,Marketing,Marketing Manager,2021-01-10
+E004,David Kim,Engineering,Junior Engineer,2023-06-20
+E005,Eve Johnson,Sales,Account Executive,2020-11-05
+E006,Frank Lee,Marketing,Content Specialist,2022-04-18
+E007,Grace Patel,Sales,Sales Director,2018-09-22
+E008,Henry Zhang,Operations,Operations Manager,2021-08-30
+E009,Iris Nakamura,Engineering,DevOps Engineer,2022-01-15
+E010,Jack Brown,Operations,Logistics Coordinator,2023-02-28
+E011,Karen Davis,Sales,Account Executive,2022-09-01
+E012,Leo Wilson,Engineering,Senior Engineer,2020-05-12

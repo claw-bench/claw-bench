@@ -1,0 +1,10 @@
+id = "wfl-012"
+title = "Batch File Renamer"
+domain = "workflow-automation"
+level = "L2"
+description = "Apply regex-based rename rules to a list of filenames and produce a mapping of old names to new names"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["batch", "rename", "files"]
+capability_types = ["reasoning", "tool-use"]

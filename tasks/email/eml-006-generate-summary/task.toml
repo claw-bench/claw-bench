@@ -1,0 +1,10 @@
+id = "eml-006"
+title = "Generate Email Summary"
+domain = "email"
+level = "L2"
+description = "Summarize a long email into key points, action required status, and urgency level"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["summarization", "email", "reasoning"]
+capability_types = ["reasoning", "tool-use"]

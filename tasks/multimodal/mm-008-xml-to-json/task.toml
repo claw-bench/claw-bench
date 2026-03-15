@@ -1,0 +1,10 @@
+id = "mm-008"
+title = "XML to JSON Conversion"
+domain = "multimodal"
+level = "L2"
+description = "Convert an XML configuration file with nested elements, attributes, and CDATA sections into a clean JSON structure"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["xml", "json", "conversion", "parsing"]
+capability_types = ["multimodal", "reasoning"]

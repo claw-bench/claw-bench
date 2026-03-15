@@ -1,0 +1,19 @@
+From: alice.johnson@techcorp.com
+To: bob.smith@techcorp.com
+Subject: Q1 Budget Review Meeting
+Date: Tue, 10 Mar 2026 14:30:00 +0000
+CC: carol.white@techcorp.com, dave.brown@techcorp.com
+Message-ID: <abc123@techcorp.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+
+Hi Bob,
+
+I'd like to schedule a meeting to review the Q1 budget numbers.
+Please have your department's figures ready by Friday.
+
+We should also discuss the new hiring plan for Q2.
+
+Best regards,
+Alice Johnson
+Finance Department

@@ -1,0 +1,16 @@
+{
+  "table": "customers",
+  "fields": [
+    {"name": "id", "type": "uuid", "primary_key": true, "nullable": false},
+    {"name": "first_name", "type": "varchar(100)", "nullable": false},
+    {"name": "last_name", "type": "varchar(100)", "nullable": false},
+    {"name": "email", "type": "varchar(255)", "nullable": false, "unique": true},
+    {"name": "phone_number", "type": "varchar(20)", "nullable": true},
+    {"name": "address", "type": "jsonb", "nullable": true, "comment": "Structured address object with line1, line2, city, state, zip"},
+    {"name": "created_at", "type": "timestamp with time zone", "nullable": false},
+    {"name": "updated_at", "type": "timestamp with time zone", "nullable": false},
+    {"name": "status", "type": "varchar(20)", "nullable": false, "comment": "enum: active, inactive, suspended"},
+    {"name": "metadata", "type": "jsonb", "nullable": true, "comment": "Additional customer data"},
+    {"name": "legacy_id", "type": "integer", "nullable": true, "comment": "Reference to old system ID"}
+  ]
+}

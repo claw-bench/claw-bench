@@ -1,0 +1,46 @@
+INVOICE #{{invoice_number}}
+Date: {{date}}
+Due Date: {{due_date}}
+
+Bill To:
+  {{customer.name}}
+  {{customer.address.street}}
+  {{customer.address.city}}, {{customer.address.state}} {{customer.address.zip}}
+  Email: {{customer.email}}
+
+From:
+  {{company.name}}
+  {{company.address}}
+  Phone: {{company.phone}}
+
+{{?customer.vip}}*** VIP CUSTOMER - Priority Handling ***{{/customer.vip}}
+{{^customer.vip}}Standard processing applies.{{/customer.vip}}
+
+Items:
+------
+{{#items}}
+  {{.name}} (SKU: {{.sku}})
+    Qty: {{.quantity}} x ${{.unit_price}} = ${{.total}}
+{{?has_discount}}    ** Discount Applied **{{/has_discount}}
+{{/items}}
+
+------
+Subtotal: ${{totals.subtotal}}
+{{?totals.discount}}Discount: -${{totals.discount}}{{/totals.discount}}
+Tax ({{tax_rate}}%): ${{totals.tax}}
+TOTAL: ${{totals.grand_total}}
+
+Payment Methods Accepted:
+{{#payment_methods}}
+  - {{.}}
+{{/payment_methods}}
+
+{{?notes}}
+Notes:
+{{notes}}
+{{/notes}}
+
+{{^shipping_included}}Shipping charges will be calculated separately.{{/shipping_included}}
+{{?shipping_included}}Free shipping included with this order!{{/shipping_included}}
+
+Thank you for your business, {{customer.name}}!

@@ -1,0 +1,10 @@
+id = "web-004"
+title = "Form Field Inventory"
+domain = "web-browsing"
+level = "L2"
+description = "Analyze an HTML form and produce a complete inventory of all form fields with their attributes"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["html", "forms", "analysis", "fields"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,10 @@
+id = "web-002"
+title = "Parse HTML Table"
+domain = "web-browsing"
+level = "L1"
+description = "Extract table data from an HTML page and convert it to CSV format"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "html", "table", "csv"]
+capability_types = ["reasoning", "tool-use"]

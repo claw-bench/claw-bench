@@ -1,0 +1,17 @@
+[
+  {
+    "id": "R1",
+    "condition": {"field": "subject", "contains": "urgent"},
+    "reply_template": "Hi {sender},\n\nThank you for your urgent message regarding \"{subject}\". We will prioritize this and respond within 1 hour.\n\nBest regards,\nAuto-Reply System"
+  },
+  {
+    "id": "R2",
+    "condition": {"field": "from", "contains": "vip"},
+    "reply_template": "Dear {sender},\n\nThank you for reaching out about \"{subject}\". As a valued contact, your message has been escalated to our priority queue.\n\nBest regards,\nAuto-Reply System"
+  },
+  {
+    "id": "R3",
+    "condition": {"field": "body", "contains": "invoice"},
+    "reply_template": "Hi {sender},\n\nWe received your message about \"{subject}\" containing invoice information. Our billing team will review it shortly.\n\nBest regards,\nAuto-Reply System"
+  }
+]

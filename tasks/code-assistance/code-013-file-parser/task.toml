@@ -1,0 +1,10 @@
+id = "code-013"
+title = "Write a Config File Parser"
+domain = "code-assistance"
+level = "L3"
+description = "Write a parser for a custom INI-like config format with sections, key-value pairs, comments, and type coercion"
+timeout = 180
+capabilities = ["code-write"]
+skills_allowed = true
+tags = ["python", "parsing", "file-io"]
+capability_types = ["reasoning", "tool-use"]

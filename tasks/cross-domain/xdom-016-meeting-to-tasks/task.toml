@@ -1,0 +1,10 @@
+id = "xdom-016"
+title = "Convert Meeting Notes to Project Tasks"
+domain = "cross-domain"
+level = "L3"
+description = "Parse meeting notes to extract action items, then generate structured project tasks with priorities, assignees, and deadlines in a task tracker format"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["cross-domain", "meeting", "tasks", "project-management", "office"]
+capability_types = ["reasoning", "tool-use"]

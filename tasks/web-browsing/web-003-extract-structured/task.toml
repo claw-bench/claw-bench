@@ -1,0 +1,10 @@
+id = "web-003"
+title = "Extract Structured Data from Product Page"
+domain = "web-browsing"
+level = "L1"
+description = "Extract product information from an HTML product page including name, price, description, and rating"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "html", "extraction", "product"]
+capability_types = ["reasoning", "tool-use"]

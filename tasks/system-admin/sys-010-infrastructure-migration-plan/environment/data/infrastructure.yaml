@@ -1,0 +1,141 @@
+infrastructure:
+  name: "production-east-1"
+  environment: "production"
+  provider: "aws"
+  region: "us-east-1"
+
+  services:
+    primary_db:
+      type: "database"
+      engine: "postgresql"
+      version: "13.4"
+      instance_type: "db.r5.2xlarge"
+      storage_gb: 500
+      replicas: 1
+      dependencies: []
+      data_size_gb: 340
+      connections_per_sec: 2500
+
+    replica_db:
+      type: "database"
+      engine: "postgresql"
+      version: "13.4"
+      instance_type: "db.r5.xlarge"
+      storage_gb: 500
+      replicas: 0
+      dependencies:
+        - primary_db
+      data_size_gb: 340
+      role: "read-replica"
+
+    cache_cluster:
+      type: "cache"
+      engine: "redis"
+      version: "6.2"
+      node_type: "cache.r6g.large"
+      nodes: 3
+      dependencies: []
+      memory_gb: 24
+
+    message_queue:
+      type: "queue"
+      engine: "rabbitmq"
+      version: "3.9"
+      instance_type: "mq.m5.large"
+      dependencies: []
+      messages_per_sec: 5000
+
+    auth_service:
+      type: "application"
+      runtime: "java"
+      version: "11"
+      instances: 3
+      cpu: 2
+      memory_gb: 4
+      dependencies:
+        - primary_db
+        - cache_cluster
+      healthcheck: "/health"
+      stateless: true
+
+    api_gateway:
+      type: "application"
+      runtime: "nodejs"
+      version: "18"
+      instances: 4
+      cpu: 2
+      memory_gb: 4
+      dependencies:
+        - auth_service
+        - cache_cluster
+      healthcheck: "/status"
+      stateless: true
+
+    web_frontend:
+      type: "application"
+      runtime: "nodejs"
+      version: "18"
+      instances: 3
+      cpu: 1
+      memory_gb: 2
+      dependencies:
+        - api_gateway
+      healthcheck: "/ping"
+      stateless: true
+
+    worker_service:
+      type: "application"
+      runtime: "python"
+      version: "3.10"
+      instances: 5
+      cpu: 4
+      memory_gb: 8
+      dependencies:
+        - primary_db
+        - message_queue
+        - cache_cluster
+      healthcheck: "/ready"
+      stateless: true
+
+    notification_service:
+      type: "application"
+      runtime: "go"
+      version: "1.19"
+      instances: 2
+      cpu: 1
+      memory_gb: 2
+      dependencies:
+        - message_queue
+        - cache_cluster
+      healthcheck: "/health"
+      stateless: true
+
+    file_storage:
+      type: "storage"
+      engine: "s3-compatible"
+      storage_tb: 2.5
+      dependencies: []
+      objects_count: 15000000
+
+    monitoring:
+      type: "application"
+      runtime: "go"
+      version: "1.19"
+      instances: 2
+      cpu: 2
+      memory_gb: 4
+      dependencies:
+        - primary_db
+        - cache_cluster
+      healthcheck: "/metrics"
+      stateless: true
+
+    load_balancer:
+      type: "load-balancer"
+      engine: "nginx"
+      instances: 2
+      dependencies:
+        - api_gateway
+        - web_frontend
+      ssl_termination: true
+      sticky_sessions: false

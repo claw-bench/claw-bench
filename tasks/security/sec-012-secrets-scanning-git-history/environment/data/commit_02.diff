@@ -1,0 +1,14 @@
+diff --git a/src/utils/helpers.py b/src/utils/helpers.py
+index 1111aaa..2222bbb 100644
+--- a/src/utils/helpers.py
++++ b/src/utils/helpers.py
+@@ -5,6 +5,12 @@ import re
+ def sanitize_input(text):
+     """Remove potentially dangerous characters."""
+     return re.sub(r'[<>&"\']', '', text)
++
++
++def format_currency(amount, currency="USD"):
++    """Format a number as currency string."""
++    symbols = {"USD": "$", "EUR": "€", "GBP": "£"}
++    return f"{symbols.get(currency, '$')}{amount:,.2f}"

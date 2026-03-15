@@ -1,0 +1,11 @@
+cust_id,full_name,email_addr,phone,addr_line1,addr_line2,city,state_code,zip,created,status,total_orders,notes
+1001,Alice Johnson,alice@example.com,555-0101,123 Main St,,Springfield,IL,62701,2023-01-15,1,42,VIP customer
+1002,Bob Smith,bob@example.com,555-0102,456 Oak Ave,Apt 2B,Chicago,IL,60601,2023-02-20,1,15,
+1003,Carol Williams,carol@example.com,,789 Pine Rd,,Austin,TX,78701,2023-03-10,0,0,Account closed per request
+1004,Dave Brown,dave@example.com,555-0104,321 Elm St,,Seattle,WA,98101,2023-04-05,2,8,Under review for fraud
+1005,Eve Davis,eve@example.com,555-0105,654 Maple Dr,Suite 100,Portland,OR,97201,2023-05-22,1,23,
+1006,Frank Miller,frank@example.com,,,,,,,2023-06-15,1,3,New customer - incomplete profile
+1007,Grace Wilson,grace@example.com,555-0107,987 Cedar Ln,,Denver,CO,80201,2023/07/01,1,31,Date format may vary
+1008,Hank Moore,hank@example.com,555-0108,147 Birch Ct,,Miami,FL,33101,2023-08-18,1,19,
+1009,Iris Taylor,iris@example.com,555-0109,258 Walnut Way,,Boston,MA,02101,23-09-25,1,27,Short year format
+1010,Jack Anderson,jack@example.com,555-0110,369 Spruce Ave,,Phoenix,AZ,85001,2023-10-30,1,11,

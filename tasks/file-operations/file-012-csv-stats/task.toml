@@ -1,0 +1,10 @@
+id = "file-012"
+title = "CSV Column Extraction and Statistics"
+domain = "file-operations"
+level = "L3"
+description = "Extract a column from a CSV file and compute statistical measures"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["csv", "statistics", "json", "data-analysis"]
+capability_types = ["tool-use"]

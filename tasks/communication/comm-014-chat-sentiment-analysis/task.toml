@@ -1,0 +1,10 @@
+id = "comm-014"
+title = "Chat Sentiment Analysis"
+domain = "communication"
+level = "L3"
+description = "Classify chat message sentiments using keyword matching and produce a per-user sentiment summary report"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["chat", "sentiment", "analysis"]
+capability_types = ["collaboration", "reasoning"]

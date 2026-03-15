@@ -1,0 +1,60 @@
+# Claw Bench Server Configuration
+# For 200 concurrent users deployment
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4                    # uvicorn workers (1 per CPU core recommended)
+  log_level: "info"
+
+# Concurrency control
+concurrency:
+  max_global_tasks: 200         # Total concurrent task executions across all users
+  max_user_tasks: 8             # Max concurrent tasks per user
+  thread_pool_size: 100         # Thread pool for blocking adapter calls
+  max_user_parallel: 4          # Max --parallel per user run
+
+# Per-user quotas
+quotas:
+  max_daily_runs: 50            # Runs per user per day
+  max_tasks_per_run: 210        # Max tasks in a single run
+  max_concurrent_runs: 3        # Simultaneous runs per user
+
+# Result caching
+cache:
+  enabled: true
+  max_memory_entries: 10000     # In-memory cache entries
+  ttl_seconds: 86400            # 24-hour cache TTL
+  disk_path: "/var/claw-bench/cache"
+
+# API rate limiting (requests per second / burst capacity)
+rate_limits:
+  openai:
+    rate: 50
+    capacity: 100
+  anthropic:
+    rate: 40
+    capacity: 80
+  deepseek:
+    rate: 30
+    capacity: 60
+  infini:
+    rate: 20
+    capacity: 40
+  default:
+    rate: 20
+    capacity: 40
+
+# Resource monitoring
+monitoring:
+  enabled: true
+  reset_daily_at: "00:00"       # UTC time to reset daily counters
+  alert_utilization_pct: 80     # Alert when system utilization exceeds this
+
+# Docker sandbox (optional, for isolated execution)
+sandbox:
+  enabled: false                # Enable Docker sandbox mode
+  image: "claw-bench-sandbox:latest"
+  memory_limit: "512m"
+  cpu_limit: 1.0
+  network_enabled: false

@@ -1,0 +1,14 @@
+[
+  {"id": "T1", "name": "Requirements Gathering", "duration": 3, "dependencies": []},
+  {"id": "T2", "name": "System Design", "duration": 5, "dependencies": ["T1"]},
+  {"id": "T3", "name": "Database Schema", "duration": 2, "dependencies": ["T2"]},
+  {"id": "T4", "name": "API Design", "duration": 3, "dependencies": ["T2"]},
+  {"id": "T5", "name": "Frontend Wireframes", "duration": 4, "dependencies": ["T2"]},
+  {"id": "T6", "name": "Database Implementation", "duration": 4, "dependencies": ["T3"]},
+  {"id": "T7", "name": "API Implementation", "duration": 6, "dependencies": ["T4", "T6"]},
+  {"id": "T8", "name": "Frontend Development", "duration": 7, "dependencies": ["T5", "T4"]},
+  {"id": "T9", "name": "API Testing", "duration": 3, "dependencies": ["T7"]},
+  {"id": "T10", "name": "Frontend Testing", "duration": 3, "dependencies": ["T8"]},
+  {"id": "T11", "name": "Integration Testing", "duration": 4, "dependencies": ["T9", "T10"]},
+  {"id": "T12", "name": "Deployment", "duration": 2, "dependencies": ["T11"]}
+]

@@ -1,0 +1,225 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "User Management API",
+    "version": "2.1.0"
+  },
+  "servers": [
+    {"url": "https://api.example.com/v2"}
+  ],
+  "security": [],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      },
+      "apiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      }
+    },
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "integer"},
+          "username": {"type": "string"},
+          "email": {"type": "string"},
+          "ssn": {"type": "string", "description": "Social Security Number"},
+          "phone": {"type": "string"},
+          "date_of_birth": {"type": "string", "format": "date"},
+          "address": {"type": "string"},
+          "credit_card_last4": {"type": "string"}
+        }
+      }
+    }
+  },
+  "x-cors": {
+    "allow-origin": "*",
+    "allow-methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    "allow-headers": ["*"]
+  },
+  "paths": {
+    "/users": {
+      "get": {
+        "summary": "List all users with full details",
+        "security": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Array of user objects including SSN, DOB, address",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {"$ref": "#/components/schemas/User"}
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new user",
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {"type": "string"},
+                  "email": {"type": "string"},
+                  "password": {"type": "string"}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {"description": "User created"}
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "Get user by ID",
+        "security": [{"bearerAuth": []}],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {"type": "string"}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User object",
+            "content": {
+              "application/json": {
+                "schema": {"$ref": "#/components/schemas/User"}
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a user",
+        "security": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {"type": "string"}
+          }
+        ],
+        "responses": {
+          "204": {"description": "User deleted"}
+        }
+      }
+    },
+    "/users/search": {
+      "get": {
+        "summary": "Search users by query",
+        "security": [{"bearerAuth": []}],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {"type": "string"}
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {"type": "integer"}
+          }
+        ],
+        "responses": {
+          "200": {"description": "Search results"}
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Authenticate user",
+        "security": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {"type": "string"},
+                  "password": {"type": "string"}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "JWT token"},
+          "401": {"description": "Invalid credentials"}
+        }
+      }
+    },
+    "/admin/users": {
+      "get": {
+        "summary": "Admin: list all users",
+        "security": [{"bearerAuth": []}],
+        "responses": {
+          "200": {"description": "All users with admin details"}
+        }
+      }
+    },
+    "/admin/config": {
+      "put": {
+        "summary": "Update system configuration",
+        "security": [{"apiKey": []}],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "Configuration updated"}
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Health check endpoint",
+        "security": [],
+        "responses": {
+          "200": {"description": "Service is healthy"}
+        }
+      }
+    },
+    "/export/users": {
+      "get": {
+        "summary": "Export all user data as CSV",
+        "security": [],
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {"type": "string"}
+          }
+        ],
+        "responses": {
+          "200": {"description": "CSV file with all user data including PII"}
+        }
+      }
+    }
+  }
+}

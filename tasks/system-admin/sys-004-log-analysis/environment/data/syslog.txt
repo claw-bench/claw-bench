@@ -1,0 +1,100 @@
+2024-03-15 02:15:33 INFO kernel: System boot completed successfully
+2024-03-15 02:15:34 INFO systemd: Started Network Manager
+2024-03-15 02:15:35 INFO sshd: Server listening on 0.0.0.0 port 22
+2024-03-15 02:16:01 INFO cron: Job scheduled for user root
+2024-03-15 03:00:00 INFO logrotate: Rotating /var/log/syslog
+2024-03-15 03:00:01 INFO logrotate: Rotation complete
+2024-03-15 04:22:15 WARNING disk_monitor: /dev/sda1 usage at 78%
+2024-03-15 04:30:00 INFO backup: Starting nightly backup
+2024-03-15 04:35:22 INFO backup: Backup completed successfully
+2024-03-15 05:00:00 INFO cron: Job scheduled for user www-data
+2024-03-15 06:00:01 INFO systemd: Starting Apache Web Server
+2024-03-15 06:00:02 INFO apache2: Server started on port 80
+2024-03-15 06:00:03 INFO apache2: Server started on port 443
+2024-03-15 06:15:44 INFO sshd: Accepted publickey for alice from 10.0.1.50
+2024-03-15 06:30:12 INFO sshd: Accepted publickey for bob from 10.0.1.51
+2024-03-15 07:00:00 INFO cron: Job scheduled for user postgres
+2024-03-15 07:05:33 INFO postgres: Checkpoint complete
+2024-03-15 07:12:45 WARNING apache2: Client 192.168.1.100 exceeded rate limit
+2024-03-15 07:15:00 INFO mysql: InnoDB buffer pool loaded
+2024-03-15 07:30:22 ERROR apache2: ModSecurity: Access denied with code 403
+2024-03-15 08:00:00 INFO cron: Job scheduled for user root
+2024-03-15 08:01:15 INFO systemd: Starting Docker Service
+2024-03-15 08:01:20 INFO dockerd: Docker daemon started
+2024-03-15 08:05:33 WARNING mysql: Slow query detected (3.2s): SELECT * FROM users
+2024-03-15 08:10:44 ERROR mysql: Too many connections (max: 151)
+2024-03-15 08:12:00 ERROR mysql: Connection refused for user app_service
+2024-03-15 08:15:33 WARNING disk_monitor: /dev/sda1 usage at 82%
+2024-03-15 08:20:00 INFO nginx: Reload signal received
+2024-03-15 08:22:15 ERROR apache2: Segfault in mod_php worker pid 4521
+2024-03-15 08:25:00 INFO apache2: Worker process respawned
+2024-03-15 08:30:00 ERROR sshd: Failed password for invalid user admin from 45.33.32.156
+2024-03-15 08:30:05 ERROR sshd: Failed password for invalid user admin from 45.33.32.156
+2024-03-15 08:30:10 ERROR sshd: Failed password for invalid user root from 45.33.32.156
+2024-03-15 08:30:15 ERROR sshd: Failed password for invalid user test from 45.33.32.156
+2024-03-15 08:30:20 WARNING sshd: Repeated authentication failures from 45.33.32.156
+2024-03-15 08:35:00 INFO fail2ban: Ban 45.33.32.156
+2024-03-15 09:00:00 INFO cron: Job scheduled for user root
+2024-03-15 09:05:12 ERROR postgres: FATAL: password authentication failed for user reporting
+2024-03-15 09:10:33 INFO postgres: Autovacuum started on table public.logs
+2024-03-15 09:15:00 WARNING mysql: Table users needs OPTIMIZE
+2024-03-15 09:20:44 ERROR apache2: Client 10.0.2.15 sent invalid request
+2024-03-15 09:25:00 INFO systemd: Reloading nginx configuration
+2024-03-15 09:30:00 CRITICAL mysql: InnoDB corruption detected in tablespace orders
+2024-03-15 09:30:01 ERROR mysql: Emergency shutdown initiated
+2024-03-15 09:30:05 CRITICAL mysql: Server shutting down due to corruption
+2024-03-15 09:32:00 INFO systemd: mysql.service: Stopped MySQL Server
+2024-03-15 09:35:00 INFO systemd: mysql.service: Starting MySQL Server
+2024-03-15 09:36:15 INFO mysql: InnoDB recovery in progress
+2024-03-15 09:38:00 INFO mysql: InnoDB recovery complete
+2024-03-15 09:40:00 WARNING mysql: Recovered 3 orphan transactions
+2024-03-15 10:00:00 INFO cron: Job scheduled for user root
+2024-03-15 10:05:00 INFO prometheus: Scrape cycle completed
+2024-03-15 10:10:22 WARNING disk_monitor: /dev/sda1 usage at 85%
+2024-03-15 10:15:00 ERROR docker: Container api_gateway health check failed
+2024-03-15 10:15:30 INFO docker: Restarting container api_gateway
+2024-03-15 10:16:00 INFO docker: Container api_gateway started
+2024-03-15 10:20:33 ERROR apache2: Proxy error connecting to backend:8080
+2024-03-15 10:25:00 WARNING apache2: Backend response time exceeded 5s threshold
+2024-03-15 10:30:00 INFO prometheus: Alert firing: HighMemoryUsage
+2024-03-15 10:35:22 ERROR docker: Container worker_1 OOM killed
+2024-03-15 10:35:30 CRITICAL docker: Multiple container failures detected
+2024-03-15 10:36:00 INFO docker: Restarting container worker_1
+2024-03-15 10:40:00 WARNING systemd: High memory pressure detected
+2024-03-15 10:45:00 INFO systemd: Starting OOM killer
+2024-03-15 10:50:33 ERROR postgres: FATAL: too many connections for role app_service
+2024-03-15 10:55:00 WARNING postgres: Connection pool exhausted
+2024-03-15 11:00:00 INFO cron: Job scheduled for user root
+2024-03-15 11:05:15 INFO sshd: Accepted publickey for deploy from 10.0.1.100
+2024-03-15 11:10:00 INFO systemd: Starting deployment pipeline
+2024-03-15 11:15:22 INFO docker: Pulling image app:v2.3.1
+2024-03-15 11:20:00 INFO docker: Image pulled successfully
+2024-03-15 11:25:33 INFO docker: Rolling update started for service api
+2024-03-15 11:30:00 WARNING docker: Container api_old graceful shutdown timeout
+2024-03-15 11:30:30 INFO docker: Container api_new health check passed
+2024-03-15 11:35:00 INFO systemd: Deployment complete
+2024-03-15 12:00:00 INFO cron: Job scheduled for user root
+2024-03-15 12:05:12 INFO apache2: Access log rotated
+2024-03-15 12:10:33 WARNING disk_monitor: /dev/sdb1 usage at 91%
+2024-03-15 12:15:00 CRITICAL disk_monitor: /dev/sdb1 usage at 95% - action required
+2024-03-15 12:15:30 INFO systemd: Starting disk cleanup service
+2024-03-15 12:20:00 INFO cleanup: Removed 2.3GB of temporary files
+2024-03-15 12:25:00 INFO disk_monitor: /dev/sdb1 usage reduced to 72%
+2024-03-15 13:00:00 INFO cron: Job scheduled for user root
+2024-03-15 13:05:22 ERROR sshd: Failed password for invalid user oracle from 103.21.58.90
+2024-03-15 13:05:27 ERROR sshd: Failed password for invalid user oracle from 103.21.58.90
+2024-03-15 13:06:00 INFO fail2ban: Ban 103.21.58.90
+2024-03-15 13:10:00 INFO postgres: Autovacuum completed on public.logs
+2024-03-15 13:15:33 WARNING apache2: SSL certificate expires in 14 days
+2024-03-15 13:20:00 INFO certbot: Certificate renewal scheduled
+2024-03-15 14:00:00 INFO cron: Job scheduled for user www-data
+2024-03-15 14:05:12 INFO apache2: Cache purged for domain example.com
+2024-03-15 14:10:00 ERROR docker: Volume mount failed for /data/shared
+2024-03-15 14:10:30 CRITICAL docker: Service database_replica failed to start
+2024-03-15 14:11:00 WARNING systemd: service database_replica entered failed state
+2024-03-15 14:15:00 INFO systemd: Attempting restart of database_replica
+2024-03-15 14:16:00 INFO docker: Service database_replica started successfully
+2024-03-15 14:20:00 INFO postgres: Replication stream established
+2024-03-15 14:25:33 INFO prometheus: Alert resolved: HighMemoryUsage
+2024-03-15 15:00:00 INFO cron: Job scheduled for user root
+2024-03-15 15:20:00 INFO systemd: System running normally

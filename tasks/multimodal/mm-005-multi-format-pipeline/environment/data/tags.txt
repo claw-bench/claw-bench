@@ -1,0 +1,9 @@
+1:bestseller,new-arrival
+2:premium,featured
+3:organic,local
+5:featured,seasonal
+6:premium
+7:budget
+9:seasonal,premium
+10:featured
+12:featured,bestseller

@@ -1,0 +1,29 @@
+Sprint Planning Meeting - January 15, 2025
+============================================
+
+Attendees: Alice, Bob, Charlie, Diana
+
+Discussion Topics:
+
+1. Feature Freeze Date
+   - Agreed on January 30 as the feature freeze deadline
+   - All new features must have PR submitted by then
+
+2. Performance Issues
+   - The search endpoint latency increased to 500ms
+   - Bob will investigate the query optimization options
+   - TODO: Profile the search endpoint and identify bottlenecks
+
+3. Security Review
+   - External audit scheduled for February 10
+   - Need to complete dependency vulnerability scan
+   - TODO: Update all packages to latest patch versions
+
+4. Testing Coverage
+   - Current coverage at 72%, target is 85%
+   - Focus on integration tests for payment flow
+   - Charlie will pair with Diana on test writing
+
+5. Next Steps
+   - Daily standups continue at 9:30 AM
+   - Retrospective scheduled for January 31

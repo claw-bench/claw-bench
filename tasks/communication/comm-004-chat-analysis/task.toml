@@ -1,0 +1,10 @@
+id = "comm-004"
+title = "Chat Log Analysis"
+domain = "communication"
+level = "L2"
+description = "Analyze a chat log to compute per-user message counts, most active hours, and average response time"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["analysis", "chat", "statistics", "metrics"]
+capability_types = ["collaboration", "reasoning"]

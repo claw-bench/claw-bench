@@ -1,0 +1,13 @@
+diff --git a/src/config.py b/src/config.py
+index abc1234..def5678 100644
+--- a/src/config.py
++++ b/src/config.py
+@@ -10,6 +10,8 @@ class Config:
+     DEBUG = False
+     TESTING = False
+
++    AWS_ACCESS_KEY_ID = "AKIAIOSFODNN7EXAMPLE"
++    AWS_SECRET_ACCESS_KEY = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+     DATABASE_URL = os.getenv("DATABASE_URL")
+
+     @staticmethod

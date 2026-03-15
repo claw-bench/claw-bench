@@ -1,0 +1,159 @@
+network:
+  organization: "Acme Corp"
+  last_updated: "2026-03-01"
+
+subnets:
+  - name: "dmz"
+    cidr: "10.0.0.0/24"
+    description: "Demilitarized zone - public-facing services"
+    hosts:
+      - hostname: "web-frontend-01"
+        ip: "10.0.0.10"
+        services:
+          - name: "nginx"
+            port: 443
+          - name: "webapp"
+            port: 8080
+        os: "Ubuntu 22.04"
+        criticality: "high"
+
+      - hostname: "api-gateway-01"
+        ip: "10.0.0.11"
+        services:
+          - name: "kong"
+            port: 8443
+        os: "Ubuntu 22.04"
+        criticality: "high"
+
+      - hostname: "load-balancer-01"
+        ip: "10.0.0.5"
+        services:
+          - name: "haproxy"
+            port: 443
+          - name: "healthcheck"
+            port: 8404
+        os: "Ubuntu 22.04"
+        criticality: "critical"
+
+  - name: "internal-services"
+    cidr: "10.0.1.0/24"
+    description: "Internal application services"
+    hosts:
+      - hostname: "auth-service-01"
+        ip: "10.0.1.10"
+        services:
+          - name: "auth-api"
+            port: 9090
+          - name: "ldap"
+            port: 636
+        os: "Ubuntu 22.04"
+        criticality: "critical"
+
+      - hostname: "app-server-01"
+        ip: "10.0.1.20"
+        services:
+          - name: "backend-api"
+            port: 8080
+          - name: "worker"
+            port: 9100
+        os: "Ubuntu 22.04"
+        criticality: "high"
+
+      - hostname: "cache-server-01"
+        ip: "10.0.1.30"
+        services:
+          - name: "redis"
+            port: 6379
+        os: "Ubuntu 22.04"
+        criticality: "medium"
+
+  - name: "database"
+    cidr: "10.0.2.0/24"
+    description: "Database tier"
+    hosts:
+      - hostname: "db-primary-01"
+        ip: "10.0.2.10"
+        services:
+          - name: "postgresql"
+            port: 5432
+        os: "Ubuntu 22.04"
+        criticality: "critical"
+
+      - hostname: "db-replica-01"
+        ip: "10.0.2.11"
+        services:
+          - name: "postgresql"
+            port: 5432
+        os: "Ubuntu 22.04"
+        criticality: "high"
+
+  - name: "management"
+    cidr: "10.0.3.0/24"
+    description: "Management and monitoring"
+    hosts:
+      - hostname: "monitoring-01"
+        ip: "10.0.3.10"
+        services:
+          - name: "prometheus"
+            port: 9090
+          - name: "grafana"
+            port: 3000
+        os: "Ubuntu 22.04"
+        criticality: "medium"
+
+      - hostname: "deploy-server-01"
+        ip: "10.0.3.20"
+        services:
+          - name: "jenkins"
+            port: 8080
+          - name: "ssh"
+            port: 22
+        os: "Ubuntu 22.04"
+        criticality: "high"
+
+  - name: "corporate"
+    cidr: "192.168.1.0/24"
+    description: "Corporate network - employee workstations"
+    hosts:
+      - hostname: "ws-jsmith"
+        ip: "192.168.1.50"
+        services: []
+        os: "Windows 11"
+        criticality: "low"
+
+firewall_rules:
+  - name: "allow-web-inbound"
+    source: "0.0.0.0/0"
+    destination: "10.0.0.0/24"
+    ports: [443, 8080]
+    action: "allow"
+
+  - name: "allow-dmz-to-internal"
+    source: "10.0.0.0/24"
+    destination: "10.0.1.0/24"
+    ports: [8080, 9090]
+    action: "allow"
+
+  - name: "allow-internal-to-db"
+    source: "10.0.1.0/24"
+    destination: "10.0.2.0/24"
+    ports: [5432]
+    action: "allow"
+
+  - name: "allow-corporate-to-dmz"
+    source: "192.168.1.0/24"
+    destination: "10.0.0.0/24"
+    ports: [443, 8080]
+    action: "allow"
+
+  - name: "deny-external-to-internal"
+    source: "0.0.0.0/0"
+    destination: "10.0.1.0/24"
+    ports: []
+    action: "deny"
+
+  - name: "deny-external-to-db"
+    source: "0.0.0.0/0"
+    destination: "10.0.2.0/24"
+    ports: []
+    action: "deny"

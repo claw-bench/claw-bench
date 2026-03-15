@@ -1,0 +1,10 @@
+id = "xdom-008"
+title = "Security Audit with Remediation Patch"
+domain = "cross-domain"
+level = "L3"
+description = "Audit Python application code for security vulnerabilities, generate a structured audit report, and produce a unified diff patch that fixes the identified issues."
+timeout = 300
+capabilities = ["file-read", "file-write", "security-analysis"]
+skills_allowed = true
+tags = ["cross-domain", "security", "audit", "patch"]
+capability_types = ["reasoning", "tool-use"]

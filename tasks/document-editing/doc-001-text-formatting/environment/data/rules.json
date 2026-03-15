@@ -1,0 +1,7 @@
+{
+  "max_line_length": 80,
+  "normalize_whitespace": true,
+  "fix_punctuation_spacing": true,
+  "preserve_indentation": true,
+  "indentation_marker": "  "
+}

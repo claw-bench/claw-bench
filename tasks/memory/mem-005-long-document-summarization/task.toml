@@ -1,0 +1,10 @@
+id = "mem-005"
+title = "Long Document Summarization Chain"
+domain = "memory"
+level = "L3"
+description = "Agent reads a 500-line technical document, produces a summary and then extracts key points"
+timeout = 300
+capabilities = ["file-write", "file-read"]
+skills_allowed = true
+capability_types = ["memory", "reasoning"]
+tags = ["memory", "summarization", "long-context"]

@@ -1,0 +1,10 @@
+{
+  "id": 8,
+  "from": "legal@company.com",
+  "subject": "Contract for Review",
+  "date": "2026-03-08T10:20:00Z",
+  "attachments": [
+    {"filename": "vendor_contract.pdf", "size_bytes": 890000, "content_type": "application/pdf"},
+    {"filename": "terms_addendum.docx", "size_bytes": 45000, "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"}
+  ]
+}

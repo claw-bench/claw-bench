@@ -1,0 +1,10 @@
+id = "sys-010"
+title = "Infrastructure Migration Plan"
+domain = "system-admin"
+level = "L4"
+description = "Analyze current infrastructure and target requirements to generate a dependency-aware migration plan with risk assessment"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["expert", "migration", "infrastructure", "planning", "risk-assessment"]
+capability_types = ["reasoning", "tool-use"]

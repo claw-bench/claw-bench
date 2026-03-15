@@ -1,0 +1,38 @@
+# SSH Daemon Configuration
+
+Port 22
+ListenAddress 0.0.0.0
+
+# Security issue: root login permitted
+PermitRootLogin yes
+
+# Security issue: password authentication enabled
+PasswordAuthentication yes
+
+# Security issue: empty passwords allowed
+PermitEmptyPasswords yes
+
+# Security issue: no max auth tries limit (or high)
+MaxAuthTries 10
+
+# Security issue: X11 forwarding enabled
+X11Forwarding yes
+
+# Security issue: long login grace time
+LoginGraceTime 120
+
+# No banner configured
+Banner none
+
+# Security issue: allowing all users
+AllowUsers *
+
+# Subsystems
+Subsystem sftp /usr/lib/openssh/sftp-server
+
+# Security issue: TCP forwarding enabled
+AllowTcpForwarding yes
+
+# Security issue: no idle timeout
+ClientAliveInterval 0
+ClientAliveCountMax 3

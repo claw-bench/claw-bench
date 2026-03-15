@@ -1,0 +1,10 @@
+id = "file-002"
+title = "Convert CSV to JSON"
+domain = "file-operations"
+level = "L1"
+description = "Convert a CSV file into a JSON array of objects with keys matching the CSV column headers"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "csv", "json", "conversion"]
+capability_types = ["tool-use"]

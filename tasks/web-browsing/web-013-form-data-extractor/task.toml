@@ -1,0 +1,10 @@
+id = "web-013"
+title = "Extract Form Structure from HTML"
+domain = "web-browsing"
+level = "L2"
+description = "Extract form structure from an HTML page including actions, methods, and field definitions"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["forms", "html", "extraction"]
+capability_types = ["reasoning", "tool-use"]

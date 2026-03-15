@@ -1,0 +1,10 @@
+id = "data-008"
+title = "Pairwise Correlation Analysis"
+domain = "data-analysis"
+level = "L3"
+description = "Compute pairwise Pearson correlation coefficients for numeric columns"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["correlation", "pearson", "statistics", "matrix"]
+capability_types = ["reasoning", "tool-use"]

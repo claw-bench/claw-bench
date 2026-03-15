@@ -1,0 +1,10 @@
+id = "doc-005"
+title = "Document Comparison"
+domain = "document-editing"
+level = "L2"
+description = "Compare two text document versions and generate a structured JSON diff of added, removed, and modified sections"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["diff", "comparison", "versioning", "text"]
+capability_types = ["reasoning", "tool-use"]

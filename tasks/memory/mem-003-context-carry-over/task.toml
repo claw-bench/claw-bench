@@ -1,0 +1,10 @@
+id = "mem-003"
+title = "Context Carry-Over"
+domain = "memory"
+level = "L2"
+description = "Agent reads a config.json once, then creates 3 files referencing its values without re-reading"
+timeout = 180
+capabilities = ["file-write", "file-read"]
+skills_allowed = true
+capability_types = ["memory", "reasoning"]
+tags = ["memory", "context", "carry-over"]

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "msg-001",
+    "from": "alice@techcorp.com",
+    "to": ["bob@techcorp.com", "carol@techcorp.com"],
+    "subject": "Q1 Planning Meeting",
+    "body": "Hi team,\n\nI'd like to schedule a Q1 planning meeting.\n\nDate: 2026-04-01\nTime: 10:00 AM\nDuration: 90 minutes\nParticipants: bob@techcorp.com, carol@techcorp.com\n\nPlease confirm your availability.\n\nBest,\nAlice"
+  },
+  {
+    "id": "msg-002",
+    "from": "dave@techcorp.com",
+    "to": ["alice@techcorp.com"],
+    "subject": "Re: Project Update",
+    "body": "Hi Alice,\n\nThanks for the update on the project. The numbers look good. I'll review the detailed report and get back to you by Friday.\n\nCheers,\nDave"
+  },
+  {
+    "id": "msg-003",
+    "from": "bob@techcorp.com",
+    "to": ["alice@techcorp.com", "carol@techcorp.com", "dave@techcorp.com"],
+    "subject": "Sprint Retrospective",
+    "body": "Hello everyone,\n\nLet's have our sprint retrospective meeting.\n\nDate: 2026-04-03\nTime: 2:00 PM\nDuration: 60 minutes\nParticipants: alice@techcorp.com, carol@techcorp.com, dave@techcorp.com\n\nWe'll cover what went well and areas for improvement.\n\nThanks,\nBob"
+  },
+  {
+    "id": "msg-004",
+    "from": "carol@techcorp.com",
+    "to": ["alice@techcorp.com"],
+    "subject": "Lunch next week?",
+    "body": "Hey Alice,\n\nWant to grab lunch next week? I was thinking Tuesday or Wednesday. Let me know what works for you!\n\nCarol"
+  },
+  {
+    "id": "msg-005",
+    "from": "eve@techcorp.com",
+    "to": ["team@techcorp.com"],
+    "subject": "Office Closure Notice",
+    "body": "Dear team,\n\nPlease note that the office will be closed on April 10th for maintenance. Please plan to work from home that day.\n\nRegards,\nEve (Office Admin)"
+  },
+  {
+    "id": "msg-006",
+    "from": "dave@techcorp.com",
+    "to": ["bob@techcorp.com", "eve@techcorp.com"],
+    "subject": "Design Review Session",
+    "body": "Hi Bob and Eve,\n\nI'm scheduling a design review session for the new feature.\n\nDate: 2026-04-07\nTime: 11:30 AM\nDuration: 45 minutes\nParticipants: bob@techcorp.com, eve@techcorp.com\n\nPlease come prepared with your wireframes.\n\nBest,\nDave"
+  },
+  {
+    "id": "msg-007",
+    "from": "alice@techcorp.com",
+    "to": ["dave@techcorp.com"],
+    "subject": "Re: Budget Approval",
+    "body": "Dave,\n\nThe budget has been approved. You can proceed with the vendor negotiations. Let me know if you need any supporting documents.\n\nAlice"
+  },
+  {
+    "id": "msg-008",
+    "from": "carol@techcorp.com",
+    "to": ["alice@techcorp.com", "bob@techcorp.com", "dave@techcorp.com", "eve@techcorp.com"],
+    "subject": "Client Demo Preparation",
+    "body": "Hi all,\n\nWe need to prepare for the upcoming client demo.\n\nDate: 2026-04-10\nTime: 3:00 PM\nDuration: 120 minutes\nParticipants: alice@techcorp.com, bob@techcorp.com, dave@techcorp.com, eve@techcorp.com\n\nPlease have your demo segments ready.\n\nThanks,\nCarol"
+  },
+  {
+    "id": "msg-009",
+    "from": "bob@techcorp.com",
+    "to": ["alice@techcorp.com"],
+    "subject": "FYI: Conference Talks",
+    "body": "Alice,\n\nJust forwarding the list of conference talks that might be interesting for the team. See attached PDF.\n\nBob"
+  },
+  {
+    "id": "msg-010",
+    "from": "eve@techcorp.com",
+    "to": ["carol@techcorp.com"],
+    "subject": "Re: Vacation Request",
+    "body": "Hi Carol,\n\nYour vacation request for April 20-24 has been approved. Enjoy your time off!\n\nBest,\nEve"
+  }
+]

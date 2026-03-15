@@ -1,0 +1,521 @@
+================================================================================
+                    NovaClustr Platform Technical Report
+                         Version 4.2 - Internal Use
+================================================================================
+
+EXECUTIVE OVERVIEW
+------------------
+NovaClustr is a distributed computing platform designed for high-throughput
+data processing across geographically dispersed data centers. Originally
+developed in 2019 as an internal tool for batch analytics, it has since
+evolved into a full-featured platform supporting real-time stream processing,
+batch computation, and hybrid workloads. This report covers the five major
+subsystems: Architecture, Networking, Storage, Security, and Monitoring.
+
+The platform currently serves 14 internal teams and processes an average of
+2.3 petabytes of data per day across 8 data center regions. Peak throughput
+has reached 4.1 petabytes in a single 24-hour window during end-of-quarter
+reporting cycles.
+
+
+================================================================================
+SECTION 1: ARCHITECTURE
+================================================================================
+
+1.1 Overview
+The NovaClustr architecture follows a master-worker topology with automatic
+failover. The control plane consists of 3 master nodes per region arranged
+in a Raft consensus group. Worker nodes are organized into pools based on
+their hardware profile and assigned workload type.
+
+1.2 Node Types
+There are four distinct node types in the NovaClustr architecture:
+
+  - Controller Nodes: Manage cluster state, schedule jobs, and coordinate
+    failover. Each region has exactly 3 controller nodes. Controllers
+    require a minimum of 64 GB RAM and 16 CPU cores.
+
+  - Compute Nodes: Execute data processing tasks. These are the most
+    numerous nodes, with each region containing between 50 and 500 compute
+    nodes depending on demand. Compute nodes are provisioned with 128 GB
+    RAM and 32 CPU cores as the standard configuration.
+
+  - Gateway Nodes: Handle external API requests and route them to the
+    appropriate internal services. Each region has 5 gateway nodes behind
+    a load balancer. Gateway nodes terminate TLS connections and perform
+    request authentication.
+
+  - Storage Nodes: Manage the distributed file system (see Section 3).
+    Storage nodes are equipped with high-capacity NVMe drives, typically
+    12 drives per node at 8 TB each, for a raw capacity of 96 TB per node.
+
+1.3 Job Scheduling
+The job scheduler uses a priority queue with 5 priority levels (P0 through
+P4, where P0 is highest). Jobs are assigned to compute pools based on
+resource requirements and data locality. The scheduler attempts to place
+jobs on nodes that already have the required input data cached locally,
+reducing network transfer overhead by an estimated 35%.
+
+P0 jobs are reserved for critical production pipelines and have preemption
+rights over P3 and P4 jobs. P1 and P2 jobs cannot preempt each other but
+take priority in the queue over P3-P4. The average job scheduling latency
+is 120 milliseconds for P0 jobs and 850 milliseconds for P4 jobs.
+
+1.4 Fault Tolerance
+NovaClustr employs a checkpoint-and-replay mechanism for fault tolerance.
+Long-running jobs create checkpoints every 5 minutes by default (configurable
+per job). When a node failure is detected, the job is restarted from the
+most recent checkpoint on a different node. The detection timeout is 30
+seconds, after which the controller marks the node as failed and begins
+rescheduling its tasks.
+
+In the event of a full region failure, workloads can be migrated to a
+secondary region within 4 minutes using the cross-region failover protocol.
+This protocol was tested during the 2024 DR exercise and successfully
+migrated 1,247 active jobs with zero data loss.
+
+1.5 Scaling
+Auto-scaling is managed by the Capacity Controller subsystem. When the
+average CPU utilization across a compute pool exceeds 75% for 10 consecutive
+minutes, the Capacity Controller provisions additional nodes from the cloud
+reserve pool. Scale-down occurs when utilization drops below 30% for 20
+minutes. The minimum pool size is 10 nodes and the maximum is 500 nodes.
+
+
+================================================================================
+SECTION 2: NETWORKING
+================================================================================
+
+2.1 Overview
+NovaClustr uses a multi-tier networking architecture optimized for both
+east-west (intra-cluster) and north-south (external) traffic. All
+inter-node communication uses gRPC over HTTP/2 with mutual TLS (mTLS).
+
+2.2 Network Topology
+Each data center region is connected via dedicated 100 Gbps fiber links
+in a full mesh topology. Intra-region communication between nodes uses
+25 Gbps Ethernet. The aggregate cross-region bandwidth capacity is
+800 Gbps, though typical utilization averages 45% during normal operations.
+
+2.3 Service Mesh
+NovaClustr deploys a custom service mesh (NovaMesh) for service discovery,
+load balancing, and traffic management. NovaMesh sidecar proxies are
+deployed alongside every service instance. Key features include:
+
+  - Automatic retry with exponential backoff (max 3 retries)
+  - Circuit breaker pattern with a 50% error threshold
+  - Request-level tracing with correlation IDs
+  - Rate limiting per client at 10,000 requests per second
+
+2.4 DNS and Service Discovery
+Internal service discovery uses a custom DNS resolver integrated with
+the cluster state store. DNS TTL is set to 15 seconds to allow rapid
+failover. External DNS is managed through a commercial provider with
+a 60-second TTL.
+
+2.5 Data Transfer Optimization
+For large data transfers between nodes, NovaClustr uses a custom
+protocol called NovaBulk that operates over TCP with the following
+optimizations:
+
+  - Zero-copy data path using kernel bypass (DPDK)
+  - Adaptive compression (LZ4 for low-latency, ZSTD for high-ratio)
+  - Parallel transfer streams (up to 8 concurrent streams per transfer)
+  - Transfer prioritization aligned with job priority levels
+
+NovaBulk achieves 92% of theoretical link bandwidth in benchmarks,
+compared to 67% for standard TCP file transfers.
+
+2.6 Network Security
+All network traffic is encrypted in transit using TLS 1.3. Certificate
+rotation occurs every 90 days automatically. Network policies enforce
+strict pod-to-pod communication rules, with a default-deny posture.
+Only explicitly allowed service pairs can communicate.
+
+2.7 Latency Requirements
+The platform maintains strict latency SLAs:
+  - Intra-region RPC calls: p99 < 5 ms
+  - Cross-region RPC calls: p99 < 80 ms
+  - Gateway to compute (job submission): p99 < 200 ms
+  - DNS resolution: p99 < 2 ms
+
+
+================================================================================
+SECTION 3: STORAGE
+================================================================================
+
+3.1 Overview
+NovaClustr's storage layer is built on NovaFS, a custom distributed file
+system optimized for large sequential reads and writes. NovaFS provides
+POSIX-like semantics with eventual consistency for metadata operations.
+
+3.2 Data Replication
+All data is replicated with a configurable replication factor. The default
+is 3x replication within a region. For critical datasets, cross-region
+replication can be enabled with 2x replication to a designated backup
+region. The total storage capacity across all regions is 48 petabytes raw,
+or approximately 16 petabytes usable after 3x replication.
+
+3.3 File System Structure
+NovaFS organizes data into namespaces, each of which can have independent
+replication and retention policies. The standard namespaces are:
+
+  - /hot     - Frequently accessed data, stored on NVMe (7-day retention)
+  - /warm    - Moderately accessed data, stored on SSD (30-day retention)
+  - /cold    - Archival data, stored on HDD (365-day retention)
+  - /scratch - Temporary job data, automatically purged after 24 hours
+
+3.4 Data Tiering
+An automated tiering engine moves data between storage tiers based on
+access patterns. Data that has not been accessed for 7 days is moved
+from /hot to /warm. After 30 days of no access, data moves to /cold.
+The tiering engine processes approximately 500 TB of data movements
+per day.
+
+3.5 Caching
+A distributed caching layer (NovaCache) sits between compute nodes and
+NovaFS. NovaCache uses a combination of local NVMe cache (2 TB per
+compute node) and a shared memory cache cluster (10 nodes, 512 GB RAM
+each). Cache hit rates average 78% for repeated workloads.
+
+3.6 Backup and Recovery
+Full backups are taken weekly on Sunday at 02:00 UTC. Incremental backups
+run daily at 02:00 UTC. The backup window is 6 hours maximum. Recovery
+point objective (RPO) is 24 hours for standard data and 1 hour for
+critical datasets using continuous journaling. Recovery time objective
+(RTO) is 4 hours for a full region restore.
+
+3.7 Data Integrity
+NovaFS uses SHA-256 checksums for all stored blocks. Background scrubbing
+runs continuously, verifying approximately 2% of all blocks per day.
+Corrupted blocks are automatically repaired from replicas. The measured
+silent corruption rate is 0.0003% per year.
+
+
+================================================================================
+SECTION 4: SECURITY
+================================================================================
+
+4.1 Overview
+NovaClustr implements a defense-in-depth security model with multiple
+layers of protection. The security architecture is reviewed annually
+by an external audit firm.
+
+4.2 Authentication
+All user and service authentication uses OAuth 2.0 with JWT tokens.
+Token lifetime is 1 hour for interactive users and 24 hours for service
+accounts. Multi-factor authentication (MFA) is mandatory for all human
+users accessing the control plane. Service-to-service authentication
+uses mutual TLS certificates issued by an internal PKI.
+
+4.3 Authorization
+Role-based access control (RBAC) is implemented with 4 predefined roles:
+
+  - Admin: Full access to all cluster operations and configuration
+  - Operator: Can manage jobs, view logs, and access monitoring dashboards
+  - Developer: Can submit and manage their own jobs, read shared datasets
+  - Viewer: Read-only access to dashboards and job status
+
+Custom roles can be created by combining fine-grained permissions from a
+catalog of 127 individual permission entries.
+
+4.4 Data Encryption
+Data at rest is encrypted using AES-256-GCM. Encryption keys are managed
+by an internal KMS (Key Management Service) backed by hardware security
+modules (HSMs). Key rotation occurs every 180 days. In-transit encryption
+uses TLS 1.3 as described in the Networking section.
+
+4.5 Audit Logging
+All administrative actions and data access events are logged to an
+immutable audit log. Audit logs are retained for 7 years in compliance
+with regulatory requirements. The audit system processes approximately
+50 million events per day. Log integrity is ensured through hash chaining.
+
+4.6 Vulnerability Management
+Automated vulnerability scanning runs weekly against all cluster nodes.
+Critical vulnerabilities (CVSS >= 9.0) must be patched within 72 hours.
+High vulnerabilities (CVSS >= 7.0) must be patched within 14 days.
+The platform maintains a 99.2% patch compliance rate.
+
+4.7 Network Segmentation
+The cluster is segmented into 4 security zones:
+  - Public Zone: Gateway nodes only
+  - Application Zone: Compute nodes and service mesh
+  - Data Zone: Storage nodes and databases
+  - Management Zone: Controller nodes and monitoring
+
+Traffic between zones is filtered by stateful firewalls with explicit
+allow rules. No direct path exists from the Public Zone to the Data Zone.
+
+4.8 Incident Response
+The security team maintains a 24/7 on-call rotation. Mean time to
+acknowledge (MTTA) for security incidents is 15 minutes. Mean time to
+resolve (MTTR) for critical incidents is 4 hours. A quarterly tabletop
+exercise is conducted to test incident response procedures.
+
+
+================================================================================
+SECTION 5: MONITORING
+================================================================================
+
+5.1 Overview
+NovaClustr uses a comprehensive observability stack covering metrics,
+logs, and traces. The monitoring infrastructure is deployed independently
+from the main cluster to ensure availability during outages.
+
+5.2 Metrics Collection
+Metrics are collected using a pull-based model at 15-second intervals.
+Each node exposes approximately 2,000 individual metrics. The total
+metric ingestion rate across the platform is 18 million data points
+per second. Metrics are stored in a time-series database with the
+following retention:
+  - Raw resolution (15s): 7 days
+  - 1-minute aggregates: 30 days
+  - 5-minute aggregates: 1 year
+  - 1-hour aggregates: 5 years
+
+5.3 Alerting
+The alerting system supports multi-level alerts:
+  - P1 (Critical): Pages on-call engineer, auto-creates incident ticket
+  - P2 (Warning): Sends notification to team channel
+  - P3 (Info): Logged for review during business hours
+
+Alert deduplication prevents notification storms. The current alert
+suppression window is 5 minutes for identical alerts. There are currently
+342 active alert rules across the platform.
+
+5.4 Log Aggregation
+All application and system logs are shipped to a centralized log
+aggregation service. Log ingestion rate averages 2.1 TB per day.
+Full-text search is available on logs up to 30 days old. Older logs
+are archived to cold storage in compressed format.
+
+5.5 Distributed Tracing
+End-to-end request tracing is implemented using OpenTelemetry. Traces
+are sampled at a rate of 1% for normal traffic and 100% for error
+paths. Trace data is retained for 7 days. The tracing system handles
+approximately 500,000 spans per second.
+
+5.6 Dashboards
+The monitoring team maintains 45 operational dashboards covering:
+  - Cluster health and capacity
+  - Job throughput and latency
+  - Storage utilization and I/O
+  - Network traffic and errors
+  - Security events and compliance
+
+Custom dashboards can be created by any user with Operator or higher role.
+
+5.7 Capacity Planning
+Historical metrics feed into a capacity planning model that forecasts
+resource needs 90 days ahead. The model uses linear regression on
+trailing 180-day data with seasonal adjustment. Current forecasts
+predict that storage capacity will need to increase by 25% within
+the next 6 months, and compute capacity by 15%.
+
+5.8 SLA Reporting
+Monthly SLA reports are generated automatically. Key SLA targets:
+  - Platform availability: 99.95% (measured: 99.97% trailing 12 months)
+  - Job completion rate: 99.9% (measured: 99.92%)
+  - Data durability: 99.999999% (11 nines target)
+  - API response time p99: < 500 ms (measured: 312 ms)
+
+5.9 On-Call Process
+The on-call rotation covers 3 teams:
+  - Platform team: infrastructure and cluster operations
+  - Data team: storage and pipeline issues
+  - Security team: security incidents and compliance
+
+Each team has a primary and secondary on-call engineer. Escalation
+from primary to secondary occurs after 15 minutes of non-acknowledgment.
+
+================================================================================
+END OF REPORT
+================================================================================
+
+
+================================================================================
+APPENDIX A: ARCHITECTURE DEEP DIVE
+================================================================================
+
+A.1 Controller Node Internals
+Each controller node runs the following core services:
+  - Scheduler Service: Manages the priority queue and job placement
+  - State Store: Maintains cluster state using an embedded key-value store
+  - Health Monitor: Tracks node liveness via heartbeat mechanism
+  - API Server: Exposes the control plane API for job submission and management
+
+The state store uses a write-ahead log (WAL) for durability. WAL segments
+are rotated every 64 MB or every 5 minutes, whichever comes first. State
+snapshots are taken every 15 minutes to enable fast recovery. A full state
+restore from snapshot takes approximately 45 seconds.
+
+A.2 Compute Node Lifecycle
+Compute nodes go through the following states:
+  1. Provisioning: Node is being set up (avg 3 minutes)
+  2. Initializing: Node registers with controller and downloads configuration
+  3. Ready: Node is available for job assignment
+  4. Busy: Node is executing one or more tasks
+  5. Draining: Node is finishing current tasks before shutdown
+  6. Terminated: Node has been removed from the cluster
+
+Nodes in Draining state are not assigned new tasks but continue executing
+current work. The drain timeout is 30 minutes, after which tasks are
+forcefully migrated to other nodes.
+
+A.3 Job Execution Model
+Each job consists of one or more stages. Stages can be arranged in a
+directed acyclic graph (DAG) to express dependencies. The executor
+supports the following stage types:
+  - Map: Parallel processing of input partitions
+  - Reduce: Aggregation of intermediate results
+  - Sort: Distributed sort across partitions
+  - Join: Equi-join between two datasets
+  - Filter: Predicate-based row filtering
+
+A typical analytics job contains 3-7 stages. The largest observed job
+had 47 stages processing 12 TB of input data across 200 compute nodes,
+completing in 23 minutes.
+
+
+================================================================================
+APPENDIX B: NETWORKING PROTOCOLS
+================================================================================
+
+B.1 NovaBulk Protocol Details
+The NovaBulk protocol uses a custom frame format:
+
+  +---+---+---+---+---+---+---+---+
+  | Magic (2B) | Version (1B) | Flags (1B) |
+  +---+---+---+---+---+---+---+---+
+  | Stream ID (4B)                 |
+  +---+---+---+---+---+---+---+---+
+  | Payload Length (4B)            |
+  +---+---+---+---+---+---+---+---+
+  | Checksum (4B)                  |
+  +---+---+---+---+---+---+---+---+
+  | Payload (variable)             |
+  +---+---+---+---+---+---+---+---+
+
+Maximum payload size per frame is 1 MB. Larger payloads are automatically
+fragmented. Flow control uses a credit-based system where the receiver
+grants credits in units of 256 KB.
+
+B.2 Connection Pooling
+Each node maintains a connection pool to every other node it communicates
+with. Pool parameters:
+  - Minimum connections per peer: 2
+  - Maximum connections per peer: 16
+  - Idle timeout: 300 seconds
+  - Connection establishment timeout: 5 seconds
+  - Maximum pending requests per connection: 128
+
+B.3 Traffic Shaping
+NovaClustr implements traffic shaping to prevent any single job from
+monopolizing network bandwidth. Each job is allocated a bandwidth quota
+based on its priority level:
+  - P0: No limit (best effort maximum)
+  - P1: 40% of available bandwidth
+  - P2: 25% of available bandwidth
+  - P3: 15% of available bandwidth
+  - P4: 10% of available bandwidth
+
+Unused bandwidth is redistributed proportionally among active jobs.
+
+
+================================================================================
+APPENDIX C: STORAGE INTERNALS
+================================================================================
+
+C.1 Block Layout
+NovaFS uses a fixed block size of 128 MB for data blocks. Metadata blocks
+are 4 KB. Each data block is stored with its SHA-256 checksum and a
+generation counter for conflict resolution.
+
+C.2 Write Path
+The write path follows these steps:
+  1. Client sends write request to the primary replica
+  2. Primary writes to its local WAL
+  3. Primary forwards the write to secondary replicas
+  4. When all replicas acknowledge, primary responds to client
+  5. Background compaction merges WAL entries into data blocks
+
+Write latency p50 is 8 ms for intra-region writes and 45 ms for
+cross-region writes. Write throughput per storage node is approximately
+500 MB/s sustained.
+
+C.3 Read Path
+Reads are served from the nearest replica by default. If the nearest
+replica is unavailable, the client library automatically fails over
+to the next closest replica. Read-after-write consistency is guaranteed
+within the same region but not across regions (cross-region reads may
+see stale data for up to 5 seconds).
+
+C.4 Garbage Collection
+Deleted data is not immediately reclaimed. A garbage collection process
+runs daily at 04:00 UTC, scanning for blocks with no live references.
+Reclaimed space typically amounts to 2-5% of total capacity per week.
+
+
+================================================================================
+APPENDIX D: SECURITY INCIDENT LOG (SUMMARY)
+================================================================================
+
+D.1 Incidents in the Past 12 Months
+  - 2025-01: Unauthorized access attempt via expired service account.
+    Detected by audit system within 3 minutes. No data exposure.
+  - 2025-04: Misconfigured firewall rule allowed unintended cross-zone
+    traffic for 47 minutes. Corrected by automated policy enforcement.
+  - 2025-07: Vulnerability in third-party library (CVSS 8.1). Patched
+    within 48 hours across all nodes.
+  - 2025-10: Phishing attempt targeting 3 engineers. Blocked by MFA.
+    No credentials compromised.
+
+D.2 Security Metrics Summary
+  - Total security events analyzed: 183 million
+  - True positive incidents: 4
+  - False positive rate: 0.02%
+  - Mean time to detect: 8 minutes
+  - Mean time to contain: 35 minutes
+  - Zero data breaches in trailing 24 months
+
+
+================================================================================
+APPENDIX E: MONITORING RUNBOOKS
+================================================================================
+
+E.1 High CPU Alert Response
+When a P1 CPU alert fires (>90% utilization for 5+ minutes):
+  1. Check if auto-scaling is functioning (verify Capacity Controller logs)
+  2. Identify the top resource-consuming jobs
+  3. Determine if the spike is expected (e.g., end-of-quarter processing)
+  4. If unexpected, consider preempting low-priority jobs
+  5. If scaling is stuck, manually provision nodes from the reserve pool
+
+E.2 Storage Capacity Alert Response
+When storage utilization exceeds 80%:
+  1. Check garbage collection status (last run, reclaimed space)
+  2. Review data tiering backlog
+  3. Identify largest namespaces and their growth rates
+  4. Consider accelerating cold tier migration
+  5. If above 90%, initiate emergency capacity expansion
+
+E.3 Network Partition Response
+When a network partition is detected between regions:
+  1. Verify physical link status with the network operations center
+  2. Check for BGP route changes
+  3. Assess impact on active jobs (cross-region dependencies)
+  4. Enable partition-tolerant mode if not already active
+  5. Begin failover procedures for affected workloads
+
+E.4 Failed Job Investigation
+When the job failure rate exceeds 1% over a 1-hour window:
+  1. Check for common error patterns in job logs
+  2. Verify node health across compute pools
+  3. Check for storage I/O errors or latency spikes
+  4. Review recent configuration changes
+  5. Escalate to the data team if pipeline-specific
+
+================================================================================
+END OF APPENDICES
+================================================================================

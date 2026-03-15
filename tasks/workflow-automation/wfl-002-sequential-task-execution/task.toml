@@ -1,0 +1,10 @@
+id = "wfl-002"
+title = "Sequential Task Execution with Results"
+domain = "workflow-automation"
+level = "L1"
+description = "Execute three text analysis tasks in the order defined by a task list, collecting and writing results as structured JSON"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["sequential", "task-execution", "json", "text-analysis"]
+capability_types = ["reasoning", "tool-use"]

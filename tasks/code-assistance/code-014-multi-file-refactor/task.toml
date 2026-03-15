@@ -1,0 +1,10 @@
+id = "code-014"
+title = "Multi-File Refactoring"
+domain = "code-assistance"
+level = "L4"
+description = "Refactor a three-file application to extract duplicated logic into a shared base module while preserving all existing functionality"
+timeout = 300
+capabilities = ["code-write", "code-execute"]
+skills_allowed = true
+tags = ["python", "refactoring", "architecture"]
+capability_types = ["reasoning", "tool-use"]

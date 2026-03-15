@@ -1,0 +1,28 @@
+{
+  "password_policy": {
+    "min_length": 8,
+    "max_length": 128,
+    "require_uppercase": true,
+    "require_lowercase": true,
+    "require_digit": true,
+    "require_special": false,
+    "history_count": 5
+  },
+  "mfa": {
+    "enabled": true,
+    "admin_required": true,
+    "user_optional": true,
+    "methods": ["totp", "webauthn"]
+  },
+  "session": {
+    "timeout_minutes": 60,
+    "absolute_timeout_hours": 12,
+    "cookie_secure": true,
+    "cookie_httponly": true
+  },
+  "lockout": {
+    "enabled": true,
+    "max_attempts": 10,
+    "lockout_duration_minutes": 15
+  }
+}

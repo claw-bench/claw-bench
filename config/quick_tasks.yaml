@@ -1,0 +1,28 @@
+# Curated 15 tasks for the "quick" smoke test tier.
+# Balanced difficulty: 6x L1, 5x L2, 3x L3, 1x L4
+# Covers all 14 domains + 1 extra.
+# Timeout: 600s for quick tier.
+
+tasks:
+  # L1 (Easy) — 6 tasks
+  - file-002              # file-operations: CSV to JSON
+  - code-002              # code-assistance: Palindrome checker
+  - doc-001               # document-editing: Text formatting
+  - eml-001               # email: Parse headers
+  - data-002              # data-analysis: Sort and filter CSV
+  - mm-001                # multimodal: JSON to YAML
+
+  # L2 (Medium) — 5 tasks
+  - cal-006               # calendar: Recurring meeting
+  - comm-004              # communication: Chat analysis
+  - sys-002               # system-admin: Process monitor
+  - sec-002               # security: Password validation
+  - wfl-002               # workflow-automation: Sequential execution
+
+  # L3 (Hard) — 3 tasks
+  - web-002               # web-browsing: Parse table
+  - mem-002               # memory: Multi-step instructions
+  - xdom-016              # cross-domain: Meeting notes to tasks
+
+  # L4 (Expert) — 1 task
+  - file-015              # file-operations: Complex data pipeline

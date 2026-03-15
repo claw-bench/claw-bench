@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "from": "ops-alert@company.com",
+    "subject": "CRITICAL: Production server crash",
+    "body": "The main production server crashed at 3:15 AM. Database connections are failing and the API is returning 500 errors. This needs to be fixed immediately. Multiple customers are affected.",
+    "date": "2026-03-10T03:15:00Z",
+    "has_attachment": false
+  },
+  {
+    "id": 2,
+    "from": "sarah@clientcorp.com",
+    "subject": "Request for pricing quote",
+    "body": "Hi, we're interested in your enterprise plan. Could you send us a pricing quote for 500 users? We'd also like to schedule a demo next week if possible.",
+    "date": "2026-03-10T09:00:00Z",
+    "has_attachment": false
+  },
+  {
+    "id": 3,
+    "from": "hr-system@company.com",
+    "subject": "New employee onboarding - Week of March 16",
+    "body": "Three new employees are starting next week. Please ensure their accounts, equipment, and onboarding materials are ready. The hiring manager has approved all paperwork.",
+    "date": "2026-03-10T10:00:00Z",
+    "has_attachment": true
+  },
+  {
+    "id": 4,
+    "from": "vendor@supplierx.com",
+    "subject": "Invoice #9921 - Payment overdue",
+    "body": "This is a reminder that invoice #9921 for $45,000 is now 15 days overdue. Please arrange payment immediately to avoid late fees and service disruption.",
+    "date": "2026-03-10T10:30:00Z",
+    "has_attachment": true
+  },
+  {
+    "id": 5,
+    "from": "legal@regulator.gov",
+    "subject": "URGENT: Compliance audit scheduled",
+    "body": "Your organization has been selected for a compliance audit. The audit team will arrive on March 20. Please ensure all required documentation is prepared. Failure to comply may result in penalties.",
+    "date": "2026-03-10T11:00:00Z",
+    "has_attachment": true
+  },
+  {
+    "id": 6,
+    "from": "marketing@company.com",
+    "subject": "Q2 campaign strategy draft",
+    "body": "Attached is the draft for our Q2 marketing campaign strategy. It includes social media plans, content calendar, and SEO optimization targets. Please review and provide feedback.",
+    "date": "2026-03-10T11:30:00Z",
+    "has_attachment": true
+  },
+  {
+    "id": 7,
+    "from": "dev-team@company.com",
+    "subject": "ASAP: Critical bug in payment processing",
+    "body": "We've identified a critical bug in the payment processing code that is causing double charges for some customers. This needs to be deployed as a hotfix ASAP. The error occurs in the transaction API.",
+    "date": "2026-03-10T12:00:00Z",
+    "has_attachment": false
+  },
+  {
+    "id": 8,
+    "from": "newsletter@industry.org",
+    "subject": "FYI: Industry trends weekly digest",
+    "body": "This week's industry trends: cloud adoption accelerates, AI integration in enterprise software, cybersecurity spending increases. No action needed - just keeping you informed.",
+    "date": "2026-03-10T13:00:00Z",
+    "has_attachment": false
+  },
+  {
+    "id": 9,
+    "from": "cfo@company.com",
+    "subject": "Budget review meeting - expense reports needed",
+    "body": "Team, we have a budget review meeting on Friday. Please submit all outstanding expense reports and reimbursement requests by Thursday end of day. We need accurate financial data for the review.",
+    "date": "2026-03-10T13:30:00Z",
+    "has_attachment": false
+  },
+  {
+    "id": 10,
+    "from": "partner@bigco.com",
+    "subject": "Partnership contract renewal",
+    "body": "Our current partnership contract expires next month. We'd like to discuss renewal terms and potentially expand the deal. Could we schedule a call to discuss the proposal and pricing?",
+    "date": "2026-03-10T14:00:00Z",
+    "has_attachment": false
+  },
+  {
+    "id": 11,
+    "from": "security@company.com",
+    "subject": "URGENT: Security vulnerability detected",
+    "body": "Our security scan detected a critical vulnerability in the authentication server. This could expose user database credentials. The technical team needs to deploy a patch immediately.",
+    "date": "2026-03-10T14:30:00Z",
+    "has_attachment": false
+  },
+  {
+    "id": 12,
+    "from": "recruiter@company.com",
+    "subject": "Interview feedback for senior developer candidates",
+    "body": "Please submit your interview feedback for the three senior developer candidates by end of week. We need to make hiring decisions before the candidates accept other offers.",
+    "date": "2026-03-10T15:00:00Z",
+    "has_attachment": false
+  },
+  {
+    "id": 13,
+    "from": "client@megacorp.com",
+    "subject": "Demo request - Enterprise features",
+    "body": "We're evaluating your platform for our organization of 2,000 users. Could you arrange a demo of the enterprise features? We're particularly interested in the customer analytics dashboard.",
+    "date": "2026-03-10T15:30:00Z",
+    "has_attachment": false
+  },
+  {
+    "id": 14,
+    "from": "legal-team@company.com",
+    "subject": "NDA required for new vendor partnership",
+    "body": "We need to execute an NDA with TechVentures before sharing any proprietary information. The legal team has drafted the document. Please review for compliance with our standard terms.",
+    "date": "2026-03-10T16:00:00Z",
+    "has_attachment": true
+  },
+  {
+    "id": 15,
+    "from": "cto@company.com",
+    "subject": "Database migration plan review",
+    "body": "Please review the attached database migration plan. We need to ensure zero downtime during the transition. The deploy window is next weekend. Check for any potential performance issues.",
+    "date": "2026-03-11T08:00:00Z",
+    "has_attachment": true
+  },
+  {
+    "id": 16,
+    "from": "events@company.com",
+    "subject": "FYI: Team building event next month",
+    "body": "Just a heads up - we're planning a team building event for April 15. It will be at the downtown convention center. No action needed right now, just save the date.",
+    "date": "2026-03-11T09:00:00Z",
+    "has_attachment": false
+  },
+  {
+    "id": 17,
+    "from": "accounts@supplier.com",
+    "subject": "Payment confirmation for invoice #8847",
+    "body": "We confirm receipt of payment for invoice #8847 in the amount of $28,500. The financial transaction has been recorded. Thank you for your prompt payment.",
+    "date": "2026-03-11T09:30:00Z",
+    "has_attachment": true
+  },
+  {
+    "id": 18,
+    "from": "product@company.com",
+    "subject": "Feature request from customer - analytics dashboard",
+    "body": "A key customer has requested advanced analytics features in our dashboard. This aligns with our product roadmap. The engineering team should evaluate the technical feasibility and provide an estimate.",
+    "date": "2026-03-11T10:00:00Z",
+    "has_attachment": false
+  },
+  {
+    "id": 19,
+    "from": "compliance@company.com",
+    "subject": "Deadline: Annual compliance training",
+    "body": "Reminder: All employees must complete the annual compliance and regulation training by March 31. This is mandatory. Failure to complete the training by the deadline may result in access restrictions.",
+    "date": "2026-03-11T10:30:00Z",
+    "has_attachment": false
+  },
+  {
+    "id": 20,
+    "from": "sales-team@company.com",
+    "subject": "New prospect - Enterprise deal opportunity",
+    "body": "We have a hot prospect interested in a $200K enterprise deal. They need a custom proposal with pricing for 1,000 seats. The customer wants to see a demo and trial before committing.",
+    "date": "2026-03-11T11:00:00Z",
+    "has_attachment": false
+  },
+  {
+    "id": 21,
+    "from": "devops@company.com",
+    "subject": "CRITICAL: Deploy pipeline broken",
+    "body": "The CI/CD deploy pipeline has been broken since this morning. No code can be deployed to production. This is blocking the critical hotfix for the payment bug. Server errors are increasing.",
+    "date": "2026-03-11T11:30:00Z",
+    "has_attachment": false
+  },
+  {
+    "id": 22,
+    "from": "brand@agency.com",
+    "subject": "Brand refresh campaign materials ready",
+    "body": "The brand refresh campaign materials are ready for review. This includes updated social media templates, content guidelines, and the new SEO strategy document. The launch event is scheduled for April 1.",
+    "date": "2026-03-11T12:00:00Z",
+    "has_attachment": true
+  },
+  {
+    "id": 23,
+    "from": "hr@company.com",
+    "subject": "Benefits enrollment period opening",
+    "body": "The annual benefits enrollment period opens next week. All employees can review and update their benefits selections including health insurance, PTO allocation, and retirement contributions.",
+    "date": "2026-03-11T13:00:00Z",
+    "has_attachment": false
+  },
+  {
+    "id": 24,
+    "from": "ceo@company.com",
+    "subject": "URGENT: Board meeting preparation",
+    "body": "The board meeting is this Friday. I need the financial summary, audit results, and legal compliance report by Wednesday. This is the highest priority - please coordinate across all departments immediately.",
+    "date": "2026-03-11T14:00:00Z",
+    "has_attachment": false
+  },
+  {
+    "id": 25,
+    "from": "support@vendor.com",
+    "subject": "Your support ticket has been resolved",
+    "body": "Your support ticket #44521 regarding the API error has been resolved. The technical team identified and fixed the server-side issue. Please verify that everything is working correctly.",
+    "date": "2026-03-11T15:00:00Z",
+    "has_attachment": false
+  }
+]

@@ -1,0 +1,10 @@
+id = "web-009"
+title = "RSS Feed Parser"
+domain = "web-browsing"
+level = "L2"
+description = "Parse an RSS XML feed and extract all items into a JSON file with title, link, pubDate, and description, sorted by date descending"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["rss", "xml", "parsing", "json", "feed"]
+capability_types = ["reasoning", "tool-use"]

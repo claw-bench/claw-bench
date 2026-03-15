@@ -1,0 +1,31 @@
+{
+  "welcome": {
+    "title": "Welcome to Our Platform",
+    "body": "We are glad to have you here. Get started by exploring your dashboard.",
+    "button_text": "Get Started"
+  },
+  "password_reset": {
+    "title": "Reset Your Password",
+    "body": "Click the link below to reset your password. This link expires in 24 hours.",
+    "button_text": "Reset Password",
+    "error_message": "The reset link has expired. Please request a new one."
+  },
+  "notification_digest": {
+    "title": "Your Daily Digest",
+    "body": "Here is a summary of what happened today.",
+    "button_text": "View Details",
+    "footer": "You can change your notification preferences in Settings."
+  },
+  "account_locked": {
+    "title": "Account Locked",
+    "body": "Your account has been locked due to multiple failed login attempts.",
+    "button_text": "Contact Support",
+    "error_message": "Too many failed attempts. Please try again in 30 minutes."
+  },
+  "invite": {
+    "title": "You Have Been Invited",
+    "body": "You have been invited to join the team workspace.",
+    "button_text": "Accept Invitation",
+    "footer": "This invitation expires in 7 days."
+  }
+}

@@ -1,0 +1,20 @@
+ITEM: Quantum Processor | SCORE: 92 | CATEGORY: Hardware
+ITEM: Neural Compiler | SCORE: 78 | CATEGORY: Software
+ITEM: Photon Switch | SCORE: 85 | CATEGORY: Hardware
+ITEM: Mesh Router X1 | SCORE: 45 | CATEGORY: Networking
+ITEM: DataSync Pro | SCORE: 67 | CATEGORY: Software
+ITEM: Cryo Cooler | SCORE: 31 | CATEGORY: Hardware
+ITEM: Fiber Hub 200 | SCORE: 88 | CATEGORY: Networking
+ITEM: CodeAnalyzer 3 | SCORE: 54 | CATEGORY: Software
+ITEM: Rack Mount S12 | SCORE: 73 | CATEGORY: Hardware
+ITEM: Packet Sniffer | SCORE: 62 | CATEGORY: Networking
+ITEM: VirtManager | SCORE: 49 | CATEGORY: Software
+ITEM: Plasma Screen X | SCORE: 38 | CATEGORY: Hardware
+ITEM: Load Balancer G5 | SCORE: 91 | CATEGORY: Networking
+ITEM: AutoDeploy | SCORE: 83 | CATEGORY: Software
+ITEM: Tensor Board M2 | SCORE: 76 | CATEGORY: Hardware
+ITEM: LogStream | SCORE: 58 | CATEGORY: Software
+ITEM: WiFi Amplifier | SCORE: 42 | CATEGORY: Networking
+ITEM: Edge Gateway | SCORE: 70 | CATEGORY: Networking
+ITEM: BugTracker Plus | SCORE: 65 | CATEGORY: Software
+ITEM: Power Unit 5K | SCORE: 55 | CATEGORY: Hardware

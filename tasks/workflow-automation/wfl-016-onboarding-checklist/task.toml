@@ -1,0 +1,10 @@
+id = "wfl-016"
+title = "Process Employee Onboarding Checklist"
+domain = "workflow-automation"
+level = "L2"
+description = "Process a new employee onboarding request by generating account setup commands, welcome email draft, and equipment checklist based on role and department"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["workflow", "onboarding", "hr", "office", "automation"]
+capability_types = ["reasoning", "tool-use"]

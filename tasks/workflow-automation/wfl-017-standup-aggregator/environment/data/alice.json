@@ -1,0 +1,1 @@
+{"name": "Alice", "date": "2026-03-12", "done": ["Finished API endpoint for user profiles", "Code review for PR #142"], "doing": ["Starting payment integration"], "blockers": ["Waiting for Stripe API keys from Bob"]}

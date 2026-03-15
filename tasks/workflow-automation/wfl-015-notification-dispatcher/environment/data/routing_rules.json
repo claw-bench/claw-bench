@@ -1,0 +1,39 @@
+[
+  {
+    "name": "critical-all-channels",
+    "match": {
+      "severity": "critical"
+    },
+    "channels": ["email", "slack", "pagerduty", "sms"]
+  },
+  {
+    "name": "high-severity-alerts",
+    "match": {
+      "severity": "high",
+      "type": ["alert", "incident"]
+    },
+    "channels": ["slack", "pagerduty"]
+  },
+  {
+    "name": "deployment-notifications",
+    "match": {
+      "type": "deployment"
+    },
+    "channels": ["slack", "email"]
+  },
+  {
+    "name": "security-events",
+    "match": {
+      "source": "security"
+    },
+    "channels": ["email", "pagerduty", "slack"]
+  },
+  {
+    "name": "monitoring-medium-plus",
+    "match": {
+      "source": "monitoring",
+      "severity": ["medium", "high", "critical"]
+    },
+    "channels": ["slack", "email"]
+  }
+]

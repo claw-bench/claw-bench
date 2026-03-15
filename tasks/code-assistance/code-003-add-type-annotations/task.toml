@@ -1,0 +1,10 @@
+id = "code-003"
+title = "Add Type Annotations to Utility Functions"
+domain = "code-assistance"
+level = "L1"
+description = "Add type annotations to all functions in a utility module that currently lacks them, ensuring the file still parses and runs correctly"
+timeout = 120
+capabilities = ["code-write"]
+skills_allowed = true
+tags = ["python", "type-annotations", "refactoring"]
+capability_types = ["reasoning", "tool-use"]

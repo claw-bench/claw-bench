@@ -1,0 +1,10 @@
+id = "doc-004"
+title = "Find and Replace with Patterns"
+domain = "document-editing"
+level = "L2"
+description = "Apply regex-based find and replace rules from a JSON configuration to a text document"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["regex", "find-replace", "patterns", "text-processing"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,10 @@
+id = "eml-008"
+title = "Email Attachment Inventory"
+domain = "email"
+level = "L2"
+description = "Scan multiple email JSON files and compile an inventory of all attachments with metadata"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["aggregation", "email", "metadata"]
+capability_types = ["reasoning", "tool-use"]

@@ -1,0 +1,16 @@
+total 120
+-rw-r--r--  1 app  app    2048 Jan 15 10:30 README.md
+-rwxrwxrwx  1 app  app    4096 Jan 15 10:30 config.yaml
+-rw-------  1 app  app    1024 Jan 15 10:30 database.env
+-rw-r--r--  1 app  app    8192 Jan 15 10:30 app.log
+-rwxr-xr-x  1 app  app   16384 Jan 15 10:30 server
+-rw-rw-rw-  1 app  app     512 Jan 15 10:30 private_key.pem
+-rw-r--r--  1 app  app    3072 Jan 15 10:30 index.html
+-rwsr-xr-x  1 root root  32768 Jan 15 10:30 backup_script.sh
+-rw-r--r--  1 app  app    1024 Jan 15 10:30 package.json
+-rw-r--rw-  1 app  app    2048 Jan 15 10:30 passwords.db
+-rwxr-xr-x  1 app  app    4096 Jan 15 10:30 deploy.sh
+-rw-r--r--  1 app  app     256 Jan 15 10:30 robots.txt
+-rwxrwxrwx  1 app  app    8192 Jan 15 10:30 upload_handler.cgi
+-rw-r--r--  1 app  app    1024 Jan 15 10:30 style.css
+-rw-rw-r--  1 app  app     512 Jan 15 10:30 .htpasswd

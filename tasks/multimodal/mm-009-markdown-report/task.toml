@@ -1,0 +1,10 @@
+id = "mm-009"
+title = "Markdown Report from Multiple Sources"
+domain = "multimodal"
+level = "L3"
+description = "Combine sales data from CSV, targets from JSON, and a Markdown template to produce a filled report with computed metrics including YTD total, percentage to target, and top performer"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["csv", "json", "markdown", "report", "computation", "multi-source"]
+capability_types = ["multimodal", "reasoning"]

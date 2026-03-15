@@ -1,0 +1,10 @@
+id = "doc-017"
+title = "Compile Weekly Status Report"
+domain = "document-editing"
+level = "L2"
+description = "Aggregate five daily standup log files into a single structured weekly status report with progress summary and blockers"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["document", "report", "weekly", "status", "office"]
+capability_types = ["reasoning", "tool-use"]

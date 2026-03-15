@@ -1,0 +1,10 @@
+id = "mm-014"
+title = "Structured Diff Reporter"
+domain = "multimodal"
+level = "L3"
+description = "Compare two versions of a JSON configuration and produce a structured diff report listing additions, removals, and modifications"
+timeout = 300
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["diff", "comparison", "report"]
+capability_types = ["multimodal", "reasoning"]

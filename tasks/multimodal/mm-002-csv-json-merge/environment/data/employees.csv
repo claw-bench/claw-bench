@@ -1,0 +1,9 @@
+employee_id,first_name,last_name,department,hire_date
+E001,Alice,Johnson,Engineering,2019-03-15
+E002,Bob,Smith,Marketing,2020-07-01
+E003,Carol,Williams,Engineering,2018-11-20
+E004,David,Brown,Sales,2021-01-10
+E005,Eva,Martinez,Engineering,2020-04-22
+E006,Frank,Lee,Marketing,2022-08-30
+E007,Grace,Chen,Sales,2017-06-15
+E008,Henry,Davis,HR,2019-09-01

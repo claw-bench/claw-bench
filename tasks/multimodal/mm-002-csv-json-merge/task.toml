@@ -1,0 +1,10 @@
+id = "mm-002"
+title = "CSV and JSON Merge"
+domain = "multimodal"
+level = "L2"
+description = "Merge data from a CSV file and a JSON file based on a common key (employee_id), producing a combined JSON output with all fields from both sources"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+capability_types = ["multimodal", "reasoning"]
+tags = ["csv", "json", "merge", "data-processing", "multimodal"]

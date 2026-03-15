@@ -1,0 +1,15 @@
+{"id": "E1", "type": "deployment", "severity": "low", "source": "ci-server", "message": "Deployment started for v1.2.0"}
+{"id": "E2", "type": "alert", "severity": "high", "source": "monitoring", "message": "CPU usage above 90%"}
+{"id": "E3", "type": "incident", "severity": "critical", "source": "pagerduty", "message": "Database connection pool exhausted"}
+{"id": "E4", "type": "deployment", "severity": "low", "source": "ci-server", "message": "Deployment completed for v1.2.0"}
+{"id": "E5", "type": "alert", "severity": "medium", "source": "monitoring", "message": "Disk usage at 75%"}
+{"id": "E6", "type": "incident", "severity": "high", "source": "pagerduty", "message": "Service latency spike detected"}
+{"id": "E7", "type": "alert", "severity": "critical", "source": "monitoring", "message": "Memory exhaustion imminent"}
+{"id": "E8", "type": "deployment", "severity": "medium", "source": "ci-server", "message": "Rollback initiated for v1.2.0"}
+{"id": "E9", "type": "maintenance", "severity": "low", "source": "scheduler", "message": "Nightly backup completed"}
+{"id": "E10", "type": "alert", "severity": "low", "source": "monitoring", "message": "Response time slightly elevated"}
+{"id": "E11", "type": "incident", "severity": "critical", "source": "monitoring", "message": "Service completely unavailable"}
+{"id": "E12", "type": "deployment", "severity": "high", "source": "ci-server", "message": "Emergency hotfix deployed"}
+{"id": "E13", "type": "alert", "severity": "high", "source": "security", "message": "Unusual login pattern detected"}
+{"id": "E14", "type": "maintenance", "severity": "low", "source": "scheduler", "message": "Log rotation completed"}
+{"id": "E15", "type": "incident", "severity": "high", "source": "security", "message": "Potential data breach attempt"}

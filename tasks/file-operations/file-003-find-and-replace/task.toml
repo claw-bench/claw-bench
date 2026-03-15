@@ -1,0 +1,10 @@
+id = "file-003"
+title = "Find and Replace in Text File"
+domain = "file-operations"
+level = "L1"
+description = "Replace all occurrences of a target word in a text file with a replacement word"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "text", "find-replace"]
+capability_types = ["tool-use"]

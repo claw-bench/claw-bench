@@ -1,0 +1,10 @@
+id = "comm-006"
+title = "Message Thread Summarization"
+domain = "communication"
+level = "L3"
+description = "Summarize a 20-message thread extracting key decisions, action items, and participant list"
+timeout = 240
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["summarization", "thread", "decisions", "action-items"]
+capability_types = ["collaboration", "reasoning"]

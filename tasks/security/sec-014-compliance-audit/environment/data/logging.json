@@ -1,0 +1,25 @@
+{
+  "audit": {
+    "enabled": true,
+    "events": ["login", "logout", "permission_change", "data_access", "config_change"],
+    "format": "json"
+  },
+  "retention": {
+    "days": 365,
+    "archive": true,
+    "archive_storage": "S3 Glacier"
+  },
+  "integrity": {
+    "enabled": false,
+    "method": "none"
+  },
+  "masking": {
+    "pii": true,
+    "fields": ["ssn", "credit_card", "email"],
+    "method": "redact"
+  },
+  "centralized": {
+    "enabled": true,
+    "destination": "elasticsearch"
+  }
+}

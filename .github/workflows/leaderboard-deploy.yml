@@ -1,0 +1,33 @@
+name: Deploy Leaderboard
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/**"
+      - "leaderboard/**"
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        working-directory: leaderboard
+        run: npm ci
+
+      - name: Build static site
+        working-directory: leaderboard
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./leaderboard/out

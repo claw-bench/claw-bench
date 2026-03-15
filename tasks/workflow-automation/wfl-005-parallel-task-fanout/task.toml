@@ -1,0 +1,10 @@
+id = "wfl-005"
+title = "Parallel Task Fan-Out and Aggregation"
+domain = "workflow-automation"
+level = "L2"
+description = "Process multiple independent JSON items through a validate-transform-score pipeline, then aggregate all results into a single summary"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["parallel", "fan-out", "aggregation", "pipeline"]
+capability_types = ["reasoning", "tool-use"]

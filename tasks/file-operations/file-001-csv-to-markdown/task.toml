@@ -1,0 +1,10 @@
+id = "file-001"
+title = "Convert CSV to Markdown Table"
+domain = "file-operations"
+level = "L1"
+description = "Convert a CSV file into a properly formatted Markdown table preserving all data"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "csv", "markdown", "conversion"]
+capability_types = ["tool-use"]

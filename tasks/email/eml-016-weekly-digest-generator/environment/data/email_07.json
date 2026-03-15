@@ -1,0 +1,8 @@
+{
+  "from": "carol@company.com",
+  "to": "you@company.com",
+  "subject": "Urgent: Production Server Outage",
+  "date": "2026-03-12",
+  "body": "Hi,\n\nWe're experiencing a critical outage on the production servers. The database cluster went down at 2:15 AM and the on-call team is working on it. Current ETA for resolution is 2 hours. I'll send updates as we make progress.\n\nCarol",
+  "read": false
+}

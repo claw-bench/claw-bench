@@ -1,0 +1,10 @@
+id = "file-005"
+title = "Merge Multiple Files"
+domain = "file-operations"
+level = "L2"
+description = "Merge three text files into one, combining data while keeping only a single shared header line"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["intermediate", "text", "merge", "files"]
+capability_types = ["tool-use"]

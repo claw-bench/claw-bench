@@ -1,0 +1,10 @@
+id = "mem-001"
+title = "Recall Given Name"
+domain = "memory"
+level = "L1"
+description = "Agent is told a name at the start, performs unrelated file tasks, then must recall the name"
+timeout = 120
+capabilities = ["file-write", "file-read"]
+skills_allowed = true
+capability_types = ["memory", "reasoning"]
+tags = ["memory", "recall", "basic"]

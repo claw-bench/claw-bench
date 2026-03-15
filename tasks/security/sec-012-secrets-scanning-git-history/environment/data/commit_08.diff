@@ -1,0 +1,22 @@
+diff --git a/src/middleware/logging.py b/src/middleware/logging.py
+index cccdddd..eeeefff 100644
+--- a/src/middleware/logging.py
++++ b/src/middleware/logging.py
+@@ -1,8 +1,15 @@
+ """Request logging middleware."""
+
+ import logging
++import time
+
+ logger = logging.getLogger(__name__)
+
+-def log_request(request):
+-    logger.info(f"Request: {request.method} {request.path}")
++
++def log_request(request, response):
++    """Log request details with timing information."""
++    duration = time.time() - request.start_time
++    logger.info(
++        "method=%s path=%s status=%d duration=%.3fs",
++        request.method, request.path, response.status_code, duration
++    )

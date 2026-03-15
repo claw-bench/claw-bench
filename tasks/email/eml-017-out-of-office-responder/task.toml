@@ -1,0 +1,10 @@
+id = "eml-017"
+title = "Draft Out-of-Office Replies"
+domain = "email"
+level = "L2"
+description = "Given incoming emails and OOO configuration, generate personalized out-of-office replies with correct delegate routing"
+timeout = 180
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["email", "auto-reply", "office", "ooo"]
+capability_types = ["reasoning", "tool-use"]

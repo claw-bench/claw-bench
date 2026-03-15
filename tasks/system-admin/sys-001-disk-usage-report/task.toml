@@ -1,0 +1,10 @@
+id = "sys-001"
+title = "Disk Usage Report"
+domain = "system-admin"
+level = "L1"
+description = "Analyze simulated disk usage output and generate a structured JSON report with totals, top directories, and threshold violations"
+timeout = 120
+capabilities = ["file-read", "file-write"]
+skills_allowed = true
+tags = ["basic", "disk", "usage", "reporting", "json"]
+capability_types = ["reasoning", "tool-use"]
