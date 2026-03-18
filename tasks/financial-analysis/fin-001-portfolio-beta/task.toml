@@ -1,0 +1,9 @@
+[task]
+id = "fin-001-portfolio-beta"
+title = "Calculate Portfolio Beta from Stock Returns CSV"
+domain = "financial-analysis"
+level = "L2"
+track = "subject-matter"
+tags = ["finance", "statistics", "csv"]
+capabilities = ["tool-use"]
+required_actions = ["file-read", "data-processing", "file-write"]

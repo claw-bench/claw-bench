@@ -1,0 +1,9 @@
+[task]
+id = "acad-001-citation-network"
+title = "Build and Analyze a Citation Network from BibTeX"
+domain = "academic-research"
+level = "L2"
+track = "subject-matter"
+tags = ["research", "graph-analysis", "bibtex"]
+capabilities = ["tool-use", "reasoning"]
+required_actions = ["file-read", "data-processing", "script-execution", "file-write"]

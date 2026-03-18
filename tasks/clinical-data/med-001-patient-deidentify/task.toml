@@ -1,0 +1,9 @@
+[task]
+id = "med-001-patient-deidentify"
+title = "De-identify Patient Records and Generate Statistics"
+domain = "clinical-data"
+level = "L2"
+track = "subject-matter"
+tags = ["healthcare", "privacy", "data-processing"]
+capabilities = ["tool-use", "reasoning"]
+required_actions = ["file-read", "data-processing", "file-write", "file-move"]

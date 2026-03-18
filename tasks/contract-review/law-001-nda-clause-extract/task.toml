@@ -1,0 +1,9 @@
+[task]
+id = "law-001-nda-clause-extract"
+title = "Extract and Classify NDA Clauses"
+domain = "contract-review"
+level = "L2"
+track = "subject-matter"
+tags = ["legal", "nlp", "document-processing"]
+capabilities = ["reasoning", "tool-use"]
+required_actions = ["file-read", "data-processing", "file-write"]

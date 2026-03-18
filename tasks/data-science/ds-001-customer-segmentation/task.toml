@@ -1,0 +1,9 @@
+[task]
+id = "ds-001-customer-segmentation"
+title = "Customer Segmentation with K-Means Clustering"
+domain = "data-science"
+level = "L2"
+track = "subject-matter"
+tags = ["ml", "clustering", "visualization"]
+capabilities = ["tool-use", "reasoning"]
+required_actions = ["file-read", "data-processing", "script-execution", "file-write"]

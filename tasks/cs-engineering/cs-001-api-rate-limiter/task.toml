@@ -1,0 +1,9 @@
+[task]
+id = "cs-001-api-rate-limiter"
+title = "Implement and Test a Token Bucket Rate Limiter"
+domain = "cs-engineering"
+level = "L3"
+track = "subject-matter"
+tags = ["algorithms", "systems", "python"]
+capabilities = ["reasoning", "tool-use"]
+required_actions = ["file-write", "script-execution", "file-read"]
