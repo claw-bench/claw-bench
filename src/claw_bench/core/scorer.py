@@ -9,14 +9,24 @@ from pydantic import BaseModel
 from claw_bench.core.metrics import Metrics
 from claw_bench.core.runner import TaskResult
 
+from claw_bench.core.task_loader import (
+    SUBJECT_MATTER_DOMAINS,
+    SUBJECT_WEIGHTS,
+    SUBJECT_CATEGORY_MAP,
+)
+
 # Difficulty multipliers for level-weighted scoring.
 # Harder tasks contribute more to the final score.
 LEVEL_WEIGHTS: dict[str, float] = {
     "L1": 1.0,
     "L2": 1.5,
-    "L3": 2.0,
-    "L4": 3.0,
+    "L3": 2.5,
+    "L4": 4.0,
 }
+
+# Dual-track weight split: foundation vs subject-matter
+FOUNDATION_WEIGHT = 0.60
+SUBJECT_MATTER_WEIGHT = 0.40
 
 
 class SkillsGain(BaseModel):
@@ -295,6 +305,22 @@ def compute_progressive_score(
     }
 
 
+class SubjectScores(BaseModel):
+    """Per-subject scores for the subject-matter track."""
+
+    per_subject: dict[str, float] = {}  # domain -> 0-100 score
+    per_category: dict[str, float] = {}  # category -> 0-100 score
+    composite: float = 0.0  # weighted composite of all subjects
+
+
+class OverallScore(BaseModel):
+    """Final dual-track overall score."""
+
+    foundation: DimensionScores = DimensionScores()
+    subject_matter: SubjectScores = SubjectScores()
+    overall: float = 0.0  # FOUNDATION_WEIGHT * foundation + SUBJECT_MATTER_WEIGHT * subject
+
+
 def compute_difficulty_weighted_score(
     results: list[TaskResult],
     task_levels: dict[str, str],
@@ -328,3 +354,114 @@ def compute_difficulty_weighted_score(
         return 0.0
 
     return round((weighted_sum / total_weight) * 100.0, 2)
+
+
+def compute_subject_scores(
+    results: list[TaskResult],
+    task_domains: dict[str, str],
+    task_levels: dict[str, str],
+) -> SubjectScores:
+    """Compute difficulty-weighted scores for each subject-matter domain.
+
+    Parameters
+    ----------
+    results:
+        All task results (will be filtered to subject-matter domains).
+    task_domains:
+        Mapping of task_id -> domain.
+    task_levels:
+        Mapping of task_id -> level.
+
+    Returns
+    -------
+    SubjectScores with per-subject, per-category, and composite scores.
+    """
+    # Group results by subject-matter domain
+    domain_results: dict[str, list[TaskResult]] = {}
+    for r in results:
+        dom = task_domains.get(r.task_id, "")
+        if dom in SUBJECT_MATTER_DOMAINS:
+            domain_results.setdefault(dom, []).append(r)
+
+    # Compute per-subject score (difficulty-weighted)
+    per_subject: dict[str, float] = {}
+    for dom, dom_results in domain_results.items():
+        levels_map = {r.task_id: task_levels.get(r.task_id, "L1") for r in dom_results}
+        per_subject[dom] = compute_difficulty_weighted_score(dom_results, levels_map)
+
+    # Compute per-category score (average of subjects in category)
+    cat_scores: dict[str, list[float]] = {}
+    for dom, score in per_subject.items():
+        cat = SUBJECT_CATEGORY_MAP.get(dom, "Other")
+        cat_scores.setdefault(cat, []).append(score)
+    per_category = {
+        cat: round(sum(scores) / len(scores), 2)
+        for cat, scores in cat_scores.items()
+    }
+
+    # Compute weighted composite using SUBJECT_WEIGHTS
+    composite = 0.0
+    for dom, weight in SUBJECT_WEIGHTS.items():
+        composite += per_subject.get(dom, 0.0) * weight
+
+    return SubjectScores(
+        per_subject=per_subject,
+        per_category=per_category,
+        composite=round(composite, 2),
+    )
+
+
+def compute_overall_score(
+    results: list[TaskResult],
+    metrics: Metrics,
+    task_domains: dict[str, str],
+    task_levels: dict[str, str],
+    profile: str = "general",
+    skills_gain: Optional[SkillsGain] = None,
+) -> OverallScore:
+    """Compute the dual-track overall score.
+
+    Overall = Foundation (60%) + Subject-Matter (40%)
+
+    Parameters
+    ----------
+    results:
+        All task results from the benchmark run.
+    metrics:
+        Aggregated resource-usage metrics.
+    task_domains:
+        Mapping of task_id -> domain.
+    task_levels:
+        Mapping of task_id -> level.
+    profile:
+        Weight profile name for foundation scoring.
+    skills_gain:
+        Optional 3-condition skills gain data.
+
+    Returns
+    -------
+    OverallScore with foundation, subject-matter, and combined overall.
+    """
+    # Foundation score uses only foundation-domain tasks
+    foundation_results = [
+        r for r in results
+        if task_domains.get(r.task_id, "") not in SUBJECT_MATTER_DOMAINS
+    ]
+    foundation = compute_scores(
+        foundation_results, metrics, profile=profile, skills_gain=skills_gain
+    )
+
+    # Subject-matter score
+    subject_matter = compute_subject_scores(results, task_domains, task_levels)
+
+    # Dual-track weighted overall
+    overall = (
+        FOUNDATION_WEIGHT * foundation.composite
+        + SUBJECT_MATTER_WEIGHT * subject_matter.composite
+    )
+
+    return OverallScore(
+        foundation=foundation,
+        subject_matter=subject_matter,
+        overall=round(overall, 2),
+    )

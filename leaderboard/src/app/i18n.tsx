@@ -15,6 +15,7 @@ const translations = {
       compare: "Compare",
       skillsGain: "Skills",
       capabilities: "Capabilities",
+      expertSubmit: "Expert Submit",
     },
     home: {
       title: "Claw Bench Leaderboard",
@@ -241,6 +242,7 @@ const translations = {
       compare: "对比",
       skillsGain: "技能增益",
       capabilities: "能力分析",
+      expertSubmit: "专家提交",
     },
     home: {
       title: "Claw Bench 排行榜",

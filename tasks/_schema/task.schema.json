@@ -17,6 +17,12 @@
       "minLength": 1,
       "maxLength": 120
     },
+    "track": {
+      "type": "string",
+      "description": "The evaluation track: foundation (basic agent capabilities) or subject-matter (professional domain knowledge applied via agent actions)",
+      "enum": ["foundation", "subject-matter"],
+      "default": "foundation"
+    },
     "domain": {
       "type": "string",
       "description": "Task domain category",
@@ -34,7 +40,25 @@
         "security",
         "system-admin",
         "web-browsing",
-        "workflow-automation"
+        "workflow-automation",
+        "database",
+        "debugging",
+        "math-reasoning",
+        "planning",
+        "real-tools",
+        "mathematics",
+        "computer-science",
+        "physics-engineering",
+        "biology-chemistry",
+        "financial-analysis",
+        "accounting",
+        "marketing",
+        "contract-review",
+        "legal-research",
+        "clinical-data",
+        "medical-research",
+        "sociology",
+        "education"
       ]
     },
     "level": {
@@ -60,6 +84,32 @@
         "type": "string"
       },
       "minItems": 1
+    },
+    "required_actions": {
+      "type": "array",
+      "description": "Concrete agent actions required (ensures subject-matter tasks test real operations, not just Q&A)",
+      "items": {
+        "type": "string",
+        "enum": [
+          "api-call",
+          "file-read",
+          "file-write",
+          "file-move",
+          "database-query",
+          "database-write",
+          "script-execution",
+          "environment-setup",
+          "web-navigation",
+          "web-scraping",
+          "git-operation",
+          "email-send",
+          "document-conversion",
+          "data-visualization",
+          "command-line-tool",
+          "package-install"
+        ]
+      },
+      "default": []
     },
     "skills_allowed": {
       "type": "boolean",

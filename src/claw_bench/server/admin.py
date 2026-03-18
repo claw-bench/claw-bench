@@ -335,8 +335,96 @@ async def update_config(name: str, data: dict, _: str = Depends(verify_admin)):
     filepath.write_text(json.dumps(data, indent=2, ensure_ascii=False))
     return {"status": "updated", "config": name}
 
+# ── Expert Contribution System ─────────────────────────────────────────────
 
-# ── Rebuild trigger ──────────────────────────────────────────────────
+_PROPOSALS_DIR = _DATA_DIR / "expert-proposals"
+try:
+    _PROPOSALS_DIR.mkdir(parents=True, exist_ok=True)
+except OSError:
+    pass
+
+_EXPERT_TOKEN_FILE = _DATA_DIR / ".expert_token"
+
+
+def _get_or_create_expert_token() -> str:
+    if _EXPERT_TOKEN_FILE.exists():
+        return _EXPERT_TOKEN_FILE.read_text().strip()
+    token = secrets.token_urlsafe(32)
+    _EXPERT_TOKEN_FILE.write_text(token)
+    return token
+
+
+def verify_expert(authorization: str = Header(...)) -> str:
+    token = authorization.replace("Bearer ", "")
+    if not secrets.compare_digest(token, _get_or_create_expert_token()):
+        raise HTTPException(401, "Invalid expert token")
+    return token
+
+
+@router.post("/expert-login")
+async def expert_login(req: LoginRequest):
+    """Authenticate domain experts with a separate password."""
+    expected = os.environ.get("EXPERT_PASSWORD", "")
+    if not expected:
+        raise HTTPException(503, "Expert password not configured. Set EXPERT_PASSWORD environment variable.")
+    if not secrets.compare_digest(req.password, expected):
+        raise HTTPException(401, "Invalid password")
+    return {"token": _get_or_create_expert_token()}
+
+
+class ExpertProposalInput(BaseModel):
+    domain: str
+    taskTitle: str
+    difficulty: str
+    context: str
+    instruction: str
+    requiredActions: List[str]
+    successCriteria: str
+    dataRequirements: Optional[str] = ""
+    expertName: Optional[str] = ""
+    expertEmail: Optional[str] = ""
+
+
+@router.post("/expert-proposals")
+async def submit_expert_proposal(
+    req: ExpertProposalInput,
+    _: str = Depends(verify_expert),
+):
+    """Accept a task proposal from a domain expert."""
+    proposal_id = f"{int(time.time())}-{uuid4().hex[:6]}"
+    data = req.model_dump()
+    data["_proposalId"] = proposal_id
+    data["_submittedAt"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    data["_status"] = "pending"
+
+    filepath = _PROPOSALS_DIR / f"{proposal_id}.json"
+    filepath.write_text(json.dumps(data, indent=2, ensure_ascii=False))
+    return {"status": "submitted", "proposalId": proposal_id}
+
+
+@router.get("/expert-proposals")
+async def list_expert_proposals(_: str = Depends(verify_admin)):
+    """List all expert proposals (admin only)."""
+    proposals = []
+    for f in sorted(_PROPOSALS_DIR.glob("*.json")):
+        try:
+            proposals.append(json.loads(f.read_text()))
+        except (json.JSONDecodeError, OSError):
+            continue
+    return proposals
+
+
+@router.delete("/expert-proposals/{proposal_id}")
+async def delete_expert_proposal(proposal_id: str, _: str = Depends(verify_admin)):
+    """Delete an expert proposal (admin only)."""
+    filepath = _PROPOSALS_DIR / f"{proposal_id}.json"
+    if not filepath.exists():
+        raise HTTPException(404, f"Proposal {proposal_id} not found")
+    filepath.unlink()
+    return {"status": "deleted", "proposalId": proposal_id}
+
+
+# ── Rebuild trigger ───────────────────────────────────────────────────────
 
 @router.post("/rebuild")
 async def trigger_rebuild(_: str = Depends(verify_admin)):

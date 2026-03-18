@@ -1,0 +1,145 @@
+name: "New Domain Task Proposal (For Experts)"
+description: "Propose a new real-world agent task for a specific professional domain. No coding required!"
+title: "[Task Proposal]: "
+labels: ["domain-task", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Welcome, Domain Expert!
+
+        Thank you for contributing to Claw-Bench! You do **NOT** need to write any code.
+        Just describe a real-world task from your professional domain, and our automation
+        pipeline will convert your description into a benchmark task.
+
+        **Important**: We are testing AI *Agents* — not just Q&A. Please ensure your task
+        requires the agent to **perform concrete actions** (e.g., run scripts, call APIs,
+        modify files, query databases), not just answer questions.
+
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Professional Domain
+      description: Which field does this task belong to?
+      options:
+        - "STEM: Computer Science"
+        - "STEM: Mathematics"
+        - "STEM: Physics / Engineering"
+        - "STEM: Biology / Chemistry"
+        - "Business: Financial Analysis"
+        - "Business: Accounting"
+        - "Business: Marketing"
+        - "Law: Contract Review"
+        - "Law: Legal Research"
+        - "Healthcare: Clinical Data"
+        - "Healthcare: Medical Research"
+        - "Humanities: Sociology"
+        - "Humanities: Education"
+        - "Other (please specify in context)"
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Task Title
+      description: A concise title for the task (e.g., "Calculate WACC from SEC filings")
+      placeholder: "e.g., Automate monthly bank reconciliation from CSV exports"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Estimated Difficulty
+      description: How complex is this task for a skilled professional?
+      options:
+        - "L1 - Basic (single-step, straightforward)"
+        - "L2 - Intermediate (multi-step, some judgment)"
+        - "L3 - Advanced (complex reasoning, multiple tools)"
+        - "L4 - Expert (requires deep domain expertise)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Real-world Context
+      description: Why is this task important in your industry? What business value does it provide?
+      placeholder: |
+        Example: "In corporate finance, calculating the Weighted Average Cost of Capital (WACC)
+        is a routine but error-prone task that involves pulling data from multiple sources,
+        applying the correct formulas, and presenting results in a standardized format."
+    validations:
+      required: true
+
+  - type: textarea
+    id: instruction
+    attributes:
+      label: Agent Instruction
+      description: What exact instruction should we give to the AI Agent? Write it as if you are delegating the task to a new hire.
+      placeholder: |
+        Example: "You are given a company's 10-K filing (PDF) and a market data CSV file.
+        Calculate the company's WACC using the following steps:
+        1. Extract the debt and equity values from the balance sheet in the PDF
+        2. Look up the risk-free rate and market premium from the CSV
+        3. Compute Cost of Equity using CAPM, Cost of Debt from interest expense
+        4. Calculate WACC and write the result to a file called wacc_report.json"
+    validations:
+      required: true
+
+  - type: textarea
+    id: required_actions
+    attributes:
+      label: Required Agent Actions (Crucial!)
+      description: |
+        What specific **operations** must the agent perform? This is critical — we want to test
+        action-taking ability, not just knowledge. List concrete actions like:
+        - "Download a file via curl or wget"
+        - "Run a Python script to process data"
+        - "Query a SQLite database"
+        - "Convert a Word document to PDF"
+        - "Call an external API endpoint"
+        - "Modify and commit a Git repository"
+        - "Set up a local service or environment"
+      placeholder: |
+        Example:
+        - Read and parse a PDF file to extract financial data
+        - Execute a Python script that performs CAPM calculation
+        - Write structured JSON output to a specific file path
+        - Generate a matplotlib chart and save as PNG
+    validations:
+      required: true
+
+  - type: textarea
+    id: success_criteria
+    attributes:
+      label: Success Criteria (How to Grade)
+      description: |
+        How would you, as an expert, verify the agent did a good job?
+        Be as specific as possible — mention exact values, file formats, field names, or conditions.
+      placeholder: |
+        Example:
+        - wacc_report.json must exist and contain a "wacc" field
+        - The WACC value must be between 8.0% and 12.0% (expected: ~9.7%)
+        - The report must include "cost_of_equity", "cost_of_debt", and "tax_rate" fields
+        - A chart file (wacc_chart.png) must be generated
+    validations:
+      required: true
+
+  - type: textarea
+    id: data_requirements
+    attributes:
+      label: Data & Resources
+      description: |
+        What files, tools, or data does the agent need? You can:
+        - Attach files in the comments after submitting
+        - Describe what kind of data is needed (we will generate synthetic data)
+        - Specify any tools or libraries that should be pre-installed
+      placeholder: |
+        Example:
+        - A sample 10-K filing PDF (I will attach a redacted version)
+        - A CSV with market data (columns: date, risk_free_rate, market_return, beta)
+        - Python libraries: pandas, pdfplumber, matplotlib
+    validations:
+      required: false
