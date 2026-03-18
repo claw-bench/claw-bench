@@ -159,7 +159,7 @@ export default function CapabilitiesContent({ bestPerFw, capabilities, taskCount
                     {capabilities.map((cap, i) => (
                       <td key={cap} style={{ textAlign: "center" }}>
                         <span className={scoreClass(scores[i])}>
-                          {scores[i].toFixed(1)}
+                          {scores[i].toFixed(2)}
                         </span>
                       </td>
                     ))}
@@ -168,7 +168,7 @@ export default function CapabilitiesContent({ bestPerFw, capabilities, taskCount
                         className={scoreClass(avg)}
                         style={{ fontWeight: 700 }}
                       >
-                        {avg.toFixed(1)}
+                        {avg.toFixed(2)}
                       </span>
                     </td>
                   </tr>
@@ -246,7 +246,7 @@ export default function CapabilitiesContent({ bestPerFw, capabilities, taskCount
                       fontWeight: 500,
                     }}
                   >
-                    {score.toFixed(1)}
+                    {score.toFixed(2)}
                   </div>
                 </div>
               );

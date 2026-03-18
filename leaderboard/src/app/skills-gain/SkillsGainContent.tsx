@@ -69,7 +69,7 @@ export default function SkillsGainContent({ frameworks }: SkillsGainContentProps
           },
           {
             label: t("skillsGain.bestNativeEff"),
-            value: frameworks.length > 0 ? `+${Math.max(...frameworks.map((f) => safe(f.nativeEfficacy))).toFixed(1)}%` : "-",
+            value: frameworks.length > 0 ? `+${Math.max(...frameworks.map((f) => safe(f.nativeEfficacy))).toFixed(2)}%` : "-",
             sub: frameworks.length > 0 ? (frameworks.reduce((best, f) => safe(f.nativeEfficacy) > safe(best.nativeEfficacy) ? f : best)).framework : "-",
           },
         ].map((stat) => (
@@ -118,13 +118,13 @@ export default function SkillsGainContent({ frameworks }: SkillsGainContentProps
                 <tr key={fw.framework}>
                   <td style={{ fontWeight: 600 }}>{fw.framework}</td>
                   <td>
-                    <span className={scoreClass(fw.vanilla)}>{fw.vanilla.toFixed(1)}</span>
+                    <span className={scoreClass(fw.vanilla)}>{fw.vanilla.toFixed(2)}</span>
                   </td>
                   <td>
-                    <span className={scoreClass(fw.curated)}>{fw.curated.toFixed(1)}</span>
+                    <span className={scoreClass(fw.curated)}>{fw.curated.toFixed(2)}</span>
                   </td>
                   <td>
-                    <span className={scoreClass(fw.native)}>{fw.native.toFixed(1)}</span>
+                    <span className={scoreClass(fw.native)}>{fw.native.toFixed(2)}</span>
                   </td>
                   <td
                     style={{
@@ -133,7 +133,7 @@ export default function SkillsGainContent({ frameworks }: SkillsGainContentProps
                       color: "var(--success)",
                     }}
                   >
-                    +{fw.absoluteGain.toFixed(1)}
+                    +{fw.absoluteGain.toFixed(2)}
                   </td>
                   <td style={{ fontFamily: "var(--font-mono)" }}>
                     {fw.normalizedGain.toFixed(2)}
@@ -145,7 +145,7 @@ export default function SkillsGainContent({ frameworks }: SkillsGainContentProps
                       color: "var(--success)",
                     }}
                   >
-                    +{fw.nativeEfficacy.toFixed(1)}
+                    +{fw.nativeEfficacy.toFixed(2)}
                   </td>
                 </tr>
               ))}
@@ -219,7 +219,7 @@ export default function SkillsGainContent({ frameworks }: SkillsGainContentProps
                     fontWeight: 500,
                   }}
                 >
-                  {bar.value.toFixed(1)}
+                  {bar.value.toFixed(2)}
                 </div>
               </div>
             ))}

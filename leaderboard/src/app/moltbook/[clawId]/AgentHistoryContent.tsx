@@ -82,7 +82,7 @@ export default function AgentHistoryContent({
             { label: t("common.model"), value: model },
             { label: t("moltbook.submitter"), value: `@${submitter}` },
             { label: t("common.totalRuns"), value: String(totalRuns) },
-            { label: t("common.bestScore"), value: best.toFixed(1) },
+            { label: t("common.bestScore"), value: best.toFixed(2) },
           ].map((item) => (
             <div key={item.label}>
               <div
@@ -176,7 +176,7 @@ export default function AgentHistoryContent({
                         fontSize: "0.85rem",
                       }}
                     >
-                      {h.overall.toFixed(1)}
+                      {h.overall.toFixed(2)}
                     </div>
                   </div>
                 );
@@ -225,7 +225,7 @@ export default function AgentHistoryContent({
                     </td>
                     <td>
                       <span className={scoreClass(h.overall)}>
-                        {h.overall.toFixed(1)}
+                        {h.overall.toFixed(2)}
                       </span>
                     </td>
                     <td>{(h.passRate * 100).toFixed(0)}%</td>

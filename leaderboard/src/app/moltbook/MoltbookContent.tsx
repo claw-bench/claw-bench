@@ -206,7 +206,7 @@ export default function MoltbookContent({ byFramework }: MoltbookContentProps) {
                             </td>
                             <td>
                               <span className={scoreClass(row.overall)}>
-                                {row.overall.toFixed(1)}
+                                {row.overall.toFixed(2)}
                               </span>
                             </td>
                             <td>

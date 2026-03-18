@@ -173,7 +173,7 @@ export default function ProfilesContent({ byModel, byFramework }: ProfilesConten
                             <td>{mcpCount > 0 ? mcpCount : "-"}</td>
                             <td>
                               <span className={scoreClass(row.overall)}>
-                                {row.overall.toFixed(1)}
+                                {row.overall.toFixed(2)}
                               </span>
                             </td>
                             <td>
@@ -188,7 +188,7 @@ export default function ProfilesContent({ byModel, byFramework }: ProfilesConten
                                   }}
                                 >
                                   {gain >= 0 ? "+" : ""}
-                                  {(gain * 100).toFixed(1)}%
+                                  {(gain * 100).toFixed(2)}%
                                 </span>
                               ) : (
                                 <span
@@ -205,17 +205,17 @@ export default function ProfilesContent({ byModel, byFramework }: ProfilesConten
                               <span
                                 className={scoreClass(row.taskCompletion)}
                               >
-                                {row.taskCompletion.toFixed(1)}
+                                {row.taskCompletion.toFixed(2)}
                               </span>
                             </td>
                             <td>
                               <span className={scoreClass(row.efficiency)}>
-                                {row.efficiency.toFixed(1)}
+                                {row.efficiency.toFixed(2)}
                               </span>
                             </td>
                             <td>
                               <span className={scoreClass(row.security)}>
-                                {row.security.toFixed(1)}
+                                {row.security.toFixed(2)}
                               </span>
                             </td>
                           </tr>
@@ -287,17 +287,17 @@ export default function ProfilesContent({ byModel, byFramework }: ProfilesConten
                           <td>{row.testTier ?? "-"}</td>
                           <td>
                             <span className={scoreClass(row.overall)}>
-                              {row.overall.toFixed(1)}
+                              {row.overall.toFixed(2)}
                             </span>
                           </td>
                           <td>
                             <span className={scoreClass(row.taskCompletion)}>
-                              {row.taskCompletion.toFixed(1)}
+                              {row.taskCompletion.toFixed(2)}
                             </span>
                           </td>
                           <td>
                             <span className={scoreClass(row.efficiency)}>
-                              {row.efficiency.toFixed(1)}
+                              {row.efficiency.toFixed(2)}
                             </span>
                           </td>
                         </tr>

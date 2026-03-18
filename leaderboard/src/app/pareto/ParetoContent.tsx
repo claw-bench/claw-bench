@@ -174,7 +174,7 @@ export default function ParetoContent({ dataPoints: initialData }: ParetoContent
         {[
           { label: t("pareto.totalConfigs"), value: String(dataPoints.length), sub: t("pareto.frameworkModelPairs") },
           { label: t("pareto.paretoOptimal"), value: String(frontierCount), sub: t("pareto.frontierPoints") },
-          { label: t("pareto.bestScore"), value: Math.max(...dataPoints.map((p) => p.score)).toFixed(1), sub: dataPoints.reduce((best, p) => (p.score > best.score ? p : best)).fw },
+          { label: t("pareto.bestScore"), value: Math.max(...dataPoints.map((p) => p.score)).toFixed(2), sub: dataPoints.reduce((best, p) => (p.score > best.score ? p : best)).fw },
           { label: t("pareto.cheapestOptimal"), value: dataPoints.filter((p) => p.optimal).reduce((best, p) => (p.costNum < best.costNum ? p : best)).cost, sub: dataPoints.filter((p) => p.optimal).reduce((best, p) => (p.costNum < best.costNum ? p : best)).fw },
         ].map((stat) => (
           <div key={stat.label} className="card" style={{ textAlign: "center" }}>
@@ -209,7 +209,7 @@ export default function ParetoContent({ dataPoints: initialData }: ParetoContent
                   <td style={{ fontWeight: 600 }}>{p.fw}</td>
                   <td style={{ fontFamily: "var(--font-mono)", fontSize: "0.8rem" }}>{p.model}</td>
                   <td><span style={{ fontSize: "0.75rem", padding: "0.1rem 0.5rem", borderRadius: "4px", background: "var(--bg-secondary)" }}>{p.tier}</span></td>
-                  <td><span className={`score ${p.score >= 85 ? "score-high" : p.score >= 70 ? "score-mid" : "score-low"}`}>{p.score.toFixed(1)}</span></td>
+                  <td><span className={`score ${p.score >= 85 ? "score-high" : p.score >= 70 ? "score-mid" : "score-low"}`}>{p.score.toFixed(2)}</span></td>
                   <td style={{ fontFamily: "var(--font-mono)" }}>{p.cost}</td>
                   <td style={{ textAlign: "center", fontWeight: p.optimal ? 700 : 400, color: p.optimal ? "var(--success)" : "var(--text-tertiary)" }}>
                     {p.optimal ? t("pareto.yes") : t("pareto.no")}

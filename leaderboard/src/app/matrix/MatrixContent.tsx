@@ -133,7 +133,7 @@ export default function MatrixContent({ frameworks, modelTiers, scores }: Matrix
                           opacity: cellOpacity(score),
                         }}
                       >
-                        {score !== null ? score.toFixed(1) : "--"}
+                        {score !== null ? score.toFixed(2) : "--"}
                       </td>
                     );
                   })}

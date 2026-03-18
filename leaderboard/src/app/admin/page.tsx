@@ -294,15 +294,15 @@ export default function AdminPage() {
                 </div>
               </div>
               <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", fontSize: "0.8rem" }}>
-                <span><strong>Overall:</strong> {Number(p.overall || 0).toFixed(1)}</span>
-                <span><strong>Task:</strong> {Number(p.taskCompletion || 0).toFixed(1)}</span>
-                <span><strong>Eff:</strong> {Number(p.efficiency || 0).toFixed(1)}</span>
-                <span><strong>Sec:</strong> {Number(p.security || 0).toFixed(1)}</span>
-                <span><strong>Skills:</strong> {Number(p.skills || 0).toFixed(1)}</span>
-                <span><strong>UX:</strong> {Number(p.ux || 0).toFixed(1)}</span>
+                <span><strong>Overall:</strong> {Number(p.overall || 0).toFixed(2)}</span>
+                <span><strong>Task:</strong> {Number(p.taskCompletion || 0).toFixed(2)}</span>
+                <span><strong>Eff:</strong> {Number(p.efficiency || 0).toFixed(2)}</span>
+                <span><strong>Sec:</strong> {Number(p.security || 0).toFixed(2)}</span>
+                <span><strong>Skills:</strong> {Number(p.skills || 0).toFixed(2)}</span>
+                <span><strong>UX:</strong> {Number(p.ux || 0).toFixed(2)}</span>
                 <span><strong>Tier:</strong> {(p.testTier as string) || "-"}</span>
                 <span><strong>Region:</strong> {region.name || "Unknown"}</span>
-                {p._previousScore != null && <span><strong>Previous:</strong> {Number(p._previousScore).toFixed(1)}</span>}
+                {p._previousScore != null && <span><strong>Previous:</strong> {Number(p._previousScore).toFixed(2)}</span>}
               </div>
             </div>
           );
@@ -352,7 +352,7 @@ export default function AdminPage() {
                     <td style={{ fontWeight: 500 }}>{r.agentProfile?.displayName || `${r.framework} / ${r.model}`}</td>
                     <td>{r.framework}</td>
                     <td style={{ fontFamily: "var(--font-mono)", fontSize: "0.8rem" }}>{r.model}</td>
-                    <td><span className={`score ${r.overall >= 85 ? "score-high" : r.overall >= 70 ? "score-mid" : "score-low"}`}>{r.overall.toFixed(1)}</span></td>
+                    <td><span className={`score ${r.overall >= 85 ? "score-high" : r.overall >= 70 ? "score-mid" : "score-low"}`}>{r.overall.toFixed(2)}</span></td>
                     <td><code style={{ fontSize: "0.72rem", padding: "0.1rem 0.4rem", background: "var(--bg-secondary)", borderRadius: "4px" }}>{r.testTier || "-"}</code></td>
                     <td style={{ textAlign: "right" }}>
                       <Btn onClick={() => { setEditResult({ ...r }); setEditFilename(r._filename || null); }} variant="secondary">编辑</Btn>{" "}
@@ -398,10 +398,10 @@ export default function AdminPage() {
                   <tr key={i}>
                     <td style={{ fontWeight: 500 }}>{s.framework}</td>
                     <td style={{ fontFamily: "var(--font-mono)", fontSize: "0.8rem" }}>{s.model}</td>
-                    <td>{s.vanilla.toFixed(1)}</td>
-                    <td>{s.curated.toFixed(1)}</td>
-                    <td>{s.native.toFixed(1)}</td>
-                    <td style={{ color: "var(--success)", fontWeight: 600 }}>+{(s.curated - s.vanilla).toFixed(1)}</td>
+                    <td>{s.vanilla.toFixed(2)}</td>
+                    <td>{s.curated.toFixed(2)}</td>
+                    <td>{s.native.toFixed(2)}</td>
+                    <td style={{ color: "var(--success)", fontWeight: 600 }}>+{(s.curated - s.vanilla).toFixed(2)}</td>
                     <td style={{ textAlign: "right" }}>
                       <Btn onClick={() => { setEditSkill({ ...s }); setEditSkillIdx(i); }} variant="secondary">编辑</Btn>{" "}
                       <Btn onClick={() => deleteSkillsGainEntry(i)} variant="danger">删除</Btn>

@@ -211,7 +211,7 @@ export default function CompareContent({ data: initialData }: CompareContentProp
                   return (
                     <tr key={cat}>
                       <td style={{ fontWeight: 500 }}>{tr(cat)}</td>
-                      <td style={{ textAlign: "right" }}><span className={cls(score)}>{score.toFixed(1)}</span></td>
+                      <td style={{ textAlign: "right" }}><span className={cls(score)}>{score.toFixed(2)}</span></td>
                       <td style={{ width: "40%" }}>
                         <div style={{ height: "8px", borderRadius: "4px", background: "var(--bg-secondary)", overflow: "hidden" }}>
                           <div style={{ height: "100%", width: `${score}%`, borderRadius: "4px", background: color, transition: "width 0.3s" }} />
@@ -245,13 +245,13 @@ export default function CompareContent({ data: initialData }: CompareContentProp
               return (
                 <tr key={cat}>
                   <td style={{ fontWeight: 500 }}>{tr(cat)}</td>
-                  <td style={{ fontFamily: "var(--font-mono)" }}>{a.toFixed(1)}</td>
-                  <td style={{ fontFamily: "var(--font-mono)" }}>{b.toFixed(1)}</td>
+                  <td style={{ fontFamily: "var(--font-mono)" }}>{a.toFixed(2)}</td>
+                  <td style={{ fontFamily: "var(--font-mono)" }}>{b.toFixed(2)}</td>
                   <td style={{
                     fontFamily: "var(--font-mono)", fontWeight: 600,
                     color: delta > 0 ? "var(--success)" : delta < 0 ? "var(--danger)" : "var(--text-secondary)",
                   }}>
-                    {delta > 0 ? "+" : ""}{delta.toFixed(1)}
+                    {delta > 0 ? "+" : ""}{delta.toFixed(2)}
                   </td>
                 </tr>
               );

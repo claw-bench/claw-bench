@@ -243,13 +243,13 @@ export default function LeaderboardTable({
                     </td>
                     <td>
                       <span className={scoreClass(row.overall)}>
-                        {row.overall.toFixed(1)}
+                        {row.overall.toFixed(2)}
                       </span>
                     </td>
                     <td>
                       {gain != null ? (
                         <span style={{ color: gain >= 0 ? "var(--success)" : "var(--danger)", fontWeight: 600, fontSize: "0.85rem" }}>
-                          {gain >= 0 ? "+" : ""}{(gain * 100).toFixed(1)}%
+                          {gain >= 0 ? "+" : ""}{(gain * 100).toFixed(2)}%
                         </span>
                       ) : (
                         <span style={{ color: "var(--text-tertiary)", fontSize: "0.8rem" }}>-</span>
@@ -263,27 +263,27 @@ export default function LeaderboardTable({
                     </td>
                     <td>
                       <span className={scoreClass(row.taskCompletion)}>
-                        {row.taskCompletion.toFixed(1)}
+                        {row.taskCompletion.toFixed(2)}
                       </span>
                     </td>
                     <td>
                       <span className={scoreClass(row.efficiency)}>
-                        {row.efficiency.toFixed(1)}
+                        {row.efficiency.toFixed(2)}
                       </span>
                     </td>
                     <td>
                       <span className={scoreClass(row.security)}>
-                        {row.security.toFixed(1)}
+                        {row.security.toFixed(2)}
                       </span>
                     </td>
                     <td>
                       <span className={scoreClass(row.skills)}>
-                        {row.skills.toFixed(1)}
+                        {row.skills.toFixed(2)}
                       </span>
                     </td>
                     <td>
                       <span className={scoreClass(row.ux)}>
-                        {row.ux.toFixed(1)}
+                        {row.ux.toFixed(2)}
                       </span>
                     </td>
                   </tr>
