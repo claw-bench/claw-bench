@@ -18,6 +18,7 @@ export default function Nav() {
       <a href="/compare">{t("nav.compare")}</a>
       <a href="/skills-gain">{t("nav.skillsGain")}</a>
       <a href="/capabilities">{t("nav.capabilities")}</a>
+      <a href="/expert-submit">{t("nav.expertSubmit")}</a>
       <a
         href="https://github.com/claw-bench/claw-bench"
         target="_blank"
