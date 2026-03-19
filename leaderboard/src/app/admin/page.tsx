@@ -661,18 +661,19 @@ export default function AdminPage() {
               </div>
 
               {/* File editor */}
-              <div style={{ flex: 1, overflow: "hidden", display: "flex", flexDirection: "column" }}>
-                <div style={{ padding: "0.5rem 1rem", fontSize: "0.72rem", color: "var(--text-tertiary)", fontFamily: "var(--font-mono)", background: "var(--bg-secondary)" }}>
+              <div style={{ flex: "1 1 0", minHeight: 0, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+                <div style={{ padding: "0.5rem 1rem", fontSize: "0.72rem", color: "var(--text-tertiary)", fontFamily: "var(--font-mono)", background: "var(--bg-secondary)", flexShrink: 0 }}>
                   {activeFileTab}
                 </div>
                 <textarea
                   value={editingFiles[activeFileTab] || ""}
                   onChange={(e) => setEditingFiles(prev => ({ ...prev, [activeFileTab]: e.target.value }))}
                   style={{
-                    flex: 1, width: "100%", padding: "1rem", border: "none",
+                    flex: "1 1 0", minHeight: "400px", width: "100%", padding: "1rem", border: "none",
                     fontFamily: "var(--font-mono)", fontSize: "0.8rem",
                     background: "var(--bg)", color: "var(--text)",
                     resize: "none", lineHeight: 1.6, outline: "none",
+                    overflow: "auto",
                   }}
                   spellCheck={false}
                 />
