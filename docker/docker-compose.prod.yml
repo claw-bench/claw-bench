@@ -25,7 +25,7 @@ services:
       - cache-data:/var/claw-bench/cache
       - results-data:/var/claw-bench/results
       - ../data:/app/data
-      - ../tasks:/app/tasks:ro
+      - ../tasks:/app/tasks
       - ../skills:/app/skills:ro
     deploy:
       resources:
