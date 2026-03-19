@@ -367,24 +367,6 @@ export default function LeaderboardTable({
           </span>
         </div>
 
-        {/* Dual-track scoring explanation */}
-        {viewMode === "dualtrack" && hasAnySubjectData && (
-          <div
-            style={{
-              marginTop: "0.75rem",
-              padding: "0.6rem 1rem",
-              background: "var(--accent-light)",
-              border: "1px solid var(--accent)",
-              borderRadius: "6px",
-              fontSize: "0.78rem",
-              color: "var(--text-secondary)",
-              lineHeight: 1.5,
-            }}
-          >
-            <strong style={{ color: "var(--accent)" }}>{t("dualtrack.formula")}</strong>{" "}
-            {t("dualtrack.formulaDesc")}
-          </div>
-        )}
       </section>
 
       <div className="card" style={{ padding: 0, overflow: "hidden" }}>
@@ -468,26 +450,18 @@ export default function LeaderboardTable({
                       {viewMode === "dualtrack" && hasAnySubjectData && (
                         <>
                           <td>
-                            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.15rem" }}>
-                              <span className={scoreClass(extRow._foundation ?? 0)} style={{ fontSize: "0.82rem" }}>
-                                {(extRow._foundation ?? 0).toFixed(1)}
-                              </span>
-                              <span style={{ fontSize: "0.6rem", color: "var(--text-tertiary)" }}>60%</span>
-                            </div>
+                            <span className={scoreClass(extRow._foundation ?? 0)} style={{ fontSize: "0.82rem" }}>
+                              {(extRow._foundation ?? 0).toFixed(2)}
+                            </span>
                           </td>
                           <td>
-                            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.15rem" }}>
-                              {(extRow._subject ?? 0) > 0 ? (
-                                <>
-                                  <span className={scoreClass(extRow._subject ?? 0)} style={{ fontSize: "0.82rem" }}>
-                                    {(extRow._subject ?? 0).toFixed(1)}
-                                  </span>
-                                  <span style={{ fontSize: "0.6rem", color: "var(--text-tertiary)" }}>40%</span>
-                                </>
-                              ) : (
-                                <span style={{ color: "var(--text-tertiary)", fontSize: "0.75rem" }}>-</span>
-                              )}
-                            </div>
+                            {(extRow._subject ?? 0) > 0 ? (
+                              <span className={scoreClass(extRow._subject ?? 0)} style={{ fontSize: "0.82rem" }}>
+                                {(extRow._subject ?? 0).toFixed(2)}
+                              </span>
+                            ) : (
+                              <span style={{ color: "var(--text-tertiary)", fontSize: "0.75rem" }}>-</span>
+                            )}
                           </td>
                         </>
                       )}
