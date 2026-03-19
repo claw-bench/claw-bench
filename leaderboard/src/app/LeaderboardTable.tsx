@@ -232,48 +232,6 @@ export default function LeaderboardTable({
   return (
     <>
       <section style={{ marginBottom: "1.5rem" }}>
-        {/* View mode toggle */}
-        {hasAnySubjectData && (
-          <div style={{ marginBottom: "0.75rem" }}>
-            <div
-              style={{
-                fontSize: "0.8rem",
-                fontWeight: 600,
-                textTransform: "uppercase",
-                letterSpacing: "0.05em",
-                color: "var(--text-secondary)",
-                marginBottom: "0.4rem",
-              }}
-            >
-              {t("dualtrack.viewMode")}
-            </div>
-            <div style={{ display: "flex", gap: "0.4rem" }}>
-              {([
-                ["dualtrack", t("dualtrack.dualTrack")],
-                ["classic", t("dualtrack.classic")],
-              ] as [ViewMode, string][]).map(([key, label]) => (
-                <button
-                  key={key}
-                  className={key === viewMode ? "active" : ""}
-                  onClick={() => setViewMode(key)}
-                  style={{
-                    padding: "0.3rem 0.8rem",
-                    border: key === viewMode ? "none" : "1px solid var(--border)",
-                    borderRadius: "6px",
-                    background: key === viewMode ? "var(--accent)" : "transparent",
-                    color: key === viewMode ? "#fff" : "var(--text-tertiary)",
-                    fontWeight: 500,
-                    fontSize: "0.75rem",
-                    cursor: "pointer",
-                  }}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-
         <div
           style={{
             fontSize: "0.8rem",
