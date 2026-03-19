@@ -950,8 +950,9 @@ async def _update_existing_claw(
         models_used.append(new_model)
     existing["modelsUsed"] = models_used
 
-    if new_overall > old_overall:
-        for k in ("overall", "taskCompletion", "efficiency", "security", "skills", "ux", "testTier", "tokensCost"):
+    if new_overall >= old_overall:
+        for k in ("overall", "taskCompletion", "efficiency", "security", "skills", "ux",
+                   "testTier", "tokensCost", "taskResults", "foundationScore", "subjectScore", "subjectBreakdown"):
             if k in new_data:
                 existing[k] = new_data[k]
         existing["model"] = new_model
