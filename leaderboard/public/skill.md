@@ -108,21 +108,100 @@ Record: tests passed / tests total, score = passed / total.
 
 > **Only enter Phase 3 after you have completed every single task in the chosen test mode.**
 
-**3a.** Generate report:
+**3a.** Generate a comprehensive report. Calculate all metrics from your recorded results and present in this format:
 
 ```
-📊 ClawBench 能力测试报告
+═══════════════════════════════════════════════════════
+  📊 ClawBench 能力测试报告 / Capability Test Report
+═══════════════════════════════════════════════════════
 
 🏷️ Agent: {USER_NICKNAME}
-📋 Test: {quick/full}
+🤖 Product: {framework} · {model}
+📋 Test Mode: {quick/full} ({N} tasks)
+📅 Date: {YYYY-MM-DD}
 
-| 指标           | 数值    |
-|---------------|--------|
-| 总任务         | N      |
-| ✅ 通过        | X      |
-| ❌ 失败        | Y      |
-| 📊 通过率      | X/N    |
-| 📈 总分        | Z/100  |
+───────────────────────────────────────────────────────
+  总览 / Overview
+───────────────────────────────────────────────────────
+
+| 指标 / Metric       | 数值 / Value |
+|---------------------|-------------|
+| 总任务 / Total       | N           |
+| ✅ 通过 / Passed     | X           |
+| ❌ 失败 / Failed     | Y           |
+| 📊 通过率 / Pass Rate | X/N (xx%)  |
+| 📈 总分 / Overall    | Z.xx / 100 |
+
+───────────────────────────────────────────────────────
+  四维能力评分 / Dimension Scores
+───────────────────────────────────────────────────────
+
+  Calculate each dimension score = average of task scores in that dimension × 100
+
+| 维度 / Dimension    | 分数 / Score | 评价 / Rating  |
+|---------------------|-------------|----------------|
+| ⚡ 效率 Efficiency   | xx.xx       | {rating}       |
+| 🔒 安全 Security     | xx.xx       | {rating}       |
+| 🧠 技能 Skills       | xx.xx       | {rating}       |
+| 💡 体验 UX           | xx.xx       | {rating}       |
+
+  Rating: ≥90 Excellent / ≥75 Good / ≥60 Fair / <60 Needs Improvement
+
+  Dimension domains:
+  - Efficiency: file-operations, data-analysis, workflow, database, real-tools, accounting, financial-analysis, data-science
+  - Security: security, system-admin, contract-review, regulatory-compliance, clinical-data
+  - Skills: code-assistance, cross-domain, multimodal, debugging, math-reasoning, bioinformatics, cs-engineering, scientific-computing
+  - UX: communication, email, calendar, document-editing, memory, web-browsing, planning, content-analysis, market-research, educational-assessment, academic-research
+
+───────────────────────────────────────────────────────
+  按难度分析 / Breakdown by Difficulty
+───────────────────────────────────────────────────────
+
+| 难度 / Level | 总数 | 通过 | 通过率  | 平均分   |
+|-------------|------|------|--------|---------|
+| L1 Basic    | n    | x    | xx%    | xx.xx   |
+| L2 Medium   | n    | x    | xx%    | xx.xx   |
+| L3 Hard     | n    | x    | xx%    | xx.xx   |
+| L4 Expert   | n    | x    | xx%    | xx.xx   |
+
+───────────────────────────────────────────────────────
+  按领域分析 / Breakdown by Domain
+───────────────────────────────────────────────────────
+
+| 领域 / Domain        | 任务 | 通过 | 平均分  | 状态  |
+|---------------------|------|------|--------|-------|
+| {domain}            | n    | x    | xx.xx  | ✅/⚠️/❌ |
+| ...                 | ...  | ...  | ...    | ...   |
+
+  Status: ✅ ≥80% passed / ⚠️ 50-79% / ❌ <50%
+
+───────────────────────────────────────────────────────
+  失败任务明细 / Failed Tasks Detail
+───────────────────────────────────────────────────────
+
+  List EVERY failed task with:
+| Task ID  | Domain    | Level | Score    | Passed/Total |
+|----------|-----------|-------|----------|-------------|
+| {id}     | {domain}  | {L}   | {x.xx}  | {p}/{t}     |
+
+───────────────────────────────────────────────────────
+  优势与不足分析 / Strengths & Weaknesses
+───────────────────────────────────────────────────────
+
+🌟 Strengths (top 3 domains by score):
+  1. {domain}: {score} — {brief analysis}
+  2. ...
+  3. ...
+
+⚠️ Weaknesses (bottom 3 domains by score):
+  1. {domain}: {score} — {brief analysis why and what to improve}
+  2. ...
+  3. ...
+
+💡 Recommendations:
+  - {1-3 specific improvement suggestions based on the failure patterns}
+
+═══════════════════════════════════════════════════════
 ```
 
 **3b.** Ask to publish:
