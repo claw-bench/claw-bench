@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { useI18n } from "../i18n";
 
 /* ── Constants ──────────────────────────────────────────────────── */
@@ -90,6 +90,19 @@ const T = {
     errorTitle: "Submission Failed",
     requiredField: "This field is required",
     actionsRequired: "Please select at least one agent action",
+    waitingTitle: "Generating Your Task...",
+    waitingMessage: "Our AI is converting your proposal into a complete benchmark task. This usually takes 30-60 seconds.",
+    previewTitle: "Review Generated Task",
+    previewMessage: "Please review the generated task below. You can request revisions or confirm to submit for admin approval.",
+    reviseLabel: "Revision Notes",
+    revisePlaceholder: "Describe what needs to be changed (e.g., 'make the data more realistic', 'add edge case handling')...",
+    reviseButton: "Request Revision",
+    confirmButton: "Looks Good — Submit for Approval",
+    confirmedTitle: "Task Confirmed!",
+    confirmedMessage: "Your task has been sent to the admin team for final review and deployment. Thank you!",
+    generationError: "Generation failed. You can try revising your requirements.",
+    filePreviewLabel: "Generated Files",
+    revisionHistory: "Revision History",
   },
   zh: {
     title: "专家任务提交",
@@ -129,6 +142,19 @@ const T = {
     errorTitle: "提交失败",
     requiredField: "此字段为必填项",
     actionsRequired: "请至少选择一个 Agent 操作",
+    waitingTitle: "正在生成任务...",
+    waitingMessage: "AI 正在将您的提案转化为完整的评测任务，通常需要 30-60 秒。",
+    previewTitle: "审核生成结果",
+    previewMessage: "请审核下方生成的任务内容。您可以要求修改，或确认提交给管理员审批。",
+    reviseLabel: "修改说明",
+    revisePlaceholder: "请描述需要修改的内容（例如：'数据需要更真实'、'增加边界情况处理'）...",
+    reviseButton: "要求修改",
+    confirmButton: "满意 — 提交审批",
+    confirmedTitle: "任务已确认！",
+    confirmedMessage: "您的任务已发送给管理团队进行最终审核和部署，感谢您的贡献！",
+    generationError: "生成失败，您可以修改需求后重试。",
+    filePreviewLabel: "生成的文件",
+    revisionHistory: "修改历史",
   },
 };
 
@@ -170,8 +196,18 @@ export default function ExpertSubmitContent() {
   const [form, setForm] = useState<FormData>({ ...emptyForm });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
+
+  // Staging workflow state
+  type Stage = "form" | "waiting" | "preview" | "confirmed";
+  const [stage, setStage] = useState<Stage>("form");
+  const [proposalId, setProposalId] = useState<string | null>(null);
+  const [preview, setPreview] = useState<Record<string, string>>({});
+  const [previewMeta, setPreviewMeta] = useState<{ taskId: string; domain: string; difficulty: string }>({ taskId: "", domain: "", difficulty: "" });
+  const [revisionNotes, setRevisionNotes] = useState("");
+  const [revisions, setRevisions] = useState<{ notes: string; timestamp: string }[]>([]);
+  const [genError, setGenError] = useState("");
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   /* ── Auth ── */
   const login = useCallback(async () => {
@@ -227,6 +263,43 @@ export default function ExpertSubmitContent() {
     return Object.keys(errs).length === 0;
   };
 
+  /* ── Poll for generation status ── */
+  const startPolling = useCallback((pid: string) => {
+    if (pollRef.current) clearInterval(pollRef.current);
+    pollRef.current = setInterval(async () => {
+      try {
+        const res = await fetch(`${API_BASE}/expert-proposals/${pid}/status`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (!res.ok) return;
+        const data = await res.json();
+        setRevisions(data.revisions || []);
+
+        if (data.generationStatus === "ready" || data.status === "generated") {
+          if (pollRef.current) clearInterval(pollRef.current);
+          const previewRes = await fetch(`${API_BASE}/expert-proposals/${pid}/preview`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          if (previewRes.ok) {
+            const pv = await previewRes.json();
+            setPreview(pv.files || {});
+            setPreviewMeta({ taskId: pv.taskId || "", domain: pv.domain || "", difficulty: pv.difficulty || "" });
+            setGenError("");
+            setStage("preview");
+          }
+        } else if (data.status === "error" || data.generationStatus === "error") {
+          if (pollRef.current) clearInterval(pollRef.current);
+          setGenError(data.error || t.generationError);
+          setStage("preview");
+        }
+      } catch { /* ignore */ }
+    }, 5000);
+  }, [token, t]);
+
+  useEffect(() => {
+    return () => { if (pollRef.current) clearInterval(pollRef.current); };
+  }, []);
+
   /* ── Submit ── */
   const handleSubmit = useCallback(async () => {
     if (!validate()) return;
@@ -235,10 +308,7 @@ export default function ExpertSubmitContent() {
     try {
       const res = await fetch(`${API_BASE}/expert-proposals`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify(form),
       });
       if (!res.ok) {
@@ -246,13 +316,44 @@ export default function ExpertSubmitContent() {
         setSubmitError(data.detail || `Error ${res.status}`);
         return;
       }
-      setSubmitted(true);
+      const data = await res.json();
+      setProposalId(data.proposalId);
+      setStage("waiting");
+      startPolling(data.proposalId);
     } catch {
       setSubmitError(t.connectionFailed);
     } finally {
       setSubmitting(false);
     }
-  }, [form, token, t]);
+  }, [form, token, t, startPolling]);
+
+  /* ── Revise ── */
+  const handleRevise = useCallback(async () => {
+    if (!proposalId || !revisionNotes.trim()) return;
+    setStage("waiting");
+    setGenError("");
+    try {
+      await fetch(`${API_BASE}/expert-proposals/${proposalId}/revise`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ notes: revisionNotes }),
+      });
+      setRevisionNotes("");
+      startPolling(proposalId);
+    } catch { setGenError(t.connectionFailed); setStage("preview"); }
+  }, [proposalId, revisionNotes, token, t, startPolling]);
+
+  /* ── Confirm ── */
+  const handleConfirm = useCallback(async () => {
+    if (!proposalId) return;
+    try {
+      const res = await fetch(`${API_BASE}/expert-proposals/${proposalId}/confirm`, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (res.ok) setStage("confirmed");
+    } catch { /* ignore */ }
+  }, [proposalId, token]);
 
   /* ── Styles ── */
   const inputStyle: React.CSSProperties = {
@@ -333,31 +434,125 @@ export default function ExpertSubmitContent() {
     );
   }
 
-  /* ── Success screen ── */
-  if (submitted) {
+  /* ── Waiting screen ── */
+  if (stage === "waiting") {
     return (
       <>
-        <div className="page-header">
-          <h1>{t.title}</h1>
-          <p>{t.subtitle}</p>
+        <div className="page-header"><h1>{t.title}</h1></div>
+        <div style={{ maxWidth: 600, margin: "3rem auto", textAlign: "center" }}>
+          <div className="card" style={{ padding: "2.5rem" }}>
+            <div style={{ fontSize: "2.5rem", marginBottom: "1rem", animation: "spin 2s linear infinite" }}>&#9881;</div>
+            <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
+            <h2 style={{ fontSize: "1.3rem", fontWeight: 600, marginBottom: "0.75rem" }}>{t.waitingTitle}</h2>
+            <p style={{ color: "var(--text-secondary)", lineHeight: 1.7 }}>{t.waitingMessage}</p>
+            <p style={{ fontSize: "0.78rem", color: "var(--text-tertiary)", marginTop: "1rem", fontFamily: "var(--font-mono)" }}>
+              ID: {proposalId}
+            </p>
+          </div>
         </div>
+      </>
+    );
+  }
+
+  /* ── Preview / Revision screen ── */
+  if (stage === "preview") {
+    const fileEntries = Object.entries(preview);
+    return (
+      <>
+        <div className="page-header"><h1>{t.title}</h1></div>
+        <div style={{ maxWidth: 900, margin: "0 auto 3rem" }}>
+          {genError ? (
+            <div className="card" style={{ padding: "2rem", marginBottom: "1.5rem", borderLeft: "3px solid var(--danger)" }}>
+              <h3 style={{ color: "var(--danger)", marginBottom: "0.5rem" }}>{t.generationError}</h3>
+              <p style={{ fontSize: "0.82rem", color: "var(--text-secondary)" }}>{genError}</p>
+            </div>
+          ) : (
+            <div className="card" style={{ padding: "2rem", marginBottom: "1.5rem", borderLeft: "3px solid var(--accent)" }}>
+              <h2 style={{ fontSize: "1.15rem", fontWeight: 600, marginBottom: "0.5rem" }}>{t.previewTitle}</h2>
+              <p style={{ color: "var(--text-secondary)", fontSize: "0.88rem" }}>{t.previewMessage}</p>
+              {previewMeta.taskId && (
+                <p style={{ fontSize: "0.78rem", color: "var(--text-tertiary)", marginTop: "0.5rem", fontFamily: "var(--font-mono)" }}>
+                  Task: {previewMeta.taskId} &middot; {previewMeta.domain} &middot; {previewMeta.difficulty}
+                </p>
+              )}
+            </div>
+          )}
+
+          {fileEntries.length > 0 && (
+            <div className="card" style={{ padding: "1.5rem", marginBottom: "1.5rem" }}>
+              <h3 style={{ fontSize: "0.95rem", fontWeight: 600, marginBottom: "1rem" }}>{t.filePreviewLabel}</h3>
+              {fileEntries.map(([path, content]) => (
+                <div key={path} style={{ marginBottom: "1rem" }}>
+                  <div style={{ fontSize: "0.75rem", fontFamily: "var(--font-mono)", color: "var(--accent)", marginBottom: "0.3rem", fontWeight: 600 }}>
+                    {path.split("/").slice(-2).join("/")}
+                  </div>
+                  <pre style={{
+                    background: "var(--bg-secondary)", padding: "0.75rem", borderRadius: "6px",
+                    fontSize: "0.75rem", lineHeight: 1.5, overflow: "auto", maxHeight: "300px",
+                    border: "1px solid var(--border)", whiteSpace: "pre-wrap", wordBreak: "break-all",
+                  }}>
+                    {content}
+                  </pre>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {revisions.length > 0 && (
+            <div className="card" style={{ padding: "1.5rem", marginBottom: "1.5rem" }}>
+              <h3 style={{ fontSize: "0.95rem", fontWeight: 600, marginBottom: "0.75rem" }}>{t.revisionHistory}</h3>
+              {revisions.map((r, i) => (
+                <div key={i} style={{ padding: "0.5rem 0", borderBottom: i < revisions.length - 1 ? "1px solid var(--border)" : "none" }}>
+                  <span style={{ fontSize: "0.72rem", color: "var(--text-tertiary)" }}>#{i + 1} &middot; {r.timestamp?.split("T")[0]}</span>
+                  <p style={{ fontSize: "0.82rem", color: "var(--text-secondary)", margin: "0.25rem 0 0" }}>{r.notes}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className="card" style={{ padding: "1.5rem" }}>
+            <label style={{ display: "block", fontSize: "0.82rem", fontWeight: 600, marginBottom: "0.35rem" }}>{t.reviseLabel}</label>
+            <textarea
+              value={revisionNotes}
+              onChange={(e) => setRevisionNotes(e.target.value)}
+              placeholder={t.revisePlaceholder}
+              style={{ width: "100%", minHeight: "100px", padding: "0.6rem 0.8rem", border: "1px solid var(--border)", borderRadius: "6px", fontSize: "0.85rem", background: "var(--bg)", color: "var(--text)", resize: "vertical", lineHeight: 1.6, marginBottom: "1rem" }}
+            />
+            <div style={{ display: "flex", gap: "0.75rem" }}>
+              <button
+                onClick={handleRevise}
+                disabled={!revisionNotes.trim()}
+                style={{ flex: 1, padding: "0.7rem", background: "transparent", color: "var(--accent)", border: "1.5px solid var(--accent)", borderRadius: "8px", fontWeight: 600, fontSize: "0.88rem", cursor: revisionNotes.trim() ? "pointer" : "not-allowed", opacity: revisionNotes.trim() ? 1 : 0.5 }}
+              >
+                {t.reviseButton}
+              </button>
+              <button
+                onClick={handleConfirm}
+                disabled={!!genError}
+                style={{ flex: 1, padding: "0.7rem", background: genError ? "var(--text-tertiary)" : "var(--accent)", color: "#fff", border: "none", borderRadius: "8px", fontWeight: 600, fontSize: "0.88rem", cursor: genError ? "not-allowed" : "pointer" }}
+              >
+                {t.confirmButton}
+              </button>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  /* ── Confirmed screen ── */
+  if (stage === "confirmed") {
+    return (
+      <>
+        <div className="page-header"><h1>{t.title}</h1></div>
         <div style={{ maxWidth: 600, margin: "3rem auto", textAlign: "center" }}>
           <div className="card" style={{ padding: "2.5rem" }}>
             <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>&#10003;</div>
-            <h2 style={{ fontSize: "1.3rem", fontWeight: 600, marginBottom: "0.75rem" }}>{t.successTitle}</h2>
-            <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "1.5rem" }}>{t.successMessage}</p>
+            <h2 style={{ fontSize: "1.3rem", fontWeight: 600, marginBottom: "0.75rem" }}>{t.confirmedTitle}</h2>
+            <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "1.5rem" }}>{t.confirmedMessage}</p>
             <button
-              onClick={() => { setSubmitted(false); setForm({ ...emptyForm }); }}
-              style={{
-                padding: "0.6rem 1.5rem",
-                background: "var(--accent)",
-                color: "#fff",
-                border: "none",
-                borderRadius: "6px",
-                fontWeight: 500,
-                fontSize: "0.88rem",
-                cursor: "pointer",
-              }}
+              onClick={() => { setStage("form"); setForm({ ...emptyForm }); setProposalId(null); setPreview({}); setRevisions([]); setGenError(""); }}
+              style={{ padding: "0.6rem 1.5rem", background: "var(--accent)", color: "#fff", border: "none", borderRadius: "6px", fontWeight: 500, fontSize: "0.88rem", cursor: "pointer" }}
             >
               {t.submitAnother}
             </button>

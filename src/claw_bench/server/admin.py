@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 from uuid import uuid4
 
-from fastapi import APIRouter, Depends, HTTPException, Header
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Header
 from pydantic import BaseModel
 
 router = APIRouter(prefix="/api/admin", tags=["admin"])
@@ -385,21 +385,191 @@ class ExpertProposalInput(BaseModel):
     expertEmail: Optional[str] = ""
 
 
+class RevisionInput(BaseModel):
+    notes: str
+
+
 @router.post("/expert-proposals")
 async def submit_expert_proposal(
     req: ExpertProposalInput,
+    background_tasks: BackgroundTasks,
     _: str = Depends(verify_expert),
 ):
-    """Accept a task proposal from a domain expert."""
+    """Accept a proposal, save it, and auto-trigger LLM generation."""
     proposal_id = f"{int(time.time())}-{uuid4().hex[:6]}"
     data = req.model_dump()
     data["_proposalId"] = proposal_id
     data["_submittedAt"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
-    data["_status"] = "pending"
+    data["_status"] = "generating"
+    data["_revisions"] = []
 
     filepath = _PROPOSALS_DIR / f"{proposal_id}.json"
     filepath.write_text(json.dumps(data, indent=2, ensure_ascii=False))
-    return {"status": "submitted", "proposalId": proposal_id}
+
+    background_tasks.add_task(_auto_generate, data, proposal_id)
+
+    return {"status": "generating", "proposalId": proposal_id}
+
+
+def _auto_generate(proposal_data: dict, proposal_id: str):
+    """Auto-trigger LLM generation after expert submits."""
+    try:
+        from claw_bench.server.task_generator import _run_generation, _GENERATED_DIR
+        gen_id = f"gen-{int(time.time())}-{uuid4().hex[:6]}"
+
+        initial = {
+            "taskId": "",
+            "taskDirName": "",
+            "proposalId": proposal_id,
+            "domain": proposal_data.get("domain", ""),
+            "taskTitle": proposal_data.get("taskTitle", ""),
+            "difficulty": proposal_data.get("difficulty", ""),
+            "status": "generating",
+            "files": {},
+            "generatedAt": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "error": None,
+        }
+        gen_file = _GENERATED_DIR / f"{gen_id}.json"
+        gen_file.write_text(json.dumps(initial, indent=2, ensure_ascii=False))
+
+        pf = _PROPOSALS_DIR / f"{proposal_id}.json"
+        if pf.exists():
+            pd = json.loads(pf.read_text())
+            pd["_status"] = "generating"
+            pd["_generatedTaskId"] = gen_id
+            pf.write_text(json.dumps(pd, indent=2, ensure_ascii=False))
+
+        _run_generation(proposal_data, gen_id)
+    except Exception as e:
+        import logging
+        logging.getLogger(__name__).error("Auto-generate failed: %s", e)
+        pf = _PROPOSALS_DIR / f"{proposal_id}.json"
+        if pf.exists():
+            pd = json.loads(pf.read_text())
+            pd["_status"] = "error"
+            pd["_error"] = str(e)
+            pf.write_text(json.dumps(pd, indent=2, ensure_ascii=False))
+
+
+@router.get("/expert-proposals/{proposal_id}/status")
+async def get_proposal_status(proposal_id: str, _: str = Depends(verify_expert)):
+    """Expert checks the status of their proposal (generating/ready/revision/confirmed)."""
+    filepath = _PROPOSALS_DIR / f"{proposal_id}.json"
+    if not filepath.exists():
+        raise HTTPException(404, "Proposal not found")
+    data = json.loads(filepath.read_text())
+    gen_id = data.get("_generatedTaskId", "")
+
+    result = {
+        "proposalId": proposal_id,
+        "status": data.get("_status", "pending"),
+        "taskTitle": data.get("taskTitle", ""),
+        "domain": data.get("domain", ""),
+        "generatedTaskId": gen_id,
+        "revisions": data.get("_revisions", []),
+        "error": data.get("_error"),
+    }
+
+    if gen_id:
+        from claw_bench.server.task_generator import _GENERATED_DIR
+        gen_file = _GENERATED_DIR / f"{gen_id}.json"
+        if gen_file.exists():
+            gen_data = json.loads(gen_file.read_text())
+            result["generationStatus"] = gen_data.get("status", "unknown")
+            if gen_data.get("status") == "error":
+                result["error"] = gen_data.get("error", "")
+                result["status"] = "error"
+
+    return result
+
+
+@router.get("/expert-proposals/{proposal_id}/preview")
+async def preview_generated_task(proposal_id: str, _: str = Depends(verify_expert)):
+    """Expert previews the LLM-generated task files."""
+    filepath = _PROPOSALS_DIR / f"{proposal_id}.json"
+    if not filepath.exists():
+        raise HTTPException(404, "Proposal not found")
+    data = json.loads(filepath.read_text())
+    gen_id = data.get("_generatedTaskId", "")
+    if not gen_id:
+        raise HTTPException(400, "No generated task yet")
+
+    from claw_bench.server.task_generator import _GENERATED_DIR
+    gen_file = _GENERATED_DIR / f"{gen_id}.json"
+    if not gen_file.exists():
+        raise HTTPException(404, "Generated task file not found")
+
+    gen_data = json.loads(gen_file.read_text())
+    if gen_data.get("status") == "generating":
+        raise HTTPException(202, "Still generating, please wait")
+
+    return {
+        "proposalId": proposal_id,
+        "taskId": gen_data.get("taskId", ""),
+        "taskDirName": gen_data.get("taskDirName", ""),
+        "domain": gen_data.get("domain", ""),
+        "difficulty": gen_data.get("difficulty", ""),
+        "status": gen_data.get("status", ""),
+        "files": gen_data.get("files", {}),
+        "error": gen_data.get("error"),
+    }
+
+
+@router.post("/expert-proposals/{proposal_id}/revise")
+async def revise_proposal(
+    proposal_id: str,
+    req: RevisionInput,
+    background_tasks: BackgroundTasks,
+    _: str = Depends(verify_expert),
+):
+    """Expert requests revisions — adds notes and re-triggers generation."""
+    filepath = _PROPOSALS_DIR / f"{proposal_id}.json"
+    if not filepath.exists():
+        raise HTTPException(404, "Proposal not found")
+
+    data = json.loads(filepath.read_text())
+    revisions = data.get("_revisions", [])
+    revisions.append({
+        "notes": req.notes,
+        "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+    })
+    data["_revisions"] = revisions
+    data["_status"] = "generating"
+    data["context"] = data.get("context", "") + f"\n\n[Revision notes]: {req.notes}"
+    filepath.write_text(json.dumps(data, indent=2, ensure_ascii=False))
+
+    background_tasks.add_task(_auto_generate, data, proposal_id)
+
+    return {"status": "regenerating", "proposalId": proposal_id, "revisionCount": len(revisions)}
+
+
+@router.post("/expert-proposals/{proposal_id}/confirm")
+async def confirm_proposal(proposal_id: str, _: str = Depends(verify_expert)):
+    """Expert confirms the generated task — moves it to admin approval queue."""
+    filepath = _PROPOSALS_DIR / f"{proposal_id}.json"
+    if not filepath.exists():
+        raise HTTPException(404, "Proposal not found")
+
+    data = json.loads(filepath.read_text())
+    gen_id = data.get("_generatedTaskId", "")
+    if not gen_id:
+        raise HTTPException(400, "No generated task to confirm")
+
+    from claw_bench.server.task_generator import _GENERATED_DIR
+    gen_file = _GENERATED_DIR / f"{gen_id}.json"
+    if not gen_file.exists():
+        raise HTTPException(404, "Generated task not found")
+
+    gen_data = json.loads(gen_file.read_text())
+    if gen_data.get("status") != "ready":
+        raise HTTPException(400, f"Task not ready (status: {gen_data.get('status')})")
+
+    data["_status"] = "confirmed"
+    data["_confirmedAt"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    filepath.write_text(json.dumps(data, indent=2, ensure_ascii=False))
+
+    return {"status": "confirmed", "proposalId": proposal_id,
+            "message": "Your task has been sent to the admin team for final approval."}
 
 
 @router.get("/expert-proposals")
