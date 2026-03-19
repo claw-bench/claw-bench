@@ -107,8 +107,20 @@ function computeDualTrackOverall(row: BenchResultData, weights: Record<string, n
   return { foundation, subject, overall };
 }
 
-type TierFilter = "all" | "quick" | "full" | "track";
+type TierFilter = "all" | "quick" | "full";
 type ViewMode = "classic" | "dualtrack";
+type SortColumn = "overall" | "taskCompletion" | "efficiency" | "security" | "skills" | "ux" | "lastUpdated";
+
+function SortTh({ col, cur, asc, onSort, children }: {
+  col: SortColumn; cur: SortColumn; asc: boolean;
+  onSort: (col: SortColumn) => void; children: React.ReactNode;
+}) {
+  return (
+    <th onClick={() => onSort(col)} style={{ cursor: "pointer", userSelect: "none", whiteSpace: "nowrap" }}>
+      {children} {cur === col ? (asc ? "\u25B2" : "\u25BC") : ""}
+    </th>
+  );
+}
 
 export default function LeaderboardTable({
   data: initialData,
@@ -120,6 +132,10 @@ export default function LeaderboardTable({
   const [viewMode, setViewMode] = useState<ViewMode>("dualtrack");
   const [liveData, setLiveData] = useState<BenchResultData[] | null>(null);
   const [expandedRow, setExpandedRow] = useState<string | null>(null);
+  const [frameworkFilter, setFrameworkFilter] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortCol, setSortCol] = useState<SortColumn>("overall");
+  const [sortAsc, setSortAsc] = useState(false);
   const { t } = useI18n();
 
   useEffect(() => {
@@ -145,27 +161,56 @@ export default function LeaderboardTable({
     [data]
   );
 
+  const frameworks = useMemo(() => {
+    const fws = new Set<string>();
+    data.forEach((r) => { if (r.framework) fws.add(r.framework); });
+    return Array.from(fws).sort();
+  }, [data]);
+
   const sorted = useMemo(() => {
     const weights = WEIGHT_PROFILES[profile].weights;
     let filtered = data;
     if (tierFilter !== "all") {
-      filtered = data.filter((r) => r.testTier === tierFilter);
+      filtered = filtered.filter((r) => r.testTier === tierFilter);
     }
-    return [...filtered]
-      .map((row) => {
-        if (viewMode === "dualtrack" && hasAnySubjectData) {
-          const dt = computeDualTrackOverall(row, weights);
-          return { ...row, overall: Math.round(dt.overall * 10) / 10, _foundation: dt.foundation, _subject: dt.subject };
-        }
-        return {
-          ...row,
-          overall: Math.round(computeOverall(row, weights) * 10) / 10,
-          _foundation: computeOverall(row, weights),
-          _subject: row.subjectScore ?? 0,
-        };
-      })
-      .sort((a, b) => b.overall - a.overall);
-  }, [data, profile, tierFilter, viewMode, hasAnySubjectData]);
+    if (frameworkFilter !== "all") {
+      filtered = filtered.filter((r) => r.framework === frameworkFilter);
+    }
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      filtered = filtered.filter((r) => {
+        const name = (r.agentProfile?.displayName || `${r.framework} ${r.model}`).toLowerCase();
+        return name.includes(q) || (r.framework || "").toLowerCase().includes(q) || (r.model || "").toLowerCase().includes(q);
+      });
+    }
+    const mapped = filtered.map((row) => {
+      if (viewMode === "dualtrack" && hasAnySubjectData) {
+        const dt = computeDualTrackOverall(row, weights);
+        return { ...row, overall: Math.round(dt.overall * 100) / 100, _foundation: dt.foundation, _subject: dt.subject };
+      }
+      return {
+        ...row,
+        overall: Math.round(computeOverall(row, weights) * 100) / 100,
+        _foundation: computeOverall(row, weights),
+        _subject: row.subjectScore ?? 0,
+      };
+    });
+    const getVal = (row: BenchResultData, col: SortColumn): number | string => {
+      if (col === "lastUpdated") return row.lastUpdated || "";
+      const m: Record<string, number> = {
+        overall: row.overall, taskCompletion: row.taskCompletion,
+        efficiency: row.efficiency, security: row.security,
+        skills: row.skills, ux: row.ux,
+      };
+      return m[col] ?? 0;
+    };
+    return mapped.sort((a, b) => {
+      const va = getVal(a, sortCol);
+      const vb = getVal(b, sortCol);
+      if (typeof va === "string") return sortAsc ? (va < vb ? -1 : 1) : (vb < va ? -1 : 1);
+      return sortAsc ? (va as number) - (vb as number) : (vb as number) - (va as number);
+    });
+  }, [data, profile, tierFilter, frameworkFilter, searchQuery, viewMode, hasAnySubjectData, sortCol, sortAsc]);
 
   // Subject domain labels for breakdown tooltip
   const SUBJECT_LABELS: Record<string, string> = {
@@ -255,12 +300,11 @@ export default function LeaderboardTable({
             </button>
           ))}
         </div>
-        <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap", alignItems: "center" }}>
           {([
             ["all", t("table.allTiers")],
             ["quick", t("table.quickTier")],
             ["full", t("table.compTier")],
-            ["track", t("table.trackTier")],
           ] as [TierFilter, string][]).map(([key, label]) => (
             <button
               key={key}
@@ -280,6 +324,47 @@ export default function LeaderboardTable({
               {label} ({data.filter((r) => key === "all" || r.testTier === key).length})
             </button>
           ))}
+
+          <span style={{ width: "1px", height: "1.2rem", background: "var(--border)", margin: "0 0.3rem" }} />
+
+          <select
+            value={frameworkFilter}
+            onChange={(e) => setFrameworkFilter(e.target.value)}
+            style={{
+              padding: "0.3rem 0.6rem",
+              border: "1px solid var(--border)",
+              borderRadius: "6px",
+              fontSize: "0.75rem",
+              background: "var(--bg)",
+              color: "var(--text-secondary)",
+              cursor: "pointer",
+            }}
+          >
+            <option value="all">{t("table.allFrameworks")}</option>
+            {frameworks.map((fw) => (
+              <option key={fw} value={fw}>{fw} ({data.filter((r) => r.framework === fw).length})</option>
+            ))}
+          </select>
+
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder={t("table.searchPlaceholder")}
+            style={{
+              padding: "0.3rem 0.6rem",
+              border: "1px solid var(--border)",
+              borderRadius: "6px",
+              fontSize: "0.75rem",
+              background: "var(--bg)",
+              color: "var(--text)",
+              width: "140px",
+            }}
+          />
+
+          <span style={{ fontSize: "0.72rem", color: "var(--text-tertiary)", marginLeft: "0.3rem" }}>
+            {sorted.length} {t("table.results")}
+          </span>
         </div>
 
         {/* Dual-track scoring explanation */}
@@ -310,7 +395,7 @@ export default function LeaderboardTable({
                 <th style={{ width: "3.5rem" }}>{t("table.rank")}</th>
                 <th>{t("table.region")}</th>
                 <th>{t("table.agent")}</th>
-                <th>{t("table.overall")}</th>
+                <SortTh col="overall" cur={sortCol} asc={sortAsc} onSort={(c) => { if (sortCol === c) setSortAsc(!sortAsc); else { setSortCol(c); setSortAsc(false); } }}>{t("table.overall")}</SortTh>
                 {viewMode === "dualtrack" && hasAnySubjectData && (
                   <>
                     <th style={{ fontSize: "0.72rem" }}>{t("dualtrack.foundationShort")}</th>
@@ -319,12 +404,12 @@ export default function LeaderboardTable({
                 )}
                 <th>{t("table.gain")}</th>
                 <th>{t("table.submissions")}</th>
-                <th>{t("table.lastUpdated")}</th>
-                <th>{t("table.taskCompletion")}</th>
-                <th>{t("table.efficiency")}</th>
-                <th>{t("table.security")}</th>
-                <th>{t("table.skills")}</th>
-                <th>{t("table.ux")}</th>
+                <SortTh col="lastUpdated" cur={sortCol} asc={sortAsc} onSort={(c) => { if (sortCol === c) setSortAsc(!sortAsc); else { setSortCol(c); setSortAsc(false); } }}>{t("table.lastUpdated")}</SortTh>
+                <SortTh col="taskCompletion" cur={sortCol} asc={sortAsc} onSort={(c) => { if (sortCol === c) setSortAsc(!sortAsc); else { setSortCol(c); setSortAsc(false); } }}>{t("table.taskCompletion")}</SortTh>
+                <SortTh col="efficiency" cur={sortCol} asc={sortAsc} onSort={(c) => { if (sortCol === c) setSortAsc(!sortAsc); else { setSortCol(c); setSortAsc(false); } }}>{t("table.efficiency")}</SortTh>
+                <SortTh col="security" cur={sortCol} asc={sortAsc} onSort={(c) => { if (sortCol === c) setSortAsc(!sortAsc); else { setSortCol(c); setSortAsc(false); } }}>{t("table.security")}</SortTh>
+                <SortTh col="skills" cur={sortCol} asc={sortAsc} onSort={(c) => { if (sortCol === c) setSortAsc(!sortAsc); else { setSortCol(c); setSortAsc(false); } }}>{t("table.skills")}</SortTh>
+                <SortTh col="ux" cur={sortCol} asc={sortAsc} onSort={(c) => { if (sortCol === c) setSortAsc(!sortAsc); else { setSortCol(c); setSortAsc(false); } }}>{t("table.ux")}</SortTh>
               </tr>
             </thead>
             <tbody>

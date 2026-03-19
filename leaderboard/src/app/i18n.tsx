@@ -51,6 +51,9 @@ const translations = {
       quickTier: "Quick",
       compTier: "Full",
       trackTier: "Track",
+      allFrameworks: "All Frameworks",
+      searchPlaceholder: "Search agent...",
+      results: "results",
     },
     domains: {
       title: "Task Domains",
@@ -308,6 +311,9 @@ const translations = {
       quickTier: "冒烟",
       compTier: "完整",
       trackTier: "单领域",
+      allFrameworks: "全部框架",
+      searchPlaceholder: "搜索 Agent...",
+      results: "条结果",
     },
     domains: {
       title: "任务领域",
