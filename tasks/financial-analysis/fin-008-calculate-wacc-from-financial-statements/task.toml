@@ -1,0 +1,12 @@
+id = "fin-008"
+title = "Calculate WACC from Financial Statements"
+track = "subject-matter"
+domain = "financial-analysis"
+level = "L2"
+description = "Calculate Weighted Average Cost of Capital (WACC) from given financial statements"
+timeout = 300
+capabilities = ["financial-calculation", "data-analysis", "file-operations"]
+required_actions = ["file-read", "data-processing", "file-write"]
+skills_allowed = true
+tags = ["finance", "wacc", "corporate-finance"]
+capability_types = ["reasoning", "tool-use"]

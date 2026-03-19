@@ -413,6 +413,18 @@ def verify_expert(authorization: str = Header(...)) -> str:
     return username
 
 
+
+def _verify_proposal_owner(proposal_id: str, username: str):
+    """Ensure the proposal belongs to the requesting expert."""
+    filepath = _PROPOSALS_DIR / f"{proposal_id}.json"
+    if not filepath.exists():
+        raise HTTPException(404, 'Proposal not found')
+    data = json.loads(filepath.read_text())
+    owner = data.get('_submittedBy', '')
+    if owner and owner != username:
+        raise HTTPException(403, 'You can only access your own proposals')
+    return data
+
 class ExpertRegisterInput(BaseModel):
     username: str
     password: str
@@ -714,12 +726,9 @@ def _auto_generate(proposal_data: dict, proposal_id: str):
 
 
 @router.get("/expert-proposals/{proposal_id}/status")
-async def get_proposal_status(proposal_id: str, _: str = Depends(verify_expert)):
+async def get_proposal_status(proposal_id: str, username: str = Depends(verify_expert)):
     """Expert checks the status of their proposal (generating/ready/revision/confirmed)."""
-    filepath = _PROPOSALS_DIR / f"{proposal_id}.json"
-    if not filepath.exists():
-        raise HTTPException(404, "Proposal not found")
-    data = json.loads(filepath.read_text())
+    data = _verify_proposal_owner(proposal_id, username)
     gen_id = data.get("_generatedTaskId", "")
 
     result = {
@@ -746,12 +755,9 @@ async def get_proposal_status(proposal_id: str, _: str = Depends(verify_expert))
 
 
 @router.get("/expert-proposals/{proposal_id}/preview")
-async def preview_generated_task(proposal_id: str, _: str = Depends(verify_expert)):
+async def preview_generated_task(proposal_id: str, username: str = Depends(verify_expert)):
     """Expert previews the LLM-generated task files."""
-    filepath = _PROPOSALS_DIR / f"{proposal_id}.json"
-    if not filepath.exists():
-        raise HTTPException(404, "Proposal not found")
-    data = json.loads(filepath.read_text())
+    data = _verify_proposal_owner(proposal_id, username)
     gen_id = data.get("_generatedTaskId", "")
     if not gen_id:
         raise HTTPException(400, "No generated task yet")
@@ -782,14 +788,11 @@ async def revise_proposal(
     proposal_id: str,
     req: RevisionInput,
     background_tasks: BackgroundTasks,
-    _: str = Depends(verify_expert),
+    username: str = Depends(verify_expert),
 ):
     """Expert requests revisions — adds notes and re-triggers generation."""
+    data = _verify_proposal_owner(proposal_id, username)
     filepath = _PROPOSALS_DIR / f"{proposal_id}.json"
-    if not filepath.exists():
-        raise HTTPException(404, "Proposal not found")
-
-    data = json.loads(filepath.read_text())
     revisions = data.get("_revisions", [])
     revisions.append({
         "notes": req.notes,
@@ -806,13 +809,10 @@ async def revise_proposal(
 
 
 @router.post("/expert-proposals/{proposal_id}/confirm")
-async def confirm_proposal(proposal_id: str, _: str = Depends(verify_expert)):
+async def confirm_proposal(proposal_id: str, username: str = Depends(verify_expert)):
     """Expert confirms the generated task — moves it to admin approval queue."""
+    data = _verify_proposal_owner(proposal_id, username)
     filepath = _PROPOSALS_DIR / f"{proposal_id}.json"
-    if not filepath.exists():
-        raise HTTPException(404, "Proposal not found")
-
-    data = json.loads(filepath.read_text())
     gen_id = data.get("_generatedTaskId", "")
     if not gen_id:
         raise HTTPException(400, "No generated task to confirm")
