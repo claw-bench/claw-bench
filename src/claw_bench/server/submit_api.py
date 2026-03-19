@@ -950,7 +950,11 @@ async def _update_existing_claw(
         models_used.append(new_model)
     existing["modelsUsed"] = models_used
 
-    if new_overall >= old_overall:
+    old_task_count = len(existing.get("taskResults", []) or [])
+    new_task_count = len(new_data.get("taskResults", []) or [])
+    should_update = new_overall >= old_overall or new_task_count > old_task_count
+
+    if should_update:
         for k in ("overall", "taskCompletion", "efficiency", "security", "skills", "ux",
                    "testTier", "tokensCost", "taskResults", "foundationScore", "subjectScore", "subjectBreakdown"):
             if k in new_data:
@@ -963,7 +967,7 @@ async def _update_existing_claw(
         if new_data.get("progressive"):
             existing["progressive"] = new_data["progressive"]
         best_model = new_model
-        status_msg = f"New high score! {old_overall:.1f} → {new_overall:.1f} (model: {new_model})"
+        status_msg = f"Updated: {old_overall:.1f} → {new_overall:.1f} (tasks: {old_task_count} → {new_task_count})"
     else:
         best_model = existing.get("model", new_model)
         status_msg = f"Score {new_overall:.1f} did not beat best {old_overall:.1f}. Count updated."
