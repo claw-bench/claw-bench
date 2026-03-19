@@ -78,10 +78,17 @@ function scoreClass(score: number): string {
   return "score score-low";
 }
 
+function hasRealSubScores(row: BenchResultData): boolean {
+  return row.efficiency > 0 || row.security > 0 || row.skills > 0 || row.ux > 0;
+}
+
 function computeOverall(
   row: BenchResultData,
   weights: Record<string, number>
 ): number {
+  if (!hasRealSubScores(row)) {
+    return row.overall;
+  }
   return (
     row.taskCompletion * weights.taskCompletion +
     row.efficiency * weights.efficiency +
@@ -91,7 +98,6 @@ function computeOverall(
   );
 }
 
-/** Compute dual-track overall: Foundation 60% + Subject 40% */
 function computeDualTrackOverall(row: BenchResultData, weights: Record<string, number>): {
   foundation: number;
   subject: number;
@@ -100,7 +106,6 @@ function computeDualTrackOverall(row: BenchResultData, weights: Record<string, n
   const foundation = computeOverall(row, weights);
   const subject = row.subjectScore ?? 0;
   const hasSubject = row.subjectScore != null && row.subjectScore > 0;
-  // If no subject score data, fall back to foundation-only
   const overall = hasSubject
     ? foundation * 0.6 + subject * 0.4
     : foundation;

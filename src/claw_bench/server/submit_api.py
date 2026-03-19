@@ -792,11 +792,7 @@ async def submit_results(req: SubmissionRequest, request: Request):
         req.tasksCompleted = len(valid_results)
 
     elif req.rawSummary and req.overall > 0 and req.taskCompletion == 0:
-        req.taskCompletion = req.overall
-        req.efficiency = req.overall * 0.90
-        req.security = req.overall * 0.85
-        req.skills = req.overall * 0.80
-        req.ux = req.overall * 0.85
+        pass
 
     if req.framework in ("unknown", "") or req.overall <= 0:
         _log_submission(ip, fingerprint, {"framework": req.framework, "overall": req.overall}, "rejected", "Empty data")
