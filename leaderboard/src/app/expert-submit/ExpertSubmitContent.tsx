@@ -204,6 +204,7 @@ export default function ExpertSubmitContent() {
   const [loginError, setLoginError] = useState("");
   const [inviteCodes, setInviteCodes] = useState<{ code: string; used: boolean; usedBy?: string }[]>([]);
   const [generatingCode, setGeneratingCode] = useState(false);
+  const [showInvites, setShowInvites] = useState(false);
   const [form, setForm] = useState<FormData>({ ...emptyForm });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
@@ -668,7 +669,6 @@ export default function ExpertSubmitContent() {
   }
 
   /* ── Invite Code Panel (collapsible) ── */
-  const [showInvites, setShowInvites] = useState(false);
   const invitePanel = (
     <div style={{ maxWidth: 720, margin: "0 auto 1rem" }}>
       <div className="card" style={{ padding: "1rem 1.5rem" }}>
