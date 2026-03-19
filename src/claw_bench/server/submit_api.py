@@ -554,8 +554,8 @@ def _compute_dimension_scores(task_results: List[TaskResultItem]) -> Dict[str, f
     for dim, scores in dim_scores.items():
         result[dim] = round((sum(scores) / len(scores) * 100) if scores else 0, 2)
 
-    total_scores = [tr.score for tr in task_results]
-    result["taskCompletion"] = round((sum(total_scores) / len(total_scores) * 100) if total_scores else 0, 2)
+    fully_passed = sum(1 for tr in task_results if tr.passed)
+    result["taskCompletion"] = round((fully_passed / len(task_results) * 100) if task_results else 0, 2)
 
     return result
 
