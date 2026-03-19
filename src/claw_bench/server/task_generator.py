@@ -693,7 +693,8 @@ def _post_approve_sync():
             logger.info("Frontend rebuilt after task approval")
 
     except Exception as e:
-        logger.warning("Post-approve sync failed: %s", e)
+        import traceback
+        logger.error("Post-approve sync failed: %s\n%s", e, traceback.format_exc())
 
 
 @router.post("/generated-tasks/{gen_id}/approve")

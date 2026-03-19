@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>AI Agent 能力评测基准</strong><br/>
-  313 项任务、32 个领域、4 级难度的标准化可复现评估。
+  314 项任务、33 个领域、4 级难度的标准化可复现评估。
 </p>
 
 <p align="center">

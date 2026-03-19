@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>The Definitive AI Agent Benchmark</strong><br/>
-  Standardized, reproducible evaluation across 313 tasks, 32 domains, and 4 difficulty levels.
+  Standardized, reproducible evaluation across 314 tasks, 33 domains, and 4 difficulty levels.
 </p>
 
 <p align="center">

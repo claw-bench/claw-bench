@@ -447,6 +447,7 @@ TASK_ID_TO_DOMAIN: Dict[str, str] = {
     "fin-004-earnings-report": "financial-analysis",
     "fin-005-forex-arbitrage": "financial-analysis",
     "fin-006": "financial-analysis",
+    "edu-001": "education",
     "mkt-001-survey-analysis": "market-research",
     "mkt-002-competitor-matrix": "market-research",
     "mkt-003-pricing-analysis": "market-research",
@@ -499,6 +500,7 @@ DOMAIN_TO_DIMENSION: Dict[str, str] = {
     "market-research": "ux",
     "educational-assessment": "ux",
     "academic-research": "ux",
+    "education": "ux",
 }
 
 VALID_TASK_IDS = set(TASK_ID_TO_DOMAIN.keys())

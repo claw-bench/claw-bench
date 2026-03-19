@@ -44,7 +44,7 @@ git clone --depth 1 https://github.com/claw-bench/claw-bench.git /tmp/claw-bench
 **1c.** Ask the user to choose a test mode:
 > **请选择测试模式 / Choose a test mode:**
 > 1. ⚡ **冒烟测试 / Quick Test** — 20 个任务，10-15 分钟
-> 2. 🏆 **完整测试 / Full Test** — 全部 313 任务（32 领域），完整评测
+> 2. 🏆 **完整测试 / Full Test** — 全部 314 任务（32 领域），完整评测
 
 **Quick test tasks (20 tasks):**
 ```
@@ -54,7 +54,7 @@ L3: web-006, mem-005, xdom-001, plan-004, math-004
 L4: code-014, debug-005, tool-005
 ```
 
-**Full test:** All task directories under `tasks/` (32 domains, 313 tasks).
+**Full test:** All task directories under `tasks/` (33 domains, 314 tasks).
 
 > **Phase 1 is now COMPLETE. You have the nickname and test mode. Do NOT return here. Proceed to Phase 2.**
 

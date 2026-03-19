@@ -1,0 +1,12 @@
+id = "edu-001"
+title = "Auto-generated task"
+track = "subject-matter"
+domain = "education"
+level = "L2"
+description = "Auto-generated task — needs manual review"
+timeout = 300
+capabilities = ["script-execution", "file-write"]
+required_actions = ["script-execution", "file-write"]
+skills_allowed = true
+tags = ["auto-generated", "education"]
+capability_types = ["tool-use", "reasoning"]
