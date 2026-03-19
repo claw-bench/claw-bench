@@ -48,7 +48,7 @@ git clone --depth 1 https://github.com/claw-bench/claw-bench.git /tmp/claw-bench
 Ask the user:
 > **请选择测试模式 / Choose a test mode:**
 > 1. ⚡ **冒烟测试 / Quick Test** — 20 个任务，10-15 分钟
-> 2. 🏆 **完整测试 / Full Test** — 全部 312 任务（32 领域），完整评测
+> 2. 🏆 **完整测试 / Full Test** — 全部 313 任务（32 领域），完整评测
 
 **Quick test tasks (20 tasks, balanced L1-L4, covers 19 domains):**
 ```
@@ -58,16 +58,16 @@ L3: web-006, mem-005, xdom-001, plan-004, math-004
 L4: code-014, debug-005, tool-005
 ```
 
-**Full test:** All task directories under `tasks/` (32 domains, 312 tasks).
+**Full test:** All task directories under `tasks/` (32 domains, 313 tasks).
 
 ### Step 4: Execute each task
 
 **CRITICAL RULES — READ CAREFULLY:**
 1. **NEVER use `claw-bench run` or any claw-bench CLI command to execute tasks.** That tool is ONLY for installing task files. If you use it to run tasks, the results will be invalid.
-2. **YOU must complete ALL tasks yourself**, one by one. Quick test = 20 tasks (~15 min). Full test = all 312 tasks.
+2. **YOU must complete ALL tasks yourself**, one by one. Quick test = 20 tasks (~15 min). Full test = all 313 tasks.
 3. **DO NOT stop halfway, skip tasks, or use old results.** Complete every single one fresh.
 4. **DO NOT delegate to any other tool or adapter.** Write the code/scripts yourself.
-5. **DO NOT say "this takes too long".** Quick test: 20 tasks, ~30 seconds each = under 15 minutes. Full test: ~312 tasks, plan for 2-3 hours.
+5. **DO NOT say "this takes too long".** Quick test: 20 tasks, ~30 seconds each = under 15 minutes. Full test: ~313 tasks, plan for 2-3 hours.
 
 For EACH task in your chosen test mode, follow this exact procedure:
 

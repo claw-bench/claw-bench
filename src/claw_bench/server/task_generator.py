@@ -592,6 +592,110 @@ async def get_generated_task(gen_id: str, _: str = Depends(verify_admin)):
     return data
 
 
+def _post_approve_sync():
+    """Run after a task is approved: update domains.json, VALID_TASK_IDS,
+    skill.md, READMEs, and trigger a frontend rebuild."""
+    import subprocess
+    try:
+        import tomli
+    except ImportError:
+        logger.warning("tomli not available, skipping post-approve sync")
+        return
+
+    try:
+        # 1. Scan all tasks from disk
+        domain_stats: Dict[str, Dict[str, int]] = {}
+        task_id_to_domain: Dict[str, str] = {}
+
+        for toml_file in _TASKS_DIR.rglob("task.toml"):
+            try:
+                with open(toml_file, "rb") as f:
+                    t = tomli.load(f)
+                if "task" in t and isinstance(t["task"], dict):
+                    t.update(t.pop("task"))
+                tid = t.get("id", "")
+                domain = t.get("domain", toml_file.parent.parent.name)
+                level = t.get("level", "L1").lower()
+                if not tid:
+                    continue
+                task_id_to_domain[tid] = domain
+                if domain not in domain_stats:
+                    domain_stats[domain] = {"tasks": 0, "l1": 0, "l2": 0, "l3": 0, "l4": 0}
+                domain_stats[domain]["tasks"] += 1
+                if level in domain_stats[domain]:
+                    domain_stats[domain][level] += 1
+            except Exception:
+                continue
+
+        total_tasks = sum(s["tasks"] for s in domain_stats.values())
+        total_domains = len(domain_stats)
+
+        # 2. Update domains.json
+        domains_file = _DATA_DIR / "config" / "domains.json"
+        if domains_file.exists():
+            existing_names = {}
+            try:
+                for d in json.loads(domains_file.read_text()):
+                    existing_names[d["id"]] = d.get("name", d["id"])
+            except Exception:
+                pass
+        else:
+            existing_names = {}
+
+        domains_list = []
+        for did in sorted(domain_stats.keys()):
+            s = domain_stats[did]
+            name = existing_names.get(did, did.replace("-", " ").title())
+            domains_list.append({"id": did, "name": name, "tasks": s["tasks"],
+                                 "l1": s["l1"], "l2": s["l2"], "l3": s["l3"], "l4": s["l4"]})
+        domains_file.write_text(json.dumps(domains_list, indent=2, ensure_ascii=False))
+        logger.info("Updated domains.json: %d domains, %d tasks", total_domains, total_tasks)
+
+        # 3. Update VALID_TASK_IDS at runtime
+        try:
+            from claw_bench.server.submit_api import VALID_TASK_IDS, TASK_ID_TO_DOMAIN, DOMAIN_TO_DIMENSION
+            for tid, domain in task_id_to_domain.items():
+                if tid not in VALID_TASK_IDS:
+                    TASK_ID_TO_DOMAIN[tid] = domain
+                    VALID_TASK_IDS.add(tid)
+                    if domain not in DOMAIN_TO_DIMENSION:
+                        DOMAIN_TO_DIMENSION[domain] = "skills"
+            logger.info("Updated VALID_TASK_IDS: %d total", len(VALID_TASK_IDS))
+        except Exception as e:
+            logger.warning("Failed to update VALID_TASK_IDS: %s", e)
+
+        # 4. Update skill.md numbers
+        for md_path in [_PROJECT_ROOT / "skills" / "skill.md",
+                        _PROJECT_ROOT / "leaderboard" / "public" / "skill.md"]:
+            if md_path.exists():
+                text = md_path.read_text()
+                text = re.sub(r"全部 \d+ 任务", f"全部 {total_tasks} 任务", text)
+                text = re.sub(r"\d+ domains, \d+ tasks\)", f"{total_domains} domains, {total_tasks} tasks)", text)
+                text = re.sub(r"Full test = all \d+ tasks", f"Full test = all {total_tasks} tasks", text)
+                text = re.sub(r"~\d+ tasks, plan for", f"~{total_tasks} tasks, plan for", text)
+                md_path.write_text(text)
+
+        # 5. Update READMEs
+        for readme in [_PROJECT_ROOT / "README.md", _PROJECT_ROOT / "README.zh-CN.md"]:
+            if readme.exists():
+                text = readme.read_text()
+                text = re.sub(r"\d+ tasks", f"{total_tasks} tasks", text, count=1)
+                text = re.sub(r"\d+ domains", f"{total_domains} domains", text, count=1)
+                text = re.sub(r"\d+ 项任务", f"{total_tasks} 项任务", text, count=1)
+                text = re.sub(r"\d+ 个领域", f"{total_domains} 个领域", text, count=1)
+                readme.write_text(text)
+
+        # 6. Trigger frontend rebuild
+        leaderboard_dir = _PROJECT_ROOT / "leaderboard"
+        if (leaderboard_dir / "package.json").exists():
+            subprocess.run(["npm", "run", "build"], cwd=str(leaderboard_dir),
+                           capture_output=True, timeout=120)
+            logger.info("Frontend rebuilt after task approval")
+
+    except Exception as e:
+        logger.warning("Post-approve sync failed: %s", e)
+
+
 @router.post("/generated-tasks/{gen_id}/approve")
 async def approve_generated_task(
     gen_id: str,
@@ -639,6 +743,9 @@ async def approve_generated_task(
             pd = json.loads(pf.read_text())
             pd["_status"] = "approved"
             pf.write_text(json.dumps(pd, indent=2, ensure_ascii=False))
+
+    # Auto-update docs, configs, and frontend after approval
+    threading.Thread(target=_post_approve_sync, daemon=True).start()
 
     return {
         "status": "approved",

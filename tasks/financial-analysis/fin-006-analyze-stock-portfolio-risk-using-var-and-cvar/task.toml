@@ -1,0 +1,12 @@
+id = "fin-006"
+title = "Analyze Stock Portfolio Risk Using VaR and CVaR"
+track = "subject-matter"
+domain = "financial-analysis"
+level = "L3"
+description = "Calculate Value-at-Risk (VaR) and Conditional VaR (CVaR) from historical return data using both historical simulation and parametric methods"
+timeout = 300
+capabilities = ["file-read", "data-processing", "statistical-computation", "file-write"]
+required_actions = ["file-read", "data-processing", "statistical-computation", "file-write"]
+skills_allowed = true
+tags = ["finance", "risk-analysis", "quantitative"]
+capability_types = ["reasoning", "tool-use"]
