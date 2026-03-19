@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 source_dir="$WORKSPACE/source"
 translation_dir="$WORKSPACE/translation"

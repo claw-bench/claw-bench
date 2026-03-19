@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 mkdir -p "$WORKSPACE"
 
 # Generate market_data.csv with 25 segments
 python3 - <<EOF
+import os; WORKSPACE = os.environ.get('WORKSPACE', os.getcwd())
 import csv
 import random
 random.seed(42)
@@ -24,6 +26,7 @@ EOF
 
 # Generate company_data.json
 python3 - <<EOF
+import os; WORKSPACE = os.environ.get('WORKSPACE', os.getcwd())
 import json
 
 company_data = {

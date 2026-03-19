@@ -7,9 +7,12 @@ from textblob import TextBlob
 loaded_language_words = {"radical", "unprecedented", "allegedly", "controversial", "extreme", "biased", "sensational", "propaganda", "manipulative", "exaggerated"}
 
 @pytest.fixture
-def workspace():
-    return Path(os.environ.get("CLAW_WORKSPACE", "/workspace"))
-
+def workspace(request):
+    """Resolve workspace from --workspace CLI option."""
+    ws = request.config.getoption("--workspace")
+    if ws:
+        return Path(ws)
+    return Path(os.environ.get("CLAW_WORKSPACE", os.environ.get("WORKSPACE", "workspace")))
 @pytest.mark.weight(3)
 def test_bias_report_exists(workspace):
     report_path = workspace / "bias_report.json"

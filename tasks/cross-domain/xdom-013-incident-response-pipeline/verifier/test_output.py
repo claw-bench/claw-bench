@@ -1,3 +1,4 @@
+from pathlib import Path
 """Verifier for xdom-013: Incident Response Pipeline."""
 
 import json
@@ -6,6 +7,16 @@ import re
 from datetime import datetime
 
 import pytest
+
+
+@pytest.fixture
+def workspace(request):
+    """Resolve workspace from --workspace CLI option."""
+    ws = request.config.getoption("--workspace")
+    if ws:
+        return Path(ws)
+    return Path(os.environ.get("CLAW_WORKSPACE", os.environ.get("WORKSPACE", "workspace")))
+
 
 WORKSPACE = os.environ.get(
     "WORKSPACE",

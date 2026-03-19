@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 # Use python3 inline to process articles and generate bias_report.json
 python3 - <<EOF

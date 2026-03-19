@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 mkdir -p "$WORKSPACE"
 
 # Generate dummy files to simulate initial conditions and parameters (not strictly needed but for realism)
 # We will generate a parameters.json file for reference
 python3 - <<EOF
+import os; WORKSPACE = os.environ.get('WORKSPACE', os.getcwd())
 import json
 params = {
     "a": 1.1,

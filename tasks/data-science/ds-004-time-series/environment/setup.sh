@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 mkdir -p "$WORKSPACE"
 
 python3 - <<EOF
+import os; WORKSPACE = os.environ.get('WORKSPACE', os.getcwd())
 import numpy as np
 import pandas as pd
 from datetime import datetime, timedelta

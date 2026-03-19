@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 REQ_FILE="$WORKSPACE/api_requirements.txt"
 OPENAPI_FILE="$WORKSPACE/openapi.yaml"

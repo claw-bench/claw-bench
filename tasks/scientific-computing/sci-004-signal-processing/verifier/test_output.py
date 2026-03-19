@@ -6,9 +6,12 @@ import pandas as pd
 import numpy as np
 
 @pytest.fixture
-def workspace():
-    return Path(os.environ.get("CLAW_WORKSPACE", "/workspace"))
-
+def workspace(request):
+    """Resolve workspace from --workspace CLI option."""
+    ws = request.config.getoption("--workspace")
+    if ws:
+        return Path(ws)
+    return Path(os.environ.get("CLAW_WORKSPACE", os.environ.get("WORKSPACE", "workspace")))
 @pytest.mark.weight(3)
 def test_spectrum_file_exists(workspace):
     spectrum_path = workspace / "spectrum.csv"

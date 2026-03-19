@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 PAPERS_DIR="$WORKSPACE/papers"
 BIB_CSV="$WORKSPACE/bibliography.csv"

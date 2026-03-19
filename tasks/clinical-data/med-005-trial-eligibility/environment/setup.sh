@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 mkdir -p "$WORKSPACE"
 
 # Generate patients.csv with 30 patients
 python3 - <<EOF
+import os; WORKSPACE = os.environ.get('WORKSPACE', os.getcwd())
 import csv
 import json
 import random
@@ -38,6 +40,7 @@ EOF
 
 # Generate trial_criteria.json
 python3 - <<EOF
+import os; WORKSPACE = os.environ.get('WORKSPACE', os.getcwd())
 import json
 
 criteria = {

@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 python3 - <<EOF
+import os; WORKSPACE = os.environ.get('WORKSPACE', os.getcwd())
 import csv
 import json
 from collections import defaultdict

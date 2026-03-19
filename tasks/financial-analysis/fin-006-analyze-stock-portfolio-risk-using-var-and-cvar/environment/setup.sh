@@ -2,8 +2,9 @@
 set -euo pipefail
 
 # Create workspace directory
-mkdir -p workspace
-cd workspace
+WORKSPACE="${1:-workspace}"
+mkdir -p "$WORKSPACE"
+cd "$WORKSPACE"
 
 # Generate synthetic portfolio returns data
 cat > portfolio_returns.csv <<EOF

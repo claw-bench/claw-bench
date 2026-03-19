@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 mkdir -p "$WORKSPACE"
 
@@ -34,7 +35,7 @@ requirements = [
     ('remote_work', 'The contract must specify remote work policies.', False),
 ]
 
-with open(f'{WORKSPACE}/labor_requirements.csv', 'w', newline='') as f:
+with open(f'{os.environ.get("WORKSPACE", os.getcwd())}/labor_requirements.csv', 'w', newline='') as f:
     writer = csv.writer(f)
     writer.writerow(['requirement', 'description', 'mandatory'])
     for r in requirements:
@@ -75,6 +76,6 @@ for req in included:
 contract_lines.append('This contract is governed by the laws of the jurisdiction.')
 contract_lines.append('The employee agrees to the terms and conditions stated herein.')
 
-with open(f'{WORKSPACE}/employment_contract.txt', 'w') as f:
+with open(f'{os.environ.get("WORKSPACE", os.getcwd())}/employment_contract.txt', 'w') as f:
     f.write('\n\n'.join(contract_lines))
 "

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 mkdir -p "$WORKSPACE"
 
@@ -25,7 +26,7 @@ for chrom in chromosomes:
         # Next gene region start with some gap
         start = end + random.randint(1000, 5000)
 
-with open(f"{WORKSPACE}/gene_regions.csv", "w", newline="") as f:
+with open(f"{os.environ.get(\"WORKSPACE\", os.getcwd())}/gene_regions.csv", "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerow(["gene", "chrom", "start", "end", "function"])
     for row in regions:
@@ -49,7 +50,7 @@ for _ in range(50):
     qual = round(random.uniform(10, 100), 1)
     variants.append([chrom, pos, ref, alt, qual])
 
-with open(f"{WORKSPACE}/variants.tsv", "w", newline="") as f:
+with open(f"{os.environ.get(\"WORKSPACE\", os.getcwd())}/variants.tsv", "w", newline="") as f:
     writer = csv.writer(f, delimiter='\t')
     writer.writerow(["chrom", "pos", "ref", "alt", "qual"])
     for v in variants:

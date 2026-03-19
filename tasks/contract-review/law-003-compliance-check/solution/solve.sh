@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 # Use python3 inline to solve the task
 python3 - << 'EOF'
+import os; WORKSPACE = os.environ.get('WORKSPACE', os.getcwd())
 import csv
 import json
 import re

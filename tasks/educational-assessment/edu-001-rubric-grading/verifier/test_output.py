@@ -5,10 +5,12 @@ import pytest
 import re
 
 @pytest.fixture
-def workspace():
-    return Path(os.environ.get("CLAW_WORKSPACE", "/workspace"))
-
-
+def workspace(request):
+    """Resolve workspace from --workspace CLI option."""
+    ws = request.config.getoption("--workspace")
+    if ws:
+        return Path(ws)
+    return Path(os.environ.get("CLAW_WORKSPACE", os.environ.get("WORKSPACE", "workspace")))
 def load_grades(workspace):
     grades_path = workspace / "grades.json"
     assert grades_path.exists(), f"grades.json not found in {grades_path}"

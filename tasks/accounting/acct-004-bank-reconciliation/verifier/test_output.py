@@ -2,9 +2,12 @@ import os, pytest, json
 from pathlib import Path
 
 @pytest.fixture
-def workspace():
-    return Path(os.environ.get("CLAW_WORKSPACE", "/workspace"))
-
+def workspace(request):
+    """Resolve workspace from --workspace CLI option."""
+    ws = request.config.getoption("--workspace")
+    if ws:
+        return Path(ws)
+    return Path(os.environ.get("CLAW_WORKSPACE", os.environ.get("WORKSPACE", "workspace")))
 @pytest.fixture
 def result(workspace):
     path = workspace / "reconciliation.json"

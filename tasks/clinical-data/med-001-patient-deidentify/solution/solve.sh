@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 mkdir -p "$WORKSPACE/deidentified" "$WORKSPACE/archive"
 python3 << PYEOF
 import csv, json, os

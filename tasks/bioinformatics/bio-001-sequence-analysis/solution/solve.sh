@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 FASTA="$WORKSPACE/sequences.fasta"
 CSV="$WORKSPACE/sequence_analysis.csv"

@@ -4,10 +4,12 @@ import json
 import pytest
 
 @pytest.fixture
-def workspace():
-    return Path(os.environ.get("CLAW_WORKSPACE", "/workspace"))
-
-
+def workspace(request):
+    """Resolve workspace from --workspace CLI option."""
+    ws = request.config.getoption("--workspace")
+    if ws:
+        return Path(ws)
+    return Path(os.environ.get("CLAW_WORKSPACE", os.environ.get("WORKSPACE", "workspace")))
 def ngram_counts(tokens, n):
     counts = {}
     for i in range(len(tokens) - n + 1):

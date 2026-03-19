@@ -4,9 +4,12 @@ import json
 import pytest
 
 @pytest.fixture
-def workspace():
-    return Path(os.environ.get("CLAW_WORKSPACE", "/workspace"))
-
+def workspace(request):
+    """Resolve workspace from --workspace CLI option."""
+    ws = request.config.getoption("--workspace")
+    if ws:
+        return Path(ws)
+    return Path(os.environ.get("CLAW_WORKSPACE", os.environ.get("WORKSPACE", "workspace")))
 @pytest.mark.weight(3)
 def test_anomalies_file_exists(workspace):
     anomalies_file = workspace / "anomalies.json"

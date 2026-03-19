@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 mkdir -p "$WORKSPACE"
 
@@ -53,5 +54,5 @@ for i in range(25):
     lines.append(json.dumps(res_schema, indent=2))
     lines.append("")
 
-with open(f"{WORKSPACE}/api_requirements.txt", "w") as f:
+with open(f"{os.environ.get(\"WORKSPACE\", os.getcwd())}/api_requirements.txt", "w") as f:
     f.write("\n".join(lines))

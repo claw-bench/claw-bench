@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 python3 << 'PYEOF'
 import re, json, csv, os
 ws = os.environ.get("CLAW_WORKSPACE", "workspace")

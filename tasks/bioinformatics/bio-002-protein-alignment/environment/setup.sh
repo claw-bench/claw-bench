@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 mkdir -p "$WORKSPACE"
 
@@ -13,7 +14,7 @@ num_seqs = 25
 min_len = 50
 max_len = 100
 
-with open(f"{WORKSPACE}/proteins.fasta", "w") as f:
+with open(f"{os.environ.get(\"WORKSPACE\", os.getcwd())}/proteins.fasta", "w") as f:
     for i in range(1, num_seqs + 1):
         length = random.randint(min_len, max_len)
         seq = "".join(random.choices(amino_acids, k=length))

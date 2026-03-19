@@ -2,6 +2,7 @@
 set -euo pipefail
 TASK_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 WORKSPACE="${1:-$TASK_DIR/workspace}"
+export WORKSPACE
 
 python - "$WORKSPACE" << 'PYTHON_EOF'
 import csv

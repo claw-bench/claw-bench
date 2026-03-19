@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 cat > "$WORKSPACE/rate_limiter.py" << 'PYEOF'
 import time
 import threading

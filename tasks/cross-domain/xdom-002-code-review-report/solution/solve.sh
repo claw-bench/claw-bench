@@ -2,6 +2,7 @@
 set -euo pipefail
 
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 mkdir -p "$WORKSPACE"
 
 cat > "$WORKSPACE/review.json" <<'JSON'
