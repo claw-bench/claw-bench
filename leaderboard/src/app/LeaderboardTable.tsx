@@ -84,18 +84,9 @@ function hasRealSubScores(row: BenchResultData): boolean {
 
 function computeOverall(
   row: BenchResultData,
-  weights: Record<string, number>
+  _weights: Record<string, number>
 ): number {
-  if (!hasRealSubScores(row)) {
-    return row.overall;
-  }
-  return (
-    row.taskCompletion * weights.taskCompletion +
-    row.efficiency * weights.efficiency +
-    row.security * weights.security +
-    row.skills * weights.skills +
-    row.ux * weights.ux
-  );
+  return row.overall;
 }
 
 function computeDualTrackOverall(row: BenchResultData, weights: Record<string, number>): {
