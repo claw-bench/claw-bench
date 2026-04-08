@@ -13,6 +13,7 @@ const foundationDomainKeys: Record<string, string> = {
   Email: "domains.email",
   "File Operations": "domains.fileOperations",
   Memory: "domains.memory",
+  "Multi-Agent": "domains.multiAgent",
   Multimodal: "domains.multimodal",
   Security: "domains.securityDomain",
   "System Admin": "domains.systemAdmin",

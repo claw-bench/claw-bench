@@ -207,6 +207,11 @@ export default function AdminPage() {
   const [expandedProposal, setExpandedProposal] = useState<string | null>(null);
   const [generatingIds, setGeneratingIds] = useState<Set<string>>(new Set());
 
+  // Task generation model state
+  const [taskGenModels, setTaskGenModels] = useState<{id: string; label: string; provider: string}[]>([]);
+  const [activeModel, setActiveModel] = useState<string>("");
+  const [modelSaving, setModelSaving] = useState(false);
+
   // Generated tasks state
   const [generatedTasks, setGeneratedTasks] = useState<GeneratedTaskSummary[]>([]);
   const [reviewingTask, setReviewingTask] = useState<GeneratedTaskDetail | null>(null);
@@ -248,6 +253,28 @@ export default function AdminPage() {
       } catch {}
     }
   }, [token, headers]);
+
+  const loadTaskGenModels = useCallback(async () => {
+    if (!token) return;
+    try {
+      const r = await fetch(`${API}/task-gen-models`, { headers: headers() });
+      if (r.ok) {
+        const data = await r.json();
+        setTaskGenModels(data.models || []);
+        setActiveModel(data.active || "");
+      }
+    } catch {}
+  }, [token, headers]);
+
+  const saveTaskGenModel = async (modelId: string) => {
+    setModelSaving(true);
+    try {
+      const r = await fetch(`${API}/task-gen-models`, { method: "PUT", headers: headers(), body: JSON.stringify({ model: modelId }) });
+      if (r.ok) { setActiveModel(modelId); showMsg(`任务生成模型已切换为 ${taskGenModels.find(m => m.id === modelId)?.label || modelId}`); }
+      else showMsg("切换失败");
+    } catch { showMsg("切换失败"); }
+    setModelSaving(false);
+  };
 
   const loadProposals = useCallback(async () => {
     if (!token) return;
@@ -307,8 +334,9 @@ export default function AdminPage() {
     if (token) {
       loadPending(); loadResults(); loadSkillsGain(); loadAgents(); loadConfig();
       loadProposals(); loadGeneratedTasks(); loadExperts(); loadAllInviteCodes();
+      loadTaskGenModels();
     }
-  }, [token, loadPending, loadResults, loadSkillsGain, loadAgents, loadConfig, loadProposals, loadGeneratedTasks]);
+  }, [token, loadPending, loadResults, loadSkillsGain, loadAgents, loadConfig, loadProposals, loadGeneratedTasks, loadTaskGenModels]);
 
   // Result CRUD
   const saveResult = async () => {
@@ -527,6 +555,31 @@ export default function AdminPage() {
 
       {/* ── Proposals Tab ── */}
       {activeTab === "proposals" && (<>
+        {/* Model selector */}
+        <div className="card" style={{ marginBottom: "1rem", padding: "0.8rem 1.2rem", display: "flex", alignItems: "center", gap: "0.8rem", flexWrap: "wrap" }}>
+          <span style={{ fontSize: "0.82rem", fontWeight: 600, color: "var(--text-secondary)", whiteSpace: "nowrap" }}>任务生成模型</span>
+          <select
+            value={activeModel}
+            onChange={(e) => saveTaskGenModel(e.target.value)}
+            disabled={modelSaving}
+            style={{
+              padding: "0.35rem 0.7rem", border: "1px solid var(--border)", borderRadius: "6px",
+              fontSize: "0.82rem", background: "var(--bg)", color: "var(--text)",
+              cursor: modelSaving ? "wait" : "pointer", minWidth: "240px",
+            }}
+          >
+            {activeModel && !taskGenModels.find(m => m.id === activeModel) && (
+              <option value={activeModel}>{activeModel}</option>
+            )}
+            {taskGenModels.map((m) => (
+              <option key={m.id} value={m.id}>{m.provider} — {m.label}</option>
+            ))}
+          </select>
+          <span style={{ fontSize: "0.72rem", color: "var(--text-tertiary)" }}>
+            切换后对新的任务生成立即生效
+          </span>
+        </div>
+
         <div style={{ marginBottom: "1rem", fontSize: "0.82rem", color: "var(--text-secondary)" }}>
           {proposals.length > 0
             ? `${proposals.length} 条专家提案 — 点击「生成任务」调用 LLM 自动构建完整任务文件`

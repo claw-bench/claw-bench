@@ -23,6 +23,7 @@ const domainI18nKeys: Record<string, string> = {
   email: "domains.email",
   "file-operations": "domains.fileOperations",
   memory: "domains.memory",
+  "multi-agent": "domains.multiAgent",
   multimodal: "domains.multimodal",
   security: "domains.securityDomain",
   "system-admin": "domains.systemAdmin",

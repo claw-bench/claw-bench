@@ -1,0 +1,11 @@
+id = "mag-001"
+title = "Multi-Agent Code Review Pipeline"
+domain = "multi-agent"
+level = "L2"
+description = "Fix buggy Python modules by orchestrating separate developer and reviewer sub-agents with iterative feedback"
+timeout = 600
+capabilities = ["script-execution", "file-write", "file-read", "multi-agent-orchestration"]
+required_actions = ["multi-agent-orchestration", "script-execution", "file-write"]
+skills_allowed = true
+tags = ["multi-agent", "code-review", "collaboration", "iterative"]
+capability_types = ["reasoning", "tool-use"]

@@ -17,9 +17,9 @@ from pydantic import BaseModel, Field
 FOUNDATION_DOMAINS: set[str] = {
     "calendar", "code-assistance", "communication", "cross-domain",
     "data-analysis", "document-editing", "email", "file-operations",
-    "memory", "multimodal", "security", "system-admin", "web-browsing",
-    "workflow-automation", "database", "debugging", "math-reasoning",
-    "planning", "real-tools",
+    "memory", "multi-agent", "multimodal", "security", "system-admin",
+    "web-browsing", "workflow-automation", "database", "debugging",
+    "math-reasoning", "planning", "real-tools",
 }
 
 # Subject-matter domains (professional domain knowledge)

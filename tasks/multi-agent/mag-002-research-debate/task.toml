@@ -1,0 +1,11 @@
+id = "mag-002"
+title = "Multi-Agent Research Debate"
+domain = "multi-agent"
+level = "L3"
+description = "Orchestrate pro and con sub-agents to debate a technical topic, then synthesize a balanced analysis report"
+timeout = 600
+capabilities = ["script-execution", "file-write", "file-read", "multi-agent-orchestration"]
+required_actions = ["multi-agent-orchestration", "file-write"]
+skills_allowed = true
+tags = ["multi-agent", "debate", "adversarial", "synthesis"]
+capability_types = ["reasoning", "tool-use"]

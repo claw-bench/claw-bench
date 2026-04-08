@@ -36,6 +36,7 @@
         "email",
         "file-operations",
         "memory",
+        "multi-agent",
         "multimodal",
         "security",
         "system-admin",
@@ -106,7 +107,8 @@
           "document-conversion",
           "data-visualization",
           "command-line-tool",
-          "package-install"
+          "package-install",
+          "multi-agent-orchestration"
         ]
       },
       "default": []

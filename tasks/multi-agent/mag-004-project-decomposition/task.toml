@@ -1,0 +1,11 @@
+id = "mag-004"
+title = "Multi-Agent Project Decomposition"
+domain = "multi-agent"
+level = "L4"
+description = "Act as a supervisor agent to decompose a software project, delegate to sub-agents, and integrate their outputs into a working CLI tool"
+timeout = 900
+capabilities = ["script-execution", "file-write", "file-read", "multi-agent-orchestration"]
+required_actions = ["multi-agent-orchestration", "script-execution", "file-write"]
+skills_allowed = true
+tags = ["multi-agent", "supervisor", "project-management", "integration"]
+capability_types = ["reasoning", "tool-use"]

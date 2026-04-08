@@ -1,0 +1,34 @@
+date,region,product,amount,sales_rep
+2024-01-15,North,Widget A,$250.00,Alice
+01/22/2024,South,Widget B,175.50,Bob
+2024-02-03,East,Widget A,$320.00,Charlie
+,North,Widget C,$89.00,Alice
+2024-02-14,West,Widget B,,Diana
+03/01/2024,South,Widget A,$450.00,Bob
+2024-03-12,North,Widget C,$67.50,Eve
+2024-03-20,East,Widget B,$210.00,Charlie
+,,,,
+2024-04-05,West,Widget A,$530.00,Diana
+04/15/2024,North,Widget B,$125.00,Alice
+2024-04-22,South,Widget C,$95.00,Bob
+2024-05-01,East,Widget A,$$380.00,Charlie
+2024-05-10,West,Widget B,$290.00,Diana
+05/18/2024,North,Widget A,$415.00,Eve
+2024-06-02,South,Widget C,$72.00,Bob
+2024-06-15,East,Widget B,$188.50,Charlie
+2024-06-28,West,Widget A,$610.00,Diana
+2024-07-04,North,Widget C,$55.00,Alice
+07/12/2024,South,Widget A,$340.00,Bob
+2024-07-20,East,Widget B,$275.00,Charlie
+2024-08-01,West,Widget C,$110.00,Diana
+2024-08-14,North,Widget A,$485.00,Eve
+08/22/2024,South,Widget B,$195.00,Bob
+2024-09-05,East,Widget A,$360.00,Charlie
+2024-09-18,West,Widget B,$230.00,Diana
+09/30/2024,North,Widget C,$78.00,Alice
+2024-10-10,South,Widget A,$520.00,Bob
+2024-10-25,East,Widget C,$65.00,Charlie
+2024-11-01,West,Widget A,$445.00,Diana
+11/15/2024,North,Widget B,$155.00,Eve
+2024-12-01,South,Widget A,$390.00,Bob
+2024-12-20,East,Widget B,$200.00,Charlie

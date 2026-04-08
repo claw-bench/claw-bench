@@ -1,0 +1,11 @@
+id = "mag-003"
+title = "Multi-Agent Data Pipeline Handoff"
+domain = "multi-agent"
+level = "L3"
+description = "Orchestrate a 4-stage data pipeline where each stage is handled by an independent sub-agent with file-based handoffs"
+timeout = 600
+capabilities = ["script-execution", "file-write", "file-read", "multi-agent-orchestration"]
+required_actions = ["multi-agent-orchestration", "script-execution", "file-write"]
+skills_allowed = true
+tags = ["multi-agent", "pipeline", "handoff", "data-processing"]
+capability_types = ["reasoning", "tool-use"]

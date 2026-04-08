@@ -107,6 +107,7 @@ DOMAIN_DIR_MAP = {
     "medical-research": "medical-research",
     "sociology": "sociology",
     "education": "education",
+    "multi-agent": "multi-agent",
 }
 
 DOMAIN_PREFIX_MAP = {
@@ -123,9 +124,44 @@ DOMAIN_PREFIX_MAP = {
     "medical-research": "mres",
     "sociology": "soc",
     "education": "edu",
+    "multi-agent": "mag",
 }
 
 DEFAULT_MODEL = os.environ.get("TASK_GEN_MODEL", "gpt-4.1-mini")
+
+AVAILABLE_MODELS = [
+    {"id": "deepseek/deepseek-chat-v3-0324", "label": "DeepSeek V3 0324", "provider": "DeepSeek"},
+    {"id": "anthropic/claude-sonnet-4.6", "label": "Claude Sonnet 4.6", "provider": "Anthropic"},
+    {"id": "anthropic/claude-opus-4.6", "label": "Claude Opus 4.6", "provider": "Anthropic"},
+    {"id": "anthropic/claude-sonnet-4.5", "label": "Claude Sonnet 4.5", "provider": "Anthropic"},
+    {"id": "openai/gpt-5.2", "label": "GPT-5.2", "provider": "OpenAI"},
+    {"id": "openai/gpt-5.1", "label": "GPT-5.1", "provider": "OpenAI"},
+    {"id": "openai/gpt-4.1", "label": "GPT-4.1", "provider": "OpenAI"},
+    {"id": "openai/gpt-4.1-mini", "label": "GPT-4.1 Mini", "provider": "OpenAI"},
+    {"id": "openai/gpt-4o", "label": "GPT-4o", "provider": "OpenAI"},
+    {"id": "google/gemini-3.1-pro-preview", "label": "Gemini 3.1 Pro", "provider": "Google"},
+    {"id": "google/gemini-3-pro-preview", "label": "Gemini 3 Pro", "provider": "Google"},
+    {"id": "google/gemini-3-flash-preview", "label": "Gemini 3 Flash", "provider": "Google"},
+    {"id": "google/gemini-2.5-pro", "label": "Gemini 2.5 Pro", "provider": "Google"},
+]
+
+_MODEL_CONFIG_FILE = _DATA_DIR / "config" / "task_gen_model.json"
+
+
+def _get_active_model() -> str:
+    if _MODEL_CONFIG_FILE.exists():
+        try:
+            data = json.loads(_MODEL_CONFIG_FILE.read_text())
+            return data.get("model", DEFAULT_MODEL)
+        except (json.JSONDecodeError, OSError):
+            pass
+    return DEFAULT_MODEL
+
+
+def _set_active_model(model_id: str) -> None:
+    _MODEL_CONFIG_FILE.parent.mkdir(parents=True, exist_ok=True)
+    _MODEL_CONFIG_FILE.write_text(json.dumps({"model": model_id}, indent=2))
+
 
 # ---------------------------------------------------------------------------
 # Models
@@ -207,8 +243,11 @@ def _slugify(text: str) -> str:
 # ---------------------------------------------------------------------------
 
 
-def _call_llm(prompt: str, model: str = DEFAULT_MODEL) -> str:
+def _call_llm(prompt: str, model: str | None = None) -> str:
     """Call the LLM via OpenAI-compatible API."""
+    if model is None:
+        model = _get_active_model()
+
     try:
         from openai import OpenAI
     except ImportError:
@@ -515,6 +554,30 @@ def _run_generation(proposal_data: dict, gen_id: str):
 # ---------------------------------------------------------------------------
 # API Endpoints
 # ---------------------------------------------------------------------------
+
+
+@router.get("/task-gen-models")
+async def get_task_gen_models(_: str = Depends(verify_admin)):
+    """Return available models and the currently active one."""
+    return {
+        "models": AVAILABLE_MODELS,
+        "active": _get_active_model(),
+    }
+
+
+@router.put("/task-gen-models")
+async def set_task_gen_model(
+    body: dict,
+    _: str = Depends(verify_admin),
+):
+    """Set the active model for task generation."""
+    model_id = body.get("model", "")
+    valid_ids = {m["id"] for m in AVAILABLE_MODELS}
+    if model_id not in valid_ids:
+        raise HTTPException(400, f"Invalid model: {model_id}")
+    _set_active_model(model_id)
+    logger.info("Task generation model changed to: %s", model_id)
+    return {"status": "ok", "active": model_id}
 
 
 @router.post("/generate-task")

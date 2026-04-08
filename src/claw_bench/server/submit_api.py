@@ -488,6 +488,7 @@ DOMAIN_TO_DIMENSION: Dict[str, str] = {
     "memory": "ux",
     "web-browsing": "ux",
     "planning": "ux",
+    "multi-agent": "skills",
     # Subject-matter domains
     "accounting": "efficiency",
     "financial-analysis": "efficiency",
