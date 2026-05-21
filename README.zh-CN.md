@@ -42,6 +42,26 @@ pip install git+https://github.com/claw-bench/claw-bench.git
 claw-bench submit ./results/latest
 ```
 
+## 快速测试 OpenClaw
+
+如果只是想无人值守地快速验证 OpenClaw，不需要用 WebUI 反复输入“请继续测试”，可以直接使用 `run` 命令：
+
+```bash
+# 先预览 20 个冒烟测试任务，不实际调用 agent
+claw-bench run --framework openclaw --tasks quick --dry-run
+
+# 通过本地 CMDOP/OpenClaw agent 运行
+cmdop agent start
+claw-bench run --framework openclaw --tasks quick --model "@balanced+agents"
+
+# 或通过任意 OpenAI-compatible API 运行
+export OPENAI_COMPAT_BASE_URL="https://your-provider.example/v1"
+export OPENAI_COMPAT_API_KEY="your-key"
+claw-bench run --framework openclaw --tasks quick --model deepseek-v3
+```
+
+`scripts/run_full_benchmark.py` 是用于多模型、全量任务的长时间批量脚本。刚开始排查 OpenClaw 能不能端到端跑通时，优先用 `claw-bench run --framework openclaw --tasks quick`。
+
 ## 功能特性
 
 - **313 个精选任务** — 涵盖 32 个领域，从文件操作到系统架构设计。

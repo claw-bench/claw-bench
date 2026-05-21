@@ -130,6 +130,20 @@ class TestRunDryRun:
         assert result.exit_code == 0
         assert "curated" in result.output
 
+    def test_openclaw_dry_run_uses_default_model_label(self, cli_app):
+        result = CliRunner().invoke(
+            cli_app,
+            [
+                "--framework",
+                "openclaw",
+                "--tasks",
+                "file-001",
+                "--dry-run",
+            ],
+        )
+        assert result.exit_code == 0
+        assert "@balanced+agents" in result.output
+
 
 class TestRunValidation:
     def test_invalid_skills_mode(self, cli_app):
@@ -178,6 +192,25 @@ class TestRunValidation:
             ],
         )
         assert result.exit_code != 0
+
+    def test_resume_with_multiple_runs_fails(self, cli_app):
+        result = CliRunner().invoke(
+            cli_app,
+            [
+                "--framework",
+                "dryrun",
+                "--model",
+                "oracle",
+                "--tasks",
+                "file-001",
+                "--runs",
+                "2",
+                "--resume",
+                "--dry-run",
+            ],
+        )
+        assert result.exit_code != 0
+        assert "--resume is only supported when --runs is 1" in result.output
 
 
 class TestRunWithCommaIds:

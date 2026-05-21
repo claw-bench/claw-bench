@@ -1,5 +1,9 @@
 #!/usr/bin/env python
-"""Run full benchmark across all 210 tasks for multiple models.
+"""Run full benchmark across all tasks for multiple models.
+
+For a quick unattended OpenClaw smoke test, prefer:
+
+    claw-bench run --framework openclaw --tasks quick
 
 Usage:
     export OPENAI_COMPAT_BASE_URL="https://cloud.infini-ai.com/maas/v1"

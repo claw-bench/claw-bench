@@ -12,6 +12,7 @@ from claw_bench.cli.list_cmd import list_app
 from claw_bench.cli.moltbook import moltbook_app
 from claw_bench.cli.oracle import oracle_cmd
 from claw_bench.cli.report import report_cmd
+from claw_bench.cli.run import run_cmd
 from claw_bench.cli.submit import submit_cmd
 from claw_bench.cli.validate import validate_cmd
 
@@ -48,6 +49,7 @@ app.command(name="doctor")(doctor_cmd)
 app.command(name="init")(init_cmd)
 app.command(name="oracle")(oracle_cmd)
 app.command(name="report")(report_cmd)
+app.command(name="run")(run_cmd)
 app.add_typer(list_app, name="list")
 app.add_typer(analyze_app, name="analyze")
 app.add_typer(moltbook_app, name="moltbook")

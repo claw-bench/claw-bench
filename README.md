@@ -42,6 +42,29 @@ pip install git+https://github.com/claw-bench/claw-bench.git
 claw-bench submit ./results/latest
 ```
 
+## Quick OpenClaw Test
+
+For an unattended OpenClaw smoke test, use the `run` command instead of driving
+the web UI manually:
+
+```bash
+# Preview the 20-task smoke test without calling an agent
+claw-bench run --framework openclaw --tasks quick --dry-run
+
+# Run through a local CMDOP/OpenClaw agent
+cmdop agent start
+claw-bench run --framework openclaw --tasks quick --model "@balanced+agents"
+
+# Or run through any OpenAI-compatible API endpoint
+export OPENAI_COMPAT_BASE_URL="https://your-provider.example/v1"
+export OPENAI_COMPAT_API_KEY="your-key"
+claw-bench run --framework openclaw --tasks quick --model deepseek-v3
+```
+
+`scripts/run_full_benchmark.py` is a batch helper for long full-suite runs
+across multiple models. Start with `claw-bench run --framework openclaw --tasks
+quick` when you only need to verify that OpenClaw can execute tasks end to end.
+
 ## Features
 
 - **313 curated tasks** across 32 domains — from file operations to system architecture design.
