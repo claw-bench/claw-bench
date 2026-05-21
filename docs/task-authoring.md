@@ -1,6 +1,6 @@
 # Task Authoring Guide
 
-This document explains how to create new benchmark tasks for Claw Bench. The benchmark currently includes **210 tasks** across 14 domains.
+This document explains how to create new benchmark tasks for Claw Bench. The current repository includes **319 tasks** across **34 task directories**.
 
 ## Task Directory Structure
 
@@ -42,24 +42,48 @@ skills/
   .gitkeep
 ```
 
-## All 14 Domains
+## Current Task Directories
 
-| Domain | Prefix | Description |
-| --- | --- | --- |
-| calendar | `cal-` | Calendar and event management |
-| code-assistance | `code-` | Writing, reviewing, and debugging code |
-| communication | `comm-` | Messaging, notifications, and team coordination |
-| cross-domain | `xdom-` | Tasks spanning multiple domains requiring integrated workflows |
-| data-analysis | `data-` | Data processing, visualization, statistics |
-| document-editing | `doc-` | Document creation, formatting, and transformation |
-| email | `eml-` | Email composition, parsing, filtering, and automation |
-| file-operations | `file-` | File manipulation, conversion, organization |
-| memory | `mem-` | Context retention, instruction recall, and cross-reference synthesis |
-| multimodal | `mm-` | Multi-format data processing, conversion, and integration |
-| security | `sec-` | Security auditing, vulnerability scanning, hardening |
-| system-admin | `sys-` | System configuration, monitoring, DevOps |
-| web-browsing | `web-` | Web content extraction, analysis, and navigation |
-| workflow-automation | `wfl-` | Multi-step workflow orchestration and automation |
+Tasks are grouped under these top-level directories:
+
+```text
+academic-research
+accounting
+bioinformatics
+calendar
+clinical-data
+code-assistance
+communication
+content-analysis
+contract-review
+cross-domain
+cs-engineering
+data-analysis
+data-science
+database
+debugging
+document-editing
+education
+educational-assessment
+email
+file-operations
+financial-analysis
+market-research
+math-reasoning
+memory
+multi-agent
+multimodal
+planning
+real-tools
+regulatory-compliance
+scientific-computing
+security
+system-admin
+web-browsing
+workflow-automation
+```
+
+Use the naming convention already present in the target directory. For example, file-operation tasks use `file-001`, `file-002`, and so on, while cross-domain tasks use `xdom-001`, `xdom-002`, and so on.
 
 ## task.toml
 
@@ -111,12 +135,15 @@ tags = ["cross-domain", "calendar", "research", "communication"]
 | --- | --- | --- | --- |
 | id | string | yes | Unique identifier (e.g. `cal-001`) |
 | title | string | yes | Human-readable name |
-| domain | enum | yes | One of 14 domains (see table above) |
+| track | string | no | `foundation` or `subject-matter`; set this explicitly for subject-matter tasks unless the domain is already auto-classified by `task_loader.py` |
+| domain | string | yes | Domain name matching the task directory or an accepted benchmark domain |
 | level | enum | yes | Difficulty: L1, L2, L3, or L4 |
 | description | string | yes | What the task requires |
 | timeout | integer | yes | Max execution time in seconds |
 | capabilities | array | yes | Required agent capabilities |
+| required_actions | array | no | Concrete actions such as `file-read`, `file-write`, `script-execution`, or `database-query` |
 | skills_allowed | boolean | no | Whether skills are permitted (default: true) |
+| capability_types | array | no | Core capability types: `reasoning`, `tool-use`, `memory`, `multimodal`, `collaboration` |
 | tags | array | no | Optional tags for filtering |
 
 ### Difficulty Levels
@@ -166,28 +193,31 @@ The oracle solution is a shell script that produces the correct output. It is us
 
 ## Validation
 
-Before submitting a new task, validate it using the centralized validation script:
+Before submitting a new task, validate it with the CLI:
 
 ```bash
-# Validate all tasks via the validation script
-python scripts/validate_all_tasks.py
+claw-bench validate tasks/<domain>/<task-id>
+claw-bench validate tasks/<domain>/<task-id> --run-oracle
+```
 
-# Or validate via the CLI
-claw-bench validate
+For repository-wide task checks, use:
 
-# Run the oracle solution and verify it passes
-cd tasks/calendar/cal-001-create-meeting
-bash environment/setup.sh workspace
-bash solution/solve.sh workspace
-pytest verifier/test_output.py --workspace=workspace
+```bash
+python3 scripts/validate_all_tasks.py
+```
+
+You can also run an oracle solution and verifier manually:
+
+```bash
+TASK=tasks/file-operations/file-002-csv-to-json
+bash "$TASK/environment/setup.sh" "$TASK/workspace"
+bash "$TASK/solution/solve.sh" "$TASK/workspace"
+python3 -m pytest "$TASK/verifier/test_output.py" --workspace="$TASK/workspace" --rootdir=tasks
 ```
 
 The `scripts/validate_all_tasks.py` script checks:
-- All 210 tasks have valid `task.toml` files conforming to the JSON schema
+- Task metadata parses and required fields are present
 - Every task has the required `instruction.md` and `verifier/test_output.py`
-- Domain values match one of the 14 recognized domains
-- Task IDs follow the naming convention for their domain
-- No duplicate task IDs exist across the benchmark
 
 ## Quarterly Rotation
 
