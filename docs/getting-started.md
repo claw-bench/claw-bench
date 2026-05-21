@@ -58,24 +58,41 @@ Claw Bench ships with adapters for the following frameworks:
 | PicoClaw  | `picoclaw`  | Planned | Go |
 | NanoBot   | `nanobot`   | Planned | Python |
 
-List discovered adapters with:
+List known framework adapters with:
 
 ```bash
-claw-bench list adapters
+claw-bench list frameworks
 ```
 
 ## Run Your First Evaluation
 
 ```bash
-# Run a single task against a specific adapter
-claw-bench run --task cal-001 --adapter openclaw
+# Preview a quick OpenClaw smoke test
+claw-bench run --framework openclaw --tasks quick --dry-run
+
+# Run a single task against OpenClaw
+claw-bench run --framework openclaw --tasks cal-001
 
 # Run all L1 tasks
-claw-bench run --level L1
-
-# Run the full benchmark
-claw-bench run --adapter openclaw --tasks all
+claw-bench run --framework openclaw --tasks L1
 ```
+
+For unattended OpenClaw runs, either start a local CMDOP agent first or provide
+an OpenAI-compatible endpoint:
+
+```bash
+cmdop agent start
+claw-bench run --framework openclaw --tasks quick --model "@balanced+agents"
+
+export OPENAI_COMPAT_BASE_URL="https://your-provider.example/v1"
+export OPENAI_COMPAT_API_KEY="your-key"
+claw-bench run --framework openclaw --tasks quick --model deepseek-v3
+```
+
+`scripts/run_full_benchmark.py` is intended for long multi-model full benchmark
+runs. Use `claw-bench run --framework openclaw --tasks quick` first when you
+only need to confirm that OpenClaw can complete tasks without manual WebUI
+continuation prompts.
 
 ## Evaluation Scenarios
 

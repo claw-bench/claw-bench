@@ -47,9 +47,14 @@ class DryRunAdapter(ClawAdapter):
 
         ws_path = Path(workspace)
 
-        # Find the solve.sh by looking at the task directory structure
-        # workspace is typically at tasks/<domain>/<task-id>/workspace
-        task_dir = ws_path.parent
+        # Find solve.sh by looking at the task directory structure.
+        # Workspaces are usually either:
+        #   tasks/<domain>/<task-id>/workspace
+        #   tasks/<domain>/<task-id>/workspace/<run-id>
+        if ws_path.parent.name == "workspace":
+            task_dir = ws_path.parent.parent
+        else:
+            task_dir = ws_path.parent
         solve_sh = task_dir / "solution" / "solve.sh"
 
         content = ""
