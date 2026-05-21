@@ -16,28 +16,37 @@ This installs the project along with linting (ruff), type-checking (mypy), and t
 
 ## Adding Tasks
 
-Tasks live in the `tasks/` directory, organized by domain. The benchmark currently contains **210 tasks** across **14 domains**. Each task is a self-contained directory with a manifest, setup scripts, and evaluation criteria.
+Tasks live in the `tasks/` directory, organized by domain. The current repository contains **319 tasks** across **34 task directories**. Each task is a self-contained directory with metadata, instructions, optional setup data, an oracle solution, and pytest-based verification.
 
-1. Create a new directory under `tasks/<domain>/` with a descriptive name (e.g., `tasks/calendar/cal-016-recurring-events/`).
-2. Add a `task.toml` manifest describing the task metadata, inputs, expected outputs, and scoring rubric.
-3. Include any required fixture files (Docker Compose configs, seed data, etc.).
-4. Validate your task before submitting:
+1. Create a new directory under `tasks/<domain>/` with a descriptive name, for example `tasks/file-operations/file-016-normalize-csv/`.
+2. Add a `task.toml` manifest with the task metadata. Required fields are `id`, `title`, `domain`, `level`, `description`, `timeout`, and `capabilities`.
+3. Add `instruction.md` with exact instructions for the agent, including expected output paths.
+4. Add `verifier/test_output.py` with pytest checks. The verifier receives the workspace path through `--workspace`.
+5. Include any required fixture files under `environment/data/`, and add `environment/setup.sh` when setup is needed.
+6. Add `solution/solve.sh` as the oracle/reference solution whenever possible.
+7. Validate your task before submitting:
 
 ```bash
 claw-bench validate tasks/<domain>/your-task-name
 ```
 
-The validator checks manifest schema, file references, and scoring configuration. All checks must pass before a task PR will be reviewed.
+To also run the oracle solution against the verifier:
+
+```bash
+claw-bench validate tasks/<domain>/your-task-name --run-oracle
+```
+
+The validator checks the task manifest, required files, and optional oracle execution. All checks should pass before a task PR is reviewed.
 
 ### Bulk Validation
 
-To validate all tasks at once, use the validation script:
+For broad repository checks, you can also use the validation script:
 
 ```bash
-python scripts/validate_all_tasks.py
+python3 scripts/validate_all_tasks.py
 ```
 
-This runs schema validation, file reference checks, and verifier syntax checks across all 210 tasks.
+The bulk validation script performs schema-oriented checks across task manifests. For a changed task, prefer `claw-bench validate ... --run-oracle` because it exercises the same CLI path reviewers are likely to use.
 
 ## Adding Cross-Domain Tasks
 
@@ -45,15 +54,16 @@ Cross-domain tasks span multiple domains and test an agent's ability to coordina
 
 Cross-domain tasks live under `tasks/cross-domain/` and follow the same structure as regular tasks, with these additional requirements:
 
-1. The `task.toml` must list all relevant domains in the `domains` field (a list instead of a single string).
-2. The task must genuinely require capabilities from multiple domains -- not just sequentially invoking single-domain operations.
-3. The verifier should check the integrated outcome, not just individual steps.
+1. Set `domain = "cross-domain"` in `task.toml`.
+2. Use `capabilities`, `required_actions`, and `tags` to describe the different domains and actions involved.
+3. The task must genuinely require capabilities from multiple domains -- not just sequentially invoking single-domain operations.
+4. The verifier should check the integrated outcome, not just individual steps.
 
 Example structure:
 
 ```
-tasks/cross-domain/xd-001-email-to-calendar/
-  task.toml          # domains = ["email", "calendar"]
+tasks/cross-domain/xdom-001-email-to-calendar/
+  task.toml          # domain = "cross-domain"
   instruction.md
   environment/
     setup.sh
@@ -67,47 +77,43 @@ tasks/cross-domain/xd-001-email-to-calendar/
 
 Curated skills provide a standardized skill set for fair cross-framework comparison (the Skills 3-Condition Comparison methodology). To contribute a curated skill:
 
-1. Create a skill definition under `skills/curated/` as a JSON file following the tool manifest schema.
-2. The skill must be framework-agnostic -- it should work with any adapter that implements `supports_skills()` and `load_skills()`.
-3. Include a clear description, input/output schema, and example usage in the JSON manifest.
-4. Add a corresponding test under `tests/skills/` to verify the skill loads correctly.
+1. Create a Markdown guide under `skills/curated/<domain>/`, for example `skills/curated/file-operations/csv-processing.md`.
+2. Keep the skill framework-agnostic. It should describe reusable workflows and checks, not depend on one agent implementation.
+3. Include clear trigger conditions, recommended steps, expected outputs, and examples.
+4. Add or update tests when the skill is loaded or referenced by code.
 5. Document any external dependencies the skill requires.
 
 Curated skills should cover common agent operations (file manipulation, web search, data formatting, etc.) without giving an unfair advantage to any particular framework.
 
 ## Adding Adapters
 
-Adapters allow Claw Bench to drive different agent frameworks. The project currently supports 8 adapters (including the built-in DryRun oracle adapter). To add support for a new framework:
+Adapters allow Claw Bench to drive agent frameworks in local or internal evaluation flows. The current package includes the base adapter interface plus `dryrun` and `openclaw` adapter modules; public benchmark submissions are primarily based on completed task outputs and verifier results.
+
+To add or update an adapter:
 
 1. Create a module under `src/claw_bench/adapters/` (e.g., `my_framework.py`).
 2. Implement the `ClawAdapter` interface defined in `src/claw_bench/adapters/base.py`. Your adapter must provide methods for session setup, action dispatch, and result collection.
 3. Implement `supports_skills()` and `load_skills()` if your framework supports external tools/plugins. This enables the full Skills 3-Condition Comparison.
-4. Register your adapter as an entry point in `pyproject.toml`:
-
-```toml
-[project.entry-points."claw_bench.adapters"]
-my_framework = "claw_bench.adapters.my_framework"
-```
-
-5. Add tests under `tests/adapters/` to cover the basic lifecycle.
+4. Add tests under `tests/unit/` to cover the basic lifecycle and error handling.
+5. Wire the adapter into the CLI or runner path in the same PR if it is meant to be user-facing.
 
 ## Submitting Results
 
 After running a benchmark suite, you can submit results to the public leaderboard:
 
 ```bash
-claw-bench submit results/<run-id>.json
+claw-bench submit --results results/<run-id>
 ```
 
-Make sure your results file includes the required metadata (framework name, version, model, and timestamp). Submissions are verified before they appear on the leaderboard.
+Pass a results directory, not an individual JSON file. The directory should contain `summary.json` or `results.json`. Submissions are packaged with a `manifest.sha256` before upload.
 
 ## General Guidelines
 
-- Run `ruff check .` and `mypy src/` before opening a PR.
+- Run `ruff check .` and `mypy src/` before opening a PR when those tools are installed.
 - Write tests for new functionality and ensure `pytest` passes.
 - Keep PRs focused -- one feature or fix per pull request.
 - Use clear, descriptive commit messages.
-- For task contributions, run `python scripts/validate_all_tasks.py` to ensure no existing tasks are broken.
+- For task contributions, run `claw-bench validate <task-path> --run-oracle` for each changed task. Use `python3 scripts/validate_all_tasks.py` when touching shared task metadata or schema behavior.
 
 ## Questions?
 
