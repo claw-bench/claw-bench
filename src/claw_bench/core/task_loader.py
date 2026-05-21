@@ -81,7 +81,7 @@ class TaskConfig(BaseModel):
     domain: str
     level: str = Field(pattern=r"^L[1-4]$")
     title: str
-    description: str
+    description: str = ""
     timeout: int = Field(default=300, description="Timeout in seconds")
     capabilities: list[str] = Field(default_factory=list)
     required_actions: list[str] = Field(

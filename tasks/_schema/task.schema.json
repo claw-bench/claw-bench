@@ -4,7 +4,7 @@
   "title": "Claw Bench Task Definition",
   "description": "JSON Schema for claw-bench task.toml files",
   "type": "object",
-  "required": ["id", "title", "domain", "level", "description", "timeout", "capabilities"],
+  "required": ["id", "title", "domain", "level", "capabilities"],
   "properties": {
     "id": {
       "type": "string",
@@ -27,18 +27,27 @@
       "type": "string",
       "description": "Task domain category",
       "enum": [
+        "academic-research",
         "calendar",
+        "bioinformatics",
         "code-assistance",
         "communication",
+        "content-analysis",
         "cross-domain",
+        "cs-engineering",
         "data-analysis",
+        "data-science",
         "document-editing",
+        "educational-assessment",
         "email",
         "file-operations",
         "memory",
+        "market-research",
         "multi-agent",
         "multimodal",
+        "regulatory-compliance",
         "security",
+        "scientific-computing",
         "system-admin",
         "web-browsing",
         "workflow-automation",
@@ -93,13 +102,18 @@
         "type": "string",
         "enum": [
           "api-call",
+          "computation",
+          "data-processing",
           "file-read",
           "file-write",
           "file-move",
           "database-query",
+          "database-operation",
           "database-write",
           "script-execution",
+          "statistical-computation",
           "environment-setup",
+          "text-processing",
           "web-navigation",
           "web-scraping",
           "git-operation",
@@ -131,7 +145,7 @@
       "description": "Core capability types tested: reasoning, tool-use, memory, multimodal, collaboration",
       "items": {
         "type": "string",
-        "enum": ["reasoning", "tool-use", "memory", "multimodal", "collaboration"]
+        "enum": ["reasoning", "tool-use", "memory", "multimodal", "collaboration", "coding"]
       },
       "default": []
     }

@@ -10,7 +10,7 @@ from __future__ import annotations
 import logging
 import time
 from threading import Lock
-from typing import Dict, Optional, Tuple
+from typing import Dict, Tuple
 
 import httpx
 
