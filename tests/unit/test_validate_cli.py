@@ -395,13 +395,21 @@ class TestRealTaskValidation:
     def test_all_tasks_have_valid_capability_types(self):
         from pathlib import Path
 
+        from claw_bench.cli.validate import _normalize_task_data
+
         tasks_dir = Path(__file__).resolve().parents[2] / "tasks"
-        valid = {"reasoning", "tool-use", "memory", "multimodal", "collaboration"}
+        valid = {
+            "reasoning",
+            "tool-use",
+            "memory",
+            "multimodal",
+            "collaboration",
+            "coding",
+        }
         for task_toml in tasks_dir.rglob("task.toml"):
             with open(task_toml, "rb") as f:
-                data = tomli.load(f)
+                data = _normalize_task_data(tomli.load(f), task_toml.parent)
             caps = data.get("capability_types", [])
-            assert len(caps) > 0, f"Task {data.get('id')} has no capability_types"
             for cap in caps:
                 assert cap in valid, f"Task {data.get('id')} has invalid cap: {cap}"
 

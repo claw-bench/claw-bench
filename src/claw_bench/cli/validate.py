@@ -7,22 +7,77 @@ from rich.console import Console
 
 console = Console()
 
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
+_TASKS_ROOT = _PROJECT_ROOT / "tasks"
 
-def validate_cmd(
-    task_path: Path = typer.Argument(
-        ...,
-        help="Path to the task directory to validate.",
-        exists=True,
-        file_okay=False,
-        resolve_path=True,
-    ),
-    run_oracle: bool = typer.Option(
-        False,
-        "--run-oracle",
-        help="Run the oracle solution against the verifier.",
-    ),
-) -> None:
-    """Validate a task directory structure and configuration."""
+VALID_DOMAINS = {
+    "academic-research",
+    "accounting",
+    "bioinformatics",
+    "calendar",
+    "clinical-data",
+    "code-assistance",
+    "communication",
+    "content-analysis",
+    "contract-review",
+    "cross-domain",
+    "cs-engineering",
+    "data-analysis",
+    "data-science",
+    "database",
+    "debugging",
+    "document-editing",
+    "education",
+    "educational-assessment",
+    "email",
+    "file-operations",
+    "financial-analysis",
+    "market-research",
+    "math-reasoning",
+    "memory",
+    "multi-agent",
+    "multimodal",
+    "planning",
+    "real-tools",
+    "regulatory-compliance",
+    "scientific-computing",
+    "security",
+    "system-admin",
+    "web-browsing",
+    "workflow-automation",
+}
+
+VALID_CAPABILITIES = {
+    "reasoning",
+    "tool-use",
+    "memory",
+    "multimodal",
+    "collaboration",
+    "coding",
+}
+
+
+def _iter_task_dirs(tasks_root: Path = _TASKS_ROOT):
+    for domain_dir in sorted(tasks_root.iterdir()):
+        if not domain_dir.is_dir() or domain_dir.name.startswith(("_", ".")):
+            continue
+        for task_dir in sorted(domain_dir.iterdir()):
+            if task_dir.is_dir() and not task_dir.name.startswith("."):
+                yield task_dir
+
+
+def _normalize_task_data(config: dict, task_path: Path) -> dict:
+    data = dict(config)
+    task_section = data.pop("task", None)
+    if isinstance(task_section, dict):
+        for key, value in task_section.items():
+            data.setdefault(key, value)
+    data.setdefault("id", task_path.name)
+    return data
+
+
+def _validate_task_dir(task_path: Path, run_oracle: bool) -> bool:
+    """Validate a single task directory structure and configuration."""
     console.print(f"[bold]Validating task:[/] {task_path}\n")
 
     all_passed = True
@@ -60,7 +115,7 @@ def validate_cmd(
 
         try:
             with open(task_toml, "rb") as f:
-                config = tomllib.load(f)
+                config = _normalize_task_data(tomllib.load(f), task_path)
             console.print("[green]\u2713[/] task.toml parses successfully")
 
             # Validate required keys
@@ -83,34 +138,11 @@ def validate_cmd(
                 all_passed = False
 
             # Validate domain against known domains
-            VALID_DOMAINS = {
-                "calendar",
-                "code-assistance",
-                "communication",
-                "cross-domain",
-                "data-analysis",
-                "document-editing",
-                "email",
-                "file-operations",
-                "memory",
-                "multimodal",
-                "security",
-                "system-admin",
-                "web-browsing",
-                "workflow-automation",
-            }
             task_domain = config.get("domain", "")
             if task_domain and task_domain not in VALID_DOMAINS:
                 console.print(f"  [yellow]![/] unknown domain '{task_domain}'")
 
             # Validate capability_types
-            VALID_CAPABILITIES = {
-                "reasoning",
-                "tool-use",
-                "memory",
-                "multimodal",
-                "collaboration",
-            }
             cap_types = config.get("capability_types", [])
             if not cap_types:
                 console.print("  [yellow]![/] no capability_types defined")
@@ -197,10 +229,44 @@ def validate_cmd(
                 "[yellow]![/] No solution/solve.sh found — skipping oracle check"
             )
 
-    # Summary
     console.print()
     if all_passed:
         console.print("[bold green]All checks passed.[/]")
     else:
         console.print("[bold red]Some checks failed.[/]")
+
+    return all_passed
+
+
+def validate_cmd(
+    task_path: Path = typer.Argument(
+        None,
+        help="Path to the task directory to validate. Defaults to all tasks.",
+        exists=True,
+        file_okay=False,
+        resolve_path=True,
+    ),
+    run_oracle: bool = typer.Option(
+        False,
+        "--run-oracle",
+        help="Run the oracle solution against the verifier.",
+    ),
+) -> None:
+    """Validate one task directory, or all tasks when no path is provided."""
+    if task_path is None:
+        task_dirs = list(_iter_task_dirs())
+        passed = 0
+        failed = 0
+        for task_dir in task_dirs:
+            if _validate_task_dir(task_dir, run_oracle):
+                passed += 1
+            else:
+                failed += 1
+
+        console.print(f"[bold]Summary:[/] {passed}/{len(task_dirs)} tasks passed.")
+        if failed:
+            raise typer.Exit(code=1)
+        return
+
+    if not _validate_task_dir(task_path, run_oracle):
         raise typer.Exit(code=1)
