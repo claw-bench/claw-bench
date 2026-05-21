@@ -1,0 +1,41 @@
+{
+  "project_name": "fastapi-webapp",
+  "framework": "FastAPI",
+  "language": "Python",
+  "python_versions": ["3.10", "3.11", "3.12"],
+  "test_framework": "pytest",
+  "lint_tools": ["ruff", "black"],
+  "dependency_file": "requirements.txt",
+  "package_manager": "pip",
+  "containerization": {
+    "enabled": true,
+    "dockerfile": "Dockerfile",
+    "image_name": "fastapi-webapp"
+  },
+  "deployment": {
+    "target": "AWS ECS",
+    "environment": "production",
+    "registry": "Amazon ECR",
+    "cluster": "fastapi-cluster",
+    "service": "fastapi-webapp-service"
+  },
+  "branch_strategy": {
+    "primary_branch": "main",
+    "development_branch": "develop",
+    "deploy_branch": "main",
+    "pull_request_targets": ["main"]
+  },
+  "requirements": [
+    "Run linting before tests",
+    "Run pytest on supported Python versions",
+    "Build a Docker image after tests pass",
+    "Deploy only from the main branch",
+    "Use GitHub secrets for cloud credentials"
+  ],
+  "secrets": [
+    "AWS_ACCESS_KEY_ID",
+    "AWS_SECRET_ACCESS_KEY",
+    "AWS_REGION",
+    "ECR_REGISTRY"
+  ]
+}
