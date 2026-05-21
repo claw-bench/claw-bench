@@ -18,7 +18,10 @@ import subprocess
 import sys
 from pathlib import Path
 
-import tomli
+try:
+    import tomllib
+except ModuleNotFoundError:  # pragma: no cover - Python < 3.11 fallback
+    import tomli as tomllib
 
 # Project root is one level up from the scripts/ directory
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -91,6 +94,22 @@ def validate_toml_against_schema(data: dict, schema: dict) -> list[str]:
     return errors
 
 
+def normalize_task_data(raw: dict, task_dir: Path) -> dict:
+    """Normalize task.toml into the same shape used by the runtime loader."""
+    data = dict(raw)
+
+    # Current tasks may use either top-level keys or a [task] table.
+    # The runtime loader merges [task] into the top level, so CI should
+    # validate the same effective task definition.
+    task_section = data.pop("task", None)
+    if isinstance(task_section, dict):
+        for key, value in task_section.items():
+            data.setdefault(key, value)
+
+    data.setdefault("id", task_dir.name)
+    return data
+
+
 def validate_task_dir(task_dir: Path, schema: dict) -> list[str]:
     """Validate a single task directory. Returns a list of error strings."""
     errors: list[str] = []
@@ -103,7 +122,7 @@ def validate_task_dir(task_dir: Path, schema: dict) -> list[str]:
 
     try:
         with open(toml_path, "rb") as fh:
-            data = tomli.load(fh)
+            data = normalize_task_data(tomllib.load(fh), task_dir)
     except Exception as exc:
         errors.append(f"task.toml parse error: {exc}")
         return errors

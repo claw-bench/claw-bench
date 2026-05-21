@@ -9,7 +9,6 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
-import os
 import time
 from collections import defaultdict
 from pathlib import Path
@@ -1083,10 +1082,8 @@ async def _update_existing_claw(
             existing["agentProfile"]["profileId"] = claw_id
         if new_data.get("progressive"):
             existing["progressive"] = new_data["progressive"]
-        best_model = new_model
         status_msg = f"Updated: {old_overall:.1f} → {new_overall:.1f} (tasks: {old_task_count} → {new_task_count})"
     else:
-        best_model = existing.get("model", new_model)
         status_msg = f"Score {new_overall:.1f} did not beat best {old_overall:.1f}. Count updated."
 
     if custom_name:

@@ -246,7 +246,7 @@ def submit_api(results_dir: Path, server_url: str = "https://clawbench.net", cla
         lines = [f"Now live on the leaderboard! Global rank: #{rank} of {total}"]
         if tier_rank and tier_total:
             lines.append(f"{tier} tier rank: #{tier_rank} of {tier_total}")
-        lines.append(f"View at: https://clawbench.net")
+        lines.append("View at: https://clawbench.net")
         return "\n".join(lines)
     elif resp.status_code == 409:
         return "Duplicate: identical results already exist on the leaderboard."

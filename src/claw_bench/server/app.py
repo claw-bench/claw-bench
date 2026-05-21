@@ -12,7 +12,6 @@ import json
 import logging
 import time
 from pathlib import Path
-from typing import Optional
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -126,5 +125,4 @@ if _LEADERBOARD_DIR.exists():
     app.mount(
         "/", StaticFiles(directory=str(_LEADERBOARD_DIR), html=True), name="frontend"
     )
-
 
