@@ -40,13 +40,13 @@ The validator checks the task manifest, required files, and optional oracle exec
 
 ### Bulk Validation
 
-To validate all tasks at once, use the validation script:
+For broad repository checks, you can also use the validation script:
 
 ```bash
 python3 scripts/validate_all_tasks.py
 ```
 
-This runs repository-wide task checks. For a changed task, still run `claw-bench validate ... --run-oracle` because it exercises the same CLI path reviewers are likely to use.
+The bulk validation script performs schema-oriented checks across task manifests. For a changed task, prefer `claw-bench validate ... --run-oracle` because it exercises the same CLI path reviewers are likely to use.
 
 ## Adding Cross-Domain Tasks
 
@@ -105,7 +105,7 @@ After running a benchmark suite, you can submit results to the public leaderboar
 claw-bench submit --results results/<run-id>
 ```
 
-The results directory should contain `summary.json` or `results.json`. Submissions are packaged with a `manifest.sha256` before upload.
+Pass a results directory, not an individual JSON file. The directory should contain `summary.json` or `results.json`. Submissions are packaged with a `manifest.sha256` before upload.
 
 ## General Guidelines
 

@@ -136,7 +136,7 @@ tags = ["cross-domain", "calendar", "research", "communication"]
 | id | string | yes | Unique identifier (e.g. `cal-001`) |
 | title | string | yes | Human-readable name |
 | track | string | no | `foundation` or `subject-matter`; set this explicitly for subject-matter tasks unless the domain is already auto-classified by `task_loader.py` |
-| domain | string | yes | Domain name matching the task directory or an accepted benchmark domain |
+| domain | enum | yes | One of the values allowed by `tasks/_schema/task.schema.json`; should match the task directory |
 | level | enum | yes | Difficulty: L1, L2, L3, or L4 |
 | description | string | yes | What the task requires |
 | timeout | integer | yes | Max execution time in seconds |
@@ -200,11 +200,14 @@ claw-bench validate tasks/<domain>/<task-id>
 claw-bench validate tasks/<domain>/<task-id> --run-oracle
 ```
 
-For repository-wide task checks, use:
+For repository-wide validation, you can also use:
 
 ```bash
 python3 scripts/validate_all_tasks.py
+python3 scripts/validate_all_tasks.py --run-oracle
 ```
+
+The bulk validation script performs schema-oriented checks and can run oracle solutions with `--run-oracle`. For changed tasks, prefer the single-task `claw-bench validate <task-path> --run-oracle` workflow above because it matches the CLI path reviewers are likely to use.
 
 You can also run an oracle solution and verifier manually:
 
@@ -214,10 +217,6 @@ bash "$TASK/environment/setup.sh" "$TASK/workspace"
 bash "$TASK/solution/solve.sh" "$TASK/workspace"
 python3 -m pytest "$TASK/verifier/test_output.py" --workspace="$TASK/workspace" --rootdir=tasks
 ```
-
-The `scripts/validate_all_tasks.py` script checks:
-- Task metadata parses and required fields are present
-- Every task has the required `instruction.md` and `verifier/test_output.py`
 
 ## Quarterly Rotation
 
