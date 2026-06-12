@@ -1,11 +1,14 @@
 import json
+import os
 import pytest
-import pandas as pd
 from pathlib import Path
 
 @pytest.fixture
-def workspace_path():
-    return Path(__file__).parent.parent
+def workspace_path(request):
+    ws = request.config.getoption("--workspace")
+    if ws is not None:
+        return Path(ws)
+    return Path(os.environ.get("CLAW_WORKSPACE", os.environ.get("WORKSPACE", "workspace")))
 
 @pytest.mark.weight(3)
 def test_output_file_exists(workspace_path):

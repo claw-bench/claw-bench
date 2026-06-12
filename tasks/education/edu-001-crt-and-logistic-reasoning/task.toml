@@ -1,12 +1,13 @@
-id = "edu-001"
-title = "Auto-generated task"
-track = "subject-matter"
+[task]
+id = "edu-001-crt-and-logistic-reasoning"
+title = "CRT Scoring and Logistic Reasoning"
 domain = "education"
 level = "L2"
-description = "Auto-generated task — needs manual review"
+track = "subject-matter"
+description = "Score Cognitive Reflection Test responses and fit a logistic-regression model of reflective reasoning."
 timeout = 300
+tags = ["education", "crt", "logistic-regression", "reasoning"]
 capabilities = ["script-execution", "file-write"]
-required_actions = ["script-execution", "file-write"]
+required_actions = ["file-read", "computation", "file-write"]
 skills_allowed = true
-tags = ["auto-generated", "education"]
 capability_types = ["tool-use", "reasoning"]

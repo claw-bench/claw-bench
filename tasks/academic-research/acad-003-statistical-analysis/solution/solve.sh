@@ -51,7 +51,7 @@ else:
     test_name = 'ANOVA'
     effect_size = eta_sq
 
-significant = p_value < alpha
+significant = bool(p_value < alpha)
 
 # Write results CSV
 with open(results_file, 'w', newline='') as f:

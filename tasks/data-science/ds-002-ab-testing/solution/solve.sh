@@ -46,10 +46,15 @@ contingency = [
 ]
 
 chi2, p_value, _, _ = chi2_contingency(contingency, correction=False)
+chi2 = float(chi2)
+p_value = float(p_value)
 
-lift = (treatment_rate - control_rate) / control_rate if control_rate > 0 else 0
+control_rate = float(control_rate)
+treatment_rate = float(treatment_rate)
 
-significant = p_value < 0.05
+lift = float((treatment_rate - control_rate) / control_rate) if control_rate > 0 else 0.0
+
+significant = bool(p_value < 0.05)
 
 recommendation = "Implement treatment" if significant and lift > 0 else "Do not implement treatment"
 

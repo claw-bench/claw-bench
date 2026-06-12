@@ -1,86 +1,62 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 mkdir -p "$WORKSPACE"
 
+# Solve the Lotka-Volterra predator-prey system with the classical 4th-order
+# Runge-Kutta method. The integration is performed inside a single Python
+# process for speed and numerical precision (a pure-bash loop spawning a
+# Python subprocess per arithmetic operation is correct but far too slow to
+# complete ~5000 RK4 steps within any reasonable time budget).
+python3 - <<'PYEOF'
+import os
+import csv
+import json
+
+WORKSPACE = os.environ.get("WORKSPACE", "workspace")
+
 # Parameters
-A=1.1
-B=0.4
-C=0.4
-D=0.1
-X0=10.0
-Y0=10.0
-T0=0.0
-TEND=50.0
-DT=0.01
-
-# Number of steps
-NSTEPS=$(python3 -c "import math; print(int(round(($TEND - $T0)/$DT)))")
-
-# Function to compute derivatives
-# Arguments: t x y
-# Outputs dx dt, dy dt
-function f() {
-  local x=$1
-  local y=$2
-  # dx/dt = a*x - b*x*y
-  local dx=$(python3 -c "print($A * $x - $B * $x * $y)")
-  # dy/dt = -c*y + d*x*y
-  local dy=$(python3 -c "print(-$C * $y + $D * $x * $y)")
-  echo "$dx $dy"
-}
-
-# Runge-Kutta 4th order step
-# Arguments: x y dt
-# Outputs: x_next y_next
-function rk4_step() {
-  local x=$1
-  local y=$2
-  local dt=$3
-
-  read k1x k1y <<< $(f $x $y)
-  read k2x k2y <<< $(f $(python3 -c "print($x + $dt/2 * $k1x)") $(python3 -c "print($y + $dt/2 * $k1y)"))
-  read k3x k3y <<< $(f $(python3 -c "print($x + $dt/2 * $k2x)") $(python3 -c "print($y + $dt/2 * $k2y)"))
-  read k4x k4y <<< $(f $(python3 -c "print($x + $dt * $k3x)") $(python3 -c "print($y + $dt * $k3y)"))
-
-  local x_next=$(python3 -c "print($x + $dt/6 * ($k1x + 2*$k2x + 2*$k3x + $k4x))")
-  local y_next=$(python3 -c "print($y + $dt/6 * ($k1y + 2*$k2y + 2*$k3y + $k4y))")
-
-  echo "$x_next $y_next"
-}
-
-# Write header
-echo "t,prey,predator" > "$WORKSPACE/simulation.csv"
-
+a, b, c, d = 1.1, 0.4, 0.4, 0.1
 # Initial conditions
-t=$T0
-x=$X0
-y=$Y0
+x0, y0 = 10.0, 10.0
+# Time interval
+t0, t_end, dt = 0.0, 50.0, 0.01
 
-# Write initial row
-printf "%.2f,%.10f,%.10f\n" "$t" "$x" "$y" >> "$WORKSPACE/simulation.csv"
+n_steps = int(round((t_end - t0) / dt))
 
-for ((i=1; i<=NSTEPS; i++)); do
-  read x y <<< $(rk4_step $x $y $DT)
-  t=$(python3 -c "print($T0 + $i * $DT)")
-  printf "%.2f,%.10f,%.10f\n" "$t" "$x" "$y" >> "$WORKSPACE/simulation.csv"
-  # Safety check: populations should not be negative
-  if (( $(echo "$x < 0" | bc -l) )); then
-    echo "Warning: prey population negative at t=$t" >&2
-  fi
-  if (( $(echo "$y < 0" | bc -l) )); then
-    echo "Warning: predator population negative at t=$t" >&2
-  fi
-done
 
-# Compute equilibrium
-prey_eq=$(python3 -c "print($C / $D)")
-pred_eq=$(python3 -c "print($A / $B)")
+def f(x, y):
+    # dx/dt = a*x - b*x*y ; dy/dt = -c*y + d*x*y
+    return (a * x - b * x * y, -c * y + d * x * y)
 
-cat > "$WORKSPACE/equilibrium.json" <<EOF
-{
-  "prey": $prey_eq,
-  "predator": $pred_eq
-}
-EOF
+
+def rk4_step(x, y, dt):
+    k1x, k1y = f(x, y)
+    k2x, k2y = f(x + dt / 2 * k1x, y + dt / 2 * k1y)
+    k3x, k3y = f(x + dt / 2 * k2x, y + dt / 2 * k2y)
+    k4x, k4y = f(x + dt * k3x, y + dt * k3y)
+    x_next = x + dt / 6 * (k1x + 2 * k2x + 2 * k3x + k4x)
+    y_next = y + dt / 6 * (k1y + 2 * k2y + 2 * k3y + k4y)
+    return (x_next, y_next)
+
+
+csv_path = os.path.join(WORKSPACE, "simulation.csv")
+with open(csv_path, "w", newline="") as fh:
+    writer = csv.writer(fh)
+    writer.writerow(["t", "prey", "predator"])
+
+    t, x, y = t0, x0, y0
+    writer.writerow([f"{t:.2f}", f"{x:.10f}", f"{y:.10f}"])
+
+    for i in range(1, n_steps + 1):
+        x, y = rk4_step(x, y, dt)
+        t = t0 + i * dt
+        writer.writerow([f"{t:.2f}", f"{x:.10f}", f"{y:.10f}"])
+
+# Analytical equilibrium: x* = c/d, y* = a/b
+equilibrium = {"prey": c / d, "predator": a / b}
+with open(os.path.join(WORKSPACE, "equilibrium.json"), "w") as fh:
+    json.dump(equilibrium, fh, indent=2)
+PYEOF

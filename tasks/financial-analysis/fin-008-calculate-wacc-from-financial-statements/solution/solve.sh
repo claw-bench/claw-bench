@@ -1,49 +1,74 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
-WORKSPACE=${1:-.}
+WORKSPACE="${1:-workspace}"
 
-# Read input files
-balance_sheet="$WORKSPACE/environment/data/balance_sheet.csv"
-income_statement="$WORKSPACE/environment/data/income_statement.csv"
+python3 - "$WORKSPACE" <<'PYEOF'
+import csv
+import json
+import sys
+from pathlib import Path
 
-# Parse data
-equity=$(awk -F, '/Total Equity/ {print $2}' "$balance_sheet" | tr -d ' ')
-total_debt=$(awk -F, '/Long-term Debt/ {d=$2} /Short-term Debt/ {d+=$2} END {print d}' "$balance_sheet" | tr -d ' ')
-interest_expense=$(awk -F, '/Interest Expense/ {print $2}' "$income_statement" | tr -d ' ')
-tax_expense=$(awk -F, '/Income Tax Expense/ {print $2}' "$income_statement" | tr -d ' ')
-ebt=$(awk -F, '/Income Before Tax/ {print $2}' "$income_statement" | tr -d ' ')
+workspace = Path(sys.argv[1])
+balance_sheet = workspace / "environment" / "data" / "balance_sheet.csv"
+income_statement = workspace / "environment" / "data" / "income_statement.csv"
 
-# Calculate components
-market_value_equity=$equity
-market_value_debt=$total_debt
-firm_value=$((market_value_equity + market_value_debt))
+
+def read_items(path):
+    items = {}
+    with open(path, newline="") as f:
+        reader = csv.reader(f)
+        next(reader, None)  # skip header
+        for row in reader:
+            if len(row) < 2:
+                continue
+            items[row[0].strip()] = float(row[1].strip())
+    return items
+
+
+bs = read_items(balance_sheet)
+is_ = read_items(income_statement)
+
+# Balance sheet figures
+equity = bs["Total Equity"]
+total_debt = bs["Long-term Debt"] + bs["Short-term Debt"]
+
+# Income statement figures
+interest_expense = is_["Interest Expense"]
+tax_expense = is_["Income Tax Expense"]
+ebt = is_["Income Before Tax"]
+
+# Market values and firm value
+market_value_equity = equity
+market_value_debt = total_debt
+firm_value = market_value_equity + market_value_debt
 
 # CAPM parameters
-risk_free_rate=0.03
-market_return=0.08
-beta=1.2
+risk_free_rate = 0.03
+market_return = 0.08
+beta = 1.2
 
-# Calculations
-cost_of_equity=$(echo "$risk_free_rate + $beta * ($market_return - $risk_free_rate)" | bc -l)
-cost_of_debt=$(echo "$interest_expense / $market_value_debt" | bc -l)
-tax_rate=$(echo "$tax_expense / $ebt" | bc -l)
+# Components (handle zero-denominator edge cases gracefully)
+cost_of_equity = risk_free_rate + beta * (market_return - risk_free_rate)
+cost_of_debt = interest_expense / market_value_debt if market_value_debt else 0.0
+tax_rate = tax_expense / ebt if ebt else 0.0
 
-equity_weight=$(echo "$market_value_equity / $firm_value" | bc -l)
-debt_weight=$(echo "$market_value_debt / $firm_value" | bc -l)
+equity_weight = market_value_equity / firm_value if firm_value else 0.0
+debt_weight = market_value_debt / firm_value if firm_value else 0.0
 
-wacc=$(echo "$equity_weight * $cost_of_equity + $debt_weight * $cost_of_debt * (1 - $tax_rate)" | bc -l)
+wacc = equity_weight * cost_of_equity + debt_weight * cost_of_debt * (1 - tax_rate)
 
-# Create output JSON
-cat > "$WORKSPACE/wacc_report.json" <<EOF
-{
-    "equity_weight": $(printf "%.4f" $equity_weight),
-    "debt_weight": $(printf "%.4f" $debt_weight),
-    "cost_of_equity": $(printf "%.4f" $cost_of_equity),
-    "cost_of_debt": $(printf "%.4f" $cost_of_debt),
-    "tax_rate": $(printf "%.4f" $tax_rate),
-    "final_wacc": $(printf "%.4f" $wacc)
+report = {
+    "equity_weight": round(equity_weight, 4),
+    "debt_weight": round(debt_weight, 4),
+    "cost_of_equity": round(cost_of_equity, 4),
+    "cost_of_debt": round(cost_of_debt, 4),
+    "tax_rate": round(tax_rate, 4),
+    "final_wacc": round(wacc, 4),
 }
-EOF
+
+with open(workspace / "wacc_report.json", "w") as f:
+    json.dump(report, f, indent=4)
+PYEOF
 
 echo "WACC calculation complete"

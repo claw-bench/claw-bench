@@ -5,8 +5,8 @@ import pandas as pd
 from pathlib import Path
 
 @pytest.fixture
-def workspace_path():
-    return Path("workspace")
+def workspace_path(workspace):
+    return workspace
 
 def test_output_file_exists(workspace_path):
     output_file = workspace_path / "risk_report.json"

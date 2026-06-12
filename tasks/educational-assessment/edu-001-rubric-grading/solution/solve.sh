@@ -73,21 +73,27 @@ def score_criterion(text, criterion_info):
     words = tokenize(text)
     spelling_errors = count_spelling_errors(words)
 
-    # Sentence length score: 0 if <5 or >25, linear max at 15
+    # Sentence length score: full credit in the optimal 10-20 word band,
+    # linear taper to 0 at 5 and 25 words, 0 outside [5, 25]
     if avg_sent_len < 5 or avg_sent_len > 25:
         sent_len_score = 0
+    elif 10 <= avg_sent_len <= 20:
+        sent_len_score = 1.0
+    elif avg_sent_len < 10:
+        sent_len_score = (avg_sent_len - 5) / 5  # 5 -> 0, 10 -> 1
     else:
-        # Max score at 15 words
-        sent_len_score = 1 - abs(avg_sent_len - 15) / 10  # between 0 and 1
-        sent_len_score = max(0, sent_len_score)
+        sent_len_score = (25 - avg_sent_len) / 5  # 20 -> 1, 25 -> 0
+    sent_len_score = max(0, sent_len_score)
 
     # Spelling score: max 1, decrease by 0.05 per error, min 0
     spelling_score = max(0, 1 - 0.05 * spelling_errors)
 
     text_quality_score = (sent_len_score + spelling_score) / 2  # average
 
-    # Combine
-    combined_score = 0.6 * keyword_fraction + 0.4 * text_quality_score
+    # Combine keyword presence and text quality with equal weight so that
+    # strong text quality (optimal sentence length, no spelling errors)
+    # guarantees at least half credit even when few keywords match.
+    combined_score = 0.5 * keyword_fraction + 0.5 * text_quality_score
 
     final_score = combined_score * max_points
 

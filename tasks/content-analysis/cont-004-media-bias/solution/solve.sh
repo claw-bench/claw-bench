@@ -12,8 +12,9 @@ from textblob import TextBlob
 
 loaded_language_words = {"radical", "unprecedented", "allegedly", "controversial", "extreme", "biased", "sensational", "propaganda", "manipulative", "exaggerated"}
 
-articles_dir = Path(os.path.join(os.environ.get("CLAW_WORKSPACE", "./"), "articles"))
-output_file = Path(os.path.join(os.environ.get("CLAW_WORKSPACE", "./"), "bias_report.json"))
+workspace = os.environ.get("CLAW_WORKSPACE") or os.environ.get("WORKSPACE", "./")
+articles_dir = Path(os.path.join(workspace, "articles"))
+output_file = Path(os.path.join(workspace, "bias_report.json"))
 
 articles_data = []
 sources_set = set()
