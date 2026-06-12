@@ -1,0 +1,22 @@
+{
+  "description": "Factory production planning: maximize profit subject to shared resource limits.",
+  "products": {
+    "A": {
+      "profit_per_unit": 9,
+      "resources": { "labor": 2, "material": 4, "machine_time": 1 }
+    },
+    "B": {
+      "profit_per_unit": 10,
+      "resources": { "labor": 3, "material": 2, "machine_time": 2 }
+    },
+    "C": {
+      "profit_per_unit": 13,
+      "resources": { "labor": 4, "material": 2, "machine_time": 3 }
+    }
+  },
+  "resource_limits": {
+    "labor": 140,
+    "material": 110,
+    "machine_time": 95
+  }
+}

@@ -154,31 +154,24 @@ def generate_task_results(
 
 
 def load_tasks() -> list[dict]:
-    """Load minimal task info from task.toml files."""
-    import tomli
+    """Load minimal task info from task.toml files.
 
-    tasks_root = _PROJECT_ROOT / "tasks"
-    tasks = []
+    Uses the canonical task loader so that all supported task.toml layouts
+    (including the ``[task]`` section format used by subject-matter tasks and
+    directory-name id injection) are handled consistently.
+    """
+    from claw_bench.core.task_loader import load_all_tasks
 
-    for domain_dir in sorted(tasks_root.iterdir()):
-        if not domain_dir.is_dir() or domain_dir.name.startswith(("_", ".")):
-            continue
-        for task_dir in sorted(domain_dir.iterdir()):
-            if not task_dir.is_dir():
-                continue
-            toml_path = task_dir / "task.toml"
-            if not toml_path.exists():
-                continue
-            with open(toml_path, "rb") as f:
-                data = tomli.load(f)
-            tasks.append({
-                "id": data["id"],
-                "domain": data["domain"],
-                "level": data["level"],
-                "title": data["title"],
-            })
-
-    return tasks
+    configs, _ = load_all_tasks(_PROJECT_ROOT / "tasks")
+    return [
+        {
+            "id": cfg.id,
+            "domain": cfg.domain,
+            "level": cfg.level,
+            "title": cfg.title,
+        }
+        for cfg in configs
+    ]
 
 
 def _domain_breakdown(results: list[dict]) -> dict[str, float]:
@@ -211,7 +204,9 @@ def _level_breakdown(results: list[dict]) -> dict[str, float]:
     level_scores: dict[str, list[float]] = {"L1": [], "L2": [], "L3": [], "L4": []}
     for r in results:
         tid = r["task_id"]
-        num = int(tid.split("-")[-1])
+        # Task ids look like "<prefix>-<NNN>[-<suffix>]"; pull the first
+        # numeric segment rather than assuming the last segment is a number.
+        num = next((int(p) for p in tid.split("-") if p.isdigit()), 0)
         if num <= 5:
             level_scores["L1"].append(r["score"])
         elif num <= 10:

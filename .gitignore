@@ -44,8 +44,10 @@ tasks/**/workspace/
 # Checkpoint files
 .checkpoint.json
 
-# Runtime data (admin token, results, etc.)
-data/
+# Runtime data (admin token, results, etc.) — root-level only.
+# Anchored with a leading slash so it does NOT match per-task input fixtures
+# under tasks/<domain>/<task>/environment/data/, which MUST be committed.
+/data/
 
 # Docker SSL certs (sensitive)
 docker/ssl-certs/

@@ -6,6 +6,7 @@ Skipped by default in normal test runs.
 
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -60,7 +61,7 @@ def test_oracle_solution(task_dir, tmp_path):
     verifier = task_dir / "verifier" / "test_output.py"
     result = subprocess.run(
         [
-            "python",
+            sys.executable,
             "-m",
             "pytest",
             str(verifier),

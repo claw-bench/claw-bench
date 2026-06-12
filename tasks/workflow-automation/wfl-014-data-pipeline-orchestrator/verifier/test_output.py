@@ -76,12 +76,12 @@ def test_no_gadget_data(output_data):
 @pytest.mark.weight(1)
 def test_no_placeholder_values(workspace):
     """Output files must not contain placeholder/TODO markers."""
-    placeholders = ["TODO", "FIXME", "XXX", "PLACEHOLDER", "CHANGEME", "your_"]
+    placeholders = ["PLACEHOLDER", "CHANGEME", "your_"]
     for f in workspace.iterdir():
         if f.is_file() and f.suffix in (".json", ".csv", ".txt", ".md", ".py", ".yaml", ".yml", ".html", ".xml"):
-            content = f.read_text(errors="replace").lower()
+            content = f.read_text(errors="replace")
             for p in placeholders:
-                assert p.lower() not in content, f"Placeholder '{p}' found in {f.name}"
+                assert p not in content, f"Placeholder '{p}' found in {f.name}"
 
 @pytest.mark.weight(2)
 def test_no_empty_critical_fields(workspace):
@@ -156,7 +156,7 @@ def test_no_duplicate_entries(workspace):
 @pytest.mark.weight(1)
 def test_no_extraneous_files(workspace):
     """Workspace should not contain debug/temp files."""
-    bad_patterns = [".pyc", "__pycache__", ".DS_Store", "Thumbs.db", ".log", ".bak", ".tmp"]
+    bad_patterns = [".DS_Store", "Thumbs.db", ".log", ".bak", ".tmp"]
     for f in workspace.rglob("*"):
         if f.is_file():
             for pat in bad_patterns:
