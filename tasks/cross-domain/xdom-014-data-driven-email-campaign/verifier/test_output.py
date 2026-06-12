@@ -17,25 +17,22 @@ def workspace(request):
     return Path(os.environ.get("CLAW_WORKSPACE", os.environ.get("WORKSPACE", "workspace")))
 
 
-WORKSPACE = os.environ.get(
-    "WORKSPACE",
-    os.path.join(os.path.dirname(__file__), "..", "workspace"),
-)
-
-OUTPUT_DIR = os.path.join(WORKSPACE, "output")
+@pytest.fixture
+def output_dir(workspace):
+    return workspace / "output"
 
 
 @pytest.fixture
-def summary():
-    path = os.path.join(OUTPUT_DIR, "campaign_summary.json")
-    assert os.path.exists(path), "campaign_summary.json not found in output/"
+def summary(output_dir):
+    path = output_dir / "campaign_summary.json"
+    assert path.exists(), "campaign_summary.json not found in output/"
     with open(path) as f:
         return json.load(f)
 
 
 class TestOutputDirectoryExists:
-    def test_output_dir(self):
-        assert os.path.isdir(OUTPUT_DIR), "output/ directory not found in workspace"
+    def test_output_dir(self, output_dir):
+        assert output_dir.is_dir(), "output/ directory not found in workspace"
 
 
 class TestCampaignSummaryStructure:
@@ -82,10 +79,10 @@ class TestCustomerEligibility:
 
     OPTED_OUT_IDS = ["1010", "1012", "1017"]
 
-    def test_opted_out_customers_excluded(self):
+    def test_opted_out_customers_excluded(self, output_dir):
         for cid in self.OPTED_OUT_IDS:
-            path = os.path.join(OUTPUT_DIR, f"{cid}.html")
-            assert not os.path.exists(path), (
+            path = output_dir / f"{cid}.html"
+            assert not path.exists(), (
                 f"Customer {cid} is opted out and should not have an email file"
             )
 
@@ -93,81 +90,81 @@ class TestCustomerEligibility:
     # Eligible premium: 1001 (12500), 1002 (9800.50), 1009 (15200), 1013 (8700)
     PREMIUM_IDS = ["1001", "1002", "1009", "1013"]
 
-    def test_premium_emails_generated(self):
+    def test_premium_emails_generated(self, output_dir):
         for cid in self.PREMIUM_IDS:
-            path = os.path.join(OUTPUT_DIR, f"{cid}.html")
-            assert os.path.exists(path), f"Premium customer {cid} should have an email"
+            path = output_dir / f"{cid}.html"
+            assert path.exists(), f"Premium customer {cid} should have an email"
 
     # New: max_purchase_count=5, opted_in=true
     # Eligible new: 1005 (2), 1006 (1), 1011 (3), 1015 (1), 1019 (2)
     NEW_IDS = ["1005", "1006", "1011", "1015", "1019"]
 
-    def test_new_customer_emails_generated(self):
+    def test_new_customer_emails_generated(self, output_dir):
         for cid in self.NEW_IDS:
-            path = os.path.join(OUTPUT_DIR, f"{cid}.html")
-            assert os.path.exists(path), f"New customer {cid} should have an email"
+            path = output_dir / f"{cid}.html"
+            assert path.exists(), f"New customer {cid} should have an email"
 
 
 class TestTemplateSubstitution:
     """Verify variables are substituted in generated emails."""
 
-    def test_no_raw_placeholders(self):
+    def test_no_raw_placeholders(self, output_dir):
         """No {{variable}} placeholders should remain in any output file."""
-        for fname in os.listdir(OUTPUT_DIR):
+        for fname in os.listdir(output_dir):
             if not fname.endswith(".html"):
                 continue
-            with open(os.path.join(OUTPUT_DIR, fname)) as f:
+            with open(output_dir / fname) as f:
                 content = f.read()
             matches = re.findall(r'\{\{[a-z_]+\}\}', content)
             assert not matches, (
                 f"File {fname} has unsubstituted placeholders: {matches}"
             )
 
-    def test_premium_customer_has_offer_code(self):
+    def test_premium_customer_has_offer_code(self, output_dir):
         """Premium emails should contain VIP25SPRING."""
-        path = os.path.join(OUTPUT_DIR, "1001.html")
-        if os.path.exists(path):
+        path = output_dir / "1001.html"
+        if path.exists():
             with open(path) as f:
                 content = f.read()
             assert "VIP25SPRING" in content, (
                 "Premium email should contain offer code VIP25SPRING"
             )
 
-    def test_winback_customer_has_offer_code(self):
+    def test_winback_customer_has_offer_code(self, output_dir):
         """Lapsed/winback emails should contain COMEBACK30."""
         # 1007 is lapsed and opted in
-        path = os.path.join(OUTPUT_DIR, "1007.html")
-        if os.path.exists(path):
+        path = output_dir / "1007.html"
+        if path.exists():
             with open(path) as f:
                 content = f.read()
             assert "COMEBACK30" in content, (
                 "Winback email should contain offer code COMEBACK30"
             )
 
-    def test_new_customer_has_bonus_item(self):
+    def test_new_customer_has_bonus_item(self, output_dir):
         """New customer emails should mention the Acme Tote Bag."""
-        path = os.path.join(OUTPUT_DIR, "1005.html")
-        if os.path.exists(path):
+        path = output_dir / "1005.html"
+        if path.exists():
             with open(path) as f:
                 content = f.read()
             assert "Acme Tote Bag" in content, (
                 "New customer email should mention bonus item"
             )
 
-    def test_customer_name_substituted(self):
+    def test_customer_name_substituted(self, output_dir):
         """Emails should contain the customer's first name."""
-        path = os.path.join(OUTPUT_DIR, "1001.html")
-        if os.path.exists(path):
+        path = output_dir / "1001.html"
+        if path.exists():
             with open(path) as f:
                 content = f.read()
             assert "Alice" in content, "Email for 1001 should contain 'Alice'"
 
-    def test_emails_are_valid_html(self):
+    def test_emails_are_valid_html(self, output_dir):
         """Each email should have basic HTML structure."""
-        for fname in os.listdir(OUTPUT_DIR):
+        for fname in os.listdir(output_dir):
             if not fname.endswith(".html"):
                 continue
-            with open(os.path.join(OUTPUT_DIR, fname)) as f:
+            with open(output_dir / fname) as f:
                 content = f.read()
             assert "<html" in content.lower(), f"{fname} missing <html> tag"
             assert "</html>" in content.lower(), f"{fname} missing </html> tag"
@@ -186,12 +183,12 @@ class TestABTestVariants:
                 assert dist["variant_a"] + dist["variant_b"] > 0
         assert has_ab, "At least one segment should have A/B test distribution"
 
-    def test_premium_ab_even_odd_split(self):
+    def test_premium_ab_even_odd_split(self, output_dir):
         """Premium: 1001(odd->B), 1002(even->A), 1009(odd->B), 1013(odd->B)."""
         # 1002 (even) should get subject_a, 1001 (odd) should get subject_b
-        path_a = os.path.join(OUTPUT_DIR, "1002.html")
-        path_b = os.path.join(OUTPUT_DIR, "1001.html")
-        if os.path.exists(path_a) and os.path.exists(path_b):
+        path_a = output_dir / "1002.html"
+        path_b = output_dir / "1001.html"
+        if path_a.exists() and path_b.exists():
             with open(path_a) as f:
                 content_a = f.read()
             with open(path_b) as f:
@@ -202,9 +199,9 @@ class TestABTestVariants:
                 "A/B test variants should use different subject lines"
             )
 
-    def test_email_count(self):
+    def test_email_count(self, output_dir):
         """Verify reasonable number of email files generated."""
-        html_files = [f for f in os.listdir(OUTPUT_DIR) if f.endswith(".html")]
+        html_files = [f for f in os.listdir(output_dir) if f.endswith(".html")]
         # 20 total - 3 opted out = 17 potential; some may fail segment criteria
         assert len(html_files) >= 10, (
             f"Expected at least 10 email files, got {len(html_files)}"

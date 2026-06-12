@@ -6,7 +6,7 @@ SPEC_FILE="$WORKSPACE/migration_spec.json"
 DB_FILE="$WORKSPACE/app.db"
 REPORT_FILE="$WORKSPACE/migration_report.json"
 
-python3 - <<'EOF'
+python3 - <<EOF
 import json
 import sqlite3
 import sys

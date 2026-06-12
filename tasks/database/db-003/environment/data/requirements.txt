@@ -1,0 +1,66 @@
+Blog System — Requirements Document
+====================================
+
+We are building a simple blog platform. The database must support users who
+write posts, readers who comment on posts, and a tagging system that lets each
+post carry multiple tags (and each tag apply to multiple posts).
+
+Use SQLite-compatible SQL. Enforce data integrity with PRIMARY KEY, FOREIGN KEY,
+and NOT NULL constraints. The schema must execute cleanly on a fresh database.
+
+
+1. Users
+--------
+Every person with an account is a user.
+
+- id            Unique identifier for the user (primary key).
+- username      The user's chosen handle. Required and unique.
+- email         The user's email address. Required and unique.
+- created_at    Timestamp the account was created. Required.
+
+
+2. Posts
+--------
+A post is an article written by a single user.
+
+- id            Unique identifier for the post (primary key).
+- user_id       The author. Foreign key referencing users(id). Required.
+- title         The post's title. Required.
+- content       The body text of the post. Required.
+- published_at  Timestamp the post was published. Required.
+
+
+3. Comments
+-----------
+A comment is a reader's response attached to a post. A comment is written by a
+user and belongs to exactly one post.
+
+- id            Unique identifier for the comment (primary key).
+- post_id       The post being commented on. Foreign key referencing posts(id). Required.
+- user_id       The comment author. Foreign key referencing users(id). Required.
+- body          The text of the comment. Required.
+- created_at    Timestamp the comment was created. Required.
+
+
+4. Tags
+-------
+A tag is a label that can be applied to posts.
+
+- id            Unique identifier for the tag (primary key).
+- name          The tag label. Required and unique.
+
+
+5. Post Tags (junction table)
+-----------------------------
+A post can have many tags and a tag can apply to many posts. Model this
+many-to-many relationship with a junction table.
+
+- post_id       Foreign key referencing posts(id).
+- tag_id        Foreign key referencing tags(id).
+- The combination (post_id, tag_id) is the composite primary key.
+
+
+Deliverable
+-----------
+Produce a single file, schema.sql, containing the CREATE TABLE statements for
+all five tables: users, posts, comments, tags, and post_tags.

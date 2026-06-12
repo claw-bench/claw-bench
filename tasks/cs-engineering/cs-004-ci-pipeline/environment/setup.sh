@@ -8,12 +8,14 @@ mkdir -p "$WORKSPACE/project"
 cat > "$WORKSPACE/project/module1.py" << EOF
 """Sample module 1"""
 
+
 def add(a, b):
     return a + b
 EOF
 
 cat > "$WORKSPACE/project/module2.py" << EOF
 """Sample module 2"""
+
 
 class Calculator:
     def multiply(self, x, y):
@@ -22,13 +24,14 @@ EOF
 
 # Create a test file using pytest
 cat > "$WORKSPACE/project/test_module.py" << EOF
-import pytest
 from module1 import add
 from module2 import Calculator
+
 
 def test_add():
     assert add(2, 3) == 5
     assert add(-1, 1) == 0
+
 
 def test_multiply():
     calc = Calculator()
@@ -61,6 +64,7 @@ EOF
 cat > "$WORKSPACE/project/package/utils.py" << EOF
 """Utility functions"""
 
+
 def square(x):
     return x * x
 EOF
@@ -68,6 +72,7 @@ EOF
 # Create test for utils
 cat > "$WORKSPACE/project/test_utils.py" << EOF
 from package.utils import square
+
 
 def test_square():
     assert square(3) == 9

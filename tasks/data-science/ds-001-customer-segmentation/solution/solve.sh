@@ -4,7 +4,7 @@ WORKSPACE="${1:-workspace}"
 export WORKSPACE
 python3 << 'PYEOF'
 import csv, json, os, math
-ws = os.environ.get("CLAW_WORKSPACE", "workspace")
+ws = os.environ.get("WORKSPACE", os.getcwd())
 
 # Read data
 with open(f"{ws}/customers.csv") as f:

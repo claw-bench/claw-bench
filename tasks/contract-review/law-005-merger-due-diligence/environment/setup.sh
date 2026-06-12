@@ -4,58 +4,10 @@ WORKSPACE="${1:-workspace}"
 
 mkdir -p "$WORKSPACE"
 
-python3 - <<'EOF'
-import random
-random.seed(42)
-
-sections = {
-    "CONDITIONS PRECEDENT": [
-        "The obligations of the parties are subject to the satisfaction or waiver of the following conditions precedent:",
-        "1. Receipt of all required governmental and third-party consents.",
-        "2. No material breach of representations and warranties.",
-        "3. Approval of the merger by the board of directors of both companies.",
-        "4. Absence of any material adverse change affecting the target company.",
-    ],
-    "REPRESENTATIONS AND WARRANTIES": [
-        "Each party represents and warrants to the other that:",
-        "1. It has full corporate power and authority to enter into this Agreement.",
-        "2. The execution and delivery of this Agreement have been duly authorized.",
-        "3. There are no undisclosed liabilities or litigation pending.",
-        "4. Financial statements fairly present the financial condition of the company.",
-    ],
-    "INDEMNIFICATION TERMS": [
-        "The indemnifying party shall indemnify and hold harmless the indemnified party from any losses arising out of:",
-        "1. Breach of any representation or warranty.",
-        "2. Failure to perform any covenant or agreement.",
-        "3. Third-party claims related to the business prior to closing.",
-        "4. Taxes and environmental liabilities.",
-    ],
-    "CLOSING TIMELINE": [
-        "The closing of the merger shall occur no later than 60 days following the satisfaction of all conditions precedent.",
-        "The parties agree to use commercially reasonable efforts to complete the closing as soon as practicable.",
-        "Extensions may be granted by mutual written consent.",
-    ],
-    "MATERIAL ADVERSE CHANGE CLAUSE": [
-        "A material adverse change shall mean any event, change, or effect that has a material adverse effect on the business, assets, liabilities, financial condition, or results of operations of the target company.",
-        "If a material adverse change occurs prior to closing, the buyer may terminate this Agreement.",
-    ],
-    "OTHER PROVISIONS": [
-        "Miscellaneous provisions including governing law, dispute resolution, and notices.",
-        "This Agreement constitutes the entire agreement between the parties.",
-    ]
-}
-
-# Randomize order of sections except OTHER PROVISIONS which goes last
-section_order = list(sections.keys())
-section_order.remove("OTHER PROVISIONS")
-random.shuffle(section_order)
-section_order.append("OTHER PROVISIONS")
-
-with open("{}/merger_agreement.txt".format(""" + "${WORKSPACE}" + ""), "w", encoding="utf-8") as f:
-    for sec in section_order:
-        f.write(sec + "\n")
-        f.write("-" * len(sec) + "\n")
-        for line in sections[sec]:
-            f.write(line + "\n")
-        f.write("\n")
-EOF
+# The merger agreement input is provided as a static data file under
+# environment/data/ and copied into the workspace by the task harness.
+# Copy it here as well so setup is self-sufficient when run standalone.
+DATA_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/data"
+if [[ -f "$DATA_DIR/merger_agreement.txt" ]]; then
+  cp "$DATA_DIR/merger_agreement.txt" "$WORKSPACE/merger_agreement.txt"
+fi

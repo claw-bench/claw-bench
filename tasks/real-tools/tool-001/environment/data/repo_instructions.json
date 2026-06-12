@@ -1,0 +1,20 @@
+{
+  "repository": "webapp",
+  "operations": [
+    {
+      "type": "create_branch",
+      "name": "feature-login",
+      "description": "Create a new feature branch for the login functionality"
+    },
+    {
+      "type": "commit",
+      "message": "Add login page",
+      "description": "Stage all changes and commit with the specified message"
+    },
+    {
+      "type": "create_tag",
+      "tag_name": "v1.0.0",
+      "description": "Tag the current commit as version 1.0.0"
+    }
+  ]
+}

@@ -34,7 +34,7 @@ result = {
     ]
 }
 import os
-ws = os.environ.get("CLAW_WORKSPACE", "workspace")
+ws = os.environ.get("WORKSPACE", os.getcwd())
 with open(f"{ws}/clause_analysis.json","w") as f:
     json.dump(result, f, indent=2)
 with open(f"{ws}/review_summary.md","w") as f:

@@ -1,0 +1,42 @@
+{
+  "problems": [
+    {
+      "id": "problem_1",
+      "type": "compound_interest",
+      "principal": 10000,
+      "annual_rate": 0.05,
+      "years": 3,
+      "compounds_per_year": 1
+    },
+    {
+      "id": "problem_2",
+      "type": "percentage_markup",
+      "cost": 280,
+      "markup_percent": 25
+    },
+    {
+      "id": "problem_3",
+      "type": "tax_calculation",
+      "income": 75000,
+      "brackets": [
+        { "min": 0, "max": 10000, "rate": 0.10 },
+        { "min": 10000, "max": 40000, "rate": 0.20 },
+        { "min": 40000, "max": null, "rate": 0.30 }
+      ]
+    },
+    {
+      "id": "problem_4",
+      "type": "loan_payment",
+      "principal": 200000,
+      "annual_rate": 0.06,
+      "months": 360
+    },
+    {
+      "id": "problem_5",
+      "type": "break_even",
+      "fixed_costs": 100000,
+      "price_per_unit": 40,
+      "variable_cost_per_unit": 10
+    }
+  ]
+}

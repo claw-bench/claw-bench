@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 python3 - <<'EOF'
 import csv
 import json
+import os
 from pathlib import Path
 
-workspace = Path("$WORKSPACE")
+workspace = Path(os.environ["WORKSPACE"])
 
 # Load gene regions
 gene_regions = []

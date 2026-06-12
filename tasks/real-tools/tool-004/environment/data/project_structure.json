@@ -1,0 +1,42 @@
+{
+  "name": "sample-python-project",
+  "version": "0.1.0",
+  "description": "A sample Python project used to generate a Makefile.",
+  "python_version": ">=3.9",
+  "source_files": [
+    "src/sample/__init__.py",
+    "src/sample/core.py",
+    "src/sample/cli.py"
+  ],
+  "test_files": [
+    "tests/test_core.py",
+    "tests/test_cli.py"
+  ],
+  "documentation": {
+    "tool": "mkdocs",
+    "config": "mkdocs.yml",
+    "files": [
+      "docs/index.md",
+      "docs/usage.md"
+    ]
+  },
+  "dependencies": {
+    "runtime": [
+      "click>=8.1.0",
+      "requests>=2.31.0"
+    ],
+    "dev": [
+      "pytest>=7.4.0",
+      "flake8>=6.1.0",
+      "black>=23.9.0",
+      "build>=1.0.0",
+      "mkdocs>=1.5.0"
+    ]
+  },
+  "requirements_file": "requirements.txt",
+  "entry_points": {
+    "console_scripts": [
+      "sample=sample.cli:main"
+    ]
+  }
+}

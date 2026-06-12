@@ -1,0 +1,13 @@
+{
+  "capacity": 15,
+  "items": [
+    { "name": "compass", "weight": 1, "value": 2 },
+    { "name": "water", "weight": 2, "value": 6 },
+    { "name": "sandwich", "weight": 3, "value": 9 },
+    { "name": "glucose", "weight": 2, "value": 5 },
+    { "name": "banana", "weight": 1, "value": 3 },
+    { "name": "laptop", "weight": 5, "value": 14 },
+    { "name": "camera", "weight": 4, "value": 10 },
+    { "name": "book", "weight": 3, "value": 7 }
+  ]
+}

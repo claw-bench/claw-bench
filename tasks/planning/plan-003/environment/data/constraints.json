@@ -1,0 +1,36 @@
+{
+  "project": {
+    "name": "Patient Portal & Telehealth Platform",
+    "domain": "healthcare",
+    "description": "A HIPAA-compliant web application for patient records, appointment scheduling, and real-time telehealth video consultations.",
+    "compliance": ["HIPAA", "HL7 FHIR"]
+  },
+  "budget": {
+    "total": 120000,
+    "currency": "USD",
+    "notes": "Covers infrastructure, licensing, and development for the initial 6-month build."
+  },
+  "team": {
+    "size": 4,
+    "skills": ["React", "Python", "PostgreSQL", "AWS"],
+    "experience_level": "mid-to-senior"
+  },
+  "timeline": {
+    "duration_months": 6,
+    "hard_deadline": "2026-12-01"
+  },
+  "requirements": {
+    "functional": [
+      "Patient record management with audit logging",
+      "Appointment scheduling and reminders",
+      "Real-time telehealth video and chat",
+      "HL7 FHIR data exchange with external EHR systems"
+    ],
+    "non_functional": [
+      "End-to-end encryption for patient data",
+      "99.9% uptime",
+      "Support for 10,000 concurrent users",
+      "Auditable access trail for compliance reporting"
+    ]
+  }
+}

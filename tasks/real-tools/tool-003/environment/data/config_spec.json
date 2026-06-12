@@ -1,0 +1,55 @@
+{
+  "description": "Configuration specification for the application environment variables.",
+  "variables": {
+    "DB_HOST": {
+      "type": "string",
+      "default": "localhost",
+      "description": "Hostname of the PostgreSQL database server."
+    },
+    "DB_PORT": {
+      "type": "integer",
+      "default": 5432,
+      "description": "Port the PostgreSQL database listens on."
+    },
+    "DB_NAME": {
+      "type": "string",
+      "default": "appdb",
+      "description": "Name of the application database."
+    },
+    "DB_USER": {
+      "type": "string",
+      "default": "appuser",
+      "description": "Username used to connect to the database."
+    },
+    "DB_PASSWORD": {
+      "type": "string",
+      "default": "s3cureDbPass",
+      "description": "Password used to connect to the database."
+    },
+    "APP_SECRET_KEY": {
+      "type": "string",
+      "default": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+      "description": "Secret key used to sign application sessions and tokens."
+    },
+    "APP_DEBUG": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the application runs in debug mode."
+    },
+    "APP_PORT": {
+      "type": "integer",
+      "default": 8000,
+      "description": "Port the application server listens on."
+    },
+    "API_KEY": {
+      "type": "string",
+      "default": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+      "description": "API key for the external service integration."
+    },
+    "REDIS_URL": {
+      "type": "string",
+      "default": "redis://localhost:6379/0",
+      "description": "Connection URL for the Redis cache server."
+    }
+  }
+}

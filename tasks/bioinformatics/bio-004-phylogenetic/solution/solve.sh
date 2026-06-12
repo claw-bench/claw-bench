@@ -2,7 +2,7 @@
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
 
-python3 - <<'EOF'
+python3 - <<EOF
 import csv
 from pathlib import Path
 
@@ -58,7 +58,12 @@ import numpy as np
 
 def neighbor_joining(dist_matrix, labels):
     n = len(dist_matrix)
-    D = np.array(dist_matrix)
+    # Dict-backed distance store keyed by node id so that newly created
+    # internal nodes (ids >= n) can be added without bounds limits.
+    D = {}
+    for i in range(n):
+        for j in range(n):
+            D[(i, j)] = float(dist_matrix[i][j])
     nodes = {i: labels[i] for i in range(n)}
     active = list(range(n))
     tree = {i: labels[i] for i in range(n)}
@@ -70,7 +75,7 @@ def neighbor_joining(dist_matrix, labels):
     def compute_r(D, active):
         r = {}
         for i in active:
-            r[i] = sum(D[i,j] for j in active if j != i) / (len(active) - 2) if len(active) > 2 else 0
+            r[i] = sum(D[(i,j)] for j in active if j != i) / (len(active) - 2) if len(active) > 2 else 0
         return r
 
     while len(active) > 2:
@@ -83,7 +88,7 @@ def neighbor_joining(dist_matrix, labels):
             for j in active:
                 if i >= j:
                     continue
-                val = D[i,j] - r[i] - r[j]
+                val = D[(i,j)] - r[i] - r[j]
                 if (min_val is None) or (val < min_val):
                     min_val = val
                     pair = (i,j)
@@ -91,8 +96,8 @@ def neighbor_joining(dist_matrix, labels):
 
         # Compute branch lengths
         delta = (r[i] - r[j])
-        limb_i = 0.5 * (D[i,j] + delta)
-        limb_j = 0.5 * (D[i,j] - delta)
+        limb_i = 0.5 * (D[(i,j)] + delta)
+        limb_j = 0.5 * (D[(i,j)] - delta)
 
         # Create new node
         new_node = next_node_id
@@ -110,26 +115,23 @@ def neighbor_joining(dist_matrix, labels):
         tree[new_node] = (i, limb_i, j, limb_j)
 
         # Update distance matrix
+        D[(new_node, new_node)] = 0.0
         for k in active:
             if k != i and k != j:
-                Dik = D[i,k]
-                Djk = D[j,k]
-                D[new_node,k] = D[k,new_node] = 0.5 * (Dik + Djk - D[i,j])
+                Dik = D[(i,k)]
+                Djk = D[(j,k)]
+                D[(new_node,k)] = D[(k,new_node)] = 0.5 * (Dik + Djk - D[(i,j)])
 
         # Remove i and j from active, add new_node
         active = [x for x in active if x != i and x != j]
         active.append(new_node)
 
-        # Remove old rows and columns
-        for x in [i,j]:
-            D[x,:] = 0
-            D[:,x] = 0
-
-    # When two nodes remain, connect them
+    # When two nodes remain, connect them under a final root node id
     i,j = active
-    limb_i = D[i,j]/2
-    limb_j = D[i,j]/2
-    tree_root = (i, limb_i, j, limb_j)
+    limb_i = D[(i,j)]/2
+    limb_j = D[(i,j)]/2
+    root_id = next_node_id
+    tree[root_id] = (i, limb_i, j, limb_j)
 
     def to_newick(node):
         if isinstance(tree[node], str):
@@ -138,7 +140,7 @@ def neighbor_joining(dist_matrix, labels):
             left, limb_left, right, limb_right = tree[node]
             return f"({to_newick(left)}:{limb_left:.8f},{to_newick(right)}:{limb_right:.8f})"
 
-    newick_str = to_newick(tree_root) + ";"
+    newick_str = to_newick(root_id) + ";"
     return newick_str
 
 # Convert dist_matrix to numpy array

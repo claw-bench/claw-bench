@@ -8,8 +8,9 @@ import csv
 import json
 import os
 
-controls_path = os.path.join(os.environ.get("CLAW_WORKSPACE", "./"), "controls.csv")
-output_path = os.path.join(os.environ.get("CLAW_WORKSPACE", "./"), "sox_assessment.json")
+workspace = os.environ.get("CLAW_WORKSPACE", os.environ.get("WORKSPACE", "./"))
+controls_path = os.path.join(workspace, "controls.csv")
+output_path = os.path.join(workspace, "sox_assessment.json")
 
 coso_keywords = [
     ("control_environment", ["ethics", "tone at the top", "governance"]),

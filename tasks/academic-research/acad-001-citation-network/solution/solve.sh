@@ -4,7 +4,7 @@ WORKSPACE="${1:-workspace}"
 export WORKSPACE
 python3 << 'PYEOF'
 import re, json, csv, os
-ws = os.environ.get("CLAW_WORKSPACE", "workspace")
+ws = os.environ.get("WORKSPACE", os.environ.get("CLAW_WORKSPACE", "workspace"))
 with open(f"{ws}/references.bib") as f:
     content = f.read()
 papers = {}

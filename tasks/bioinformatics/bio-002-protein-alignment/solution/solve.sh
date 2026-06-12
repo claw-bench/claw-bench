@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 WORKSPACE="${1:-workspace}"
+export WORKSPACE
 
 python3 - <<'EOF'
+import os
 import json
 from pathlib import Path
+
+WORKSPACE = os.environ.get("WORKSPACE", "workspace")
 
 # Scoring scheme
 MATCH = 2
@@ -12,7 +16,7 @@ MISMATCH = -1
 GAP = -2
 
 # Read sequences from FASTA
-fasta_path = Path("{}/proteins.fasta".format("$WORKSPACE"))
+fasta_path = Path("{}/proteins.fasta".format(WORKSPACE))
 seqs = {}
 current_id = None
 current_seq = []
@@ -119,7 +123,7 @@ for i in range(len(seq_ids)):
             "similarity": similarity
         })
 
-out_path = Path("{}/alignment_results.json".format("$WORKSPACE"))
+out_path = Path("{}/alignment_results.json".format(WORKSPACE))
 with out_path.open('w') as f:
     json.dump(results, f, indent=2)
 EOF
