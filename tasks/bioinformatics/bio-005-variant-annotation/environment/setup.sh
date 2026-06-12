@@ -6,10 +6,14 @@ export WORKSPACE
 mkdir -p "$WORKSPACE"
 
 # Generate gene_regions.csv
-python3 -c '
-import random
-random.seed(42)
+python3 - <<'PYEOF'
+import os
 import csv
+import random
+
+random.seed(42)
+
+WORKSPACE = os.environ.get("WORKSPACE", os.getcwd())
 
 chromosomes = [f"chr{i}" for i in range(1, 6)]
 genes = ["BRCA1", "TP53", "EGFR", "MYC", "PTEN", "KRAS", "ALK", "APC", "CDKN2A", "BRAF"]
@@ -26,18 +30,22 @@ for chrom in chromosomes:
         # Next gene region start with some gap
         start = end + random.randint(1000, 5000)
 
-with open(f"{os.environ.get(\"WORKSPACE\", os.getcwd())}/gene_regions.csv", "w", newline="") as f:
+with open(f"{WORKSPACE}/gene_regions.csv", "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerow(["gene", "chrom", "start", "end", "function"])
     for row in regions:
         writer.writerow(row)
-'
+PYEOF
 
 # Generate variants.tsv
-python3 -c '
-import random
-random.seed(42)
+python3 - <<'PYEOF'
+import os
 import csv
+import random
+
+random.seed(42)
+
+WORKSPACE = os.environ.get("WORKSPACE", os.getcwd())
 
 chromosomes = [f"chr{i}" for i in range(1, 6)]
 
@@ -50,9 +58,9 @@ for _ in range(50):
     qual = round(random.uniform(10, 100), 1)
     variants.append([chrom, pos, ref, alt, qual])
 
-with open(f"{os.environ.get(\"WORKSPACE\", os.getcwd())}/variants.tsv", "w", newline="") as f:
-    writer = csv.writer(f, delimiter='\t')
+with open(f"{WORKSPACE}/variants.tsv", "w", newline="") as f:
+    writer = csv.writer(f, delimiter="\t")
     writer.writerow(["chrom", "pos", "ref", "alt", "qual"])
     for v in variants:
         writer.writerow(v)
-'
+PYEOF

@@ -6,7 +6,15 @@ export WORKSPACE
 mkdir -p "$WORKSPACE"
 
 # Generate labor_requirements.csv with 25 requirements
-python3 -c "import csv, random; random.seed(42)
+python3 - <<'PYEOF'
+import os
+import csv
+import random
+
+random.seed(42)
+
+WORKSPACE = os.environ.get("WORKSPACE", os.getcwd())
+
 requirements = [
     ('minimum_wage', 'The contract must specify the minimum wage.', True),
     ('working_hours', 'The contract must specify working hours and overtime rules.', True),
@@ -35,15 +43,21 @@ requirements = [
     ('remote_work', 'The contract must specify remote work policies.', False),
 ]
 
-with open(f'{os.environ.get("WORKSPACE", os.getcwd())}/labor_requirements.csv', 'w', newline='') as f:
+with open(f"{WORKSPACE}/labor_requirements.csv", "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerow(['requirement', 'description', 'mandatory'])
     for r in requirements:
         writer.writerow([r[0], r[1], str(r[2])])
-" 
+PYEOF
 
 # Generate employment_contract.txt with clauses covering some requirements
-python3 -c "import random; random.seed(42)
+python3 - <<'PYEOF'
+import os
+import random
+
+random.seed(42)
+
+WORKSPACE = os.environ.get("WORKSPACE", os.getcwd())
 
 clauses = {
     'minimum_wage': 'The employee shall receive a minimum wage as prescribed by law.',
@@ -65,8 +79,8 @@ clauses = {
     'data_protection': 'The employee must comply with data protection laws.',
 }
 
-# Select 18 of the 25 requirements to include clauses for
-included = set(random.sample(list(clauses.keys()), 18))
+# Include clauses for all available requirements (clauses dict has 17 entries)
+included = set(random.sample(list(clauses.keys()), len(clauses)))
 
 contract_lines = []
 for req in included:
@@ -76,6 +90,6 @@ for req in included:
 contract_lines.append('This contract is governed by the laws of the jurisdiction.')
 contract_lines.append('The employee agrees to the terms and conditions stated herein.')
 
-with open(f'{os.environ.get("WORKSPACE", os.getcwd())}/employment_contract.txt', 'w') as f:
+with open(f"{WORKSPACE}/employment_contract.txt", "w") as f:
     f.write('\n\n'.join(contract_lines))
-"
+PYEOF
