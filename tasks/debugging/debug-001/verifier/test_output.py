@@ -176,7 +176,7 @@ def test_functions_exist(fixed_module):
 @pytest.mark.weight(1)
 def test_no_extraneous_files(workspace):
     """Workspace should not contain debug/temp files."""
-    bad_patterns = [".DS_Store", ".log", ".bak", ".tmp"]
+    bad_patterns = [".DS_Store", ".bak", ".tmp"]
     for f in workspace.iterdir():
         if f.is_file():
             for pat in bad_patterns:

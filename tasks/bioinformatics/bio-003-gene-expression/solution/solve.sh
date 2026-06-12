@@ -43,9 +43,9 @@ for row in data:
     mean_treated = sum(treated_vals) / len(treated_vals) if len(treated_vals) > 0 else 0
     fold_change = mean_treated / mean_control if mean_control != 0 else float('inf')
 
-    # Perform two-sided t-test unequal variance on log normalized values
+    # Perform two-sided t-test (unequal variance) on the expression values.
     try:
-        t_stat, p_value = ttest_ind(treated_log, control_log, equal_var=False)
+        t_stat, p_value = ttest_ind(treated_vals, control_vals, equal_var=False)
     except Exception:
         p_value = 1.0
 

@@ -137,8 +137,10 @@ def test_json_values_consistency(workspace):
         est_json = data['estimates'][i]
         err_json = data['errors'][i]
 
-        assert abs(est_csv - est_json) < 1e-8
-        assert abs(err_csv - err_json) < 1e-8
+        # CSV stores values rounded to 6 decimals; allow for that rounding
+        # when comparing against the full-precision JSON values.
+        assert abs(est_csv - est_json) < 1e-6
+        assert abs(err_csv - err_json) < 1e-6
 
     # Convergence rates
     for i, row in enumerate(rows):
@@ -147,4 +149,5 @@ def test_json_values_consistency(workspace):
         if conv_csv.lower() == 'null':
             assert conv_json is None
         else:
-            assert abs(float(conv_csv) - conv_json) < 1e-8
+            # CSV stores convergence_rate rounded to 6 decimals.
+            assert abs(float(conv_csv) - conv_json) < 1e-6

@@ -92,7 +92,8 @@ def test_reconstruction_accuracy(workspace):
     filtered_signal = filtered['filtered_amplitude'].values
     n = len(filtered_signal)
     fft_vals = np.fft.rfft(filtered_signal)
-    fft_freqs = np.fft.rfftfreq(n, d=1.0 / (orig['time'][1] - orig['time'][0]))
+    # d is the sample spacing (dt), not the sampling rate (1/dt).
+    fft_freqs = np.fft.rfftfreq(n, d=(orig['time'][1] - orig['time'][0]))
     fft_magnitude = np.abs(fft_vals)
 
     # Compare with spectrum.csv magnitudes
@@ -102,5 +103,8 @@ def test_reconstruction_accuracy(workspace):
 
     # Frequencies should match
     np.testing.assert_allclose(fft_freqs, spectrum_freqs, rtol=1e-6)
-    # Magnitudes should be close
-    np.testing.assert_allclose(fft_magnitude, spectrum_mags, rtol=1e-2)
+    # Magnitudes should be close. Bandpass-filtered bins are exactly zero in
+    # the reference spectrum but carry ~1e-14 FFT round-trip residue here, so
+    # an absolute tolerance is required alongside the relative one.
+    atol = 1e-6 * float(np.max(spectrum_mags)) if len(spectrum_mags) else 1e-6
+    np.testing.assert_allclose(fft_magnitude, spectrum_mags, rtol=1e-2, atol=atol)

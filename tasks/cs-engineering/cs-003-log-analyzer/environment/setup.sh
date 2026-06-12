@@ -21,16 +21,13 @@ entries = []
 # Generate 120 log entries (2 hours approx, one per minute)
 for i in range(120):
     current_time = start_time + datetime.timedelta(seconds=i * 60)
-    # Randomly decide number of logs in this minute (1 to 3)
-    count = random.choice([1, 2, 3])
+    # Randomly decide number of logs in this minute (1 to 3).
+    # At minutes 30 and 90, emit 7 errors to create an error spike (>5/min).
+    is_spike = i in (30, 90)
+    count = 7 if is_spike else random.choice([1, 2, 3])
     for _ in range(count):
         timestamp = current_time + datetime.timedelta(seconds=random.randint(0,59))
-        # Introduce error spikes: at minute 30 and 90, generate 7 errors
-        if i == 30:
-            level = 'ERROR'
-            service = random.choice(services)
-            message = 'Simulated error spike event'
-        elif i == 90:
+        if is_spike:
             level = 'ERROR'
             service = random.choice(services)
             message = 'Simulated error spike event'
@@ -53,8 +50,9 @@ for i in range(3):
     ts = repeat_time + datetime.timedelta(seconds=i)
     entries.append((ts.isoformat(timespec='seconds'), 'WARN', 'api', 'Repeated warning message'))
 
-# Add service failure: 4 consecutive errors for 'database' at minute 60
-failure_time = start_time + datetime.timedelta(minutes=60)
+# Add service failure: 4 consecutive errors for 'database'. Placed after all
+# normal logs so the errors are strictly consecutive in timestamp order.
+failure_time = start_time + datetime.timedelta(minutes=130)
 for i in range(4):
     ts = failure_time + datetime.timedelta(seconds=i * 10)
     entries.append((ts.isoformat(timespec='seconds'), 'ERROR', 'database', 'Database connection failure'))
