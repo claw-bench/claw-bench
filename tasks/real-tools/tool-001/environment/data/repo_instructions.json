@@ -1,0 +1,7 @@
+{
+  "operations": [
+    {"type": "create_branch", "name": "feature-login"},
+    {"type": "commit", "message": "Add login page"},
+    {"type": "create_tag", "tag_name": "v1.0.0"}
+  ]
+}

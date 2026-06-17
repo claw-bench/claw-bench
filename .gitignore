@@ -45,7 +45,7 @@ tasks/**/workspace/
 .checkpoint.json
 
 # Runtime data (admin token, results, etc.)
-data/
+/data/
 
 # Docker SSL certs (sensitive)
 docker/ssl-certs/

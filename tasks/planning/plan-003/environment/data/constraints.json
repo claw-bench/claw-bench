@@ -1,0 +1,16 @@
+{
+  "budget": {"total": 120000, "currency": "USD"},
+  "team": {
+    "size": 6,
+    "skills": ["React", "Python", "PostgreSQL", "AWS", "REST APIs"]
+  },
+  "timeline_months": 4,
+  "requirements": [
+    "HIPAA-aligned security controls",
+    "Patient record workflows",
+    "Role-based access",
+    "Audit logging",
+    "HL7 FHIR integration",
+    "Responsive web UI"
+  ]
+}

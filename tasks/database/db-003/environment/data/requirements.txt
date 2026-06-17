@@ -1,0 +1,8 @@
+Blog system requirements:
+
+- Users can register with a unique username and email address.
+- Users can create posts with a title, body content, and publication timestamp.
+- Users can comment on posts; each comment belongs to one post and one user.
+- Posts can be labeled with multiple tags.
+- Tags can apply to multiple posts, so the schema must include a many-to-many junction table.
+- All core records should have integer primary keys and required text fields where appropriate.

@@ -1,0 +1,22 @@
+{
+  "project_name": "sample_python_service",
+  "language": "python",
+  "source_dir": "src",
+  "test_dir": "tests",
+  "docs_dir": "docs",
+  "dependencies_file": "requirements.txt",
+  "tools": {
+    "test": "pytest",
+    "lint": ["flake8", "black"],
+    "build": "python -m build",
+    "docs": "mkdocs"
+  },
+  "files": [
+    "src/app.py",
+    "src/config.py",
+    "tests/test_app.py",
+    "docs/index.md",
+    "requirements.txt",
+    "pyproject.toml"
+  ]
+}
