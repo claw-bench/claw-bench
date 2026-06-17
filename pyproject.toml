@@ -57,6 +57,7 @@ dependencies = [
     "httpx>=0.27",
     "cryptography",
     "pyyaml>=6",
+    "scipy>=1.11",
 ]
 
 [project.optional-dependencies]

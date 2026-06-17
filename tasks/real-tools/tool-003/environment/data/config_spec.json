@@ -1,0 +1,14 @@
+{
+  "variables": {
+    "DB_HOST": {"type": "string", "default": "db", "description": "Database host"},
+    "DB_PORT": {"type": "integer", "default": 5432, "description": "Database port"},
+    "DB_NAME": {"type": "string", "default": "appdb", "description": "Database name"},
+    "DB_USER": {"type": "string", "default": "appuser", "description": "Database user"},
+    "DB_PASSWORD": {"type": "string", "default": "s3cure-db-pass", "description": "Database password"},
+    "APP_SECRET_KEY": {"type": "string", "default": "local-dev-secret-key-123", "description": "Application secret"},
+    "APP_DEBUG": {"type": "boolean", "default": false, "description": "Debug mode"},
+    "APP_PORT": {"type": "integer", "default": 8000, "description": "Application port"},
+    "API_KEY": {"type": "string", "default": "dev-api-key-abc123", "description": "External API key"},
+    "REDIS_URL": {"type": "string", "default": "redis://redis:6379/0", "description": "Redis URL"}
+  }
+}
